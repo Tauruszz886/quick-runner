@@ -265,7 +265,24 @@ export function registerThirdLevelTimedPlatform(
   if (!isThirdLevelTimedPlatformPiece(moduleIndex, piece) || unit === null || unit === undefined) {
     return
   }
-  const spec = findSpec(piece.name)
+  registerThirdLevelTimedPlatformBinding(unit, name, piece.name, x, y, z, piece.sx, piece.sy, piece.sz)
+}
+
+export function registerThirdLevelTimedPlatformBinding(
+  unit: unknown,
+  name: string,
+  pieceName: string,
+  x: number,
+  y: number,
+  z: number,
+  sx: number,
+  sy: number,
+  sz: number
+): void {
+  if (unit === null || unit === undefined) {
+    return
+  }
+  const spec = findSpec(pieceName)
   if (spec === undefined) {
     return
   }
@@ -276,9 +293,9 @@ export function registerThirdLevelTimedPlatform(
     x,
     y,
     z,
-    sx: piece.sx,
-    sz: piece.sz,
-    hiddenY: y - piece.sy - THIRD_LEVEL_HIDDEN_Y_OFFSET,
+    sx,
+    sz,
+    hiddenY: y - sy - THIRD_LEVEL_HIDDEN_Y_OFFSET,
     state: "normal",
   }
   thirdLevelPlatforms.push(platform)

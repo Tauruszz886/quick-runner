@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 from dataclasses import dataclass, asdict
@@ -31,7 +30,6 @@ MARKER = "QR_ZLJ_SCENE"
 WALL_PREFAB_ID = 105205
 ZLJ_FLOOR_PREFAB_ID = 1201010
 FALL_DEATH_TRIGGER_PREFAB_ID = 3101010
-TRAILING_CURRENT_PREFAB_ID = 3301506
 ZLJ_FLOOR_MODEL_ID = 90004
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_X = 15.0
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_Z = 10.0
@@ -215,27 +213,8 @@ def walls_for_module(module: int) -> list[dict[str, Any]]:
     return walls
 
 
-OBJECT_RE = re.compile(r"\{([^{}]*name\s*:[^{}]*)\}", re.S)
-FIELD_RE = re.compile(r"(\w+)\s*:\s*(\"[^\"]*\"|[-+]?\d+(?:\.\d+)?|true|false)")
 REQUIRED_TERRAIN_FIELDS = {"name", "startX", "startZ", "sx", "sy", "sz"}
 ALLOWED_TERRAIN_FIELDS = REQUIRED_TERRAIN_FIELDS | {"baseY", "prefabId", "role"}
-
-
-def parse_level_objects(path: Path) -> list[dict[str, Any]]:
-    text = path.read_text(encoding="utf-8")
-    out: list[dict[str, Any]] = []
-    for match in OBJECT_RE.finditer(text):
-        fields: dict[str, Any] = {}
-        for key, raw in FIELD_RE.findall(match.group(1)):
-            if raw.startswith('"'):
-                fields[key] = raw.strip('"')
-            elif raw in ("true", "false"):
-                fields[key] = raw == "true"
-            else:
-                fields[key] = float(raw)
-        if REQUIRED_TERRAIN_FIELDS.issubset(fields):
-            out.append(fields)
-    return out
 
 
 def parse_level_data(path: Path) -> list[dict[str, Any]]:
@@ -280,73 +259,11 @@ def load_fall_death_zones(workspace: Path) -> dict[int, list[dict[str, Any]]]:
     return out
 
 
-def level_10_rails() -> list[dict[str, Any]]:
-    level_frame_sx = 160.0
-    locator_width = 0.2
-    rail_width = 1.0
-    rail_height = 1.0
-    rail_length = 20.0
-    rail_segment_length = 1.0
-    rail_start_z = 40.0
-    rail_base_y = 6.5
-    rail_stack_step_y = 1.0
-
-    def flip_x(start_x: float, sx: float) -> float:
-        return level_frame_sx - start_x - sx
-
-    def locator_center_x(source_start_x: float) -> float:
-        return flip_x(source_start_x, locator_width) + locator_width / 2
-
-    def create(source_name: str, source_start_x: float, base_y: float) -> list[dict[str, Any]]:
-        specs: list[dict[str, Any]] = []
-        start_x = locator_center_x(source_start_x) - rail_width / 2
-        count = int(rail_length / rail_segment_length)
-        for index in range(count):
-            specs.append({
-                "name": f"{source_name}_3301506_{index + 1}",
-                "startX": start_x,
-                "startZ": rail_start_z + index * rail_segment_length,
-                "sx": rail_width,
-                "sy": rail_height,
-                "sz": rail_segment_length,
-                "baseY": base_y,
-                "prefabId": TRAILING_CURRENT_PREFAB_ID,
-            })
-        return specs
-
-    return (
-        create("dxf_97B_1", 26, rail_base_y)
-        + create("dxf_97B_2", 26, rail_base_y + rail_stack_step_y)
-        + create("dxf_97B_3", 26, rail_base_y + rail_stack_step_y * 2)
-        + create("dxf_97F_1", 75, rail_base_y)
-        + create("dxf_983_1", 115, rail_base_y)
-    )
-
-
-def level_10_static_terrain() -> list[dict[str, Any]]:
-    level_frame_sx = 160.0
-
-    def flip_x(start_x: float, sx: float) -> float:
-        return level_frame_sx - start_x - sx
-
-    return [
-        {"name": "dxf_73C_15x40", "startX": flip_x(0, 15), "startZ": 30.0, "sx": 15.0, "sy": 3.0, "sz": 40.0},
-        {"name": "dxf_75C_115x20", "startX": flip_x(25, 115), "startZ": 40.0, "sx": 115.0, "sy": 3.0, "sz": 20.0},
-        {"name": "dxf_737_15x40", "startX": flip_x(145, 15), "startZ": 30.0, "sx": 15.0, "sy": 3.0, "sz": 40.0},
-    ]
-
-
 def load_level_specs(workspace: Path, module: int) -> list[dict[str, Any]]:
     data_path = workspace / "data" / "zlj" / "levels" / f"level_{module:02d}.json"
-    if data_path.exists():
-        specs = parse_level_data(data_path)
-    else:
-        terrain_path = workspace / "ts_src" / "zlj" / "levels" / f"level_{module:02d}" / "terrain.ts"
-        specs = parse_level_objects(terrain_path)
-    if module == 10:
-        specs.extend(level_10_static_terrain())
-        specs.extend(level_10_rails())
-    return specs
+    if not data_path.exists():
+        raise FileNotFoundError(f"{data_path}: missing level geometry data")
+    return parse_level_data(data_path)
 
 
 def terrain_y(module: int, piece: dict[str, Any]) -> float:

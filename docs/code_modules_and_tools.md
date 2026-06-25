@@ -1,6 +1,6 @@
 # quick-runner 代码模块与工具说明
 
-本文档用于快速理解 `ts_src` 下的运行时代码、`terrain.ts` 关卡数据，以及 `tools` 下的编辑器/CAD 辅助脚本。
+本文档用于快速理解 `ts_src` 下的运行时代码、`data/zlj` 关卡数据，以及 `tools` 下的编辑器/CAD 辅助脚本。
 
 项目内跨目录、跨语言的数据耦合和后续整理计划见 `docs/coupling_cleanup_plan.md`。
 
@@ -11,7 +11,7 @@
 当前 quick-runner 的主要设计是：
 
 - 地板、墙、天花板、关卡地形等静态场景对象优先由编辑器创建和维护。
-- `terrain.ts` 这类几何数据只作为编辑器场景创建/维护的输入，不再作为运行时机关绑定来源。
+- `data/zlj/levels/*.json` 是关卡几何源数据；`terrain.ts` 是由 JSON 生成的 TS 适配层。
 - 运行时机关绑定读取 `data/zlj/runtime_scene_bindings.json` 生成的 `RUNTIME_SCENE_BINDINGS`，按组件名查询编辑器单位，并从单位自身读取位置和尺寸。
 - `runtime` 代码负责试玩时的逻辑：玩家速度、出生复活、掉坑死亡、追击球、移动/消失/压板/电流等机关。
 - `tools/zlj_editor_scene` 负责把这些地形数据生成编辑器场景对象树，并提供校验和索引导出。
@@ -34,7 +34,7 @@
 
 `data` 用于存放可被多种工具读取的结构化源数据。
 
-当前第 3 关已经作为试点迁移到 `data/zlj/levels/level_03.json`。这份 JSON 是第 3 关地形数据的源文件，`ts_src/zlj/levels/level_03/terrain.ts` 由 `tools/zlj_data/generate_level_terrain.py` 生成。其他关卡暂时仍直接维护各自的 `terrain.ts`。
+第 1-10 关地形源数据都维护在 `data/zlj/levels/level_XX.json`。`ts_src/zlj/levels/level_XX/terrain.ts` 由 `tools/zlj_data/generate_level_terrain.py` 生成，主要给 TypeScript 侧类型检查和旧索引入口使用。
 
 掉坑死亡区使用单独的 `data/zlj/fall_death_zones.json` 维护。这份数据会生成 `ts_src/zlj/levels/fall_death_zones.ts`，并由编辑器场景创建脚本生成 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件。
 
@@ -72,24 +72,25 @@
 
 每个 `levels/level_xx/terrain.ts` 都导出一个 `LEVEL_XX_TERRAIN` 数组。数组里的每个对象代表本关的一块平台、障碍或机关零件。
 
-它现在的定位是编辑器场景创建/维护用的几何数据，不是运行时玩法绑定的权威来源。运行时机关绑定应走 `runtime_scene_bindings.ts`，按组件名查询编辑器单位。
+它现在是生成物，不是手写源文件。编辑器场景创建读取 `data/zlj/levels/*.json`；运行时机关绑定读取 `runtime_scene_bindings.ts`，按组件名查询编辑器单位。
 
 常见字段：
 
 | 字段 | 含义 |
 | --- | --- |
-| `name` | 地形块名字，通常来自 DXF/CAD 或编辑器对象名。运行时会拼成类似 `QR_第02关_dxf_xxx` 的名字去查询编辑器单位。 |
+| `name` | 地形块名字，通常来自 DXF/CAD 或编辑器对象名。编辑器创建脚本会拼成类似 `QR_第02关_dxf_xxx` 的对象名。 |
 | `startX` / `startZ` | 这块地形在本关 160x100 局部区域内的起始坐标。 |
 | `sx` / `sy` / `sz` | 地形块在 X/Y/Z 三个方向的尺寸。 |
 | `baseY` | 可选，高度基准。不写时通常使用普通地砖高度。 |
 | `prefabId` | 可选，指定特殊预制体。第 10 关电流块会用到。 |
 | `role` | 可选，给特殊机关打标。第 4 关 `role: "fourth_compressor"` 表示压板。 |
 
-这些文件本身不执行逻辑，而是“数据源”。它们会被：
+这些文件本身不执行逻辑，而是 JSON 源数据的 TS 适配层。它们会被：
 
 - `levels/terrain/index.ts` 汇总成 `LEVEL_TERRAIN_SPECS`。
-- `tools/zlj_editor_scene/create_editor_scene.py` 用来生成编辑器场景创建计划。
-- `runtime/runtime_terrain.ts` 的旧备用创建路径仍可读取 `LEVEL_TERRAIN_SPECS`，但当前主运行路径不应依赖它。
+- 仍依赖 TS 关卡数组的旧代码或调试代码读取。
+
+编辑器创建脚本不再解析 `terrain.ts`。
 
 ### shared
 
@@ -100,7 +101,7 @@
 
 所有关卡 terrain 的汇总入口。
 
-旧备用创建路径可以从这里读取 `LEVEL_TERRAIN_SPECS`，不用直接 import 每一个 `level_XX/terrain.ts`。当前编辑器场景模式下，运行时机关绑定不再从这里取数据。
+这里仍保留为 TypeScript 侧关卡数组汇总入口。当前编辑器场景模式下，运行时机关绑定和编辑器创建脚本都不再从这里取权威数据。
 
 ### levels/runtime_scene_bindings.ts
 
@@ -145,7 +146,7 @@
 
 运行时生成地图结构的旧/备用路径。
 
-它可以创建地板、墙、天花板和调试网格。当前 quick-runner 目标是静态场景对象在编辑器里创建，所以主要运行路径更偏向 `runtime_terrain.ts` 的“查询并绑定已有单位”。
+它可以创建地板、墙、天花板和调试网格。当前 quick-runner 目标是静态场景对象在编辑器里创建；`runtime_terrain.ts` 里的 `createRuntimeTiles()` 地形备用创建路径已经移除。
 
 ### runtime_speed.ts
 
@@ -233,7 +234,7 @@ CAD 维护脚本目录。
 
 结构化地形数据生成脚本。
 
-当前用于把 `data/zlj/levels/level_03.json` 生成回 `ts_src/zlj/levels/level_03/terrain.ts`。后续其他关卡迁移到 JSON 后，也会通过同一脚本生成对应 `terrain.ts`。
+当前用于把 `data/zlj/levels/level_XX.json` 生成回 `ts_src/zlj/levels/level_XX/terrain.ts`。
 
 它同时会生成：
 
@@ -252,8 +253,7 @@ npm run generate:terrain
 
 用途：
 
-- 优先读取 `data/zlj/levels/level_XX.json`；没有 JSON 的关卡继续读取 `ts_src/zlj/levels/level_XX/terrain.ts`。
-- 生成出生地和第 1-10 关的静态场景计划。
+- 读取 `data/zlj/levels/level_XX.json`，生成出生地和第 1-10 关的静态场景计划。
 - 根据 `data/zlj/fall_death_zones.json` 生成每关掉坑死亡触发器组件。
 - 创建或更新对象树：
   - `QR_地图_ROOT`
@@ -283,7 +283,7 @@ npm run generate:terrain
 - 位置和尺寸。
 - 颜色、是否运行时占位等。
 
-这个文件主要用于排查“脚本准备创建什么”。通常不要手动改它，应修改 `terrain.ts` 或创建脚本后重新生成。
+这个文件主要用于排查“脚本准备创建什么”。通常不要手动改它，应修改 `data/zlj/levels/*.json`、`data/zlj/fall_death_zones.json`、`data/zlj/runtime_scene_bindings.json` 或创建脚本后重新生成。
 
 ### tools/zlj_editor_scene/export_level_component_index.py
 
@@ -314,11 +314,12 @@ Python 运行脚本后生成的字节码缓存目录。
 
 它不是项目逻辑，也不需要手动维护；如果清理掉，Python 下次运行脚本会自动重新生成。
 
-## 修改 terrain.ts 时要同步注意
+## 修改关卡几何数据时要同步注意
 
-修改某关 `terrain.ts` 后，通常需要考虑这些联动：
+修改某关 `data/zlj/levels/level_XX.json` 后，通常需要考虑这些联动：
 
 - 掉坑死亡区不会自动改变；需要单独修改 `data/zlj/fall_death_zones.json` 并重新生成场景计划。
+- 运行 `npm run generate:terrain`，更新对应的 `terrain.ts` 生成物。
 - 编辑器创建计划会改变，需要用 `create_editor_scene.py --dry-run` 或实际创建脚本重新生成/同步。
 - 如果新增、删除或重命名第 2/3/4/8/9/10 关的机关组件，要同步修改 `data/zlj/runtime_scene_bindings.json`。
 - 如果已有 SVG/CAD/组件索引文档，应该同步更新编号索引和图中标注。

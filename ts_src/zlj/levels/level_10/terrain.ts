@@ -1,50 +1,108 @@
 import type { LevelTerrainSpec } from "../shared/types"
 
-const LEVEL_FRAME_SX = 160
-const RAIL_PREFAB_ID = 3301506
-const LOCATOR_WIDTH = 0.2
-const RAIL_WIDTH = 1
-const RAIL_HEIGHT = 1
-const RAIL_LENGTH = 20
-const RAIL_SEGMENT_LENGTH = 1
-const RAIL_START_Z = 40
-const RAIL_BASE_Y = 6.5
-const RAIL_STACK_STEP_Y = 1
-
-function flipX(startX: number, sx: number): number {
-  return LEVEL_FRAME_SX - startX - sx
-}
-
-function getFlippedLocatorCenterX(startX: number): number {
-  return flipX(startX, LOCATOR_WIDTH) + LOCATOR_WIDTH / 2
-}
-
-function createRailSegments(sourceName: string, sourceStartX: number, baseY: number): LevelTerrainSpec[] {
-  const specs: LevelTerrainSpec[] = []
-  const count = math.floor(RAIL_LENGTH / RAIL_SEGMENT_LENGTH)
-  const startX = getFlippedLocatorCenterX(sourceStartX) - RAIL_WIDTH / 2
-  for (let i = 0; i < count; i++) {
-    specs.push({
-      name: `${sourceName}_3301506_${i + 1}`,
-      startX,
-      startZ: RAIL_START_Z + i * RAIL_SEGMENT_LENGTH,
-      sx: RAIL_WIDTH,
-      sy: RAIL_HEIGHT,
-      sz: RAIL_SEGMENT_LENGTH,
-      baseY,
-      prefabId: RAIL_PREFAB_ID,
-    })
-  }
-  return specs
-}
-
+// Generated from data/zlj/levels/level_10.json. Do not edit terrain data here.
 export const LEVEL_10_TERRAIN: readonly LevelTerrainSpec[] = [
-  { name: "dxf_73C_15x40", startX: flipX(0, 15), startZ: 30, sx: 15, sy: 3, sz: 40 },
-  { name: "dxf_75C_115x20", startX: flipX(25, 115), startZ: 40, sx: 115, sy: 3, sz: 20 },
-  { name: "dxf_737_15x40", startX: flipX(145, 15), startZ: 30, sx: 15, sy: 3, sz: 40 },
-  ...createRailSegments("dxf_97B_1", 26, RAIL_BASE_Y),
-  ...createRailSegments("dxf_97B_2", 26, RAIL_BASE_Y + RAIL_STACK_STEP_Y),
-  ...createRailSegments("dxf_97B_3", 26, RAIL_BASE_Y + RAIL_STACK_STEP_Y * 2),
-  ...createRailSegments("dxf_97F_1", 75, RAIL_BASE_Y),
-  ...createRailSegments("dxf_983_1", 115, RAIL_BASE_Y),
+  { name: "dxf_73C_15x40", startX: 145, startZ: 30, sx: 15, sy: 3, sz: 40 },
+  { name: "dxf_75C_115x20", startX: 20, startZ: 40, sx: 115, sy: 3, sz: 20 },
+  { name: "dxf_737_15x40", startX: 0, startZ: 30, sx: 15, sy: 3, sz: 40 },
+  { name: "dxf_97B_1_3301506_1", startX: 133.4, startZ: 40, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_2", startX: 133.4, startZ: 41, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_3", startX: 133.4, startZ: 42, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_4", startX: 133.4, startZ: 43, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_5", startX: 133.4, startZ: 44, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_6", startX: 133.4, startZ: 45, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_7", startX: 133.4, startZ: 46, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_8", startX: 133.4, startZ: 47, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_9", startX: 133.4, startZ: 48, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_10", startX: 133.4, startZ: 49, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_11", startX: 133.4, startZ: 50, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_12", startX: 133.4, startZ: 51, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_13", startX: 133.4, startZ: 52, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_14", startX: 133.4, startZ: 53, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_15", startX: 133.4, startZ: 54, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_16", startX: 133.4, startZ: 55, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_17", startX: 133.4, startZ: 56, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_18", startX: 133.4, startZ: 57, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_19", startX: 133.4, startZ: 58, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_1_3301506_20", startX: 133.4, startZ: 59, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_1", startX: 133.4, startZ: 40, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_2", startX: 133.4, startZ: 41, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_3", startX: 133.4, startZ: 42, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_4", startX: 133.4, startZ: 43, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_5", startX: 133.4, startZ: 44, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_6", startX: 133.4, startZ: 45, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_7", startX: 133.4, startZ: 46, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_8", startX: 133.4, startZ: 47, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_9", startX: 133.4, startZ: 48, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_10", startX: 133.4, startZ: 49, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_11", startX: 133.4, startZ: 50, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_12", startX: 133.4, startZ: 51, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_13", startX: 133.4, startZ: 52, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_14", startX: 133.4, startZ: 53, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_15", startX: 133.4, startZ: 54, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_16", startX: 133.4, startZ: 55, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_17", startX: 133.4, startZ: 56, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_18", startX: 133.4, startZ: 57, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_19", startX: 133.4, startZ: 58, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_2_3301506_20", startX: 133.4, startZ: 59, sx: 1, sy: 1, sz: 1, baseY: 7.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_1", startX: 133.4, startZ: 40, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_2", startX: 133.4, startZ: 41, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_3", startX: 133.4, startZ: 42, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_4", startX: 133.4, startZ: 43, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_5", startX: 133.4, startZ: 44, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_6", startX: 133.4, startZ: 45, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_7", startX: 133.4, startZ: 46, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_8", startX: 133.4, startZ: 47, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_9", startX: 133.4, startZ: 48, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_10", startX: 133.4, startZ: 49, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_11", startX: 133.4, startZ: 50, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_12", startX: 133.4, startZ: 51, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_13", startX: 133.4, startZ: 52, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_14", startX: 133.4, startZ: 53, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_15", startX: 133.4, startZ: 54, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_16", startX: 133.4, startZ: 55, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_17", startX: 133.4, startZ: 56, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_18", startX: 133.4, startZ: 57, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_19", startX: 133.4, startZ: 58, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97B_3_3301506_20", startX: 133.4, startZ: 59, sx: 1, sy: 1, sz: 1, baseY: 8.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_1", startX: 84.4, startZ: 40, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_2", startX: 84.4, startZ: 41, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_3", startX: 84.4, startZ: 42, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_4", startX: 84.4, startZ: 43, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_5", startX: 84.4, startZ: 44, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_6", startX: 84.4, startZ: 45, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_7", startX: 84.4, startZ: 46, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_8", startX: 84.4, startZ: 47, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_9", startX: 84.4, startZ: 48, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_10", startX: 84.4, startZ: 49, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_11", startX: 84.4, startZ: 50, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_12", startX: 84.4, startZ: 51, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_13", startX: 84.4, startZ: 52, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_14", startX: 84.4, startZ: 53, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_15", startX: 84.4, startZ: 54, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_16", startX: 84.4, startZ: 55, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_17", startX: 84.4, startZ: 56, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_18", startX: 84.4, startZ: 57, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_19", startX: 84.4, startZ: 58, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_97F_1_3301506_20", startX: 84.4, startZ: 59, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_1", startX: 44.4, startZ: 40, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_2", startX: 44.4, startZ: 41, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_3", startX: 44.4, startZ: 42, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_4", startX: 44.4, startZ: 43, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_5", startX: 44.4, startZ: 44, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_6", startX: 44.4, startZ: 45, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_7", startX: 44.4, startZ: 46, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_8", startX: 44.4, startZ: 47, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_9", startX: 44.4, startZ: 48, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_10", startX: 44.4, startZ: 49, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_11", startX: 44.4, startZ: 50, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_12", startX: 44.4, startZ: 51, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_13", startX: 44.4, startZ: 52, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_14", startX: 44.4, startZ: 53, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_15", startX: 44.4, startZ: 54, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_16", startX: 44.4, startZ: 55, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_17", startX: 44.4, startZ: 56, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_18", startX: 44.4, startZ: 57, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_19", startX: 44.4, startZ: 58, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
+  { name: "dxf_983_1_3301506_20", startX: 44.4, startZ: 59, sx: 1, sy: 1, sz: 1, baseY: 6.5, prefabId: 3301506 },
 ]

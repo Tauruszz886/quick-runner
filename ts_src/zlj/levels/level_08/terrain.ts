@@ -1,5 +1,6 @@
 import type { LevelTerrainSpec } from "../shared/types"
 
+// Generated from data/zlj/levels/level_08.json. Do not edit terrain data here.
 export const LEVEL_08_TERRAIN: readonly LevelTerrainSpec[] = [
   { name: "dxf_789_20x43_75", startX: 0, startZ: 37.5, sx: 20, sy: 3, sz: 43.75 },
   { name: "dxf_62D_112x20", startX: 20, startZ: 53.75, sx: 112, sy: 3, sz: 20 },
