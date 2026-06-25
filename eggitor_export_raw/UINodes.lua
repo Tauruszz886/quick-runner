@@ -1,0 +1,5 @@
+---AUTTO EXPORT BY EGGITOR PLUGIN, PLEASE DO NOT EDIT
+
+return {
+	["画布0"] = "1519736575|1405255247" --[[@as ECanvas]],
+}

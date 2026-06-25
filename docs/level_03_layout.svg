@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720">
+  <defs>
+    <style>
+      .page { fill: #f7f8fb; }
+      .title { font: 700 24px Arial, "Noto Sans SC", sans-serif; fill: #172033; }
+      .subtitle { font: 14px Arial, "Noto Sans SC", sans-serif; fill: #5a6475; }
+      .axis { font: 12px Arial, "Noto Sans SC", sans-serif; fill: #697386; }
+      .frame { fill: #ffffff; stroke: #253044; stroke-width: 2; }
+      .grid { stroke: #d8dee9; stroke-width: 1; }
+      .piece { fill: #dce8f7; stroke: #315f95; stroke-width: 1.6; }
+      .piece-side { fill: #e7eee7; stroke: #4f7651; stroke-width: 1.6; }
+      .piece-end { fill: #f2e3c6; stroke: #94702f; stroke-width: 1.6; }
+      .piece-focus { fill: #f7d8df; stroke: #b43e56; stroke-width: 2.4; }
+      .num { font: 700 16px Arial, "Noto Sans SC", sans-serif; fill: #ffffff; }
+      .num-bg { fill: #1f4f82; }
+      .num-bg-focus { fill: #b43e56; }
+      .label { font: 12px Arial, "Noto Sans Mono", monospace; fill: #1d2738; }
+      .small { font: 11px Arial, "Noto Sans SC", sans-serif; fill: #4d596a; }
+      .callout { fill: #ffffff; stroke: #b43e56; stroke-width: 1.4; }
+      .legend-box { fill: #ffffff; stroke: #d1d7e2; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1180" height="720"/>
+  <text class="title" x="40" y="42">第 03 关 SVG 顶视图</text>
+  <text class="subtitle" x="40" y="66">来源：ts_src/zlj/levels/level_03/terrain.ts 与 docs/level_03_component_index.md；坐标为第 3 关本地 x/z，比例 1 单位 = 5 px。</text>
+
+  <g id="level-03-top-view" transform="translate(60 105)">
+    <rect class="frame" x="0" y="0" width="800" height="500"/>
+
+    <g id="grid">
+      <line class="grid" x1="100" y1="0" x2="100" y2="500"/>
+      <line class="grid" x1="200" y1="0" x2="200" y2="500"/>
+      <line class="grid" x1="300" y1="0" x2="300" y2="500"/>
+      <line class="grid" x1="400" y1="0" x2="400" y2="500"/>
+      <line class="grid" x1="500" y1="0" x2="500" y2="500"/>
+      <line class="grid" x1="600" y1="0" x2="600" y2="500"/>
+      <line class="grid" x1="700" y1="0" x2="700" y2="500"/>
+      <line class="grid" x1="0" y1="100" x2="800" y2="100"/>
+      <line class="grid" x1="0" y1="200" x2="800" y2="200"/>
+      <line class="grid" x1="0" y1="300" x2="800" y2="300"/>
+      <line class="grid" x1="0" y1="400" x2="800" y2="400"/>
+    </g>
+
+    <text class="axis" x="0" y="-12">x=0</text>
+    <text class="axis" x="760" y="-12">x=160</text>
+    <text class="axis" x="-42" y="8">z=0</text>
+    <text class="axis" x="-48" y="500">z=100</text>
+
+    <g id="pieces">
+      <rect class="piece-side" x="0" y="156.25" width="80" height="187.5"/>
+      <text class="label" x="8" y="247">83C</text>
+      <text class="small" x="8" y="263">16x37.5</text>
+
+      <rect class="piece" x="140" y="31.25" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="160" cy="53" r="15"/><text class="num" x="155" y="59">2</text>
+      <text class="label" x="174" y="74">840</text>
+      <text class="small" x="174" y="90">ID 1531176108</text>
+
+      <rect class="piece" x="140" y="148.4375" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="160" cy="170" r="15"/><text class="num" x="155" y="176">3</text>
+      <text class="label" x="174" y="191">85C</text>
+      <text class="small" x="174" y="207">ID 1923064545</text>
+
+      <rect class="piece" x="140" y="265.625" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="160" cy="287" r="15"/><text class="num" x="155" y="293">4</text>
+      <text class="label" x="174" y="308">860</text>
+      <text class="small" x="174" y="324">ID 1209091132</text>
+
+      <rect class="piece" x="140" y="382.8125" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="160" cy="405" r="15"/><text class="num" x="155" y="411">5</text>
+      <text class="label" x="174" y="426">864</text>
+      <text class="small" x="174" y="442">ID 1423694259</text>
+
+      <rect class="piece" x="300" y="31.25" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="320" cy="53" r="15"/><text class="num" x="315" y="59">6</text>
+      <text class="label" x="334" y="74">844</text>
+      <text class="small" x="334" y="90">ID 1350789774</text>
+
+      <rect class="piece" x="300" y="148.4375" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="320" cy="170" r="15"/><text class="num" x="315" y="176">7</text>
+      <text class="label" x="334" y="191">858</text>
+      <text class="small" x="334" y="207">ID 1199527630</text>
+
+      <rect class="piece" x="300" y="265.625" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="320" cy="287" r="15"/><text class="num" x="315" y="293">8</text>
+      <text class="label" x="334" y="308">86C</text>
+      <text class="small" x="334" y="324">ID 2038990415</text>
+
+      <rect class="piece" x="300" y="382.8125" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="320" cy="405" r="15"/><text class="num" x="315" y="411">9</text>
+      <text class="label" x="334" y="426">868</text>
+      <text class="small" x="334" y="442">ID 1228711889</text>
+
+      <rect class="piece" x="460" y="31.25" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="480" cy="53" r="15"/><text class="num" x="471" y="59">10</text>
+      <text class="label" x="498" y="74">848</text>
+      <text class="small" x="498" y="90">ID 1372813050</text>
+
+      <rect class="piece-focus" x="470" y="148.4375" width="100" height="85.9375"/>
+      <circle class="num-bg-focus" cx="490" cy="170" r="16"/><text class="num" x="481" y="176">11</text>
+      <text class="label" x="508" y="190">84C</text>
+      <text class="small" x="508" y="207">ID 1032584478</text>
+
+      <rect class="piece" x="460" y="265.625" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="480" cy="287" r="15"/><text class="num" x="471" y="293">12</text>
+      <text class="label" x="498" y="308">850</text>
+      <text class="small" x="498" y="324">ID 1492787555</text>
+
+      <rect class="piece" x="460" y="382.8125" width="120" height="85.9375"/>
+      <circle class="num-bg" cx="480" cy="405" r="15"/><text class="num" x="471" y="411">13</text>
+      <text class="label" x="498" y="426">854</text>
+      <text class="small" x="498" y="442">ID 1884512932</text>
+
+      <rect class="piece-end" x="620" y="218.75" width="60" height="62.5"/>
+      <text class="label" x="628" y="249">874</text>
+      <text class="small" x="628" y="265">ID 1782207572</text>
+
+      <rect class="piece-end" x="680" y="125" width="120" height="250"/>
+      <text class="label" x="690" y="247">870</text>
+      <text class="small" x="690" y="263">ID 2116703278</text>
+    </g>
+  </g>
+
+  <g id="callout-84c" transform="translate(905 128)">
+    <rect class="callout" x="0" y="0" width="235" height="142" rx="6"/>
+    <text class="title" x="16" y="31" style="font-size:18px">重点组件 11</text>
+    <text class="small" x="16" y="58">SVG编号：11</text>
+    <text class="small" x="16" y="78">CAD handle：84C</text>
+    <text class="small" x="16" y="98">unit_id：1032584478</text>
+    <text class="small" x="16" y="118">尺寸：20 x 3 x 17.1875</text>
+    <text class="small" x="16" y="136">QR_第03关_dxf_84C_24x17_1875</text>
+  </g>
+
+  <g id="legend" transform="translate(905 305)">
+    <rect class="legend-box" x="0" y="0" width="235" height="134" rx="6"/>
+    <rect class="piece" x="16" y="20" width="28" height="18"/>
+    <text class="small" x="54" y="34">编号 2-13 主网格组件</text>
+    <rect class="piece-focus" x="16" y="53" width="28" height="18"/>
+    <text class="small" x="54" y="67">84C 修改后组件</text>
+    <rect class="piece-side" x="16" y="86" width="28" height="18"/>
+    <text class="small" x="54" y="100">左侧入口组件</text>
+    <rect class="piece-end" x="16" y="111" width="28" height="18"/>
+    <text class="small" x="54" y="125">右侧收束组件</text>
+  </g>
+
+  <text class="subtitle" x="60" y="655">对应索引：docs/level_03_component_index.md。矩形位置按 startX/startZ 绘制，宽高按 sx/sz 绘制。</text>
+</svg>

@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="680" viewBox="0 0 1180 680">
+  <title>Second chaser natural push roll demo</title>
+  <defs>
+    <linearGradient id="tileGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#93c5fd"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <radialGradient id="ballGrad" cx="34%" cy="28%" r="70%">
+      <stop offset="0" stop-color="#fee2e2"/>
+      <stop offset="0.45" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#7f1d1d"/>
+    </radialGradient>
+    <marker id="arrowOrange" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <path d="M 0 0 L 12 5 L 0 10 z" fill="#f97316"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <path d="M 0 0 L 12 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <path d="M 0 0 L 12 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowSlate" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <path d="M 0 0 L 12 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text {
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+        fill: #0f172a;
+      }
+      .title {
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .section {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .label {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .small {
+        font-size: 16px;
+      }
+      .muted {
+        fill: #475569;
+      }
+      .formula {
+        font-family: Consolas, "Microsoft YaHei", monospace;
+        font-size: 16px;
+        fill: #334155;
+      }
+      .force {
+        stroke: #f97316;
+        stroke-width: 8;
+        stroke-linecap: round;
+        marker-end: url(#arrowOrange);
+      }
+      .friction {
+        stroke: #2563eb;
+        stroke-width: 7;
+        stroke-linecap: round;
+        marker-end: url(#arrowBlue);
+      }
+      .normal {
+        stroke: #16a34a;
+        stroke-width: 6;
+        stroke-linecap: round;
+        marker-end: url(#arrowGreen);
+      }
+      .gravity {
+        stroke: #334155;
+        stroke-width: 6;
+        stroke-linecap: round;
+        marker-end: url(#arrowSlate);
+      }
+      .guide {
+        stroke: #64748b;
+        stroke-width: 2;
+        stroke-dasharray: 8 8;
+      }
+      .panel {
+        fill: #ffffff;
+        stroke: #cbd5e1;
+        stroke-width: 2;
+      }
+    </style>
+  </defs>
+
+  <rect width="1180" height="680" fill="#f8fafc"/>
+  <text x="44" y="52" class="title">第二关追击球：自然物理推球，不额外拧球</text>
+  <text x="44" y="84" class="small muted">目标：球体编辑器预放，运行时只给朝玩家方向的水平中心推力；滚动由地砖接触和静摩擦自然产生。</text>
+
+  <g id="side-view">
+    <rect x="44" y="122" width="690" height="500" rx="8" class="panel"/>
+    <text x="70" y="160" class="section">侧视图：球和地砖相切</text>
+
+    <rect x="104" y="420" width="560" height="72" fill="url(#tileGrad)" stroke="#1e40af" stroke-width="3"/>
+    <rect x="104" y="492" width="560" height="42" fill="#0f172a" opacity="0.22"/>
+    <line x1="104" y1="420" x2="664" y2="420" stroke="#172554" stroke-width="5"/>
+    <text x="110" y="552" class="small muted">地砖顶面 = 6.5</text>
+
+    <circle cx="318" cy="320" r="100" fill="url(#ballGrad)" stroke="#450a0a" stroke-width="5"/>
+    <circle cx="318" cy="320" r="5" fill="#111827"/>
+    <line x1="318" y1="320" x2="318" y2="420" class="guide"/>
+    <line x1="318" y1="420" x2="318" y2="440" stroke="#111827" stroke-width="3"/>
+    <text x="198" y="306" class="small muted">球心 Y = 7.5</text>
+    <text x="214" y="394" class="small muted">半径 R = 1</text>
+    <text x="358" y="426" class="label">接触点</text>
+
+    <line x1="318" y1="320" x2="530" y2="320" class="force"/>
+    <text x="394" y="294" class="label" fill="#f97316">水平中心推力</text>
+    <text x="394" y="346" class="formula">apply_force(Vector3(dirX * F, 0, dirZ * F))</text>
+
+    <line x1="318" y1="420" x2="198" y2="420" class="friction"/>
+    <text x="126" y="402" class="label" fill="#2563eb">静摩擦</text>
+    <text x="126" y="448" class="small muted">摩擦在接触点产生旋转，球自然滚动</text>
+
+    <line x1="318" y1="420" x2="318" y2="346" class="normal"/>
+    <text x="336" y="382" class="label" fill="#16a34a">地砖支撑力</text>
+
+    <line x1="318" y1="220" x2="318" y2="284" class="gravity"/>
+    <text x="336" y="254" class="label" fill="#334155">重力</text>
+
+    <path d="M 250 276 A 72 72 0 0 1 384 278" fill="none" stroke="#ef4444" stroke-width="6" marker-end="url(#arrowOrange)"/>
+    <text x="214" y="208" class="label">滚动来自接触约束，不调用 apply_torque</text>
+  </g>
+
+  <g id="top-view">
+    <rect x="766" y="122" width="370" height="300" rx="8" class="panel"/>
+    <text x="790" y="160" class="section">俯视图：朝玩家推</text>
+    <rect x="806" y="194" width="286" height="168" fill="#e2e8f0" stroke="#64748b" stroke-width="2" stroke-dasharray="10 8"/>
+    <text x="820" y="386" class="small muted">第二关中间平台追击范围</text>
+
+    <circle cx="870" cy="280" r="32" fill="#ef4444" stroke="#7f1d1d" stroke-width="4"/>
+    <circle cx="1028" cy="248" r="24" fill="#22c55e" stroke="#14532d" stroke-width="4"/>
+    <text x="842" y="334" class="small">球</text>
+    <text x="1002" y="292" class="small">玩家</text>
+    <line x1="902" y1="274" x2="1004" y2="254" class="force"/>
+    <text x="884" y="224" class="small" fill="#f97316">锁定目标点后，水平推向玩家</text>
+    <text x="820" y="406" class="formula">dir = normalize(playerXZ - ballXZ)</text>
+  </g>
+
+  <g id="do-dont">
+    <rect x="766" y="452" width="370" height="170" rx="8" class="panel"/>
+    <text x="790" y="490" class="section">实现取舍</text>
+    <text x="790" y="524" class="small">保留：水平 apply_force，重力，碰撞，地面摩擦</text>
+    <text x="790" y="554" class="small">不做：每帧锁 Y、额外 apply_torque、直接 set_velocity 拖行</text>
+    <text x="790" y="584" class="small muted">如果滑而不滚，优先调摩擦/刚体属性；再考虑接触点推力。</text>
+  </g>
+</svg>

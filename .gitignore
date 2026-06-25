@@ -1,0 +1,26 @@
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# SVN working copy lives here; never track in git.
+project/
+
+# Logs / temp
+*.log
+tmp/
+ts_src/gameplay-kits
+# Temporary fetched docs (never commit)
+doc/doc-files-tmp/
+
+# Eggitor local flush cache (generated)
+.eggitor/
+
+editor_logs/log.txt
+
+# Local tool caches used by ad-hoc maintenance workflows.
+# Keep source scripts in tools/; keep reusable docs in docs/.
+.tools/cache/
+.tools/venvs/
+.tools/cad/tmp/

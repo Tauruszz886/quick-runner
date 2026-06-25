@@ -1,0 +1,112 @@
+import { createFastRunSystem, type FastRunSystem } from "@gameplay-kits/fast_run_system"
+import { UINodes } from "../../generated/exported_data"
+import { registerDashboardUnlockButtons } from "./runtime_dashboard_unlock"
+import { DASHBOARD_CENTER_X, DASHBOARD_CENTER_Y, DASHBOARD_OPACITY, DEFAULT_SPEED, SPEED_TAG } from "../config"
+import { getOnlineRoles } from "./runtime_roles"
+
+let fastRunSystem: FastRunSystem | undefined
+let currentSpeedValue = DEFAULT_SPEED
+
+function fastRunLogger(...args: unknown[]): void {
+  const lastArg = args.length > 0 ? args[args.length - 1] : ""
+  const text = tostring(lastArg)
+  if (text.indexOf("[FastRunSystemVelocity]") >= 0) {
+    return
+  }
+  print(text)
+}
+
+function ensureFastRunComponentForRole(role: Role): void {
+  if (fastRunSystem === undefined) {
+    return
+  }
+  if (fastRunSystem.getComponent(role) !== null) {
+    const component = fastRunSystem.getComponent(role)
+    if (component !== null) {
+      component.setMaxSpeed(currentSpeedValue)
+    }
+    print(
+      `[${SPEED_TAG}] fast_run_component exists role=${tostring(role)} speed=${currentSpeedValue} count=${fastRunSystem.getComponentCount()}`
+    )
+    return
+  }
+  fastRunSystem.addComponent(role, {
+    maxSpeed: currentSpeedValue,
+  })
+  print(
+    `[${SPEED_TAG}] fast_run_component added role=${tostring(role)} speed=${currentSpeedValue} count=${fastRunSystem.getComponentCount()}`
+  )
+}
+
+function ensureFastRunComponentsForOnlineRoles(): void {
+  if (fastRunSystem === undefined) {
+    return
+  }
+  const roles = getOnlineRoles()
+  for (let i = 0; i < roles.length; i++) {
+    const role = roles[i]
+    if (role !== undefined) {
+      ensureFastRunComponentForRole(role)
+    }
+  }
+}
+
+export function startSystems(): void {
+  if (fastRunSystem !== undefined && fastRunSystem.isEnabled()) {
+    ensureFastRunComponentsForOnlineRoles()
+    registerDashboardUnlockButtons(() => enableFastRunDashboard())
+    return
+  }
+
+  fastRunSystem = createFastRunSystem({
+    maxSpeed: DEFAULT_SPEED,
+    groundAcceleration: 1000,
+    groundDeceleration: 1000,
+    airAcceleration: 1000,
+    airDeceleration: 1000,
+    maxLinearVelocity: 1000,
+    obstacle: {
+      enabled: true,
+      distance: 2,
+      logIntervalTicks: 0 as integer,
+    },
+    testMode: {
+      enabled: true,
+      parentNode: UINodes["画布0"] as unknown as ENode,
+      x: DASHBOARD_CENTER_X,
+      y: DASHBOARD_CENTER_Y,
+      maxSpeed: 1000,
+    },
+    logger: fastRunLogger,
+  })
+  fastRunSystem.setEnabled(true)
+  ensureFastRunComponentsForOnlineRoles()
+  registerDashboardUnlockButtons(() => enableFastRunDashboard())
+  print(`[${SPEED_TAG}] fast_run_system started speed=${DEFAULT_SPEED}`)
+}
+
+export function enableFastRunDashboard(): void {
+  if (fastRunSystem === undefined) {
+    print(`[${SPEED_TAG}] dashboard enable skipped system=nil`)
+    return
+  }
+  const system = fastRunSystem as unknown as {
+    testMode?: { enabled?: boolean }
+    enableTestMode?: () => void
+    updateDashboardLoop?: () => void
+  }
+  if (system.testMode !== undefined) {
+    system.testMode.enabled = true
+  }
+  if (system.enableTestMode !== undefined) {
+    system.enableTestMode()
+  }
+  if (system.updateDashboardLoop !== undefined) {
+    system.updateDashboardLoop()
+  }
+  print(`[${SPEED_TAG}] dashboard enable requested`)
+}
+
+export function hideLegacySpeedUiForOnlineRoles(): void {
+  print(`[${SPEED_TAG}] legacy ui hide skipped reason=quick_runner_no_legacy_nodes`)
+}
