@@ -1,5 +1,6 @@
-import { safeCall, safeCreateCustomTriggerSpace } from "@common/engine_safe"
+import { safeCall } from "@common/engine_safe"
 import { EventBus } from "@common/event_bus"
+import { toNumber } from "@common/num"
 import { TriggerHub } from "@common/trigger_hub"
 import { FIRST_LEVEL_TERRAIN_BASE_Y, FIRST_LEVEL_TERRAIN_HEIGHT } from "../config"
 import { eliminateUnitAndRebirthAtBirth } from "../birth/rebirth"
@@ -11,12 +12,13 @@ const TAG = "ZLJ_SECOND_CHASER"
 const MODULE_INDEX = 2
 const CHASER_PREFAB_ID = 1073741929
 const CHASER_EDITOR_UNIT_NAME = "QR_第02关_追击球"
+const CHASER_DEATH_TRIGGER_EDITOR_UNIT_NAME = "QR_第02关_追击球_死亡触发区"
 const DEATH_TRIGGER_PREFAB_ID = 3101010
 const CHASER_SIZE = 2
-const DEATH_TRIGGER_SIZE = 2.6
+const DEATH_TRIGGER_SIZE = 3.2
 const DEATH_HIT_RADIUS = DEATH_TRIGGER_SIZE / 2
 const CHASE_RADIUS = 50
-const CHASE_SPEED = 7.5
+const DEFAULT_CHASE_SPEED = 7.5
 const TICK_SECONDS = 0.05
 const TARGET_LOCK_TICKS = 6
 const ROLL_RADIUS = CHASER_SIZE / 2
@@ -28,14 +30,15 @@ const CHASER_FRICTION_COEFFICIENT = 1.2
 const CHASER_ROLLING_RESISTANCE = 0.02
 const CHASER_BOUNCINESS = 0
 const CHASER_ACCELERATION_SECONDS = 0.6
-const CHASER_PUSH_FORCE = CHASER_MASS * (CHASE_SPEED / CHASER_ACCELERATION_SECONDS)
-const CHASER_PUSH_POINT_HEIGHT = ROLL_RADIUS * 0.55
 const ROLL_ANGULAR_ASSIST = 1
 const STOP_DISTANCE = 0.4
-const MAX_HORIZONTAL_SPEED = CHASE_SPEED * 1.15
-const MAX_ROLL_ANGULAR_SPEED = MAX_HORIZONTAL_SPEED / ROLL_RADIUS
 const SINK_RESCUE_TOLERANCE = 0.08
 const ROLL_DEBUG_SAMPLE_LIMIT = 8
+
+const KV_CHASER_MOVE = "QRChaserMove"
+const KV_CHASER_ROLL = "QRChaserRoll"
+const KV_CHASER_TOUCH_DEATH = "QRChaserTouchDeath"
+const KV_CHASER_SPEED = "QRChaserSpeed"
 
 const SPHERE_MARK_LOCAL_X = 54.967105
 const SPHERE_MARK_LOCAL_Z = 51.164887
@@ -76,6 +79,20 @@ type NearestRole = {
   distanceSq: number
 }
 
+type ChaserConfig = {
+  moveEnabled: boolean
+  rollEnabled: boolean
+  touchDeathEnabled: boolean
+  chaseSpeed: number
+}
+
+const DEFAULT_CHASER_CONFIG: ChaserConfig = {
+  moveEnabled: true,
+  rollEnabled: true,
+  touchDeathEnabled: true,
+  chaseSpeed: DEFAULT_CHASE_SPEED,
+}
+
 let started = false
 let stopped = false
 let chaserUnit: unknown
@@ -86,21 +103,18 @@ let debugTickCount = 0
 let activeRoleKey: string | undefined
 let tickGeneration = 0
 let chaserForceDriveEnabled = false
-let chaserPointForceDriveEnabled = false
+let chaserLocalPointForceDriveEnabled = false
 let chaserVelocityControlEnabled = false
 let chaserAngularVelocityControlEnabled = false
 let lockedTarget: Position2 | undefined
 let targetLockTicksLeft = 0
 let rollDebugSamples = 0
+let chaserConfig: ChaserConfig = DEFAULT_CHASER_CONFIG
 
-declare const EVENT: {
-  ANY_LIFEENTITY_TRIGGER_SPACE: string
-}
 declare const Enums: {
-  TriggerSpaceEventType: { ENTER: number }
   RigidBodyType: { DYNAMIC: number }
   UnitType: { OBSTACLE: unknown }
-  ValueType: { Fixed: unknown }
+  ValueType: { Bool: unknown; Fixed: unknown; Int: unknown; Str: unknown }
 }
 
 function vec3(x: number, y: number, z: number): unknown {
@@ -109,6 +123,18 @@ function vec3(x: number, y: number, z: number): unknown {
 
 function horizontalLength(x: number, z: number): number {
   return math.sqrt(x * x + z * z)
+}
+
+function getChaserPushForce(): number {
+  return CHASER_MASS * (chaserConfig.chaseSpeed / CHASER_ACCELERATION_SECONDS)
+}
+
+function getMaxHorizontalSpeed(): number {
+  return chaserConfig.chaseSpeed * 1.15
+}
+
+function getMaxRollAngularSpeed(): number {
+  return getMaxHorizontalSpeed() / ROLL_RADIUS
 }
 
 function getModuleMinX(): number {
@@ -301,9 +327,86 @@ function queryEditorChaser(startPos: Position2): unknown {
   const fallback = { x: startPos.x, y: CHASER_SPAWN_Y, z: startPos.z }
   const byName = queryEditorUnit(CHASER_EDITOR_UNIT_NAME)
   if (byName !== null && byName !== undefined) {
+    const pos = getUnitPosition3(byName, fallback, "second_chaser_named_pos")
+    print(`[${TAG}] editor chaser found by name name=${CHASER_EDITOR_UNIT_NAME} prefab=${CHASER_PREFAB_ID} pos=(${pos.x},${pos.y},${pos.z})`)
     return byName
   }
   return queryEditorChaserByPosition(fallback)
+}
+
+function queryEditorChaserDeathTrigger(): unknown {
+  const trigger = queryEditorUnit(CHASER_DEATH_TRIGGER_EDITOR_UNIT_NAME)
+  if (trigger === null || trigger === undefined) {
+    print(`[${TAG}] editor death trigger missing name=${CHASER_DEATH_TRIGGER_EDITOR_UNIT_NAME} prefab=${DEATH_TRIGGER_PREFAB_ID}`)
+    return null
+  }
+  print(`[${TAG}] editor death trigger found name=${CHASER_DEATH_TRIGGER_EDITOR_UNIT_NAME} prefab=${DEATH_TRIGGER_PREFAB_ID}`)
+  return trigger
+}
+
+function readChaserKv(unit: unknown, key: string, valueType: unknown): unknown {
+  if (unit === null || unit === undefined) {
+    return null
+  }
+  const target = unit as any
+  if (target.get_kv_by_type === undefined || target.get_kv_by_type === null) {
+    return null
+  }
+  return safeCall(
+    () => {
+      return target.get_kv_by_type(valueType, key)
+    },
+    { tag: `second_chaser_read_kv_${key}`, fallback: null, logger: print }
+  )
+}
+
+function readChaserBoolKv(unit: unknown, key: string, fallback: boolean): boolean {
+  const boolValue = readChaserKv(unit, key, Enums.ValueType.Bool)
+  if (typeof boolValue === "boolean") {
+    return boolValue
+  }
+  const strValue = readChaserKv(unit, key, Enums.ValueType.Str)
+  if (strValue === null || strValue === undefined) {
+    return fallback
+  }
+  const text = tostring(strValue)
+  if (text === "true" || text === "1") {
+    return true
+  }
+  if (text === "false" || text === "0") {
+    return false
+  }
+  return fallback
+}
+
+function readChaserNumberKv(unit: unknown, key: string, fallback: number): number {
+  const fixedValue = readChaserKv(unit, key, Enums.ValueType.Fixed)
+  let parsed = fixedValue === null || fixedValue === undefined ? undefined : toNumber(fixedValue, { ctx: key, logger: print })
+  if (parsed === undefined) {
+    const intValue = readChaserKv(unit, key, Enums.ValueType.Int)
+    parsed = intValue === null || intValue === undefined ? undefined : toNumber(intValue, { ctx: key, logger: print })
+  }
+  if (parsed === undefined) {
+    const strValue = readChaserKv(unit, key, Enums.ValueType.Str)
+    parsed = strValue === null || strValue === undefined ? undefined : toNumber(strValue, { mode: "loose", ctx: key, logger: print })
+  }
+  if (parsed === undefined || parsed <= 0) {
+    return fallback
+  }
+  return parsed
+}
+
+function readChaserConfig(unit: unknown): ChaserConfig {
+  const config = {
+    moveEnabled: readChaserBoolKv(unit, KV_CHASER_MOVE, DEFAULT_CHASER_CONFIG.moveEnabled),
+    rollEnabled: readChaserBoolKv(unit, KV_CHASER_ROLL, DEFAULT_CHASER_CONFIG.rollEnabled),
+    touchDeathEnabled: readChaserBoolKv(unit, KV_CHASER_TOUCH_DEATH, DEFAULT_CHASER_CONFIG.touchDeathEnabled),
+    chaseSpeed: readChaserNumberKv(unit, KV_CHASER_SPEED, DEFAULT_CHASER_CONFIG.chaseSpeed),
+  }
+  print(
+    `[${TAG}] kv_config ${KV_CHASER_MOVE}=${config.moveEnabled} ${KV_CHASER_ROLL}=${config.rollEnabled} ${KV_CHASER_TOUCH_DEATH}=${config.touchDeathEnabled} ${KV_CHASER_SPEED}=${config.chaseSpeed}`
+  )
+  return config
 }
 
 function setChaserPosition(pos: Position2): void {
@@ -328,11 +431,11 @@ function setChaserPosition(pos: Position2): void {
   }
 }
 
-function moveDeathTriggerTo(pos: Position3): void {
+function keepDeathTriggerAttachedToChaser(): void {
   if (chaserTrigger !== null && chaserTrigger !== undefined) {
     safeCall(
       () => {
-        ;(chaserTrigger as any).set_position(vec3(pos.x, pos.y, pos.z))
+        ;(chaserTrigger as any).set_position(vec3(0, 0, 0))
       },
       { tag: "second_chaser_set_trigger_position", fallback: undefined, logger: print }
     )
@@ -363,7 +466,7 @@ function updateChaserPosition(): Position2 | undefined {
         setChaserPosition(chaserPosition)
         stopChaserPhysics()
       } else {
-        moveDeathTriggerTo({ x: chaserPosition.x, y: chaserCenterY, z: chaserPosition.z })
+        keepDeathTriggerAttachedToChaser()
       }
     }
   }
@@ -498,7 +601,7 @@ function configureChaserPhysics(unit: unknown): void {
   if (target.set_max_linear_velocity !== undefined && target.set_max_linear_velocity !== null) {
     safeCall(
       () => {
-        target.set_max_linear_velocity(asFixed(CHASE_SPEED))
+        target.set_max_linear_velocity(asFixed(chaserConfig.chaseSpeed))
       },
       { tag: "second_chaser_set_max_linear_velocity", fallback: undefined, logger: print }
     )
@@ -519,13 +622,14 @@ function configureChaserPhysics(unit: unknown): void {
     isDynamic &&
     target.apply_force !== undefined &&
     target.apply_force !== null
-  chaserPointForceDriveEnabled =
+  chaserLocalPointForceDriveEnabled =
     isPhysicsActive &&
     isDynamic &&
-    target.apply_force_at_world_point !== undefined &&
-    target.apply_force_at_world_point !== null
+    chaserConfig.rollEnabled &&
+    target.apply_force_at_local_point !== undefined &&
+    target.apply_force_at_local_point !== null
   print(
-    `[${TAG}] movement_config editor_unit=${CHASER_EDITOR_UNIT_NAME} prefab=${CHASER_PREFAB_ID} active=${isPhysicsActive} dynamic=${isDynamic} rigid_type=${rigidBodyType} speed=${CHASE_SPEED} target_lock_ticks=${TARGET_LOCK_TICKS} drive=point_push_roll point_force=${chaserPointForceDriveEnabled} force_drive=${chaserForceDriveEnabled} angular_assist=${chaserAngularVelocityControlEnabled} push_point_height=${CHASER_PUSH_POINT_HEIGHT}`
+    `[${TAG}] movement_config editor_unit=${CHASER_EDITOR_UNIT_NAME} prefab=${CHASER_PREFAB_ID} active=${isPhysicsActive} dynamic=${isDynamic} rigid_type=${rigidBodyType} speed=${chaserConfig.chaseSpeed} move=${chaserConfig.moveEnabled} roll=${chaserConfig.rollEnabled} touch_death=${chaserConfig.touchDeathEnabled} target_lock_ticks=${TARGET_LOCK_TICKS} tick_seconds=${TICK_SECONDS} drive=local_point_force local_point_force=${chaserLocalPointForceDriveEnabled} force_drive=${chaserForceDriveEnabled} velocity_fallback=${chaserVelocityControlEnabled} angular_assist=${chaserAngularVelocityControlEnabled} push_point=ball_center`
   )
 }
 
@@ -573,14 +677,14 @@ function getChaserVelocity(): { vx: number; vy: number; vz: number } | undefined
 }
 
 function applyRollingAngularVelocity(vx: number, vz: number): void {
-  if (chaserUnit === null || chaserUnit === undefined || !chaserAngularVelocityControlEnabled) {
+  if (chaserUnit === null || chaserUnit === undefined || !chaserConfig.rollEnabled || !chaserAngularVelocityControlEnabled) {
     return
   }
   const horizontalSpeed = horizontalLength(vx, vz)
   if (horizontalSpeed <= 0.05) {
     return
   }
-  const limitedSpeed = math.min(horizontalSpeed, MAX_ROLL_ANGULAR_SPEED * ROLL_RADIUS)
+  const limitedSpeed = math.min(horizontalSpeed, getMaxRollAngularSpeed() * ROLL_RADIUS)
   const scale = (limitedSpeed / horizontalSpeed) * ROLL_ANGULAR_ASSIST / ROLL_RADIUS
   const angularX = vz * scale
   const angularZ = -vx * scale
@@ -596,16 +700,14 @@ function pushChaserAtRollingPoint(dirX: number, dirZ: number): void {
   if (chaserUnit === null || chaserUnit === undefined) {
     return
   }
-  const force = vec3(dirX * CHASER_PUSH_FORCE, 0, dirZ * CHASER_PUSH_FORCE)
-  if (chaserPointForceDriveEnabled) {
+  const pushForce = getChaserPushForce()
+  const force = vec3(dirX * pushForce, 0, dirZ * pushForce)
+  if (chaserLocalPointForceDriveEnabled) {
     safeCall(
       () => {
-        ;(chaserUnit as any).apply_force_at_world_point(
-          force,
-          vec3(chaserPosition === undefined ? 0 : chaserPosition.x, chaserCenterY + CHASER_PUSH_POINT_HEIGHT, chaserPosition === undefined ? 0 : chaserPosition.z)
-        )
+        ;(chaserUnit as any).apply_force_at_local_point(force, vec3(0, 0, 0))
       },
-      { tag: "second_chaser_apply_point_force", fallback: undefined, logger: print }
+      { tag: "second_chaser_apply_local_point_force", fallback: undefined, logger: print }
     )
     return
   }
@@ -639,6 +741,10 @@ function driveChaserToward(current: Position2, target: Position2, allowedRect: R
   if (chaserUnit === null || chaserUnit === undefined) {
     return
   }
+  if (!chaserConfig.moveEnabled) {
+    stopChaserPhysics()
+    return
+  }
   if (!isInsideRect(current, allowedRect)) {
     const clamped = clampToRect(current, allowedRect)
     setChaserPosition(clamped)
@@ -657,8 +763,9 @@ function driveChaserToward(current: Position2, target: Position2, allowedRect: R
 
   const dirX = dx / distance
   const dirZ = dz / distance
-  const horizontalVelocity = vec3(dirX * CHASE_SPEED, 0, dirZ * CHASE_SPEED)
-  if (chaserPointForceDriveEnabled || chaserForceDriveEnabled) {
+  const chaseSpeed = chaserConfig.chaseSpeed
+  const horizontalVelocity = vec3(dirX * chaseSpeed, 0, dirZ * chaseSpeed)
+  if (chaserLocalPointForceDriveEnabled || chaserForceDriveEnabled) {
     pushChaserAtRollingPoint(dirX, dirZ)
   } else if (chaserVelocityControlEnabled) {
     safeCall(
@@ -668,7 +775,7 @@ function driveChaserToward(current: Position2, target: Position2, allowedRect: R
       { tag: "second_chaser_set_linear_velocity_fallback", fallback: undefined, logger: print }
     )
   } else {
-    const step = math.min(CHASE_SPEED * TICK_SECONDS, distance)
+    const step = math.min(chaseSpeed * TICK_SECONDS, distance)
     setChaserPosition(clampToRect({ x: current.x + dirX * step, z: current.z + dirZ * step }, allowedRect))
     return
   }
@@ -676,14 +783,14 @@ function driveChaserToward(current: Position2, target: Position2, allowedRect: R
     const velocity = getChaserVelocity()
     if (velocity !== undefined) {
       const horizontalSpeed = horizontalLength(velocity.vx, velocity.vz)
-      if (horizontalSpeed > MAX_HORIZONTAL_SPEED) {
+      if (horizontalSpeed > getMaxHorizontalSpeed()) {
         safeCall(
           () => {
             ;(chaserUnit as any).set_linear_velocity(horizontalVelocity)
           },
           { tag: "second_chaser_clamp_linear_velocity", fallback: undefined, logger: print }
         )
-        applyRollingAngularVelocity(dirX * CHASE_SPEED, dirZ * CHASE_SPEED)
+        applyRollingAngularVelocity(dirX * chaseSpeed, dirZ * chaseSpeed)
       } else {
         applyRollingAngularVelocity(velocity.vx, velocity.vz)
       }
@@ -709,6 +816,9 @@ function updateLockedTarget(current: Position2): Position2 | undefined {
 }
 
 function eliminateRolesOverlappedByChaser(center: Position2): void {
+  if (!chaserConfig.touchDeathEnabled) {
+    return
+  }
   const roles = getOnlineRoles()
   for (let i = 0; i < roles.length; i++) {
     const role = roles[i]!
@@ -727,41 +837,6 @@ function eliminateRolesOverlappedByChaser(center: Position2): void {
       )
     }
   }
-}
-
-function extractTriggerUnit(data: unknown): unknown {
-  const eventData = data as { event_unit?: unknown; unit?: unknown } | undefined
-  return eventData?.event_unit !== undefined ? eventData.event_unit : eventData?.unit
-}
-
-function registerChaserDeathTrigger(trigger: unknown): void {
-  if (trigger === null || trigger === undefined) {
-    print(`[${TAG}] death trigger skipped trigger=nil`)
-    return
-  }
-  const triggerId = safeCall(
-    () => {
-      return (trigger as any).get_id()
-    },
-    { tag: "second_chaser_death_trigger_id", fallback: null, logger: print }
-  )
-  if (triggerId === null || triggerId === undefined) {
-    print(`[${TAG}] death trigger skipped id=nil`)
-    return
-  }
-  TriggerHub.register(
-    [EVENT.ANY_LIFEENTITY_TRIGGER_SPACE, Enums.TriggerSpaceEventType.ENTER, triggerId],
-    (_eventName: unknown, _actor: unknown, data: unknown) => {
-      eliminateUnitAndRebirthAtBirth(extractTriggerUnit(data), `second_chaser:${tostring(triggerId)}`)
-    },
-    {
-      safe: true,
-      safeCallback: true,
-      tag: "second_chaser_death",
-      logger: print,
-    }
-  )
-  print(`[${TAG}] death trigger registered id=${tostring(triggerId)} prefab=${DEATH_TRIGGER_PREFAB_ID}`)
 }
 
 function tick(generation: number): void {
@@ -823,6 +898,7 @@ export function startSecondLevelChaser(): void {
   targetLockTicksLeft = 0
   rollDebugSamples = 0
   chaserTrigger = undefined
+  chaserConfig = DEFAULT_CHASER_CONFIG
   chaserCenterY = CHASER_SPAWN_Y
   tickGeneration += 1
 
@@ -844,18 +920,13 @@ export function startSecondLevelChaser(): void {
     chaserPosition = undefined
     return
   }
+  chaserConfig = readChaserConfig(chaserUnit)
+  chaserTrigger = queryEditorChaserDeathTrigger()
   setChaserPosition(startPos)
   configureChaserPhysics(chaserUnit)
-  chaserTrigger = safeCreateCustomTriggerSpace(
-    DEATH_TRIGGER_PREFAB_ID,
-    vec3(startPos.x, CHASER_SPAWN_Y, startPos.z),
-    vec3(DEATH_TRIGGER_SIZE, DEATH_TRIGGER_SIZE, DEATH_TRIGGER_SIZE),
-    { tag: "second_chaser_death_trigger_create", logger: print }
-  )
-  registerChaserDeathTrigger(chaserTrigger)
 
   print(
-    `[${TAG}] start editor_unit=${CHASER_EDITOR_UNIT_NAME} prefab=${CHASER_PREFAB_ID} pos=(${startPos.x},${CHASER_SPAWN_Y},${startPos.z}) floor_top_y=${CHASER_FLOOR_TOP_Y} radius=${CHASE_RADIUS} speed=${CHASE_SPEED} trigger_prefab=${DEATH_TRIGGER_PREFAB_ID} mode=point_force_roll`
+    `[${TAG}] start editor_unit=${CHASER_EDITOR_UNIT_NAME} prefab=${CHASER_PREFAB_ID} pos=(${startPos.x},${CHASER_SPAWN_Y},${startPos.z}) floor_top_y=${CHASER_FLOOR_TOP_Y} radius=${CHASE_RADIUS} speed=${chaserConfig.chaseSpeed} trigger_editor_unit=${CHASER_DEATH_TRIGGER_EDITOR_UNIT_NAME} trigger_prefab=${DEATH_TRIGGER_PREFAB_ID} mode=local_point_force_roll`
   )
   tick(tickGeneration)
 }

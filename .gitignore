@@ -24,3 +24,5 @@ editor_logs/log.txt
 .tools/cache/
 .tools/venvs/
 .tools/cad/tmp/
+
+scenes/

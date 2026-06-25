@@ -1,4 +1,5 @@
 import { safeCall } from "@common/engine_safe"
+import { toNumber } from "@common/num"
 import { TERRAIN_TAG } from "../config"
 
 export type RuntimeSceneRole =
@@ -60,7 +61,8 @@ function readNumberKv(unit: unknown, key: string): number | undefined {
   if (typeof intValue === "number") {
     return intValue
   }
-  return undefined
+  const strValue = readKv(unit, Enums.ValueType.Str, key)
+  return strValue === null || strValue === undefined ? undefined : toNumber(strValue, { mode: "loose", ctx: key, logger: print })
 }
 
 function readBoolKv(unit: unknown, key: string): boolean | undefined {
