@@ -2,6 +2,8 @@
 
 本文档用于快速理解 `ts_src` 下的运行时代码、`terrain.ts` 关卡数据，以及 `tools` 下的编辑器/CAD 辅助脚本。
 
+项目内跨目录、跨语言的数据耦合和后续整理计划见 `docs/coupling_cleanup_plan.md`。
+
 ## 总体运行流程
 
 `ts_src/main.ts` 是 TypeScript 转 Lua 后的入口。它加载 `zlj/runtime/start.ts`，在 `EVENT.GAME_INIT` 时启动玩家运行时系统，并延迟绑定编辑器场景中的关卡机关。
@@ -196,19 +198,11 @@
 
 `tools` 是开发/维护用脚本，不会在游戏运行时被加载。
 
-### tools/cad/update_level03_84c.py
+### tools/cad
 
-第 3 关 CAD/DXF 修改脚本。
+CAD 维护脚本目录。
 
-用途：
-
-- 读取输入 DXF。
-- 找到第 3 关中 CAD handle 为 `84C` 的 `3DSOLID`。
-- 把该块局部 X 范围从 `92..116` 改成 `94..114`，也就是宽度从 24 改成 20，中心保持不变。
-- 同步修改相关 2D 投影线。
-- 输出新的 DXF，并打印 SVG 编号、组件名、unit_id、CAD handle、旧/新 bbox 等校验信息。
-
-它对应文档中的编号链路：SVG 编号 `11` / CAD handle `84C` / `dxf_84C_24x17_1875` / `QR_第03关_dxf_84C_24x17_1875` / unit_id `1032584478`。
+当前没有 active 的 CAD 修改脚本。第 3 关 `84C` 的一次性修改脚本已删除，因为它硬编码了单个 CAD handle、局部坐标和投影线 handle，不适合作为通用工具维护。CAD 输入/输出文件仍记录在 `.tools/cad/`，流程说明见 `docs/cad_workflow.md`。
 
 ### tools/zlj_editor_scene/create_editor_scene.py
 

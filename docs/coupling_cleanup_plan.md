@@ -1,0 +1,240 @@
+# quick-runner 耦合点与整理计划
+
+本文档记录当前项目里容易漂移、容易误改的耦合点，以及后续建议的整理顺序。
+
+## 当前状态
+
+项目里有三类内容：
+
+- `ts_src/`：游戏运行时 TypeScript 源码，会参与构建和运行。
+- `tools/`：可维护的开发辅助脚本，例如编辑器场景创建、校验、组件索引导出。
+- `.tools/`：本地工作区，放 CAD 输入输出、转换结果、校验文件、临时实验文件、下载工具和虚拟环境等。这里的文件不是运行时代码。
+
+目前最明显的问题是：`tools/zlj_editor_scene` 里的 Python 脚本会读取 `ts_src/zlj/levels/**/terrain.ts`，再生成编辑器场景计划和 JSON 快照。这条链路可用，但属于跨语言、跨目录的数据耦合。
+
+## 主要耦合点
+
+### 1. Python 正则解析 TypeScript 数据
+
+位置：
+
+- `tools/zlj_editor_scene/create_editor_scene.py`
+- `ts_src/zlj/levels/level_XX/terrain.ts`
+
+`create_editor_scene.py` 中的 `parse_level_objects()` 会把 `terrain.ts` 当文本读取，用正则提取对象字段。它只认识简单对象字面量中的字符串、数字、布尔值。
+
+风险：
+
+- `terrain.ts` 如果改成表达式、变量引用、数组展开、嵌套对象，Python 可能解析不到。
+- TypeScript 类型检查通过，不代表 Python 场景生成一定正确。
+- 这种依赖没有编译器保护，失败方式可能是生成计划缺块，而不是直接报错。
+
+### 2. Python 和 TypeScript 重复维护布局常量
+
+位置：
+
+- `tools/zlj_editor_scene/create_editor_scene.py`
+- `ts_src/zlj/config.ts`
+- `ts_src/zlj/layout.ts`
+- `ts_src/zlj/levels/shared/frames.ts`
+- `ts_src/zlj/runtime/runtime_structure.ts`
+
+重复内容包括：
+
+- 出生地中心 X、运行时 Z。
+- 地板、墙、天花板尺寸。
+- 墙厚、墙内缩、西墙开口宽度。
+- 普通地形高度、基础 Y。
+- 第 4 关压板、第 5 关夹层、第 8 关机关的部分高度规则。
+
+风险：
+
+- 改 `config.ts` 后忘记改 Python，编辑器场景和运行时坐标不一致。
+- 改 Python 后忘记改 TS，生成出来的场景看似正确，但运行时绑定/触发器位置不一致。
+
+### 3. `latest_plan.json` 是生成物但被版本管理
+
+位置：
+
+- `tools/zlj_editor_scene/latest_plan.json`
+- `tools/zlj_editor_scene/create_editor_scene.py`
+
+`latest_plan.json` 是 `create_editor_scene.py` 根据当前 terrain 数据生成的场景计划快照。
+
+风险：
+
+- 修改 `terrain.ts` 后如果没有重新生成，它会和源数据漂移。
+- 其他人看 JSON 可能以为它是源数据，手动改了以后又会被下一次生成覆盖。
+
+处理方向：
+
+- 如果它只是调试快照，应移出 git 或放入 `.tools/`。
+- 如果它要作为可审查产物保留，应增加明确的重新生成命令和漂移检查。
+
+### 4. `create_editor_scene.py` 职责过多
+
+位置：
+
+- `tools/zlj_editor_scene/create_editor_scene.py`
+- `tools/zlj_editor_scene/export_level_component_index.py`
+- `tools/zlj_editor_scene/verify_editor_scene.py`
+
+现在 `create_editor_scene.py` 同时负责：
+
+- 解析 terrain 数据。
+- 计算布局。
+- 生成场景计划。
+- 生成 Lua。
+- 调用编辑器。
+- 写 `latest_plan.json`。
+
+另外两个脚本通过 import `build_plan()` 复用它：
+
+- `export_level_component_index.py` 用它导出组件索引。
+- `verify_editor_scene.py` 用它生成理论对象树。
+
+风险：
+
+- 想单独改“计划生成”时容易影响“编辑器执行”。
+- 任何脚本复用 `build_plan()`，都会间接复用 Python 正则解析 TS 的问题。
+
+### 5. 第 3 关编号链路人工维护
+
+位置：
+
+- `ts_src/zlj/levels/level_03/terrain.ts`
+- `ts_src/zlj/runtime/runtime_third_mechanism_config.ts`
+- `tools/zlj_editor_scene/export_level_component_index.py`
+- `docs/level_03_component_index.md`
+- `docs/level_03_layout.svg`
+- CAD/DXF handle 记录
+
+第 3 关平台需要同时对应：
+
+- CAD handle。
+- terrain 数据名。
+- 编辑器组件名。
+- SVG 编号。
+- 运行时分组、起始偏移。
+- 编辑器 unit_id。
+
+风险：
+
+- 改名字、尺寸或分组时，需要人工同步多处。
+- 文档、SVG、运行时配置和编辑器实例可能不一致。
+
+### 6. `.tools/cad` 同时包含源文件、产物和实验文件
+
+位置：
+
+- `.tools/cad/input/`
+- `.tools/cad/converted/`
+- `.tools/cad/output/`
+- `.tools/cad/verify/`
+- `.tools/cad/scratch/`
+
+`.tools/cad` 是本地 CAD 工作区，不是游戏运行时目录，也不是可维护脚本目录。
+
+当前含义：
+
+- `input/`：收到的原始 CAD 文件，例如 `第三关.dwg`。
+- `converted/`：直接转换结果，通常是 DWG 转 DXF，便于查看或被脚本处理。
+- `output/`：正式修改后的 CAD 输出，可用于检查或交付。
+- `verify/`：校验用文件，例如把最终 DWG 再转回 DXF 后确认尺寸。
+- `scratch/`：一次性实验和中间测试文件。
+
+风险：
+
+- `converted/`、`verify/`、`scratch/` 很容易被误认为正式资产。
+- 如果都进 git，仓库会越来越大。
+- CAD 文件和代码数据之间没有自动校验链。
+
+## 建议整理路线
+
+### 第一阶段：明确源数据归属
+
+目标：让“关卡地形数据”只有一个权威来源。
+
+建议做法：
+
+- 新建结构化数据目录，例如 `data/zlj/levels/level_03.json`。
+- 把 `terrain.ts` 中的纯数据迁移到 JSON。
+- 用生成脚本从 JSON 生成 `ts_src/zlj/levels/level_XX/terrain.ts`。
+- Python 工具直接读取 JSON，不再正则解析 TS。
+
+收益：
+
+- TypeScript 和 Python 都从同一份数据派生。
+- 后续可以对 JSON 做 schema 校验。
+- 修改地形时更清楚：改数据，不改生成物。
+
+### 第二阶段：抽出共享布局配置
+
+目标：减少 Python 和 TS 里重复维护的常量。
+
+建议做法：
+
+- 把关卡 frame、出生点、墙参数、基础高度等放进共享 JSON。
+- TS 从生成文件 import。
+- Python 从同一份 JSON 读取。
+- 保留 TS 里的运行时逻辑，但不要重复写布局常量。
+
+收益：
+
+- 改关卡尺寸、墙厚、出生点时只改一处。
+- 编辑器场景和运行时更容易保持一致。
+
+### 第三阶段：拆分编辑器工具
+
+目标：降低 `create_editor_scene.py` 的职责。
+
+建议拆成：
+
+- `scene_plan.py`：读取数据并生成 `SceneItem` 列表。
+- `scene_lua.py`：把计划转成 Lua。
+- `create_editor_scene.py`：命令行入口，只负责调用编辑器执行。
+- `verify_editor_scene.py` 和 `export_level_component_index.py` 只依赖 `scene_plan.py`。
+
+收益：
+
+- 计划生成可以单独测试。
+- 校验、导出、创建脚本共享同一套轻量逻辑。
+- 后续改数据来源时影响范围更小。
+
+### 第四阶段：处理生成物和本地工作区
+
+目标：区分源码、可审查产物、本地临时文件。
+
+建议规则：
+
+- `tools/` 只放可维护脚本。
+- `.tools/` 放本地工作文件、下载工具、虚拟环境、中间产物。
+- `latest_plan.json` 如果只是调试快照，移到 `.tools/zlj_editor_scene/` 并从 git 移除。
+- `.tools/cad/output/` 可以保留必要成品；`converted/`、`verify/`、`scratch/` 默认不长期跟踪，除非某个文件确实需要作为证据留存。
+
+### 第五阶段：给关键链路加检查
+
+目标：让漂移尽早暴露。
+
+建议检查：
+
+- JSON schema 校验地形字段。
+- 生成 TS 后检查 git diff，避免忘记提交生成物。
+- 生成 editor plan 后和已提交快照比对。
+- 第 3 关组件索引从数据生成，减少手写 `THIRD_LEVEL_LABELS`。
+
+## 暂不建议马上做的事
+
+- 不建议继续为单个 CAD handle 写长期脚本，除非确定同类修改会重复出现。
+- 不建议让 Python 直接 import/执行 TS，工具链会更复杂。
+- 不建议让运行时代码反过来读取 `tools/` 或 `.tools/`，这两个目录应保持开发侧属性。
+
+## 推荐下一步
+
+下一次整理可以从“数据源迁移”开始：
+
+1. 选一关作为试点，例如第 3 关。
+2. 把 `level_03/terrain.ts` 的数组迁移到 JSON。
+3. 写生成脚本生成原来的 `terrain.ts`。
+4. 改 `create_editor_scene.py` 读取 JSON。
+5. 确认运行时、编辑器计划、组件索引结果不变。

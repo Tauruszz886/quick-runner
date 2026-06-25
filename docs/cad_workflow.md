@@ -29,7 +29,7 @@
 .tools/cad/input/第三关.dwg
   -> ODA File Converter
   -> .tools/cad/converted/第三关.dxf
-  -> tools/cad/update_level03_84c.py
+  -> historical manual/scripted CAD edit
   -> .tools/cad/output/第三关_84C_20x17_1875.dxf
   -> ODA File Converter
   -> .tools/cad/output/第三关_84C_20x17_1875.dwg
@@ -37,17 +37,11 @@
   -> .tools/cad/verify/第三关_84C_20x17_1875.dxf
 ```
 
-`update_level03_84c.py` 会把 `84C` 的局部 X 范围从 `92..116` 改为 `94..114`，也就是宽度从 `24` 改为 `20`，Z 尺寸保持 `17.1875`，中心保持不变。
+第 3 关 `84C` 的当前结果是：局部 X 范围从 `92..116` 改为 `94..114`，也就是宽度从 `24` 改为 `20`，Z 尺寸保持 `17.1875`，中心保持不变。
 
-## 运行修改脚本
+## 脚本状态
 
-```bash
-.tools/venvs/pycad/bin/python tools/cad/update_level03_84c.py \
-  .tools/cad/converted/第三关.dxf \
-  .tools/cad/output/第三关_84C_20x17_1875.dxf
-```
-
-脚本会打印 SVG 编号、组件名、unit_id、CAD handle、旧 bbox、新 bbox 和输出路径。
+当前仓库不再保留第 3 关 `84C` 的专项修改脚本。该脚本只服务一次历史修补，硬编码了 CAD handle、局部坐标和投影线 handle，不适合作为长期工具维护。后续如果还要自动修改 CAD，应重新设计通用脚本或把一次性脚本放到临时工作区。
 
 ## scratch 文件
 
