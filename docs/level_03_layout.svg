@@ -23,7 +23,7 @@
 
   <rect class="page" x="0" y="0" width="1180" height="720"/>
   <text class="title" x="40" y="42">第 03 关 SVG 顶视图</text>
-  <text class="subtitle" x="40" y="66">来源：ts_src/zlj/levels/level_03/terrain.ts 与 docs/level_03_component_index.md；坐标为第 3 关本地 x/z，比例 1 单位 = 5 px。</text>
+  <text class="subtitle" x="40" y="66">来源：data/zlj/levels/level_03.json 与 docs/level_03_component_index.md；坐标为第 3 关本地 x/z，比例 1 单位 = 5 px。</text>
 
   <g id="level-03-top-view" transform="translate(60 105)">
     <rect class="frame" x="0" y="0" width="800" height="500"/>
