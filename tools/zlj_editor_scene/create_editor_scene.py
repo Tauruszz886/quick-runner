@@ -466,6 +466,8 @@ def lua_kv_value(value: Any) -> tuple[str, str]:
         return "Int", str(value)
     if isinstance(value, float):
         return "Fixed", f"{value:.10f}".rstrip("0").rstrip(".")
+    # EditorAPI.set_unit_kv accepts the editor type name as a string in local-agent mode.
+    # The editor Lua environment may not expose Enums.ValueType, so keep "Str" explicit.
     return "Str", lua_string(str(value))
 
 
@@ -592,7 +594,7 @@ local function apply_item_appearance(uid, item)
   end
 end
 
-local function enum_value_type(type_name)
+local function editor_kv_value_type(type_name)
   if Enums ~= nil and Enums.ValueType ~= nil and Enums.ValueType[type_name] ~= nil then
     return Enums.ValueType[type_name]
   end
@@ -607,7 +609,7 @@ local function apply_item_custom_kv(uid, item)
     local kv = item.customKv[index]
     if kv ~= nil and kv.key ~= nil and kv.valueType ~= nil then
       pcall(function()
-        EditorAPI.set_unit_kv(uid, kv.key, enum_value_type(kv.valueType), kv.value)
+        EditorAPI.set_unit_kv(uid, kv.key, editor_kv_value_type(kv.valueType), kv.value)
       end)
     end
   end

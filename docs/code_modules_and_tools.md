@@ -226,6 +226,23 @@ CAD 维护脚本目录。
 - `--batch-size`：分批创建对象，避免一次操作过多。
 - `--start-index` / `--limit`：从计划中的某个位置开始，只跑一部分。
 
+### tools/zlj_editor_scene/apply_runtime_scene_kv.py
+
+运行时组件 KV 同步脚本。
+
+它复用 `create_editor_scene.py` 的场景计划，但只处理带 `custom_kv` 的运行时组件：
+
+- 给已有组件写入并校验 `QRRole`、`QRModule`、`QRComponent`、`QRRuntimeName`、`QRMoveZ`、`QRMoving`。
+- 可用 `--role` 只同步某一类组件。
+- 可用 `--create-missing-runtime-triggers` 补建缺失的 runtime trigger；当前主要用于 `fall_death` 掉坑死亡触发器。
+- 不更新普通地形的位置、尺寸、模型和颜色。
+
+常用命令：
+
+```bash
+python3 tools/zlj_editor_scene/apply_runtime_scene_kv.py --workspace . --create-missing-runtime-triggers
+```
+
 ### tools/zlj_editor_scene/latest_plan.json
 
 由 `create_editor_scene.py` 生成的场景计划快照。
@@ -275,5 +292,5 @@ Python 运行脚本后生成的字节码缓存目录。
 
 - 掉坑死亡区不会自动改变；需要单独修改 `data/zlj/fall_death_zones.json` 并重新生成场景计划。
 - 编辑器创建计划会改变，需要用 `create_editor_scene.py --dry-run` 或实际创建脚本重新生成/同步。
-- 如果新增、删除或重命名第 2/3/4/8/9/10 关的机关组件，要给场景单位维护对应 `QRRole` 自定义 KV；迁移期也可以先同步修改 `data/zlj/runtime_scene_bindings.json`，再由创建脚本写入场景。
+- 如果新增、删除或重命名第 2/3/4/8/9/10 关的机关组件，要给场景单位维护对应 `QRRole` 自定义 KV；迁移期也可以先同步修改 `data/zlj/runtime_scene_bindings.json`，再用 `apply_runtime_scene_kv.py` 写入场景。
 - 如果已有 SVG/CAD/组件索引文档，应该同步更新编号索引和图中标注。
