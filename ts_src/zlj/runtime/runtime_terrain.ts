@@ -1,5 +1,7 @@
 import { safeCall, safeCreateCustomTriggerSpace, safeCreateObstacle } from "@common/engine_safe"
 import { LEVEL_TERRAIN_SPECS, type LevelTerrainSpec } from "../levels/terrain"
+import { RUNTIME_SCENE_BINDINGS } from "../levels/runtime_scene_bindings"
+import type { RuntimeSceneBinding } from "../levels/shared/types"
 import {
   BIRTH_TILE_BASE_Y,
   EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS,
@@ -24,12 +26,13 @@ import { registerRuntimeCompressorPiece, resetRuntimeCompressors, startRuntimeCo
 import { createHoleDeathTriggers } from "./runtime_fall_return"
 import {
   getRuntimeTerrainPieceY,
+  registerEighthLevelMechanismBinding,
   registerEighthLevelMechanismPart,
   resetEighthLevelMechanism,
   isEighthLevelMechanismPiece,
   startEighthLevelMechanism,
 } from "./runtime_eighth_mechanism"
-import { isNinthVanishingPlatformPiece, registerNinthVanishingPlatform, resetNinthLevelMechanism } from "./runtime_ninth_mechanism"
+import { isNinthVanishingPlatformPiece, registerNinthVanishingPlatform, registerNinthVanishingPlatformBinding, resetNinthLevelMechanism } from "./runtime_ninth_mechanism"
 import { startSecondLevelChaser } from "./runtime_second_chaser"
 import {
   isThirdLevelTimedPlatformPiece,
@@ -37,7 +40,7 @@ import {
   resetThirdLevelMechanism,
   startThirdLevelMechanism,
 } from "./runtime_third_mechanism"
-import { isTenthCurrentPiece, registerTenthCurrentPart, resetTenthCurrentMechanism, startTenthCurrentMechanism } from "./runtime_tenth_current"
+import { isTenthCurrentPiece, registerTenthCurrentBinding, registerTenthCurrentPart, resetTenthCurrentMechanism, startTenthCurrentMechanism } from "./runtime_tenth_current"
 import { createFifthMiddleLayer } from "./fifth_middle_layer"
 import {
   asFixed,
@@ -58,6 +61,12 @@ const SECOND_CHASER_SURFACE_ROLLING_RESISTANCE = 0.02
 const SECOND_CHASER_SURFACE_BOUNCINESS = 0
 
 type Position3 = {
+  x: number
+  y: number
+  z: number
+}
+
+type Scale3 = {
   x: number
   y: number
   z: number
@@ -229,6 +238,28 @@ function getUnitPosition(unit: unknown, fallback: Position3, name: string): Posi
   }
 }
 
+function getUnitScale(unit: unknown, name: string): Scale3 | null {
+  const scale = safeCall(
+    () => {
+      const target = unit as any
+      if (target.get_scale !== undefined && target.get_scale !== null) {
+        return target.get_scale()
+      }
+      return null
+    },
+    { tag: `editor_scene_scale_${name}`, fallback: null, logger: print }
+  ) as { x?: number; y?: number; z?: number } | null
+  if (scale === null || scale === undefined || scale.x === undefined || scale.y === undefined || scale.z === undefined) {
+    print(`[${TERRAIN_TAG}] editor unit scale missing name=${name}`)
+    return null
+  }
+  return {
+    x: scale.x,
+    y: scale.y,
+    z: scale.z,
+  }
+}
+
 function registerEditorTerrainMechanism(moduleIndex: number, piece: RuntimeTerrainPiece, unit: unknown, x: number, y: number, z: number): void {
   const name = runtimeModuleName(piece.name, moduleIndex)
   if (piece.compressor === true && unit !== null && unit !== undefined) {
@@ -250,6 +281,69 @@ function registerEditorTerrainMechanism(moduleIndex: number, piece: RuntimeTerra
   registerEighthLevelMechanismPart(moduleIndex, piece, unit, name, x, y, z)
 }
 
+function bindingRuntimeName(binding: RuntimeSceneBinding): string {
+  return runtimeModuleName(binding.component, binding.module)
+}
+
+function bindingEditorName(binding: RuntimeSceneBinding): string {
+  return editorSceneUnitName(binding.component, binding.module)
+}
+
+function runtimePieceFromBinding(binding: RuntimeSceneBinding, scale: Scale3): RuntimeTerrainPiece {
+  return {
+    name: binding.component,
+    startX: 0,
+    startZ: 0,
+    sx: scale.x,
+    sy: scale.y,
+    sz: scale.z,
+    prefabId: binding.role === "tenth_current" ? TRAILING_CURRENT_PREFAB_ID : undefined,
+  }
+}
+
+function registerEditorSceneBinding(binding: RuntimeSceneBinding, unit: unknown, position: Position3, scale: Scale3): void {
+  const name = bindingRuntimeName(binding)
+  if (binding.role === "second_chaser_surface") {
+    applySecondChaserSurfacePhysics(binding.module, unit, name)
+    return
+  }
+  if (binding.role === "fourth_compressor") {
+    registerRuntimeCompressorPiece({
+      name,
+      unit,
+      x: position.x,
+      z: position.z,
+      sx: scale.x,
+      sy: scale.y,
+      sz: scale.z,
+      upY: position.y,
+      downY: FOURTH_LEVEL_COMPRESSOR_DOWN_Y,
+    })
+    return
+  }
+  if (binding.role === "eighth_moving_part") {
+    if (binding.moveZ === undefined) {
+      print(`[${TERRAIN_TAG}] binding skipped name=${name} role=${binding.role} reason=missing_moveZ`)
+      return
+    }
+    registerEighthLevelMechanismBinding(unit, name, position.x, position.y, position.z, scale.x, scale.y, scale.z, binding.moveZ)
+    return
+  }
+
+  const piece = runtimePieceFromBinding(binding, scale)
+  if (binding.role === "third_timed_platform") {
+    registerThirdLevelTimedPlatform(binding.module, piece, unit, name, position.x, position.y, position.z)
+    return
+  }
+  if (binding.role === "ninth_vanishing_platform") {
+    registerNinthVanishingPlatformBinding(unit, name, position.x, position.z, scale.x, scale.z)
+    return
+  }
+  if (binding.role === "tenth_current") {
+    registerTenthCurrentBinding(unit, name, position.x, position.y, position.z, scale.x, scale.y, scale.z, binding.moving === true)
+  }
+}
+
 export function bindEditorSceneRuntimeMechanisms(): void {
   if (editorSceneMechanismsBound) {
     return
@@ -261,49 +355,31 @@ export function bindEditorSceneRuntimeMechanisms(): void {
   resetThirdLevelMechanism()
   resetTenthCurrentMechanism()
 
-  print(`[${TERRAIN_TAG}] editor bind begin modules=1..${RUNTIME_COPY_COUNT} source=editor_scene_units`)
-  for (let moduleIndex = 1; moduleIndex <= RUNTIME_COPY_COUNT; moduleIndex++) {
-    const moduleFloor = getRuntimeFloorForModule(moduleIndex)
-    const terrainFloor = getRuntimeTerrainFrameForModule(moduleIndex, moduleFloor)
-    const moduleCenterX = getRuntimeModuleCenterX(moduleIndex)
-    const moduleMinX = moduleCenterX - terrainFloor.sx / 2
-    const moduleMinZ = terrainFloor.z - terrainFloor.sz / 2
-    const pieces = getRuntimeTerrainPiecesForModule(moduleIndex)
-    let bound = 0
-    let missing = 0
-    let fallbackCreated = 0
-    for (let i = 0; i < pieces.length; i++) {
-      const piece = pieces[i]!
-      const fallbackY = getRuntimeTerrainPieceY(moduleIndex, piece, FIRST_LEVEL_TERRAIN_BASE_Y)
-      const fallback = {
-        x: moduleMinX + piece.startX + piece.sx / 2,
-        y: fallbackY,
-        z: moduleMinZ + piece.startZ + piece.sz / 2,
-      }
-      const editorName = editorSceneUnitName(piece.name, moduleIndex)
-      let unit = queryEditorUnit(editorName)
-      let pos = fallback
-      if (unit === null || unit === undefined) {
-        missing += 1
-        if (!shouldCreateRuntimeMechanismFallback(moduleIndex, piece)) {
-          continue
-        }
-        unit = createRuntimeMechanismFallbackUnit(moduleIndex, piece, runtimeModuleName(piece.name, moduleIndex), fallback.x, fallback.y, fallback.z)
-        fallbackCreated += 1
-      } else {
-        pos = getUnitPosition(unit, fallback, editorName)
-      }
-      applySecondChaserSurfacePhysics(moduleIndex, unit, runtimeModuleName(piece.name, moduleIndex))
-      registerEditorTerrainMechanism(moduleIndex, piece, unit, pos.x, pos.y, pos.z)
-      bound += 1
-      print(
-        `[${TERRAIN_TAG}] editor bound name=${editorName} runtime_name=${runtimeModuleName(piece.name, moduleIndex)} pos=(${pos.x},${pos.y},${pos.z}) data_pos=(${fallback.x},${fallback.y},${fallback.z}) scale=(${piece.sx},${piece.sy},${piece.sz})`
-      )
+  print(`[${TERRAIN_TAG}] editor bind begin bindings=${RUNTIME_SCENE_BINDINGS.length} source=runtime_scene_bindings`)
+  let bound = 0
+  let missing = 0
+  let scaleMissing = 0
+  for (let i = 0; i < RUNTIME_SCENE_BINDINGS.length; i++) {
+    const binding = RUNTIME_SCENE_BINDINGS[i]!
+    const editorName = bindingEditorName(binding)
+    const unit = queryEditorUnit(editorName)
+    if (unit === null || unit === undefined) {
+      missing += 1
+      continue
     }
+    const position = getUnitPosition(unit, { x: 0, y: 0, z: 0 }, editorName)
+    const scale = getUnitScale(unit, editorName)
+    if (scale === null) {
+      scaleMissing += 1
+      continue
+    }
+    registerEditorSceneBinding(binding, unit, position, scale)
+    bound += 1
     print(
-      `[${TERRAIN_TAG}] editor bind module=${runtimeModuleLabel(moduleIndex)} pieces=${pieces.length} bound=${bound} missing=${missing} mechanism_fallback=${fallbackCreated}`
+      `[${TERRAIN_TAG}] editor bound name=${editorName} runtime_name=${bindingRuntimeName(binding)} role=${binding.role} pos=(${position.x},${position.y},${position.z}) scale=(${scale.x},${scale.y},${scale.z})`
     )
   }
+  print(`[${TERRAIN_TAG}] editor bind summary bindings=${RUNTIME_SCENE_BINDINGS.length} bound=${bound} missing=${missing} scale_missing=${scaleMissing}`)
 
   startRuntimeCompressors()
   startThirdLevelMechanism()

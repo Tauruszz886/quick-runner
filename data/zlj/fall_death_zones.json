@@ -1,0 +1,900 @@
+{
+  "zones": [
+    {
+      "module": 1,
+      "name": "fall_death_01",
+      "startX": 70,
+      "startZ": 0,
+      "sx": 10,
+      "sz": 100
+    },
+    {
+      "module": 1,
+      "name": "fall_death_02",
+      "startX": 136,
+      "startZ": 0,
+      "sx": 8,
+      "sz": 100
+    },
+    {
+      "module": 2,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 2,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 12.5,
+      "sx": 24,
+      "sz": 18.75
+    },
+    {
+      "module": 2,
+      "name": "fall_death_03",
+      "startX": 128,
+      "startZ": 12.5,
+      "sx": 32,
+      "sz": 12.5
+    },
+    {
+      "module": 2,
+      "name": "fall_death_04",
+      "startX": 128,
+      "startZ": 25,
+      "sx": 8,
+      "sz": 48.888976
+    },
+    {
+      "module": 2,
+      "name": "fall_death_05",
+      "startX": 16,
+      "startZ": 31.25,
+      "sx": 8,
+      "sz": 37.5
+    },
+    {
+      "module": 2,
+      "name": "fall_death_06",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 24,
+      "sz": 18.125
+    },
+    {
+      "module": 2,
+      "name": "fall_death_07",
+      "startX": 128,
+      "startZ": 73.888976,
+      "sx": 32,
+      "sz": 12.986024
+    },
+    {
+      "module": 2,
+      "name": "fall_death_08",
+      "startX": 0,
+      "startZ": 86.875,
+      "sx": 160,
+      "sz": 13.125
+    },
+    {
+      "module": 3,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 6.25
+    },
+    {
+      "module": 3,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 6.25,
+      "sx": 28,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_03",
+      "startX": 52,
+      "startZ": 6.25,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_04",
+      "startX": 84,
+      "startZ": 6.25,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_05",
+      "startX": 116,
+      "startZ": 6.25,
+      "sx": 44,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_06",
+      "startX": 0,
+      "startZ": 23.4375,
+      "sx": 160,
+      "sz": 1.5625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_07",
+      "startX": 0,
+      "startZ": 25,
+      "sx": 136,
+      "sz": 4.6875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_08",
+      "startX": 0,
+      "startZ": 29.6875,
+      "sx": 28,
+      "sz": 1.5625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_09",
+      "startX": 52,
+      "startZ": 29.6875,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_10",
+      "startX": 84,
+      "startZ": 29.6875,
+      "sx": 10,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_11",
+      "startX": 114,
+      "startZ": 29.6875,
+      "sx": 22,
+      "sz": 14.0625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_12",
+      "startX": 16,
+      "startZ": 31.25,
+      "sx": 12,
+      "sz": 15.625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_13",
+      "startX": 114,
+      "startZ": 43.75,
+      "sx": 10,
+      "sz": 3.125
+    },
+    {
+      "module": 3,
+      "name": "fall_death_14",
+      "startX": 16,
+      "startZ": 46.875,
+      "sx": 108,
+      "sz": 6.25
+    },
+    {
+      "module": 3,
+      "name": "fall_death_15",
+      "startX": 16,
+      "startZ": 53.125,
+      "sx": 12,
+      "sz": 15.625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_16",
+      "startX": 52,
+      "startZ": 53.125,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_17",
+      "startX": 84,
+      "startZ": 53.125,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_18",
+      "startX": 116,
+      "startZ": 53.125,
+      "sx": 8,
+      "sz": 3.125
+    },
+    {
+      "module": 3,
+      "name": "fall_death_19",
+      "startX": 116,
+      "startZ": 56.25,
+      "sx": 20,
+      "sz": 14.0625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_20",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 28,
+      "sz": 1.5625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_21",
+      "startX": 0,
+      "startZ": 70.3125,
+      "sx": 136,
+      "sz": 4.6875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_22",
+      "startX": 0,
+      "startZ": 75,
+      "sx": 160,
+      "sz": 1.5625
+    },
+    {
+      "module": 3,
+      "name": "fall_death_23",
+      "startX": 0,
+      "startZ": 76.5625,
+      "sx": 28,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_24",
+      "startX": 52,
+      "startZ": 76.5625,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_25",
+      "startX": 84,
+      "startZ": 76.5625,
+      "sx": 8,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_26",
+      "startX": 116,
+      "startZ": 76.5625,
+      "sx": 44,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_27",
+      "startX": 0,
+      "startZ": 93.75,
+      "sx": 160,
+      "sz": 6.25
+    },
+    {
+      "module": 4,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 4,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 12.5,
+      "sx": 136,
+      "sz": 15.625
+    },
+    {
+      "module": 4,
+      "name": "fall_death_03",
+      "startX": 0,
+      "startZ": 28.125,
+      "sx": 72,
+      "sz": 3.125
+    },
+    {
+      "module": 4,
+      "name": "fall_death_04",
+      "startX": 88,
+      "startZ": 28.125,
+      "sx": 48,
+      "sz": 9.375
+    },
+    {
+      "module": 4,
+      "name": "fall_death_05",
+      "startX": 16,
+      "startZ": 31.25,
+      "sx": 56,
+      "sz": 6.25
+    },
+    {
+      "module": 4,
+      "name": "fall_death_06",
+      "startX": 16,
+      "startZ": 62.5,
+      "sx": 56,
+      "sz": 6.25
+    },
+    {
+      "module": 4,
+      "name": "fall_death_07",
+      "startX": 88,
+      "startZ": 62.5,
+      "sx": 48,
+      "sz": 9.375
+    },
+    {
+      "module": 4,
+      "name": "fall_death_08",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 72,
+      "sz": 3.125
+    },
+    {
+      "module": 4,
+      "name": "fall_death_09",
+      "startX": 0,
+      "startZ": 71.875,
+      "sx": 136,
+      "sz": 15.625
+    },
+    {
+      "module": 4,
+      "name": "fall_death_10",
+      "startX": 0,
+      "startZ": 87.5,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 5,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 5,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 12.5,
+      "sx": 144,
+      "sz": 18.75
+    },
+    {
+      "module": 5,
+      "name": "fall_death_03",
+      "startX": 16,
+      "startZ": 31.25,
+      "sx": 128,
+      "sz": 10
+    },
+    {
+      "module": 5,
+      "name": "fall_death_04",
+      "startX": 16,
+      "startZ": 58.75,
+      "sx": 128,
+      "sz": 10
+    },
+    {
+      "module": 5,
+      "name": "fall_death_05",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 144,
+      "sz": 18.75
+    },
+    {
+      "module": 5,
+      "name": "fall_death_06",
+      "startX": 0,
+      "startZ": 87.5,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 6,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 6.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 6.25,
+      "sx": 12,
+      "sz": 9.375
+    },
+    {
+      "module": 6,
+      "name": "fall_death_03",
+      "startX": 24,
+      "startZ": 6.25,
+      "sx": 20,
+      "sz": 9.375
+    },
+    {
+      "module": 6,
+      "name": "fall_death_04",
+      "startX": 56,
+      "startZ": 6.25,
+      "sx": 24,
+      "sz": 10.625
+    },
+    {
+      "module": 6,
+      "name": "fall_death_05",
+      "startX": 92,
+      "startZ": 6.25,
+      "sx": 68,
+      "sz": 6.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_06",
+      "startX": 92,
+      "startZ": 12.5,
+      "sx": 52,
+      "sz": 6.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_07",
+      "startX": 0,
+      "startZ": 15.625,
+      "sx": 44,
+      "sz": 1.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_08",
+      "startX": 0,
+      "startZ": 16.875,
+      "sx": 80,
+      "sz": 1.875
+    },
+    {
+      "module": 6,
+      "name": "fall_death_09",
+      "startX": 0,
+      "startZ": 18.75,
+      "sx": 144,
+      "sz": 12.5
+    },
+    {
+      "module": 6,
+      "name": "fall_death_10",
+      "startX": 11.2,
+      "startZ": 31.25,
+      "sx": 132.8,
+      "sz": 10
+    },
+    {
+      "module": 6,
+      "name": "fall_death_11",
+      "startX": 19.2,
+      "startZ": 41.25,
+      "sx": 28.8,
+      "sz": 17.5
+    },
+    {
+      "module": 6,
+      "name": "fall_death_12",
+      "startX": 68,
+      "startZ": 41.25,
+      "sx": 44,
+      "sz": 17.5
+    },
+    {
+      "module": 6,
+      "name": "fall_death_13",
+      "startX": 11.2,
+      "startZ": 58.75,
+      "sx": 132.8,
+      "sz": 10
+    },
+    {
+      "module": 6,
+      "name": "fall_death_14",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 144,
+      "sz": 15.625
+    },
+    {
+      "module": 6,
+      "name": "fall_death_15",
+      "startX": 0,
+      "startZ": 84.375,
+      "sx": 46.438784,
+      "sz": 11.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_16",
+      "startX": 58.438784,
+      "startZ": 84.375,
+      "sx": 16.761216,
+      "sz": 11.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_17",
+      "startX": 87.2,
+      "startZ": 84.375,
+      "sx": 24.8,
+      "sz": 11.25
+    },
+    {
+      "module": 6,
+      "name": "fall_death_18",
+      "startX": 124,
+      "startZ": 84.375,
+      "sx": 20,
+      "sz": 3.125
+    },
+    {
+      "module": 6,
+      "name": "fall_death_19",
+      "startX": 124,
+      "startZ": 87.5,
+      "sx": 36,
+      "sz": 8.125
+    },
+    {
+      "module": 6,
+      "name": "fall_death_20",
+      "startX": 0,
+      "startZ": 95.625,
+      "sx": 160,
+      "sz": 4.375
+    },
+    {
+      "module": 7,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 6.25
+    },
+    {
+      "module": 7,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 6.25,
+      "sx": 73.6,
+      "sz": 12.5
+    },
+    {
+      "module": 7,
+      "name": "fall_death_03",
+      "startX": 85.6,
+      "startZ": 6.25,
+      "sx": 74.4,
+      "sz": 6.25
+    },
+    {
+      "module": 7,
+      "name": "fall_death_04",
+      "startX": 85.6,
+      "startZ": 12.5,
+      "sx": 58.4,
+      "sz": 6.25
+    },
+    {
+      "module": 7,
+      "name": "fall_death_05",
+      "startX": 0,
+      "startZ": 18.75,
+      "sx": 144,
+      "sz": 12.5
+    },
+    {
+      "module": 7,
+      "name": "fall_death_06",
+      "startX": 16,
+      "startZ": 31.25,
+      "sx": 128,
+      "sz": 10
+    },
+    {
+      "module": 7,
+      "name": "fall_death_07",
+      "startX": 16,
+      "startZ": 41.25,
+      "sx": 40,
+      "sz": 17.5
+    },
+    {
+      "module": 7,
+      "name": "fall_death_08",
+      "startX": 72,
+      "startZ": 41.25,
+      "sx": 52,
+      "sz": 17.5
+    },
+    {
+      "module": 7,
+      "name": "fall_death_09",
+      "startX": 16,
+      "startZ": 58.75,
+      "sx": 128,
+      "sz": 10
+    },
+    {
+      "module": 7,
+      "name": "fall_death_10",
+      "startX": 0,
+      "startZ": 68.75,
+      "sx": 144,
+      "sz": 15.625
+    },
+    {
+      "module": 7,
+      "name": "fall_death_11",
+      "startX": 0,
+      "startZ": 84.375,
+      "sx": 22.438784,
+      "sz": 11.25
+    },
+    {
+      "module": 7,
+      "name": "fall_death_12",
+      "startX": 34.438784,
+      "startZ": 84.375,
+      "sx": 109.561216,
+      "sz": 3.125
+    },
+    {
+      "module": 7,
+      "name": "fall_death_13",
+      "startX": 34.438784,
+      "startZ": 87.5,
+      "sx": 125.561216,
+      "sz": 8.125
+    },
+    {
+      "module": 7,
+      "name": "fall_death_14",
+      "startX": 0,
+      "startZ": 95.625,
+      "sx": 160,
+      "sz": 4.375
+    },
+    {
+      "module": 8,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 6.25
+    },
+    {
+      "module": 8,
+      "name": "fall_death_02",
+      "startX": 0,
+      "startZ": 6.25,
+      "sx": 27.6,
+      "sz": 12.5
+    },
+    {
+      "module": 8,
+      "name": "fall_death_03",
+      "startX": 39.6,
+      "startZ": 6.25,
+      "sx": 36,
+      "sz": 12.5
+    },
+    {
+      "module": 8,
+      "name": "fall_death_04",
+      "startX": 87.6,
+      "startZ": 6.25,
+      "sx": 72.4,
+      "sz": 6.25
+    },
+    {
+      "module": 8,
+      "name": "fall_death_05",
+      "startX": 87.6,
+      "startZ": 12.5,
+      "sx": 56.4,
+      "sz": 3.75
+    },
+    {
+      "module": 8,
+      "name": "fall_death_06",
+      "startX": 87.6,
+      "startZ": 16.25,
+      "sx": 44.4,
+      "sz": 2.5
+    },
+    {
+      "module": 8,
+      "name": "fall_death_07",
+      "startX": 0,
+      "startZ": 18.75,
+      "sx": 132,
+      "sz": 18.75
+    },
+    {
+      "module": 8,
+      "name": "fall_death_08",
+      "startX": 20,
+      "startZ": 37.5,
+      "sx": 112,
+      "sz": 16.25
+    },
+    {
+      "module": 8,
+      "name": "fall_death_09",
+      "startX": 20,
+      "startZ": 73.75,
+      "sx": 112,
+      "sz": 7.5
+    },
+    {
+      "module": 8,
+      "name": "fall_death_10",
+      "startX": 0,
+      "startZ": 81.25,
+      "sx": 132,
+      "sz": 2.5
+    },
+    {
+      "module": 8,
+      "name": "fall_death_11",
+      "startX": 0,
+      "startZ": 83.75,
+      "sx": 144,
+      "sz": 3.75
+    },
+    {
+      "module": 8,
+      "name": "fall_death_12",
+      "startX": 0,
+      "startZ": 87.5,
+      "sx": 160,
+      "sz": 12.5
+    },
+    {
+      "module": 9,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 30
+    },
+    {
+      "module": 9,
+      "name": "fall_death_02",
+      "startX": 15,
+      "startZ": 30,
+      "sx": 130,
+      "sz": 10
+    },
+    {
+      "module": 9,
+      "name": "fall_death_03",
+      "startX": 15,
+      "startZ": 40,
+      "sx": 10,
+      "sz": 20
+    },
+    {
+      "module": 9,
+      "name": "fall_death_04",
+      "startX": 75,
+      "startZ": 40,
+      "sx": 10,
+      "sz": 20
+    },
+    {
+      "module": 9,
+      "name": "fall_death_05",
+      "startX": 135,
+      "startZ": 40,
+      "sx": 10,
+      "sz": 20
+    },
+    {
+      "module": 9,
+      "name": "fall_death_06",
+      "startX": 15,
+      "startZ": 60,
+      "sx": 130,
+      "sz": 10
+    },
+    {
+      "module": 9,
+      "name": "fall_death_07",
+      "startX": 0,
+      "startZ": 70,
+      "sx": 160,
+      "sz": 30
+    },
+    {
+      "module": 10,
+      "name": "fall_death_01",
+      "startX": 0,
+      "startZ": 0,
+      "sx": 160,
+      "sz": 30
+    },
+    {
+      "module": 10,
+      "name": "fall_death_02",
+      "startX": 15,
+      "startZ": 30,
+      "sx": 130,
+      "sz": 10
+    },
+    {
+      "module": 10,
+      "name": "fall_death_03",
+      "startX": 15,
+      "startZ": 40,
+      "sx": 5,
+      "sz": 20
+    },
+    {
+      "module": 10,
+      "name": "fall_death_04",
+      "startX": 135,
+      "startZ": 40,
+      "sx": 10,
+      "sz": 20
+    },
+    {
+      "module": 10,
+      "name": "fall_death_05",
+      "startX": 15,
+      "startZ": 60,
+      "sx": 130,
+      "sz": 10
+    },
+    {
+      "module": 10,
+      "name": "fall_death_06",
+      "startX": 0,
+      "startZ": 70,
+      "sx": 160,
+      "sz": 30
+    }
+  ]
+}

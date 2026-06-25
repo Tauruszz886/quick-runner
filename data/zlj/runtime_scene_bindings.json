@@ -1,0 +1,963 @@
+{
+  "bindings": [
+    {
+      "module": 2,
+      "component": "dxf_69D_16x37_5",
+      "role": "second_chaser_surface"
+    },
+    {
+      "module": 2,
+      "component": "dxf_699_104x74_375",
+      "role": "second_chaser_surface"
+    },
+    {
+      "module": 2,
+      "component": "dxf_695_24x48_889",
+      "role": "second_chaser_surface"
+    },
+    {
+      "module": 3,
+      "component": "dxf_840_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_85C_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_860_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_864_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_844_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_858_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_86C_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_868_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_848_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_84C_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_850_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 3,
+      "component": "dxf_854_24x17_1875",
+      "role": "third_timed_platform"
+    },
+    {
+      "module": 4,
+      "component": "dxf_736_56x25",
+      "role": "fourth_compressor"
+    },
+    {
+      "module": 4,
+      "component": "dxf_731_48x25",
+      "role": "fourth_compressor"
+    },
+    {
+      "module": 8,
+      "component": "dxf_80C_35x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_814_35x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_840_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_844_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_828_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_83C_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_824_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_838_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_820_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_834_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_81C_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_830_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_818_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_82C_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_808_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_810_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_685_27_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6C1_27_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_675_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6B9_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_671_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6B5_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_66D_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6B1_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_669_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6AD_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_665_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6A9_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_661_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6A5_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_681_27_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6BD_27_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_65D_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_6A1_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_659_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_69D_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_655_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_699_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_651_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_695_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_649_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_691_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_640_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": -3.5
+    },
+    {
+      "module": 8,
+      "component": "dxf_68D_0_5x4",
+      "role": "eighth_moving_part",
+      "moveZ": 3.5
+    },
+    {
+      "module": 9,
+      "component": "dxf_760_50x20",
+      "role": "ninth_vanishing_platform"
+    },
+    {
+      "module": 9,
+      "component": "dxf_75C_50x20",
+      "role": "ninth_vanishing_platform"
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_1",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_2",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_3",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_4",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_5",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_6",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_7",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_8",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_9",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_10",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_11",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_12",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_13",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_14",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_15",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_16",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_17",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_18",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_19",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_1_3301506_20",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_1",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_2",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_3",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_4",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_5",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_6",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_7",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_8",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_9",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_10",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_11",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_12",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_13",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_14",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_15",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_16",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_17",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_18",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_19",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_2_3301506_20",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_1",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_2",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_3",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_4",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_5",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_6",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_7",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_8",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_9",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_10",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_11",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_12",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_13",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_14",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_15",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_16",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_17",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_18",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_19",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97B_3_3301506_20",
+      "role": "tenth_current",
+      "moving": true
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_1",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_2",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_3",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_4",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_5",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_6",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_7",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_8",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_9",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_10",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_11",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_12",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_13",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_14",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_15",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_16",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_17",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_18",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_19",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_97F_1_3301506_20",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_1",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_2",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_3",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_4",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_5",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_6",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_7",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_8",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_9",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_10",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_11",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_12",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_13",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_14",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_15",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_16",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_17",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_18",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_19",
+      "role": "tenth_current",
+      "moving": false
+    },
+    {
+      "module": 10,
+      "component": "dxf_983_1_3301506_20",
+      "role": "tenth_current",
+      "moving": false
+    }
+  ]
+}

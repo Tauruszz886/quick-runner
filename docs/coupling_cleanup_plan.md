@@ -12,6 +12,12 @@
 
 目前最明显的问题是：`tools/zlj_editor_scene` 里的 Python 脚本会读取 `ts_src/zlj/levels/**/terrain.ts`，再生成编辑器场景计划和 JSON 快照。这条链路可用，但属于跨语言、跨目录的数据耦合。
 
+当前已开始第一阶段试点：第 3 关地形源数据迁移到 `data/zlj/levels/level_03.json`，并由 `tools/zlj_data/generate_level_terrain.py` 生成 `ts_src/zlj/levels/level_03/terrain.ts`。`create_editor_scene.py` 已改为优先读取 `data/zlj/levels/level_XX.json`，没有 JSON 的关卡仍走旧的 `terrain.ts` 解析路径。
+
+掉坑死亡区已从“运行时根据 terrain 推导空洞”改成显式数据和显式场景组件：源数据是 `data/zlj/fall_death_zones.json`，生成物是 `ts_src/zlj/levels/fall_death_zones.ts`，编辑器计划会创建 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件，运行时只负责查询并注册这些组件。
+
+运行时机关绑定已从“遍历 terrain 几何表”改成显式组件绑定：源数据是 `data/zlj/runtime_scene_bindings.json`，生成物是 `ts_src/zlj/levels/runtime_scene_bindings.ts`。运行时按组件名查询编辑器单位，并从单位自身读取位置和尺寸；`terrain.ts` 不再是主运行路径的机关绑定来源。
+
 ## 主要耦合点
 
 ### 1. Python 正则解析 TypeScript 数据
@@ -28,6 +34,8 @@
 - `terrain.ts` 如果改成表达式、变量引用、数组展开、嵌套对象，Python 可能解析不到。
 - TypeScript 类型检查通过，不代表 Python 场景生成一定正确。
 - 这种依赖没有编译器保护，失败方式可能是生成计划缺块，而不是直接报错。
+
+当前影响范围：主要剩在编辑器场景创建工具。运行时机关绑定已经不再从 Python 解析出的 terrain 几何数据派生。
 
 ### 2. Python 和 TypeScript 重复维护布局常量
 
@@ -153,14 +161,16 @@
 
 ### 第一阶段：明确源数据归属
 
-目标：让“关卡地形数据”只有一个权威来源。
+目标：把运行时玩法语义从关卡几何硬编码里剥离。
+
+状态：已启动。第 3 关地形已作为试点迁移到 JSON；掉坑死亡区和运行时机关绑定已经独立成显式数据。
 
 建议做法：
 
-- 新建结构化数据目录，例如 `data/zlj/levels/level_03.json`。
-- 把 `terrain.ts` 中的纯数据迁移到 JSON。
-- 用生成脚本从 JSON 生成 `ts_src/zlj/levels/level_XX/terrain.ts`。
-- Python 工具直接读取 JSON，不再正则解析 TS。
+- 运行时玩法绑定继续维护在 `data/zlj/runtime_scene_bindings.json`，不要再从 terrain 尺寸或坐标识别机关。
+- 掉坑死亡区继续维护在 `data/zlj/fall_death_zones.json`，不要再从 terrain 覆盖区域推导。
+- 关卡几何数据如果还需要用于编辑器场景重建，再逐步迁移到 `data/zlj/levels/level_XX.json`。
+- 迁移完成后，移除 Python 正则解析 TS 的 fallback。
 
 收益：
 
@@ -233,8 +243,9 @@
 
 下一次整理可以从“数据源迁移”开始：
 
-1. 选一关作为试点，例如第 3 关。
-2. 把 `level_03/terrain.ts` 的数组迁移到 JSON。
-3. 写生成脚本生成原来的 `terrain.ts`。
-4. 改 `create_editor_scene.py` 读取 JSON。
-5. 确认运行时、编辑器计划、组件索引结果不变。
+1. 检查当前运行时是否还有实际调用 `createRuntimeTiles()` 这类 runtime 生成地图的备用路径。
+2. 如果确认不需要运行时生成地图，删除 `runtime_terrain.ts` 中依赖 `LEVEL_TERRAIN_SPECS` 的备用创建逻辑。
+3. 继续把编辑器场景创建需要的几何数据迁移到 `data/zlj/levels/level_XX.json`。
+4. 用 `python3 tools/zlj_editor_scene/create_editor_scene.py --workspace . --dry-run` 确认计划不漂移。
+5. 跑 `npm run build` 确认运行时编译通过。
+6. 迁移完成后再移除 Python 正则解析 TS 的 fallback。

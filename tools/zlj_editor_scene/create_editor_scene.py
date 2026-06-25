@@ -30,6 +30,7 @@ from eggitor_agent.runner import run_editor_lua_and_collect_logs  # noqa: E402
 MARKER = "QR_ZLJ_SCENE"
 WALL_PREFAB_ID = 105205
 ZLJ_FLOOR_PREFAB_ID = 1201010
+FALL_DEATH_TRIGGER_PREFAB_ID = 3101010
 TRAILING_CURRENT_PREFAB_ID = 3301506
 ZLJ_FLOOR_MODEL_ID = 90004
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_X = 15.0
@@ -54,6 +55,8 @@ SIDE_WALL_INSET = 0.5
 WEST_WALL_OPENING_GAP_SZ = 19.0
 FIRST_LEVEL_TERRAIN_BASE_Y = 3.5
 FIRST_LEVEL_TERRAIN_HEIGHT = 3.0
+HOLE_DEATH_TRIGGER_CENTER_Y = 4.375
+HOLE_DEATH_TRIGGER_HEIGHT = 2.65
 FOURTH_LEVEL_COMPRESSOR_START_Y = FIRST_LEVEL_TERRAIN_BASE_Y + FIRST_LEVEL_TERRAIN_HEIGHT + 10.0
 EIGHTH_LEVEL_FIXED_HIGH_BAR_HEIGHT = 9.5
 EIGHTH_LEVEL_MECHANISM_CENTER_RAISE_Y = 5.5
@@ -113,6 +116,7 @@ class SceneItem:
     model_id: int | None = None
     paint_color: int | None = None
     runtime_placeholder: bool = False
+    runtime_trigger: bool = False
 
     @property
     def full_name(self) -> str:
@@ -213,6 +217,8 @@ def walls_for_module(module: int) -> list[dict[str, Any]]:
 
 OBJECT_RE = re.compile(r"\{([^{}]*name\s*:[^{}]*)\}", re.S)
 FIELD_RE = re.compile(r"(\w+)\s*:\s*(\"[^\"]*\"|[-+]?\d+(?:\.\d+)?|true|false)")
+REQUIRED_TERRAIN_FIELDS = {"name", "startX", "startZ", "sx", "sy", "sz"}
+ALLOWED_TERRAIN_FIELDS = REQUIRED_TERRAIN_FIELDS | {"baseY", "prefabId", "role"}
 
 
 def parse_level_objects(path: Path) -> list[dict[str, Any]]:
@@ -227,8 +233,50 @@ def parse_level_objects(path: Path) -> list[dict[str, Any]]:
                 fields[key] = raw == "true"
             else:
                 fields[key] = float(raw)
-        if {"name", "startX", "startZ", "sx", "sy", "sz"}.issubset(fields):
+        if REQUIRED_TERRAIN_FIELDS.issubset(fields):
             out.append(fields)
+    return out
+
+
+def parse_level_data(path: Path) -> list[dict[str, Any]]:
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    terrain = raw.get("terrain")
+    if not isinstance(terrain, list):
+        raise TypeError(f"{path}: terrain must be a list")
+
+    out: list[dict[str, Any]] = []
+    for index, spec in enumerate(terrain, start=1):
+        if not isinstance(spec, dict):
+            raise TypeError(f"{path}: terrain[{index}] must be an object")
+        missing = sorted(REQUIRED_TERRAIN_FIELDS - set(spec))
+        if missing:
+            raise ValueError(f"{path}: terrain[{index}] missing {', '.join(missing)}")
+        extra = sorted(set(spec) - ALLOWED_TERRAIN_FIELDS)
+        if extra:
+            raise ValueError(f"{path}: terrain[{index}] has unknown fields {', '.join(extra)}")
+        out.append(dict(spec))
+    return out
+
+
+def load_fall_death_zones(workspace: Path) -> dict[int, list[dict[str, Any]]]:
+    path = workspace / "data" / "zlj" / "fall_death_zones.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    zones = raw.get("zones")
+    if not isinstance(zones, list):
+        raise TypeError(f"{path}: zones must be a list")
+
+    out: dict[int, list[dict[str, Any]]] = {}
+    required = {"module", "name", "startX", "startZ", "sx", "sz"}
+    for index, zone in enumerate(zones, start=1):
+        if not isinstance(zone, dict):
+            raise TypeError(f"{path}: zones[{index}] must be an object")
+        missing = sorted(required - set(zone))
+        if missing:
+            raise ValueError(f"{path}: zones[{index}] missing {', '.join(missing)}")
+        module = int(zone["module"])
+        out.setdefault(module, []).append(zone)
     return out
 
 
@@ -289,8 +337,12 @@ def level_10_static_terrain() -> list[dict[str, Any]]:
 
 
 def load_level_specs(workspace: Path, module: int) -> list[dict[str, Any]]:
-    terrain_path = workspace / "ts_src" / "zlj" / "levels" / f"level_{module:02d}" / "terrain.ts"
-    specs = parse_level_objects(terrain_path)
+    data_path = workspace / "data" / "zlj" / "levels" / f"level_{module:02d}.json"
+    if data_path.exists():
+        specs = parse_level_data(data_path)
+    else:
+        terrain_path = workspace / "ts_src" / "zlj" / "levels" / f"level_{module:02d}" / "terrain.ts"
+        specs = parse_level_objects(terrain_path)
     if module == 10:
         specs.extend(level_10_static_terrain())
         specs.extend(level_10_rails())
@@ -360,6 +412,7 @@ def add_base_middle_layer(items: list[SceneItem], section: str, module: int, cen
 
 def build_plan(workspace: Path) -> list[SceneItem]:
     items: list[SceneItem] = []
+    fall_death_zones_by_module = load_fall_death_zones(workspace)
     for module in range(0, 11):
         frame = LEVEL_FRAMES[module]
         center_x = module_center_x(module)
@@ -415,6 +468,24 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     runtime_placeholder=module == 3 and piece_name in THIRD_LEVEL_RUNTIME_PLATFORM_NAMES,
                 )
             )
+        for zone in fall_death_zones_by_module.get(module, []):
+            x = module_min_x + float(zone["startX"]) + float(zone["sx"]) / 2
+            z = module_min_z + float(zone["startZ"]) + float(zone["sz"]) / 2
+            items.append(
+                SceneItem(
+                    "level",
+                    module,
+                    module_name(module, f"掉坑死亡_{zone['name']}"),
+                    FALL_DEATH_TRIGGER_PREFAB_ID,
+                    x,
+                    HOLE_DEATH_TRIGGER_CENTER_Y,
+                    z,
+                    float(zone["sx"]),
+                    HOLE_DEATH_TRIGGER_HEIGHT,
+                    float(zone["sz"]),
+                    runtime_trigger=True,
+                )
+            )
     return items
 
 
@@ -426,12 +497,13 @@ def lua_item(item: SceneItem) -> str:
     model_id = "nil" if item.model_id is None else str(item.model_id)
     paint_color = "nil" if item.paint_color is None else str(item.paint_color)
     runtime_placeholder = "true" if item.runtime_placeholder else "false"
+    runtime_trigger = "true" if item.runtime_trigger else "false"
     return (
         "{"
         f"name={lua_string(item.full_name)}, legacyName={lua_string(item.legacy_full_name)}, parentName={lua_string(item.parent_name)}, "
         f"section={lua_string(item.section)}, module={item.module}, prefabId={item.prefab_id}, "
         f"x={item.x:.6f}, y={item.y:.6f}, z={item.z:.6f}, sx={item.sx:.6f}, sy={item.sy:.6f}, sz={item.sz:.6f}, "
-        f"modelId={model_id}, paintColor={paint_color}, runtimePlaceholder={runtime_placeholder}"
+        f"modelId={model_id}, paintColor={paint_color}, runtimePlaceholder={runtime_placeholder}, runtimeTrigger={runtime_trigger}"
         "}"
     )
 
@@ -508,6 +580,11 @@ end
 
 local function apply_item_appearance(uid, item)
   if uid == nil or item == nil then
+    return
+  end
+  if item.runtimeTrigger == true then
+    pcall(function() EditorAPI.set_unit_attr(uid, "model_alpha", 0) end)
+    pcall(function() EditorAPI.set_unit_attr(uid, "init_model_visible", false) end)
     return
   end
   if item.paintColor ~= nil then

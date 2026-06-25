@@ -97,11 +97,11 @@ function extractTriggerUnit(data: unknown): unknown {
   return eventData?.event_unit !== undefined ? eventData.event_unit : eventData?.unit
 }
 
-function createEighthDeathTrigger(name: string, x: number, y: number, z: number, piece: RuntimeTerrainPiece): unknown {
+function createEighthDeathTrigger(name: string, x: number, y: number, z: number, sx: number, sy: number, sz: number): unknown {
   const trigger = safeCreateCustomTriggerSpace(
     DEATH_TRIGGER_PREFAB_ID,
     vec3(x, y, z),
-    vec3(piece.sx + DEATH_TRIGGER_OUTSET * 2, piece.sy + DEATH_TRIGGER_OUTSET * 2, piece.sz + DEATH_TRIGGER_OUTSET * 2),
+    vec3(sx + DEATH_TRIGGER_OUTSET * 2, sy + DEATH_TRIGGER_OUTSET * 2, sz + DEATH_TRIGGER_OUTSET * 2),
     { tag: `eighth_death_trigger_create_${name}`, logger: print }
   )
   if (trigger === null || trigger === undefined) {
@@ -124,7 +124,7 @@ function createEighthDeathTrigger(name: string, x: number, y: number, z: number,
     )
   }
   print(
-    `[ZLJ_EIGHTH_MECHANISM] death trigger created name=${name} trigger=${tostring(trigger)} id=${tostring(triggerId)} pos=(${x},${y},${z}) scale=(${piece.sx + DEATH_TRIGGER_OUTSET * 2},${piece.sy + DEATH_TRIGGER_OUTSET * 2},${piece.sz + DEATH_TRIGGER_OUTSET * 2}) enabled_by_global=false`
+    `[ZLJ_EIGHTH_MECHANISM] death trigger created name=${name} trigger=${tostring(trigger)} id=${tostring(triggerId)} pos=(${x},${y},${z}) scale=(${sx + DEATH_TRIGGER_OUTSET * 2},${sy + DEATH_TRIGGER_OUTSET * 2},${sz + DEATH_TRIGGER_OUTSET * 2}) enabled_by_global=false`
   )
   return trigger
 }
@@ -145,10 +145,32 @@ export function registerEighthLevelMechanismPart(
   if (targetZ === undefined) {
     return
   }
-  const trigger = createEighthDeathTrigger(name, x, y, z, piece)
+  const trigger = createEighthDeathTrigger(name, x, y, z, piece.sx, piece.sy, piece.sz)
   runtimeEighthMechanismParts.push({ name, unit, trigger, x, y, z, targetZ })
   print(
     `[ZLJ_EIGHTH_MECHANISM] registered name=${name} start=(${x},${y},${z}) target_z=${targetZ} move_z=${targetZ - z} move_seconds=${EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS}`
+  )
+}
+
+export function registerEighthLevelMechanismBinding(
+  unit: unknown,
+  name: string,
+  x: number,
+  y: number,
+  z: number,
+  sx: number,
+  sy: number,
+  sz: number,
+  moveZ: number
+): void {
+  if (unit === null || unit === undefined) {
+    return
+  }
+  const targetZ = z + moveZ
+  const trigger = createEighthDeathTrigger(name, x, y, z, sx, sy, sz)
+  runtimeEighthMechanismParts.push({ name, unit, trigger, x, y, z, targetZ })
+  print(
+    `[ZLJ_EIGHTH_MECHANISM] registered name=${name} source=runtime_scene_binding start=(${x},${y},${z}) target_z=${targetZ} move_z=${moveZ} move_seconds=${EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS}`
   )
 }
 

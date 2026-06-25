@@ -232,6 +232,31 @@ export function registerNinthVanishingPlatform(
   )
 }
 
+export function registerNinthVanishingPlatformBinding(
+  unit: unknown,
+  name: string,
+  x: number,
+  z: number,
+  sx: number,
+  sz: number
+): void {
+  if (unit === null || unit === undefined) {
+    return
+  }
+  const platform: NinthPlatform = { name, unit, fading: false, hidden: false, generation: 0 }
+  platforms.push(platform)
+  const trigger = safeCreateCustomTriggerSpace(
+    TRIGGER_PREFAB_ID,
+    vec3(x, TRIGGER_CENTER_Y, z),
+    vec3(sx, TRIGGER_HEIGHT, sz),
+    { tag: `ninth_trigger_create_${name}`, logger: print }
+  )
+  registerTrigger(platform, trigger)
+  print(
+    `[${TAG}] platform registered name=${name} source=runtime_scene_binding unit=${tostring(unit)} trigger=${tostring(trigger)} trigger_pos=(${x},${TRIGGER_CENTER_Y},${z}) trigger_scale=(${sx},${TRIGGER_HEIGHT},${sz}) fade_seconds=${FADE_SECONDS}`
+  )
+}
+
 function resetNinthLevelPlatformsToInitial(source: string): void {
   if (platforms.length === 0) {
     return

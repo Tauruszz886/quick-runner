@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "tstl && cp .luarc.json project/ts_out/",
+    "generate:terrain": "python3 tools/zlj_data/generate_level_terrain.py --workspace .",
     "watch": "tstl --watch"
   },
   "_disabledScriptsComment": "package.json 不支持 JSON 注释；这里保留暂不启用的脚本，安装 lua-language-server 后可移回 scripts。",

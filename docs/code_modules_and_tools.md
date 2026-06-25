@@ -11,7 +11,8 @@
 当前 quick-runner 的主要设计是：
 
 - 地板、墙、天花板、关卡地形等静态场景对象优先由编辑器创建和维护。
-- `ts_src/zlj/levels/**/terrain.ts` 保存每关地形数据，作为编辑器创建脚本和运行时绑定机关的共同来源。
+- `terrain.ts` 这类几何数据只作为编辑器场景创建/维护的输入，不再作为运行时机关绑定来源。
+- 运行时机关绑定读取 `data/zlj/runtime_scene_bindings.json` 生成的 `RUNTIME_SCENE_BINDINGS`，按组件名查询编辑器单位，并从单位自身读取位置和尺寸。
 - `runtime` 代码负责试玩时的逻辑：玩家速度、出生复活、掉坑死亡、追击球、移动/消失/压板/电流等机关。
 - `tools/zlj_editor_scene` 负责把这些地形数据生成编辑器场景对象树，并提供校验和索引导出。
 
@@ -28,6 +29,16 @@
 - `eggitor_export.ts`：统一转导导出的数据。
 - `exported_data.ts`：当前主要包含 UI 节点表，例如 `UINodes["画布0"]`。
 - `exported_class.ts`：导出数据对应的类型。
+
+## data 目录
+
+`data` 用于存放可被多种工具读取的结构化源数据。
+
+当前第 3 关已经作为试点迁移到 `data/zlj/levels/level_03.json`。这份 JSON 是第 3 关地形数据的源文件，`ts_src/zlj/levels/level_03/terrain.ts` 由 `tools/zlj_data/generate_level_terrain.py` 生成。其他关卡暂时仍直接维护各自的 `terrain.ts`。
+
+掉坑死亡区使用单独的 `data/zlj/fall_death_zones.json` 维护。这份数据会生成 `ts_src/zlj/levels/fall_death_zones.ts`，并由编辑器场景创建脚本生成 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件。
+
+运行时机关绑定使用 `data/zlj/runtime_scene_bindings.json` 维护。这份数据只记录组件名、玩法角色和少量玩法参数，例如第 8 关移动方向、第 10 关电流是否移动；不记录组件位置和尺寸。位置和尺寸由运行时从编辑器单位读取。
 
 ### zlj/config.ts
 
@@ -55,11 +66,13 @@
 
 ## levels 模块
 
-`ts_src/zlj/levels` 是关卡地形数据。
+`ts_src/zlj/levels` 保存给 TypeScript 使用的关卡数据模块。其中一部分是由 `data/zlj` 生成的适配层。
 
 ### terrain.ts 的作用
 
 每个 `levels/level_xx/terrain.ts` 都导出一个 `LEVEL_XX_TERRAIN` 数组。数组里的每个对象代表本关的一块平台、障碍或机关零件。
+
+它现在的定位是编辑器场景创建/维护用的几何数据，不是运行时玩法绑定的权威来源。运行时机关绑定应走 `runtime_scene_bindings.ts`，按组件名查询编辑器单位。
 
 常见字段：
 
@@ -75,9 +88,8 @@
 这些文件本身不执行逻辑，而是“数据源”。它们会被：
 
 - `levels/terrain/index.ts` 汇总成 `LEVEL_TERRAIN_SPECS`。
-- `runtime/runtime_terrain.ts` 用来绑定编辑器里的实际单位，或在兜底情况下创建关键机关单位。
-- `runtime/runtime_fall_return.ts` 用来计算哪些区域不是地形，从而创建掉坑死亡触发器。
 - `tools/zlj_editor_scene/create_editor_scene.py` 用来生成编辑器场景创建计划。
+- `runtime/runtime_terrain.ts` 的旧备用创建路径仍可读取 `LEVEL_TERRAIN_SPECS`，但当前主运行路径不应依赖它。
 
 ### shared
 
@@ -88,7 +100,20 @@
 
 所有关卡 terrain 的汇总入口。
 
-运行时代码只需要从这里读取 `LEVEL_TERRAIN_SPECS`，不用直接 import 每一个 `level_XX/terrain.ts`。
+旧备用创建路径可以从这里读取 `LEVEL_TERRAIN_SPECS`，不用直接 import 每一个 `level_XX/terrain.ts`。当前编辑器场景模式下，运行时机关绑定不再从这里取数据。
+
+### levels/runtime_scene_bindings.ts
+
+运行时机关绑定数据，由 `data/zlj/runtime_scene_bindings.json` 生成。
+
+它只记录：
+
+- `module`：关卡编号。
+- `component`：编辑器组件短名，运行时会拼成 `QR_第XX关_${component}` 查询单位。
+- `role`：玩法角色，例如压板、定时平台、消失平台、电流、第 8 关移动件、第 2 关追击球地面。
+- 少量玩法参数，例如 `moveZ`、`moving`。
+
+它不记录位置和尺寸。运行时会从编辑器单位读取实际 `position` 和 `scale`。
 
 ## runtime 模块
 
@@ -109,11 +134,11 @@
 
 主要工作：
 
-- 读取每关 terrain 数据。
-- 根据模块中心点把局部坐标换算成世界坐标。
-- 查询编辑器中同名单位，例如 `QR_第03关_dxf_840_24x17_1875`。
+- 读取 `RUNTIME_SCENE_BINDINGS`。
+- 按组件名查询编辑器中同名单位，例如 `QR_第03关_dxf_840_24x17_1875`。
+- 从编辑器单位自身读取 `position` 和 `scale`。
 - 对查到的单位注册对应机关逻辑。
-- 对关键机关在编辑器里缺失的情况创建 fallback 单位。
+- 缺失组件只打印 missing，不再根据 terrain 几何数据创建 fallback 机关单位。
 - 启动压板、第 3 关平台、第 5 关夹层、第 8 关机关、第 10 关电流、第 2 关追击球、掉坑死亡触发器等系统。
 
 ### runtime_structure.ts
@@ -149,7 +174,7 @@
 
 掉坑死亡触发器。
 
-它根据每关 terrain 数据计算“地形未覆盖的空洞矩形”，在这些区域创建触发器。玩家进入触发器后调用 `eliminateUnitAndRebirthAtBirth()` 回出生地。
+它不再根据 terrain 自动计算空洞。掉坑区域由 `data/zlj/fall_death_zones.json` 显式维护，编辑器场景里会创建对应的 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件。运行时只查询这些场景组件并注册进入事件；玩家进入触发器后调用 `eliminateUnitAndRebirthAtBirth()` 回出生地。
 
 ### runtime_second_chaser.ts
 
@@ -168,7 +193,7 @@
 
 第 4 关压板机关。
 
-`terrain.ts` 中带 `role: "fourth_compressor"` 的块会注册成压板。运行时让压板周期性下降、停留、上升，并用死亡触发器处理被压中的玩家。
+`runtime_scene_bindings.ts` 中 `role: "fourth_compressor"` 的组件会注册成压板。运行时让压板周期性下降、停留、上升，并用死亡触发器处理被压中的玩家。
 
 ### fifth_middle_layer.ts
 
@@ -180,19 +205,19 @@
 
 第 8 关移动横杆/长板机关。
 
-它根据地形块尺寸识别小横杆、移动长板和固定高杆。移动部件会沿 Z 轴往返，并带死亡触发器。
+它根据 `runtime_scene_bindings.ts` 中 `role: "eighth_moving_part"` 的组件绑定移动部件。移动距离方向由 `moveZ` 指定，位置和尺寸从编辑器单位读取。
 
 ### runtime_ninth_mechanism.ts
 
 第 9 关消失平台。
 
-指定平台被玩家触碰后会描边提示并渐隐，最终隐藏。玩家死亡回出生时，平台恢复可见。
+`runtime_scene_bindings.ts` 中 `role: "ninth_vanishing_platform"` 的平台被玩家触碰后会描边提示并渐隐，最终隐藏。玩家死亡回出生时，平台恢复可见。
 
 ### runtime_tenth_current.ts
 
 第 10 关电流机关。
 
-它识别 `prefabId` 为电流预制体的块。部分电流块会沿 X 轴移动，触碰电流死亡触发器后回出生地。
+它根据 `runtime_scene_bindings.ts` 中 `role: "tenth_current"` 的组件绑定电流。`moving: true` 的电流块会沿 X 轴移动，触碰电流死亡触发器后回出生地。
 
 ## tools 目录
 
@@ -204,14 +229,32 @@ CAD 维护脚本目录。
 
 当前没有 active 的 CAD 修改脚本。第 3 关 `84C` 的一次性修改脚本已删除，因为它硬编码了单个 CAD handle、局部坐标和投影线 handle，不适合作为通用工具维护。CAD 输入/输出文件仍记录在 `.tools/cad/`，流程说明见 `docs/cad_workflow.md`。
 
+### tools/zlj_data/generate_level_terrain.py
+
+结构化地形数据生成脚本。
+
+当前用于把 `data/zlj/levels/level_03.json` 生成回 `ts_src/zlj/levels/level_03/terrain.ts`。后续其他关卡迁移到 JSON 后，也会通过同一脚本生成对应 `terrain.ts`。
+
+它同时会生成：
+
+- `data/zlj/fall_death_zones.json` -> `ts_src/zlj/levels/fall_death_zones.ts`
+- `data/zlj/runtime_scene_bindings.json` -> `ts_src/zlj/levels/runtime_scene_bindings.ts`
+
+常用命令：
+
+```bash
+npm run generate:terrain
+```
+
 ### tools/zlj_editor_scene/create_editor_scene.py
 
 编辑器场景创建脚本，也是 `tools` 中最核心的脚本。
 
 用途：
 
-- 读取 `ts_src/zlj/levels/level_XX/terrain.ts`。
+- 优先读取 `data/zlj/levels/level_XX.json`；没有 JSON 的关卡继续读取 `ts_src/zlj/levels/level_XX/terrain.ts`。
 - 生成出生地和第 1-10 关的静态场景计划。
+- 根据 `data/zlj/fall_death_zones.json` 生成每关掉坑死亡触发器组件。
 - 创建或更新对象树：
   - `QR_地图_ROOT`
   - `QR_出生地_ROOT`
@@ -275,7 +318,7 @@ Python 运行脚本后生成的字节码缓存目录。
 
 修改某关 `terrain.ts` 后，通常需要考虑这些联动：
 
-- 运行时掉坑区域会改变，因为 `runtime_fall_return.ts` 会按 terrain 覆盖区域计算空洞。
+- 掉坑死亡区不会自动改变；需要单独修改 `data/zlj/fall_death_zones.json` 并重新生成场景计划。
 - 编辑器创建计划会改变，需要用 `create_editor_scene.py --dry-run` 或实际创建脚本重新生成/同步。
-- 如果改的是第 3/4/5/8/9/10 关的机关相关块，要确认对应 runtime 识别规则是否还匹配。
+- 如果新增、删除或重命名第 2/3/4/8/9/10 关的机关组件，要同步修改 `data/zlj/runtime_scene_bindings.json`。
 - 如果已有 SVG/CAD/组件索引文档，应该同步更新编号索引和图中标注。

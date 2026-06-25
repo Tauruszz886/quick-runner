@@ -147,6 +147,41 @@ export function registerTenthCurrentPart(
   )
 }
 
+export function registerTenthCurrentBinding(
+  unit: unknown,
+  name: string,
+  x: number,
+  y: number,
+  z: number,
+  sx: number,
+  sy: number,
+  sz: number,
+  moving: boolean
+): void {
+  if (unit === null || unit === undefined) {
+    return
+  }
+  const part: TenthCurrentPart = {
+    name,
+    unit,
+    moving,
+    startX: x,
+    surfaceY: y,
+    z,
+    sx,
+    sy,
+    sz,
+    endX: x - MOVE_DISTANCE_X,
+  }
+  parts.push(part)
+  if (moving) {
+    movingParts.push(part)
+  }
+  print(
+    `[${TAG}] registered name=${name} source=runtime_scene_binding start=(${x},${y},${z}) end_x=${part.endX} hidden_y=${HIDDEN_Y} moving=${moving} death_trigger=pending cycle_seconds=${SURFACE_SECONDS + HIDDEN_RETURN_SECONDS}`
+  )
+}
+
 function setPartPosition(part: TenthCurrentPart, x: number, y: number): void {
   safeCall(
     () => {
