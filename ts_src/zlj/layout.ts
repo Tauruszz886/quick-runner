@@ -1,4 +1,4 @@
-import { LEVEL_TERRAIN_FRAMES } from "./levels/terrain"
+import { LEVEL_TERRAIN_FRAMES } from "./levels/shared/frames"
 import {
   EXPANDED_FLOOR_END_MODULE_INDEX,
   EXPANDED_FLOOR_START_MODULE_INDEX,

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from dataclasses import dataclass, asdict
@@ -115,6 +116,7 @@ class SceneItem:
     paint_color: int | None = None
     runtime_placeholder: bool = False
     runtime_trigger: bool = False
+    custom_kv: dict[str, Any] | None = None
 
     @property
     def full_name(self) -> str:
@@ -259,6 +261,43 @@ def load_fall_death_zones(workspace: Path) -> dict[int, list[dict[str, Any]]]:
     return out
 
 
+def load_runtime_scene_kv(workspace: Path) -> dict[tuple[int, str], dict[str, Any]]:
+    path = workspace / "data" / "zlj" / "runtime_scene_bindings.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    bindings = raw.get("bindings")
+    if not isinstance(bindings, list):
+        raise TypeError(f"{path}: bindings must be a list")
+
+    out: dict[tuple[int, str], dict[str, Any]] = {}
+    required = {"module", "component", "role"}
+    allowed = required | {"moveZ", "moving"}
+    for index, binding in enumerate(bindings, start=1):
+        if not isinstance(binding, dict):
+            raise TypeError(f"{path}: bindings[{index}] must be an object")
+        missing = sorted(required - set(binding))
+        if missing:
+            raise ValueError(f"{path}: bindings[{index}] missing {', '.join(missing)}")
+        extra = sorted(set(binding) - allowed)
+        if extra:
+            raise ValueError(f"{path}: bindings[{index}] has unknown fields {', '.join(extra)}")
+        module = int(binding["module"])
+        component = str(binding["component"])
+        kv: dict[str, Any] = {
+            "QRRole": str(binding["role"]),
+            "QRModule": module,
+            "QRComponent": component,
+            "QRRuntimeName": module_name(module, component),
+        }
+        if "moveZ" in binding:
+            kv["QRMoveZ"] = float(binding["moveZ"])
+        if "moving" in binding:
+            kv["QRMoving"] = bool(binding["moving"])
+        out[(module, component)] = kv
+    return out
+
+
 def load_level_specs(workspace: Path, module: int) -> list[dict[str, Any]]:
     data_path = workspace / "data" / "zlj" / "levels" / f"level_{module:02d}.json"
     if not data_path.exists():
@@ -330,6 +369,7 @@ def add_base_middle_layer(items: list[SceneItem], section: str, module: int, cen
 def build_plan(workspace: Path) -> list[SceneItem]:
     items: list[SceneItem] = []
     fall_death_zones_by_module = load_fall_death_zones(workspace)
+    runtime_kv_by_component = load_runtime_scene_kv(workspace)
     for module in range(0, 11):
         frame = LEVEL_FRAMES[module]
         center_x = module_center_x(module)
@@ -370,6 +410,7 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             y = terrain_y(module, piece)
             prefab_id = int(piece.get("prefabId", WALL_PREFAB_ID))
             piece_name = str(piece["name"])
+            custom_kv = runtime_kv_by_component.get((module, piece_name))
             items.append(
                 SceneItem(
                     "level",
@@ -383,16 +424,18 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     float(piece["sy"]),
                     float(piece["sz"]),
                     runtime_placeholder=module == 3 and piece_name in THIRD_LEVEL_RUNTIME_PLATFORM_NAMES,
+                    custom_kv=dict(custom_kv) if custom_kv is not None else None,
                 )
             )
         for zone in fall_death_zones_by_module.get(module, []):
+            zone_name = f"掉坑死亡_{zone['name']}"
             x = module_min_x + float(zone["startX"]) + float(zone["sx"]) / 2
             z = module_min_z + float(zone["startZ"]) + float(zone["sz"]) / 2
             items.append(
                 SceneItem(
                     "level",
                     module,
-                    module_name(module, f"掉坑死亡_{zone['name']}"),
+                    module_name(module, zone_name),
                     FALL_DEATH_TRIGGER_PREFAB_ID,
                     x,
                     HOLE_DEATH_TRIGGER_CENTER_Y,
@@ -401,6 +444,12 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     HOLE_DEATH_TRIGGER_HEIGHT,
                     float(zone["sz"]),
                     runtime_trigger=True,
+                    custom_kv={
+                        "QRRole": "fall_death",
+                        "QRModule": module,
+                        "QRComponent": zone_name,
+                        "QRRuntimeName": module_name(module, zone_name),
+                    },
                 )
             )
     return items
@@ -408,6 +457,26 @@ def build_plan(workspace: Path) -> list[SceneItem]:
 
 def lua_string(value: str) -> str:
     return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+
+def lua_kv_value(value: Any) -> tuple[str, str]:
+    if isinstance(value, bool):
+        return "Bool", "true" if value else "false"
+    if isinstance(value, int) and not isinstance(value, bool):
+        return "Int", str(value)
+    if isinstance(value, float):
+        return "Fixed", f"{value:.10f}".rstrip("0").rstrip(".")
+    return "Str", lua_string(str(value))
+
+
+def lua_custom_kv(custom_kv: dict[str, Any] | None) -> str:
+    if not custom_kv:
+        return "{}"
+    entries: list[str] = []
+    for key in sorted(custom_kv):
+        value_type, value = lua_kv_value(custom_kv[key])
+        entries.append(f"{{key={lua_string(key)}, valueType={lua_string(value_type)}, value={value}}}")
+    return "{" + ", ".join(entries) + "}"
 
 
 def lua_item(item: SceneItem) -> str:
@@ -420,7 +489,8 @@ def lua_item(item: SceneItem) -> str:
         f"name={lua_string(item.full_name)}, legacyName={lua_string(item.legacy_full_name)}, parentName={lua_string(item.parent_name)}, "
         f"section={lua_string(item.section)}, module={item.module}, prefabId={item.prefab_id}, "
         f"x={item.x:.6f}, y={item.y:.6f}, z={item.z:.6f}, sx={item.sx:.6f}, sy={item.sy:.6f}, sz={item.sz:.6f}, "
-        f"modelId={model_id}, paintColor={paint_color}, runtimePlaceholder={runtime_placeholder}, runtimeTrigger={runtime_trigger}"
+        f"modelId={model_id}, paintColor={paint_color}, runtimePlaceholder={runtime_placeholder}, runtimeTrigger={runtime_trigger}, "
+        f"customKv={lua_custom_kv(item.custom_kv)}"
         "}"
     )
 
@@ -522,6 +592,27 @@ local function apply_item_appearance(uid, item)
   end
 end
 
+local function enum_value_type(type_name)
+  if Enums ~= nil and Enums.ValueType ~= nil and Enums.ValueType[type_name] ~= nil then
+    return Enums.ValueType[type_name]
+  end
+  return type_name
+end
+
+local function apply_item_custom_kv(uid, item)
+  if uid == nil or item == nil or item.customKv == nil or EditorAPI.set_unit_kv == nil then
+    return
+  end
+  for index = 1, #item.customKv do
+    local kv = item.customKv[index]
+    if kv ~= nil and kv.key ~= nil and kv.valueType ~= nil then
+      pcall(function()
+        EditorAPI.set_unit_kv(uid, kv.key, enum_value_type(kv.valueType), kv.value)
+      end)
+    end
+  end
+end
+
 local function ensure_root(item)
   local uid = existing[item.name]
   if uid ~= nil then
@@ -617,6 +708,7 @@ for index = 1, #ITEMS do
         pcall(function() EditorAPI.set_unit_attr(uid, "model_id", item.modelId) end)
       end
       apply_item_appearance(uid, item)
+      apply_item_custom_kv(uid, item)
     else
     local pos = math.Vector3(item.x, item.y, item.z)
     local parent_uid = existing[item.parentName]
@@ -637,6 +729,7 @@ for index = 1, #ITEMS do
         pcall(function() EditorAPI.set_unit_attr(uid, "model_id", item.modelId) end)
       end
       apply_item_appearance(uid, item)
+      apply_item_custom_kv(uid, item)
       if parent_uid ~= nil then
         attached = attached + 1
       elseif add_child(parent_uid, uid) then
@@ -668,6 +761,18 @@ end
 
 emit("DONE:created=" .. tostring(created) .. ":skipped=" .. tostring(skipped) .. ":failed=" .. tostring(failed) .. ":total=" .. tostring(#ITEMS) .. ":roots_created=" .. tostring(roots_created) .. ":roots_skipped=" .. tostring(roots_skipped) .. ":attached=" .. tostring(attached) .. ":replaced=" .. tostring(replaced))
 """
+
+
+def plan_item_dict(item: SceneItem) -> dict[str, Any]:
+    data = asdict(item)
+    if data.get("custom_kv") is None:
+        data.pop("custom_kv", None)
+    data.update({
+        "full_name": item.full_name,
+        "legacy_full_name": item.legacy_full_name,
+        "parent_name": item.parent_name,
+    })
+    return data
 
 
 def parse_summary(log_text: str, run_id: str) -> dict[str, int]:
@@ -703,12 +808,7 @@ def main() -> int:
     plan_path.write_text(
         json.dumps(
             [
-                asdict(item)
-                | {
-                    "full_name": item.full_name,
-                    "legacy_full_name": item.legacy_full_name,
-                    "parent_name": item.parent_name,
-                }
+                plan_item_dict(item)
                 for item in items
             ],
             ensure_ascii=False,

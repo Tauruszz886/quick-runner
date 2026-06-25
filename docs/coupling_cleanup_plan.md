@@ -14,9 +14,9 @@
 
 当前第一阶段已经推进到：第 1-10 关地形源数据都迁移到 `data/zlj/levels/level_XX.json`，并由 `tools/zlj_data/generate_level_terrain.py` 生成 `ts_src/zlj/levels/level_XX/terrain.ts`。`create_editor_scene.py` 只读取 JSON，已移除旧的 `terrain.ts` 正则解析 fallback。
 
-掉坑死亡区已从“运行时根据 terrain 推导空洞”改成显式数据和显式场景组件：源数据是 `data/zlj/fall_death_zones.json`，生成物是 `ts_src/zlj/levels/fall_death_zones.ts`，编辑器计划会创建 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件，运行时只负责查询并注册这些组件。
+掉坑死亡区已从“运行时根据 terrain 推导空洞”改成显式数据和显式场景组件：源数据是 `data/zlj/fall_death_zones.json`，编辑器计划会创建带 `QRRole="fall_death"` 的 `QR_第XX关_掉坑死亡_fall_death_XX` 触发器组件。运行时不再生成或加载 `fall_death_zones.ts`。
 
-运行时机关绑定已从“遍历 terrain 几何表”改成显式组件绑定：源数据是 `data/zlj/runtime_scene_bindings.json`，生成物是 `ts_src/zlj/levels/runtime_scene_bindings.ts`。运行时按组件名查询编辑器单位，并从单位自身读取位置和尺寸；`terrain.ts` 不再是主运行路径的机关绑定来源。`runtime_terrain.ts` 中按 `LEVEL_TERRAIN_SPECS` 运行时创建地图的 `createRuntimeTiles()` 备用路径也已移除。
+运行时机关绑定已从“遍历 terrain 几何表/外部组件名单”改成场景自描述绑定：`create_editor_scene.py` 会把 `data/zlj/runtime_scene_bindings.json` 中的迁移数据写入场景单位自定义 KV，运行时从 `QR_地图_ROOT` 递归扫描带 `QRRole` 的单位，并从单位自身读取位置、尺寸和少量参数。`runtime_scene_bindings.ts`、`LEVEL_TERRAIN_SPECS` 汇总入口和 `fall_death_zones.ts` 均已删除；`terrain.ts` 不再是主运行路径的机关绑定来源。`runtime_terrain.ts` 中按 `LEVEL_TERRAIN_SPECS` 运行时创建地图的 `createRuntimeTiles()` 备用路径也已移除。
 
 ## 主要耦合点
 
@@ -165,11 +165,12 @@
 
 目标：把运行时玩法语义从关卡几何硬编码里剥离。
 
-状态：已完成主要切换。第 1-10 关地形已迁移到 JSON；掉坑死亡区和运行时机关绑定已经独立成显式数据；编辑器创建脚本不再解析 `terrain.ts`。
+状态：已完成主要切换。第 1-10 关地形已迁移到 JSON；掉坑死亡区和运行时机关绑定已经独立成显式场景组件/KV；编辑器创建脚本不再解析 `terrain.ts`。
 
 建议做法：
 
-- 运行时玩法绑定继续维护在 `data/zlj/runtime_scene_bindings.json`，不要再从 terrain 尺寸或坐标识别机关。
+- 运行时玩法绑定以场景单位自定义 KV 为准，不要再从 terrain 尺寸或坐标识别机关。
+- `data/zlj/runtime_scene_bindings.json` 暂时只作为批量写 KV 的迁移输入；等场景 KV 稳定后继续降级或删除。
 - 掉坑死亡区继续维护在 `data/zlj/fall_death_zones.json`，不要再从 terrain 覆盖区域推导。
 - `terrain.ts` 只作为生成物保留，后续不要手写维护。
 - 后续如果新增公式化地形生成，应放进 `tools/zlj_data/` 或显式数据生成步骤，不要放进编辑器创建脚本。

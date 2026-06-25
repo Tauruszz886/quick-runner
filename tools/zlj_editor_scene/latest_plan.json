@@ -375,6 +375,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 1,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第01关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第01关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第1关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第01关_ROOT"
@@ -394,6 +400,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 1,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第01关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第01关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第1关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第01关_ROOT"
@@ -546,6 +558,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "second_chaser_surface",
+      "QRModule": 2,
+      "QRComponent": "dxf_69D_16x37_5",
+      "QRRuntimeName": "第02关_dxf_69D_16x37_5"
+    },
     "full_name": "QR_第02关_dxf_69D_16x37_5",
     "legacy_full_name": "QR_第2关_dxf_69D_16x37_5",
     "parent_name": "QR_第02关_ROOT"
@@ -565,6 +583,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "second_chaser_surface",
+      "QRModule": 2,
+      "QRComponent": "dxf_699_104x74_375",
+      "QRRuntimeName": "第02关_dxf_699_104x74_375"
+    },
     "full_name": "QR_第02关_dxf_699_104x74_375",
     "legacy_full_name": "QR_第2关_dxf_699_104x74_375",
     "parent_name": "QR_第02关_ROOT"
@@ -584,6 +608,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "second_chaser_surface",
+      "QRModule": 2,
+      "QRComponent": "dxf_695_24x48_889",
+      "QRRuntimeName": "第02关_dxf_695_24x48_889"
+    },
     "full_name": "QR_第02关_dxf_695_24x48_889",
     "legacy_full_name": "QR_第2关_dxf_695_24x48_889",
     "parent_name": "QR_第02关_ROOT"
@@ -603,6 +633,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第02关_ROOT"
@@ -622,6 +658,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第02关_ROOT"
@@ -641,6 +683,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第02关_ROOT"
@@ -660,6 +708,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第02关_ROOT"
@@ -679,6 +733,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第02关_ROOT"
@@ -698,6 +758,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第02关_ROOT"
@@ -717,6 +783,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第02关_ROOT"
@@ -736,6 +808,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 2,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第02关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第02关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第2关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第02关_ROOT"
@@ -907,6 +985,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_840_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_840_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_840_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_840_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -926,6 +1010,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_85C_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_85C_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_85C_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_85C_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -945,6 +1035,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_860_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_860_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_860_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_860_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -964,6 +1060,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_864_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_864_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_864_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_864_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -983,6 +1085,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_844_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_844_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_844_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_844_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1002,6 +1110,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_858_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_858_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_858_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_858_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1021,6 +1135,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_86C_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_86C_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_86C_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_86C_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1040,6 +1160,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_868_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_868_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_868_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_868_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1059,6 +1185,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_848_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_848_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_848_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_848_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1078,6 +1210,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_84C_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_84C_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_84C_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_84C_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1097,6 +1235,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_850_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_850_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_850_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_850_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1116,6 +1260,12 @@
     "paint_color": null,
     "runtime_placeholder": true,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "third_timed_platform",
+      "QRModule": 3,
+      "QRComponent": "dxf_854_24x17_1875",
+      "QRRuntimeName": "第03关_dxf_854_24x17_1875"
+    },
     "full_name": "QR_第03关_dxf_854_24x17_1875",
     "legacy_full_name": "QR_第3关_dxf_854_24x17_1875",
     "parent_name": "QR_第03关_ROOT"
@@ -1173,6 +1323,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第03关_ROOT"
@@ -1192,6 +1348,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第03关_ROOT"
@@ -1211,6 +1373,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第03关_ROOT"
@@ -1230,6 +1398,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第03关_ROOT"
@@ -1249,6 +1423,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第03关_ROOT"
@@ -1268,6 +1448,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第03关_ROOT"
@@ -1287,6 +1473,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第03关_ROOT"
@@ -1306,6 +1498,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第03关_ROOT"
@@ -1325,6 +1523,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_09",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_09"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_09",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_09",
     "parent_name": "QR_第03关_ROOT"
@@ -1344,6 +1548,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_10",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_10"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_10",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_10",
     "parent_name": "QR_第03关_ROOT"
@@ -1363,6 +1573,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_11",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_11"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_11",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_11",
     "parent_name": "QR_第03关_ROOT"
@@ -1382,6 +1598,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_12",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_12"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_12",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_12",
     "parent_name": "QR_第03关_ROOT"
@@ -1401,6 +1623,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_13",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_13"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_13",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_13",
     "parent_name": "QR_第03关_ROOT"
@@ -1420,6 +1648,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_14",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_14"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_14",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_14",
     "parent_name": "QR_第03关_ROOT"
@@ -1439,6 +1673,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_15",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_15"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_15",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_15",
     "parent_name": "QR_第03关_ROOT"
@@ -1458,6 +1698,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_16",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_16"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_16",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_16",
     "parent_name": "QR_第03关_ROOT"
@@ -1477,6 +1723,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_17",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_17"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_17",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_17",
     "parent_name": "QR_第03关_ROOT"
@@ -1496,6 +1748,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_18",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_18"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_18",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_18",
     "parent_name": "QR_第03关_ROOT"
@@ -1515,6 +1773,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_19",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_19"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_19",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_19",
     "parent_name": "QR_第03关_ROOT"
@@ -1534,6 +1798,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_20",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_20"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_20",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_20",
     "parent_name": "QR_第03关_ROOT"
@@ -1553,6 +1823,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_21",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_21"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_21",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_21",
     "parent_name": "QR_第03关_ROOT"
@@ -1572,6 +1848,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_22",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_22"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_22",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_22",
     "parent_name": "QR_第03关_ROOT"
@@ -1591,6 +1873,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_23",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_23"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_23",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_23",
     "parent_name": "QR_第03关_ROOT"
@@ -1610,6 +1898,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_24",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_24"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_24",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_24",
     "parent_name": "QR_第03关_ROOT"
@@ -1629,6 +1923,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_25",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_25"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_25",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_25",
     "parent_name": "QR_第03关_ROOT"
@@ -1648,6 +1948,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_26",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_26"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_26",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_26",
     "parent_name": "QR_第03关_ROOT"
@@ -1667,6 +1973,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 3,
+      "QRComponent": "掉坑死亡_fall_death_27",
+      "QRRuntimeName": "第03关_掉坑死亡_fall_death_27"
+    },
     "full_name": "QR_第03关_掉坑死亡_fall_death_27",
     "legacy_full_name": "QR_第3关_掉坑死亡_fall_death_27",
     "parent_name": "QR_第03关_ROOT"
@@ -1857,6 +2169,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "fourth_compressor",
+      "QRModule": 4,
+      "QRComponent": "dxf_736_56x25",
+      "QRRuntimeName": "第04关_dxf_736_56x25"
+    },
     "full_name": "QR_第04关_dxf_736_56x25",
     "legacy_full_name": "QR_第4关_dxf_736_56x25",
     "parent_name": "QR_第04关_ROOT"
@@ -1914,6 +2232,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "fourth_compressor",
+      "QRModule": 4,
+      "QRComponent": "dxf_731_48x25",
+      "QRRuntimeName": "第04关_dxf_731_48x25"
+    },
     "full_name": "QR_第04关_dxf_731_48x25",
     "legacy_full_name": "QR_第4关_dxf_731_48x25",
     "parent_name": "QR_第04关_ROOT"
@@ -1952,6 +2276,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第04关_ROOT"
@@ -1971,6 +2301,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第04关_ROOT"
@@ -1990,6 +2326,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第04关_ROOT"
@@ -2009,6 +2351,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第04关_ROOT"
@@ -2028,6 +2376,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第04关_ROOT"
@@ -2047,6 +2401,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第04关_ROOT"
@@ -2066,6 +2426,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第04关_ROOT"
@@ -2085,6 +2451,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第04关_ROOT"
@@ -2104,6 +2476,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_09",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_09"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_09",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_09",
     "parent_name": "QR_第04关_ROOT"
@@ -2123,6 +2501,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 4,
+      "QRComponent": "掉坑死亡_fall_death_10",
+      "QRRuntimeName": "第04关_掉坑死亡_fall_death_10"
+    },
     "full_name": "QR_第04关_掉坑死亡_fall_death_10",
     "legacy_full_name": "QR_第4关_掉坑死亡_fall_death_10",
     "parent_name": "QR_第04关_ROOT"
@@ -2427,6 +2811,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第05关_ROOT"
@@ -2446,6 +2836,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第05关_ROOT"
@@ -2465,6 +2861,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第05关_ROOT"
@@ -2484,6 +2886,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第05关_ROOT"
@@ -2503,6 +2911,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第05关_ROOT"
@@ -2522,6 +2936,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 5,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第05关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第05关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第5关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第05关_ROOT"
@@ -2883,6 +3303,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第06关_ROOT"
@@ -2902,6 +3328,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第06关_ROOT"
@@ -2921,6 +3353,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第06关_ROOT"
@@ -2940,6 +3378,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第06关_ROOT"
@@ -2959,6 +3403,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第06关_ROOT"
@@ -2978,6 +3428,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第06关_ROOT"
@@ -2997,6 +3453,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第06关_ROOT"
@@ -3016,6 +3478,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第06关_ROOT"
@@ -3035,6 +3503,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_09",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_09"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_09",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_09",
     "parent_name": "QR_第06关_ROOT"
@@ -3054,6 +3528,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_10",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_10"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_10",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_10",
     "parent_name": "QR_第06关_ROOT"
@@ -3073,6 +3553,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_11",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_11"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_11",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_11",
     "parent_name": "QR_第06关_ROOT"
@@ -3092,6 +3578,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_12",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_12"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_12",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_12",
     "parent_name": "QR_第06关_ROOT"
@@ -3111,6 +3603,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_13",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_13"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_13",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_13",
     "parent_name": "QR_第06关_ROOT"
@@ -3130,6 +3628,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_14",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_14"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_14",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_14",
     "parent_name": "QR_第06关_ROOT"
@@ -3149,6 +3653,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_15",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_15"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_15",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_15",
     "parent_name": "QR_第06关_ROOT"
@@ -3168,6 +3678,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_16",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_16"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_16",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_16",
     "parent_name": "QR_第06关_ROOT"
@@ -3187,6 +3703,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_17",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_17"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_17",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_17",
     "parent_name": "QR_第06关_ROOT"
@@ -3206,6 +3728,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_18",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_18"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_18",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_18",
     "parent_name": "QR_第06关_ROOT"
@@ -3225,6 +3753,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_19",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_19"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_19",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_19",
     "parent_name": "QR_第06关_ROOT"
@@ -3244,6 +3778,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 6,
+      "QRComponent": "掉坑死亡_fall_death_20",
+      "QRRuntimeName": "第06关_掉坑死亡_fall_death_20"
+    },
     "full_name": "QR_第06关_掉坑死亡_fall_death_20",
     "legacy_full_name": "QR_第6关_掉坑死亡_fall_death_20",
     "parent_name": "QR_第06关_ROOT"
@@ -3510,6 +4050,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第07关_ROOT"
@@ -3529,6 +4075,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第07关_ROOT"
@@ -3548,6 +4100,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第07关_ROOT"
@@ -3567,6 +4125,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第07关_ROOT"
@@ -3586,6 +4150,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第07关_ROOT"
@@ -3605,6 +4175,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第07关_ROOT"
@@ -3624,6 +4200,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第07关_ROOT"
@@ -3643,6 +4225,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第07关_ROOT"
@@ -3662,6 +4250,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_09",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_09"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_09",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_09",
     "parent_name": "QR_第07关_ROOT"
@@ -3681,6 +4275,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_10",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_10"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_10",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_10",
     "parent_name": "QR_第07关_ROOT"
@@ -3700,6 +4300,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_11",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_11"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_11",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_11",
     "parent_name": "QR_第07关_ROOT"
@@ -3719,6 +4325,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_12",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_12"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_12",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_12",
     "parent_name": "QR_第07关_ROOT"
@@ -3738,6 +4350,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_13",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_13"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_13",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_13",
     "parent_name": "QR_第07关_ROOT"
@@ -3757,6 +4375,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 7,
+      "QRComponent": "掉坑死亡_fall_death_14",
+      "QRRuntimeName": "第07关_掉坑死亡_fall_death_14"
+    },
     "full_name": "QR_第07关_掉坑死亡_fall_death_14",
     "legacy_full_name": "QR_第7关_掉坑死亡_fall_death_14",
     "parent_name": "QR_第07关_ROOT"
@@ -3985,6 +4609,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_80C_35x4",
+      "QRRuntimeName": "第08关_dxf_80C_35x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_80C_35x4",
     "legacy_full_name": "QR_第8关_dxf_80C_35x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4004,6 +4635,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_814_35x4",
+      "QRRuntimeName": "第08关_dxf_814_35x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_814_35x4",
     "legacy_full_name": "QR_第8关_dxf_814_35x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4023,6 +4661,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_840_0_5x4",
+      "QRRuntimeName": "第08关_dxf_840_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_840_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_840_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4042,6 +4687,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_844_0_5x4",
+      "QRRuntimeName": "第08关_dxf_844_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_844_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_844_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4080,6 +4732,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_828_0_5x4",
+      "QRRuntimeName": "第08关_dxf_828_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_828_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_828_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4099,6 +4758,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_83C_0_5x4",
+      "QRRuntimeName": "第08关_dxf_83C_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_83C_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_83C_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4118,6 +4784,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_824_0_5x4",
+      "QRRuntimeName": "第08关_dxf_824_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_824_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_824_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4137,6 +4810,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_838_0_5x4",
+      "QRRuntimeName": "第08关_dxf_838_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_838_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_838_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4156,6 +4836,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_820_0_5x4",
+      "QRRuntimeName": "第08关_dxf_820_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_820_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_820_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4175,6 +4862,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_834_0_5x4",
+      "QRRuntimeName": "第08关_dxf_834_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_834_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_834_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4194,6 +4888,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_81C_0_5x4",
+      "QRRuntimeName": "第08关_dxf_81C_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_81C_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_81C_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4213,6 +4914,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_830_0_5x4",
+      "QRRuntimeName": "第08关_dxf_830_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_830_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_830_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4232,6 +4940,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_818_0_5x4",
+      "QRRuntimeName": "第08关_dxf_818_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_818_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_818_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4251,6 +4966,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_82C_0_5x4",
+      "QRRuntimeName": "第08关_dxf_82C_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_82C_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_82C_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4270,6 +4992,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_808_0_5x4",
+      "QRRuntimeName": "第08关_dxf_808_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_808_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_808_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4289,6 +5018,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_810_0_5x4",
+      "QRRuntimeName": "第08关_dxf_810_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_810_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_810_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4308,6 +5044,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_685_27_5x4",
+      "QRRuntimeName": "第08关_dxf_685_27_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_685_27_5x4",
     "legacy_full_name": "QR_第8关_dxf_685_27_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4327,6 +5070,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6C1_27_5x4",
+      "QRRuntimeName": "第08关_dxf_6C1_27_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6C1_27_5x4",
     "legacy_full_name": "QR_第8关_dxf_6C1_27_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4346,6 +5096,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_675_0_5x4",
+      "QRRuntimeName": "第08关_dxf_675_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_675_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_675_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4365,6 +5122,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6B9_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6B9_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6B9_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6B9_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4384,6 +5148,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_671_0_5x4",
+      "QRRuntimeName": "第08关_dxf_671_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_671_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_671_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4403,6 +5174,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6B5_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6B5_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6B5_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6B5_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4441,6 +5219,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_66D_0_5x4",
+      "QRRuntimeName": "第08关_dxf_66D_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_66D_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_66D_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4460,6 +5245,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6B1_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6B1_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6B1_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6B1_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4479,6 +5271,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_669_0_5x4",
+      "QRRuntimeName": "第08关_dxf_669_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_669_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_669_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4498,6 +5297,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6AD_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6AD_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6AD_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6AD_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4517,6 +5323,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_665_0_5x4",
+      "QRRuntimeName": "第08关_dxf_665_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_665_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_665_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4536,6 +5349,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6A9_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6A9_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6A9_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6A9_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4555,6 +5375,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_661_0_5x4",
+      "QRRuntimeName": "第08关_dxf_661_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_661_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_661_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4574,6 +5401,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6A5_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6A5_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6A5_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6A5_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4593,6 +5427,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_681_27_5x4",
+      "QRRuntimeName": "第08关_dxf_681_27_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_681_27_5x4",
     "legacy_full_name": "QR_第8关_dxf_681_27_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4612,6 +5453,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6BD_27_5x4",
+      "QRRuntimeName": "第08关_dxf_6BD_27_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6BD_27_5x4",
     "legacy_full_name": "QR_第8关_dxf_6BD_27_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4631,6 +5479,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_65D_0_5x4",
+      "QRRuntimeName": "第08关_dxf_65D_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_65D_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_65D_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4650,6 +5505,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_6A1_0_5x4",
+      "QRRuntimeName": "第08关_dxf_6A1_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_6A1_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_6A1_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4669,6 +5531,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_659_0_5x4",
+      "QRRuntimeName": "第08关_dxf_659_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_659_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_659_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4688,6 +5557,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_69D_0_5x4",
+      "QRRuntimeName": "第08关_dxf_69D_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_69D_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_69D_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4707,6 +5583,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_655_0_5x4",
+      "QRRuntimeName": "第08关_dxf_655_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_655_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_655_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4726,6 +5609,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_699_0_5x4",
+      "QRRuntimeName": "第08关_dxf_699_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_699_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_699_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4745,6 +5635,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_651_0_5x4",
+      "QRRuntimeName": "第08关_dxf_651_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_651_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_651_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4764,6 +5661,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_695_0_5x4",
+      "QRRuntimeName": "第08关_dxf_695_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_695_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_695_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4783,6 +5687,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_649_0_5x4",
+      "QRRuntimeName": "第08关_dxf_649_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_649_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_649_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4802,6 +5713,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_691_0_5x4",
+      "QRRuntimeName": "第08关_dxf_691_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_691_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_691_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4821,6 +5739,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_640_0_5x4",
+      "QRRuntimeName": "第08关_dxf_640_0_5x4",
+      "QRMoveZ": -3.5
+    },
     "full_name": "QR_第08关_dxf_640_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_640_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4840,6 +5765,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "eighth_moving_part",
+      "QRModule": 8,
+      "QRComponent": "dxf_68D_0_5x4",
+      "QRRuntimeName": "第08关_dxf_68D_0_5x4",
+      "QRMoveZ": 3.5
+    },
     "full_name": "QR_第08关_dxf_68D_0_5x4",
     "legacy_full_name": "QR_第8关_dxf_68D_0_5x4",
     "parent_name": "QR_第08关_ROOT"
@@ -4897,6 +5829,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第08关_ROOT"
@@ -4916,6 +5854,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第08关_ROOT"
@@ -4935,6 +5879,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第08关_ROOT"
@@ -4954,6 +5904,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第08关_ROOT"
@@ -4973,6 +5929,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第08关_ROOT"
@@ -4992,6 +5954,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第08关_ROOT"
@@ -5011,6 +5979,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第08关_ROOT"
@@ -5030,6 +6004,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_08",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_08"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_08",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_08",
     "parent_name": "QR_第08关_ROOT"
@@ -5049,6 +6029,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_09",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_09"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_09",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_09",
     "parent_name": "QR_第08关_ROOT"
@@ -5068,6 +6054,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_10",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_10"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_10",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_10",
     "parent_name": "QR_第08关_ROOT"
@@ -5087,6 +6079,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_11",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_11"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_11",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_11",
     "parent_name": "QR_第08关_ROOT"
@@ -5106,6 +6104,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 8,
+      "QRComponent": "掉坑死亡_fall_death_12",
+      "QRRuntimeName": "第08关_掉坑死亡_fall_death_12"
+    },
     "full_name": "QR_第08关_掉坑死亡_fall_death_12",
     "legacy_full_name": "QR_第8关_掉坑死亡_fall_death_12",
     "parent_name": "QR_第08关_ROOT"
@@ -5277,6 +6281,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "ninth_vanishing_platform",
+      "QRModule": 9,
+      "QRComponent": "dxf_760_50x20",
+      "QRRuntimeName": "第09关_dxf_760_50x20"
+    },
     "full_name": "QR_第09关_dxf_760_50x20",
     "legacy_full_name": "QR_第9关_dxf_760_50x20",
     "parent_name": "QR_第09关_ROOT"
@@ -5296,6 +6306,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "ninth_vanishing_platform",
+      "QRModule": 9,
+      "QRComponent": "dxf_75C_50x20",
+      "QRRuntimeName": "第09关_dxf_75C_50x20"
+    },
     "full_name": "QR_第09关_dxf_75C_50x20",
     "legacy_full_name": "QR_第9关_dxf_75C_50x20",
     "parent_name": "QR_第09关_ROOT"
@@ -5334,6 +6350,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第09关_ROOT"
@@ -5353,6 +6375,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第09关_ROOT"
@@ -5372,6 +6400,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第09关_ROOT"
@@ -5391,6 +6425,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第09关_ROOT"
@@ -5410,6 +6450,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第09关_ROOT"
@@ -5429,6 +6475,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第09关_ROOT"
@@ -5448,6 +6500,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 9,
+      "QRComponent": "掉坑死亡_fall_death_07",
+      "QRRuntimeName": "第09关_掉坑死亡_fall_death_07"
+    },
     "full_name": "QR_第09关_掉坑死亡_fall_death_07",
     "legacy_full_name": "QR_第9关_掉坑死亡_fall_death_07",
     "parent_name": "QR_第09关_ROOT"
@@ -5638,6 +6696,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_1",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_1",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_1",
     "parent_name": "QR_第10关_ROOT"
@@ -5657,6 +6722,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_2",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_2",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_2",
     "parent_name": "QR_第10关_ROOT"
@@ -5676,6 +6748,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_3",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_3",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_3",
     "parent_name": "QR_第10关_ROOT"
@@ -5695,6 +6774,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_4",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_4",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_4",
     "parent_name": "QR_第10关_ROOT"
@@ -5714,6 +6800,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_5",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_5",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_5",
     "parent_name": "QR_第10关_ROOT"
@@ -5733,6 +6826,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_6",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_6",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_6",
     "parent_name": "QR_第10关_ROOT"
@@ -5752,6 +6852,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_7",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_7",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_7",
     "parent_name": "QR_第10关_ROOT"
@@ -5771,6 +6878,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_8",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_8",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_8",
     "parent_name": "QR_第10关_ROOT"
@@ -5790,6 +6904,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_9",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_9",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_9",
     "parent_name": "QR_第10关_ROOT"
@@ -5809,6 +6930,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_10",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_10",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_10",
     "parent_name": "QR_第10关_ROOT"
@@ -5828,6 +6956,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_11",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_11",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_11",
     "parent_name": "QR_第10关_ROOT"
@@ -5847,6 +6982,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_12",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_12",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_12",
     "parent_name": "QR_第10关_ROOT"
@@ -5866,6 +7008,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_13",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_13",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_13",
     "parent_name": "QR_第10关_ROOT"
@@ -5885,6 +7034,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_14",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_14",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_14",
     "parent_name": "QR_第10关_ROOT"
@@ -5904,6 +7060,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_15",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_15",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_15",
     "parent_name": "QR_第10关_ROOT"
@@ -5923,6 +7086,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_16",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_16",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_16",
     "parent_name": "QR_第10关_ROOT"
@@ -5942,6 +7112,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_17",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_17",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_17",
     "parent_name": "QR_第10关_ROOT"
@@ -5961,6 +7138,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_18",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_18",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_18",
     "parent_name": "QR_第10关_ROOT"
@@ -5980,6 +7164,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_19",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_19",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_19",
     "parent_name": "QR_第10关_ROOT"
@@ -5999,6 +7190,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_1_3301506_20",
+      "QRRuntimeName": "第10关_dxf_97B_1_3301506_20",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_20",
     "parent_name": "QR_第10关_ROOT"
@@ -6018,6 +7216,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_1",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_1",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_1",
     "parent_name": "QR_第10关_ROOT"
@@ -6037,6 +7242,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_2",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_2",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_2",
     "parent_name": "QR_第10关_ROOT"
@@ -6056,6 +7268,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_3",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_3",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_3",
     "parent_name": "QR_第10关_ROOT"
@@ -6075,6 +7294,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_4",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_4",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_4",
     "parent_name": "QR_第10关_ROOT"
@@ -6094,6 +7320,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_5",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_5",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_5",
     "parent_name": "QR_第10关_ROOT"
@@ -6113,6 +7346,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_6",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_6",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_6",
     "parent_name": "QR_第10关_ROOT"
@@ -6132,6 +7372,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_7",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_7",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_7",
     "parent_name": "QR_第10关_ROOT"
@@ -6151,6 +7398,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_8",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_8",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_8",
     "parent_name": "QR_第10关_ROOT"
@@ -6170,6 +7424,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_9",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_9",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_9",
     "parent_name": "QR_第10关_ROOT"
@@ -6189,6 +7450,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_10",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_10",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_10",
     "parent_name": "QR_第10关_ROOT"
@@ -6208,6 +7476,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_11",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_11",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_11",
     "parent_name": "QR_第10关_ROOT"
@@ -6227,6 +7502,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_12",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_12",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_12",
     "parent_name": "QR_第10关_ROOT"
@@ -6246,6 +7528,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_13",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_13",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_13",
     "parent_name": "QR_第10关_ROOT"
@@ -6265,6 +7554,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_14",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_14",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_14",
     "parent_name": "QR_第10关_ROOT"
@@ -6284,6 +7580,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_15",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_15",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_15",
     "parent_name": "QR_第10关_ROOT"
@@ -6303,6 +7606,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_16",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_16",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_16",
     "parent_name": "QR_第10关_ROOT"
@@ -6322,6 +7632,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_17",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_17",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_17",
     "parent_name": "QR_第10关_ROOT"
@@ -6341,6 +7658,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_18",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_18",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_18",
     "parent_name": "QR_第10关_ROOT"
@@ -6360,6 +7684,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_19",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_19",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_19",
     "parent_name": "QR_第10关_ROOT"
@@ -6379,6 +7710,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_2_3301506_20",
+      "QRRuntimeName": "第10关_dxf_97B_2_3301506_20",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_2_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_20",
     "parent_name": "QR_第10关_ROOT"
@@ -6398,6 +7736,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_1",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_1",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_1",
     "parent_name": "QR_第10关_ROOT"
@@ -6417,6 +7762,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_2",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_2",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_2",
     "parent_name": "QR_第10关_ROOT"
@@ -6436,6 +7788,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_3",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_3",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_3",
     "parent_name": "QR_第10关_ROOT"
@@ -6455,6 +7814,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_4",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_4",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_4",
     "parent_name": "QR_第10关_ROOT"
@@ -6474,6 +7840,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_5",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_5",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_5",
     "parent_name": "QR_第10关_ROOT"
@@ -6493,6 +7866,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_6",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_6",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_6",
     "parent_name": "QR_第10关_ROOT"
@@ -6512,6 +7892,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_7",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_7",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_7",
     "parent_name": "QR_第10关_ROOT"
@@ -6531,6 +7918,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_8",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_8",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_8",
     "parent_name": "QR_第10关_ROOT"
@@ -6550,6 +7944,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_9",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_9",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_9",
     "parent_name": "QR_第10关_ROOT"
@@ -6569,6 +7970,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_10",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_10",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_10",
     "parent_name": "QR_第10关_ROOT"
@@ -6588,6 +7996,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_11",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_11",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_11",
     "parent_name": "QR_第10关_ROOT"
@@ -6607,6 +8022,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_12",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_12",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_12",
     "parent_name": "QR_第10关_ROOT"
@@ -6626,6 +8048,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_13",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_13",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_13",
     "parent_name": "QR_第10关_ROOT"
@@ -6645,6 +8074,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_14",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_14",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_14",
     "parent_name": "QR_第10关_ROOT"
@@ -6664,6 +8100,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_15",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_15",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_15",
     "parent_name": "QR_第10关_ROOT"
@@ -6683,6 +8126,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_16",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_16",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_16",
     "parent_name": "QR_第10关_ROOT"
@@ -6702,6 +8152,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_17",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_17",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_17",
     "parent_name": "QR_第10关_ROOT"
@@ -6721,6 +8178,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_18",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_18",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_18",
     "parent_name": "QR_第10关_ROOT"
@@ -6740,6 +8204,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_19",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_19",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_19",
     "parent_name": "QR_第10关_ROOT"
@@ -6759,6 +8230,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97B_3_3301506_20",
+      "QRRuntimeName": "第10关_dxf_97B_3_3301506_20",
+      "QRMoving": true
+    },
     "full_name": "QR_第10关_dxf_97B_3_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_20",
     "parent_name": "QR_第10关_ROOT"
@@ -6778,6 +8256,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_1",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_1",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_1",
     "parent_name": "QR_第10关_ROOT"
@@ -6797,6 +8282,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_2",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_2",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_2",
     "parent_name": "QR_第10关_ROOT"
@@ -6816,6 +8308,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_3",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_3",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_3",
     "parent_name": "QR_第10关_ROOT"
@@ -6835,6 +8334,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_4",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_4",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_4",
     "parent_name": "QR_第10关_ROOT"
@@ -6854,6 +8360,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_5",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_5",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_5",
     "parent_name": "QR_第10关_ROOT"
@@ -6873,6 +8386,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_6",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_6",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_6",
     "parent_name": "QR_第10关_ROOT"
@@ -6892,6 +8412,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_7",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_7",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_7",
     "parent_name": "QR_第10关_ROOT"
@@ -6911,6 +8438,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_8",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_8",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_8",
     "parent_name": "QR_第10关_ROOT"
@@ -6930,6 +8464,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_9",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_9",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_9",
     "parent_name": "QR_第10关_ROOT"
@@ -6949,6 +8490,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_10",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_10",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_10",
     "parent_name": "QR_第10关_ROOT"
@@ -6968,6 +8516,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_11",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_11",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_11",
     "parent_name": "QR_第10关_ROOT"
@@ -6987,6 +8542,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_12",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_12",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_12",
     "parent_name": "QR_第10关_ROOT"
@@ -7006,6 +8568,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_13",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_13",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_13",
     "parent_name": "QR_第10关_ROOT"
@@ -7025,6 +8594,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_14",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_14",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_14",
     "parent_name": "QR_第10关_ROOT"
@@ -7044,6 +8620,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_15",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_15",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_15",
     "parent_name": "QR_第10关_ROOT"
@@ -7063,6 +8646,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_16",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_16",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_16",
     "parent_name": "QR_第10关_ROOT"
@@ -7082,6 +8672,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_17",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_17",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_17",
     "parent_name": "QR_第10关_ROOT"
@@ -7101,6 +8698,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_18",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_18",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_18",
     "parent_name": "QR_第10关_ROOT"
@@ -7120,6 +8724,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_19",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_19",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_19",
     "parent_name": "QR_第10关_ROOT"
@@ -7139,6 +8750,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_97F_1_3301506_20",
+      "QRRuntimeName": "第10关_dxf_97F_1_3301506_20",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_97F_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_20",
     "parent_name": "QR_第10关_ROOT"
@@ -7158,6 +8776,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_1",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_1",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_1",
     "parent_name": "QR_第10关_ROOT"
@@ -7177,6 +8802,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_2",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_2",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_2",
     "parent_name": "QR_第10关_ROOT"
@@ -7196,6 +8828,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_3",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_3",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_3",
     "parent_name": "QR_第10关_ROOT"
@@ -7215,6 +8854,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_4",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_4",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_4",
     "parent_name": "QR_第10关_ROOT"
@@ -7234,6 +8880,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_5",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_5",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_5",
     "parent_name": "QR_第10关_ROOT"
@@ -7253,6 +8906,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_6",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_6",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_6",
     "parent_name": "QR_第10关_ROOT"
@@ -7272,6 +8932,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_7",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_7",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_7",
     "parent_name": "QR_第10关_ROOT"
@@ -7291,6 +8958,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_8",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_8",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_8",
     "parent_name": "QR_第10关_ROOT"
@@ -7310,6 +8984,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_9",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_9",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_9",
     "parent_name": "QR_第10关_ROOT"
@@ -7329,6 +9010,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_10",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_10",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_10",
     "parent_name": "QR_第10关_ROOT"
@@ -7348,6 +9036,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_11",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_11",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_11",
     "parent_name": "QR_第10关_ROOT"
@@ -7367,6 +9062,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_12",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_12",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_12",
     "parent_name": "QR_第10关_ROOT"
@@ -7386,6 +9088,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_13",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_13",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_13",
     "parent_name": "QR_第10关_ROOT"
@@ -7405,6 +9114,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_14",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_14",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_14",
     "parent_name": "QR_第10关_ROOT"
@@ -7424,6 +9140,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_15",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_15",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_15",
     "parent_name": "QR_第10关_ROOT"
@@ -7443,6 +9166,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_16",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_16",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_16",
     "parent_name": "QR_第10关_ROOT"
@@ -7462,6 +9192,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_17",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_17",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_17",
     "parent_name": "QR_第10关_ROOT"
@@ -7481,6 +9218,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_18",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_18",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_18",
     "parent_name": "QR_第10关_ROOT"
@@ -7500,6 +9244,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_19",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_19",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_19",
     "parent_name": "QR_第10关_ROOT"
@@ -7519,6 +9270,13 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current",
+      "QRModule": 10,
+      "QRComponent": "dxf_983_1_3301506_20",
+      "QRRuntimeName": "第10关_dxf_983_1_3301506_20",
+      "QRMoving": false
+    },
     "full_name": "QR_第10关_dxf_983_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_20",
     "parent_name": "QR_第10关_ROOT"
@@ -7538,6 +9296,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_01",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_01"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_01",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_01",
     "parent_name": "QR_第10关_ROOT"
@@ -7557,6 +9321,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_02",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_02"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_02",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_02",
     "parent_name": "QR_第10关_ROOT"
@@ -7576,6 +9346,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_03",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_03"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_03",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_03",
     "parent_name": "QR_第10关_ROOT"
@@ -7595,6 +9371,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_04",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_04"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_04",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_04",
     "parent_name": "QR_第10关_ROOT"
@@ -7614,6 +9396,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_05",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_05"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_05",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_05",
     "parent_name": "QR_第10关_ROOT"
@@ -7633,6 +9421,12 @@
     "paint_color": null,
     "runtime_placeholder": false,
     "runtime_trigger": true,
+    "custom_kv": {
+      "QRRole": "fall_death",
+      "QRModule": 10,
+      "QRComponent": "掉坑死亡_fall_death_06",
+      "QRRuntimeName": "第10关_掉坑死亡_fall_death_06"
+    },
     "full_name": "QR_第10关_掉坑死亡_fall_death_06",
     "legacy_full_name": "QR_第10关_掉坑死亡_fall_death_06",
     "parent_name": "QR_第10关_ROOT"
