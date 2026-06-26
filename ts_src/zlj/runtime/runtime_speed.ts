@@ -25,17 +25,11 @@ function ensureFastRunComponentForRole(role: Role): void {
     if (component !== null) {
       component.setMaxSpeed(currentSpeedValue)
     }
-    print(
-      `[${SPEED_TAG}] fast_run_component exists role=${tostring(role)} speed=${currentSpeedValue} count=${fastRunSystem.getComponentCount()}`
-    )
     return
   }
   fastRunSystem.addComponent(role, {
     maxSpeed: currentSpeedValue,
   })
-  print(
-    `[${SPEED_TAG}] fast_run_component added role=${tostring(role)} speed=${currentSpeedValue} count=${fastRunSystem.getComponentCount()}`
-  )
 }
 
 function ensureFastRunComponentsForOnlineRoles(): void {
@@ -82,7 +76,6 @@ export function startSystems(): void {
   fastRunSystem.setEnabled(true)
   ensureFastRunComponentsForOnlineRoles()
   registerDashboardUnlockButtons(() => enableFastRunDashboard())
-  print(`[${SPEED_TAG}] fast_run_system started speed=${DEFAULT_SPEED}`)
 }
 
 export function enableFastRunDashboard(): void {
@@ -104,9 +97,7 @@ export function enableFastRunDashboard(): void {
   if (system.updateDashboardLoop !== undefined) {
     system.updateDashboardLoop()
   }
-  print(`[${SPEED_TAG}] dashboard enable requested`)
 }
 
 export function hideLegacySpeedUiForOnlineRoles(): void {
-  print(`[${SPEED_TAG}] legacy ui hide skipped reason=quick_runner_no_legacy_nodes`)
 }

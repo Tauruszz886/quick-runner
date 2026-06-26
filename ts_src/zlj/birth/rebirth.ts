@@ -108,7 +108,6 @@ export function eliminateUnitAndRebirthAtBirth(unit: unknown, source: string): v
         { tag: `birth_rebirth_die_${source}`, fallback: undefined, logger: print }
       )
       EventBus.emit(GAME_EVENTS.PLAYER_DIED_TO_REBIRTH, unit, source)
-      print(`[${TAG}] die_to_birth_rebirth source=${source} unit=${key} pos=(${BIRTH_SPAWN_X},${BIRTH_SPAWN_Y},${BIRTH_SPAWN_Z})`)
     },
     {
       safe: true,

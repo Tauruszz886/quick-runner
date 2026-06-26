@@ -40,6 +40,5 @@ export function registerHoleDeathTriggerUnit(trigger: unknown, name: string): bo
     (_eventName: unknown, _actor: unknown, data: unknown) => handleTriggerData(data, `scene:${name}:${tostring(triggerId)}`),
     { safe: true, safeCallback: true, tag: `hole_death_scene_${name}`, logger: print }
   )
-  print(`[${TAG}] trigger registered name=${name} trigger=${tostring(trigger)} id=${tostring(triggerId)}`)
   return true
 }

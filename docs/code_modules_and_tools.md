@@ -165,7 +165,9 @@
 
 第 4 关压板机关。
 
-带 `QRRole="fourth_compressor"` 的场景单位会注册成压板。运行时让压板周期性下降、停留、上升，并用死亡触发器处理被压中的玩家。
+带 `QRRole="fourth_compressor"` 的场景单位会注册成压板。每块压板下有一个 `QRRole="fourth_compressor_death_trigger"` 的 3101010 子触发区，触发区通过 `QRTargetRuntimeName` 绑定父压板。运行时只移动压板本体，子触发区跟随父节点移动；玩家进入触发区后回出生地。细节见 `docs/level_04_compressor_mechanism.md`。
+
+压板运动按帧分段：压板底面运行时从 `Y=14.5` 下落到地砖顶面 `Y=6.5`，距离 `8`；下压 `20` 帧，分 3 段；停留 `2s`；回升 `20` 帧，分 3 段。端点用一次坐标校准防止逐帧累计误差。
 
 ### fifth_middle_layer.ts
 
@@ -179,11 +181,19 @@
 
 它根据 `QRRole="eighth_moving_part"` 的场景单位绑定移动部件。移动距离方向由 `QRMoveZ` 指定，位置和尺寸从编辑器单位读取。
 
-### runtime_ninth_mechanism.ts
+### runtime_ninth_mechanism.ts / third_level/vanishing_platform_*.ts
 
-第 9 关消失平台。
+第 9 关消失平台，以及第 3 关 12 块链式渐隐地砖的兼容注册入口。
 
-带 `QRRole="ninth_vanishing_platform"` 的平台被玩家触碰后会描边提示并渐隐，最终隐藏。玩家死亡回出生时，平台恢复可见。
+带 `QRRole="ninth_vanishing_platform"` 的平台被玩家触碰后渐隐，最终隐藏。玩家死亡回出生时，平台恢复可见。
+
+第 3 关链式渐隐地砖已经拆到 `runtime/third_level/`：
+
+- `vanishing_platform_config.ts`：12 块地砖名单、链路、时间、颜色、透明度分段。
+- `vanishing_platform_engine.ts`：模型显示、透明度、颜色、物理、碰撞、红框描边等引擎 API 封装。
+- `vanishing_platforms.ts`：链式触发、渐隐、消失、恢复、死亡 reset。
+
+复用说明见 `docs/level_03_vanishing_platform_mechanism.md`。
 
 ### runtime_tenth_current.ts
 

@@ -4,24 +4,36 @@ import { TriggerHub } from "@common/trigger_hub"
 import { NINTH_LEVEL_TERRAIN_MODULE_INDEX, type RuntimeTerrainPiece } from "../config"
 import { asFixed } from "../layout"
 import { GAME_EVENTS } from "./GameEvents"
+import {
+  isThirdLevelVanishingPlatformName,
+  normalizeThirdVanishingPlatformName,
+  THIRD_VANISHING_TAG,
+} from "./third_level/vanishing_platform_config"
+import {
+  clearThirdVanishingPlatformOutline,
+  initializeThirdVanishingPlatform,
+  resetThirdVanishingPlatform,
+  startThirdVanishingPlatformChain,
+  type ThirdVanishingPlatform,
+} from "./third_level/vanishing_platforms"
 
-const TAG = "ZLJ_NINTH_MECHANISM"
+const TAG = THIRD_VANISHING_TAG
 const TRIGGER_PREFAB_ID = 3101010
-const FADE_SECONDS = 1.5
-const FADE_STEPS = 15
+const NINTH_FADE_SECONDS = 1.5
+const NINTH_FADE_STEPS = 15
 const PLATFORM_TOP_Y = 6.5
 const TRIGGER_HEIGHT = 2.5
 const TRIGGER_CENTER_Y = PLATFORM_TOP_Y + TRIGGER_HEIGHT / 2
-const TOUCH_OUTLINE_WIDTH = 3
-const TOUCH_OUTLINE_COLOR = 0xff0000 as Color
 
-type NinthPlatform = {
-  name: string
-  unit: unknown
+type NinthPlatform = ThirdVanishingPlatform & {
   trigger?: unknown
-  fading: boolean
-  hidden: boolean
-  generation: number
+  thirdLevel: boolean
+}
+
+type PendingTrigger = {
+  trigger: unknown
+  triggerName: string
+  targetRuntimeName: string
 }
 
 declare const EVENT: {
@@ -30,9 +42,17 @@ declare const EVENT: {
 declare const Enums: { TriggerSpaceEventType: { ENTER: number } }
 
 let platforms: NinthPlatform[] = []
+let platformsByName: Record<string, NinthPlatform> = {}
+let pendingTriggers: PendingTrigger[] = []
+
+function normalizeRuntimeName(name: string): string {
+  return normalizeThirdVanishingPlatformName(name)
+}
 
 export function resetNinthLevelMechanism(): void {
   platforms = []
+  platformsByName = {}
+  pendingTriggers = []
 }
 
 function vec3(x: number, y: number, z: number): unknown {
@@ -84,93 +104,24 @@ function trySetModelVisible(unit: unknown, visible: boolean, name: string): void
   )
 }
 
-function hasOutlineApi(role: unknown): boolean {
-  const candidate = role as { set_unit_outline?: unknown } | undefined
-  return candidate !== undefined && candidate !== null && candidate.set_unit_outline !== undefined && candidate.set_unit_outline !== null
-}
-
-function tryApplyOutlineForRole(role: unknown, platform: NinthPlatform): boolean {
-  const ok = safeCall(
-    () => {
-      const target = role as { set_unit_outline?: (unit: unknown, width: integer, color: Color) => void }
-      if (!hasOutlineApi(target)) {
-        return false
-      }
-      target.set_unit_outline!(platform.unit, TOUCH_OUTLINE_WIDTH, TOUCH_OUTLINE_COLOR)
-      return true
-    },
-    { tag: `ninth_touch_outline_${platform.name}`, fallback: false, logger: print }
-  )
-  return ok === true
-}
-
-function extractRoleFromTrigger(actor: unknown, data: unknown): unknown {
-  if (hasOutlineApi(actor)) {
-    return actor
-  }
-  const eventData = data as { role?: unknown; event_unit?: unknown } | undefined
-  if (hasOutlineApi(eventData?.role)) {
-    return eventData?.role
-  }
-  const eventUnit = eventData?.event_unit
-  const role = safeCall(
-    () => {
-      const unit = eventUnit as { get_owner?: () => unknown; get_ctrl_role?: () => unknown } | undefined
-      if (unit === undefined || unit === null) {
-        return undefined
-      }
-      if (unit.get_owner !== undefined && unit.get_owner !== null) {
-        return unit.get_owner()
-      }
-      if (unit.get_ctrl_role !== undefined && unit.get_ctrl_role !== null) {
-        return unit.get_ctrl_role()
-      }
-      return undefined
-    },
-    { tag: `ninth_extract_touch_role`, fallback: undefined, logger: print }
-  )
-  return hasOutlineApi(role) ? role : undefined
-}
-
-function applyTouchOutline(actor: unknown, data: unknown, platform: NinthPlatform): void {
-  const role = extractRoleFromTrigger(actor, data)
-  let ok = tryApplyOutlineForRole(role, platform)
-  if (!ok) {
-    ok =
-      safeCall(
-        () => {
-          const roles = (GameAPI as any).get_all_valid_roles()
-          let applied = false
-          for (const onlineRole of roles as unknown[]) {
-            applied = tryApplyOutlineForRole(onlineRole, platform) || applied
-          }
-          return applied
-        },
-        { tag: `ninth_touch_outline_all_roles_${platform.name}`, fallback: false, logger: print }
-      ) === true
-  }
-  print(`[${TAG}] touch outline name=${platform.name} ok=${ok} width=${TOUCH_OUTLINE_WIDTH} color=${TOUCH_OUTLINE_COLOR}`)
-}
-
 function fadeAndHide(platform: NinthPlatform): void {
   let step = 0
   const generation = platform.generation
-  const stepSeconds = FADE_SECONDS / FADE_STEPS
+  const stepSeconds = NINTH_FADE_SECONDS / NINTH_FADE_STEPS
   const tick = (): void => {
     if (generation !== platform.generation || !platform.fading) {
       return
     }
     step += 1
-    const opacity = math.max(0, 1 - step / FADE_STEPS)
+    const opacity = math.max(0, 1 - step / NINTH_FADE_STEPS)
     trySetOpacity(platform.unit, opacity, platform.name)
-    if (step < FADE_STEPS) {
+    if (step < NINTH_FADE_STEPS) {
       ;(LuaAPI as any).call_delay_time(asFixed(stepSeconds), tick)
       return
     }
     platform.hidden = true
     platform.fading = false
     trySetModelVisible(platform.unit, false, platform.name)
-    print(`[${TAG}] platform hidden name=${platform.name} seconds=${FADE_SECONDS}`)
   }
   tick()
 }
@@ -179,15 +130,19 @@ function startFade(platform: NinthPlatform, source: string, actor: unknown, data
   if (platform.fading || platform.hidden) {
     return
   }
+  if (platform.thirdLevel) {
+    startThirdVanishingPlatformChain(platform, source, platformsByName)
+    return
+  }
   platform.fading = true
-  applyTouchOutline(actor, data, platform)
-  print(`[${TAG}] fade start name=${platform.name} source=${source} seconds=${FADE_SECONDS}`)
   fadeAndHide(platform)
 }
 
-function registerTrigger(platform: NinthPlatform, trigger: unknown): void {
+function registerTrigger(platform: NinthPlatform, trigger: unknown, triggerName?: string): void {
+  const displayTriggerName = triggerName === undefined ? "" : triggerName
+  const sourceTriggerName = triggerName === undefined ? platform.name : triggerName
   if (trigger === null || trigger === undefined) {
-    print(`[${TAG}] trigger register skipped name=${platform.name} trigger=nil`)
+    print(`[${TAG}] trigger register skipped name=${platform.name} trigger_name=${displayTriggerName} trigger=nil`)
     return
   }
   platform.trigger = trigger
@@ -200,11 +155,95 @@ function registerTrigger(platform: NinthPlatform, trigger: unknown): void {
   if (triggerId !== null && triggerId !== undefined) {
     TriggerHub.register(
       [EVENT.ANY_LIFEENTITY_TRIGGER_SPACE, Enums.TriggerSpaceEventType.ENTER, triggerId],
-      (_eventName: unknown, actor: unknown, data: unknown) => startFade(platform, `trigger:${tostring(triggerId)}`, actor, data),
-      { safe: true, safeCallback: true, tag: `ninth_platform_trigger_${platform.name}`, logger: print }
+      (_eventName: unknown, actor: unknown, data: unknown) =>
+        startFade(platform, `trigger:${sourceTriggerName}:${tostring(triggerId)}`, actor, data),
+      { safe: true, safeCallback: true, tag: `vanishing_platform_trigger_${platform.name}`, logger: print }
     )
   }
-  print(`[${TAG}] trigger registered name=${platform.name} trigger=${tostring(trigger)} id=${tostring(triggerId)}`)
+}
+
+function queryUnitByRuntimeName(runtimeName: string): unknown {
+  const direct = safeCall(
+    () => {
+      return (LuaAPI as any).query_unit(runtimeName)
+    },
+    { tag: `vanishing_query_unit_${runtimeName}`, fallback: null, logger: print }
+  )
+  if (direct !== null && direct !== undefined) {
+    return direct
+  }
+  if (runtimeName.substring(0, 3) === "QR_") {
+    return null
+  }
+  return safeCall(
+    () => {
+      return (LuaAPI as any).query_unit(`QR_${runtimeName}`)
+    },
+    { tag: `vanishing_query_unit_QR_${runtimeName}`, fallback: null, logger: print }
+  )
+}
+
+function attachPendingTriggers(platform: NinthPlatform): void {
+  if (pendingTriggers.length === 0) {
+    return
+  }
+  const platformName = normalizeRuntimeName(platform.name)
+  const remaining: PendingTrigger[] = []
+  for (let i = 0; i < pendingTriggers.length; i++) {
+    const pending = pendingTriggers[i]!
+    if (normalizeRuntimeName(pending.targetRuntimeName) === platformName) {
+      registerTrigger(platform, pending.trigger, pending.triggerName)
+    } else {
+      remaining.push(pending)
+    }
+  }
+  pendingTriggers = remaining
+}
+
+export function registerVanishingPlatformBinding(unit: unknown, name: string): boolean {
+  if (unit === null || unit === undefined) {
+    return false
+  }
+  const platformName = normalizeRuntimeName(name)
+  let platform = platformsByName[platformName]
+  if (platform === undefined) {
+    platform = { name: platformName, unit, fading: false, hidden: false, generation: 0, thirdLevel: isThirdLevelVanishingPlatformName(platformName) }
+    platforms.push(platform)
+    platformsByName[platformName] = platform
+  } else {
+    platform.unit = unit
+    platform.thirdLevel = platform.thirdLevel || isThirdLevelVanishingPlatformName(platformName)
+  }
+  trySetModelVisible(platform.unit, true, platform.name)
+  trySetOpacity(platform.unit, 1, platform.name)
+  if (platform.thirdLevel) {
+    initializeThirdVanishingPlatform(platform)
+  }
+  attachPendingTriggers(platform)
+  return true
+}
+
+export function registerVanishingPlatformTriggerBinding(trigger: unknown, triggerName: string, targetRuntimeName: string): boolean {
+  const targetName = normalizeRuntimeName(targetRuntimeName)
+  if (trigger === null || trigger === undefined) {
+    print(`[${TAG}] trigger skipped name=${triggerName} target=${targetName} raw_target=${targetRuntimeName} trigger=nil`)
+    return false
+  }
+  let platform = platformsByName[targetName]
+  if (platform === undefined) {
+    const targetUnit = queryUnitByRuntimeName(targetRuntimeName)
+    if (targetUnit !== null && targetUnit !== undefined) {
+      registerVanishingPlatformBinding(targetUnit, targetRuntimeName)
+      platform = platformsByName[targetName]
+    }
+  }
+  if (platform === undefined) {
+    pendingTriggers.push({ trigger, triggerName, targetRuntimeName: targetName })
+    print(`[${TAG}] third fade setup pending trigger_name=${triggerName} target=${targetName} reason=target_platform_not_registered`)
+    return true
+  }
+  registerTrigger(platform, trigger, triggerName)
+  return true
 }
 
 export function registerNinthVanishingPlatform(
@@ -218,8 +257,8 @@ export function registerNinthVanishingPlatform(
   if (!isNinthVanishingPlatformPiece(moduleIndex, piece) || unit === null || unit === undefined) {
     return
   }
-  const platform: NinthPlatform = { name, unit, fading: false, hidden: false, generation: 0 }
-  platforms.push(platform)
+  registerVanishingPlatformBinding(unit, name)
+  const platform = platformsByName[normalizeRuntimeName(name)]!
   const trigger = safeCreateCustomTriggerSpace(
     TRIGGER_PREFAB_ID,
     vec3(x, TRIGGER_CENTER_Y, z),
@@ -227,9 +266,6 @@ export function registerNinthVanishingPlatform(
     { tag: `ninth_trigger_create_${name}`, logger: print }
   )
   registerTrigger(platform, trigger)
-  print(
-    `[${TAG}] platform registered name=${name} unit=${tostring(unit)} trigger=${tostring(trigger)} trigger_pos=(${x},${TRIGGER_CENTER_Y},${z}) trigger_scale=(${piece.sx},${TRIGGER_HEIGHT},${piece.sz}) fade_seconds=${FADE_SECONDS}`
-  )
 }
 
 export function registerNinthVanishingPlatformBinding(
@@ -243,8 +279,8 @@ export function registerNinthVanishingPlatformBinding(
   if (unit === null || unit === undefined) {
     return
   }
-  const platform: NinthPlatform = { name, unit, fading: false, hidden: false, generation: 0 }
-  platforms.push(platform)
+  registerVanishingPlatformBinding(unit, name)
+  const platform = platformsByName[normalizeRuntimeName(name)]!
   const trigger = safeCreateCustomTriggerSpace(
     TRIGGER_PREFAB_ID,
     vec3(x, TRIGGER_CENTER_Y, z),
@@ -252,9 +288,6 @@ export function registerNinthVanishingPlatformBinding(
     { tag: `ninth_trigger_create_${name}`, logger: print }
   )
   registerTrigger(platform, trigger)
-  print(
-    `[${TAG}] platform registered name=${name} source=runtime_scene_binding unit=${tostring(unit)} trigger=${tostring(trigger)} trigger_pos=(${x},${TRIGGER_CENTER_Y},${z}) trigger_scale=(${sx},${TRIGGER_HEIGHT},${sz}) fade_seconds=${FADE_SECONDS}`
-  )
 }
 
 function resetNinthLevelPlatformsToInitial(source: string): void {
@@ -268,8 +301,11 @@ function resetNinthLevelPlatformsToInitial(source: string): void {
     platform.hidden = false
     trySetModelVisible(platform.unit, true, platform.name)
     trySetOpacity(platform.unit, 1, platform.name)
+    clearThirdVanishingPlatformOutline(platform, `reset:${source}`)
+    if (platform.thirdLevel) {
+      resetThirdVanishingPlatform(platform, source)
+    }
   }
-  print(`[${TAG}] reset_to_initial source=${source} platforms=${platforms.length}`)
 }
 
 EventBus.on(GAME_EVENTS.PLAYER_DIED_TO_REBIRTH, (_unit: unknown, source: unknown) => {

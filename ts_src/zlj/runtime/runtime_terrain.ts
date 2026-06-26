@@ -1,16 +1,28 @@
 import { safeCall } from "@common/engine_safe"
 import {
+  FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS,
   FOURTH_LEVEL_COMPRESSOR_DOWN_Y,
+  FOURTH_LEVEL_COMPRESSOR_START_Y,
   TERRAIN_TAG,
 } from "../config"
-import { registerRuntimeCompressorPiece, resetRuntimeCompressors, startRuntimeCompressors } from "./runtime_compressor"
+import {
+  registerRuntimeCompressorDeathTriggerUnit,
+  registerRuntimeCompressorPiece,
+  resetRuntimeCompressors,
+  startRuntimeCompressors,
+} from "./runtime_compressor"
 import { registerHoleDeathTriggerUnit } from "./runtime_fall_return"
 import {
   registerEighthLevelMechanismBinding,
   resetEighthLevelMechanism,
   startEighthLevelMechanism,
 } from "./runtime_eighth_mechanism"
-import { registerNinthVanishingPlatformBinding, resetNinthLevelMechanism } from "./runtime_ninth_mechanism"
+import {
+  registerNinthVanishingPlatformBinding,
+  registerVanishingPlatformBinding,
+  registerVanishingPlatformTriggerBinding,
+  resetNinthLevelMechanism,
+} from "./runtime_ninth_mechanism"
 import { startSecondLevelChaser } from "./runtime_second_chaser"
 import {
   registerThirdLevelTimedPlatformBinding,
@@ -50,26 +62,23 @@ function setRuntimeFixedAttr(unit: unknown, key: string, value: number, tag: str
 }
 
 function applySecondChaserSurfacePhysics(unit: unknown, name: string): void {
-  const frictionApplied = setRuntimeFixedAttr(
+  setRuntimeFixedAttr(
     unit,
     "FrictionCoefficient",
     SECOND_CHASER_SURFACE_FRICTION,
     `second_chaser_surface_friction_${name}`
   )
-  const rollingApplied = setRuntimeFixedAttr(
+  setRuntimeFixedAttr(
     unit,
     "RollingResistance",
     SECOND_CHASER_SURFACE_ROLLING_RESISTANCE,
     `second_chaser_surface_rolling_${name}`
   )
-  const bounceApplied = setRuntimeFixedAttr(
+  setRuntimeFixedAttr(
     unit,
     "Bounciness",
     SECOND_CHASER_SURFACE_BOUNCINESS,
     `second_chaser_surface_bounce_${name}`
-  )
-  print(
-    `[${TERRAIN_TAG}] second_chaser_surface_physics name=${name} friction=${SECOND_CHASER_SURFACE_FRICTION} rolling=${SECOND_CHASER_SURFACE_ROLLING_RESISTANCE} bounce=${SECOND_CHASER_SURFACE_BOUNCINESS} runtime_attr=${frictionApplied && rollingApplied && bounceApplied}`
   )
 }
 
@@ -95,10 +104,22 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
       sx: item.sx,
       sy: item.sy,
       sz: item.sz,
-      upY: item.y,
+      upY: FOURTH_LEVEL_COMPRESSOR_START_Y,
       downY: FOURTH_LEVEL_COMPRESSOR_DOWN_Y,
+      moveSeconds: item.moveSeconds === undefined ? FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS : item.moveSeconds,
     })
     return true
+  }
+  if (item.role === "fourth_compressor_death_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    if (item.touchDeath === false) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=QRTouchDeath_false`)
+      return false
+    }
+    return registerRuntimeCompressorDeathTriggerUnit(item.unit, name, item.targetRuntimeName)
   }
   if (item.role === "eighth_moving_part") {
     if (item.moveZ === undefined) {
@@ -111,6 +132,18 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
 
   if (item.role === "third_timed_platform") {
     registerThirdLevelTimedPlatformBinding(item.unit, name, item.component, item.x, item.y, item.z, item.sx, item.sy, item.sz)
+    return true
+  }
+  if (item.role === "third_vanishing_platform") {
+    registerVanishingPlatformBinding(item.unit, name)
+    return true
+  }
+  if (item.role === "third_vanishing_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    registerVanishingPlatformTriggerBinding(item.unit, name, item.targetRuntimeName)
     return true
   }
   if (item.role === "ninth_vanishing_platform") {
@@ -137,20 +170,12 @@ export function bindEditorSceneRuntimeMechanisms(): void {
   resetTenthCurrentMechanism()
 
   const sceneUnits = scanQuickRunnerRuntimeScene()
-  print(`[${TERRAIN_TAG}] editor bind begin scene_units=${sceneUnits.length} source=scene_custom_kv`)
-  let bound = 0
   for (let i = 0; i < sceneUnits.length; i++) {
     const item = sceneUnits[i]!
-    if (registerRuntimeSceneUnit(item)) {
-      bound += 1
-      print(
-        `[${TERRAIN_TAG}] editor bound name=${item.runtimeName} role=${item.role} pos=(${item.x},${item.y},${item.z}) scale=(${item.sx},${item.sy},${item.sz})`
-      )
-    } else {
+    if (!registerRuntimeSceneUnit(item)) {
       print(`[${TERRAIN_TAG}] editor skipped name=${item.runtimeName} role=${item.role}`)
     }
   }
-  print(`[${TERRAIN_TAG}] editor bind summary scene_units=${sceneUnits.length} bound=${bound}`)
 
   startRuntimeCompressors()
   startThirdLevelMechanism()
@@ -162,5 +187,4 @@ export function bindEditorSceneRuntimeMechanisms(): void {
   startEighthLevelMechanism()
   startTenthCurrentMechanism()
   startSecondLevelChaser()
-  print(`[${TERRAIN_TAG}] editor bind complete`)
 }

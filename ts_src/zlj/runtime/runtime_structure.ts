@@ -1,11 +1,7 @@
 import { safeCall, safeCreateObstacle } from "@common/engine_safe"
 import {
   CEILING_BASE_Y,
-  CEILING_TAG,
-  EXPANDED_FLOOR_END_MODULE_INDEX,
-  EXPANDED_FLOOR_START_MODULE_INDEX,
   FLOOR_BASE_Y,
-  FLOOR_TAG,
   GRID_CELL_SIZE,
   GRID_LINE_BATCH_SIZE,
   GRID_LINE_COLOR,
@@ -25,11 +21,10 @@ import {
   WALL_BASE_Y,
   WALL_HEIGHT,
   WALL_PREFAB_ID,
-  WALL_TAG,
   WEST_WALL_OPENING_GAP_SZ,
   type RuntimeWall,
 } from "../config"
-import { asFixed, getRuntimeFloorForModule, getRuntimeModuleCenterX, isExpandedFloorModule, runtimeModuleName } from "../layout"
+import { asFixed, getRuntimeFloorForModule, getRuntimeModuleCenterX, runtimeModuleName } from "../layout"
 
 let runtimeFloorsCreated = false
 let runtimeWallsCreated = false
@@ -56,9 +51,6 @@ function applyLevelFloorAppearance(unit: unknown, name: string): void {
     },
     { tag: `runtime_level_floor_disable_mirror_${name}`, fallback: undefined, logger: print }
   )
-  print(
-    `[${FLOOR_TAG}] appearance applied name=${name} prefab=${LEVEL_FLOOR_PREFAB_ID} paint_area1=${LEVEL_FLOOR_PAINT_AREA_COLORS[0]} paint_area2=${LEVEL_FLOOR_PAINT_AREA_COLORS[1]} paint_area3=${LEVEL_FLOOR_PAINT_AREA_COLORS[2]} paint_area4=${LEVEL_FLOOR_PAINT_AREA_COLORS[3]} mirror=false`
-  )
 }
 
 export function createRuntimeFloorCopies(): void {
@@ -66,10 +58,6 @@ export function createRuntimeFloorCopies(): void {
     return
   }
   runtimeFloorsCreated = true
-
-  print(
-    `[${FLOOR_TAG}] create begin runtime_modules=${RUNTIME_COPY_COUNT + 1} module_0=出生地 last_module=第${RUNTIME_COPY_COUNT}关 prefab=${LEVEL_FLOOR_PREFAB_ID} base_y=${FLOOR_BASE_Y} layout=edge_to_edge_by_floor_width`
-  )
 
   let moduleIndex = 0
   const createBatch = (): void => {
@@ -85,9 +73,6 @@ export function createRuntimeFloorCopies(): void {
         { tag: `runtime_floor_create_${name}`, logger: print }
       )
       applyLevelFloorAppearance(unit, name)
-      print(
-        `[${FLOOR_TAG}] created name=${name} unit=${tostring(unit)} prefab=${LEVEL_FLOOR_PREFAB_ID} base=(${x},${FLOOR_BASE_Y},${RUNTIME_FLOOR.z}) scale=(${moduleFloor.sx},${moduleFloor.sy},${moduleFloor.sz}) expanded=${isExpandedFloorModule(moduleIndex)} batch_size=${RUNTIME_FLOOR_CREATE_BATCH_SIZE}`
-      )
       moduleIndex += 1
       createdThisFrame += 1
     }
@@ -95,7 +80,6 @@ export function createRuntimeFloorCopies(): void {
       ;(LuaAPI as any).call_delay_frame(1, createBatch)
       return
     }
-    print(`[${FLOOR_TAG}] create complete modules=${RUNTIME_COPY_COUNT + 1} prefab=${LEVEL_FLOOR_PREFAB_ID}`)
   }
   createBatch()
 }
@@ -179,9 +163,6 @@ function createRuntimeWallUnit(wall: RuntimeWall, moduleIndex: number): void {
     math.Vector3(wall.sx as Fixed, WALL_HEIGHT as Fixed, wall.sz as Fixed),
     { tag: `runtime_wall_create_${name}`, logger: print }
   )
-  print(
-    `[${WALL_TAG}] created name=${name} unit=${tostring(unit)} pos=(${wall.x},${WALL_BASE_Y},${wall.z}) scale=(${wall.sx},${WALL_HEIGHT},${wall.sz})`
-  )
 }
 
 export function createRuntimeWalls(): void {
@@ -190,13 +171,6 @@ export function createRuntimeWalls(): void {
   }
   runtimeWallsCreated = true
 
-  let wallCount = 0
-  for (let moduleIndex = 0; moduleIndex <= RUNTIME_COPY_COUNT; moduleIndex++) {
-    wallCount += getRuntimeWallsForModule(moduleIndex).length
-  }
-  print(
-    `[${WALL_TAG}] create begin count=${wallCount} modules=${RUNTIME_COPY_COUNT + 1} module_0=出生地 last_module=第${RUNTIME_COPY_COUNT}关 prefab=${WALL_PREFAB_ID} base_y=${WALL_BASE_Y} height=${WALL_HEIGHT} source=floor_boundary_only shared_opening=west_gap`
-  )
   for (let moduleIndex = 0; moduleIndex <= RUNTIME_COPY_COUNT; moduleIndex++) {
     const walls = getRuntimeWallsForModule(moduleIndex)
     for (let i = 0; i < walls.length; i++) {
@@ -211,9 +185,6 @@ export function createRuntimeCeiling(): void {
   }
   runtimeCeilingCreated = true
 
-  print(
-    `[${CEILING_TAG}] create begin count=${RUNTIME_COPY_COUNT + 1} module_0=出生地 last_module=第${RUNTIME_COPY_COUNT}关 prefab=${WALL_PREFAB_ID} base_y=${CEILING_BASE_Y} expanded_modules=${EXPANDED_FLOOR_START_MODULE_INDEX}..${EXPANDED_FLOOR_END_MODULE_INDEX}`
-  )
   for (let moduleIndex = 0; moduleIndex <= RUNTIME_COPY_COUNT; moduleIndex++) {
     const moduleFloor = getRuntimeFloorForModule(moduleIndex)
     const x = getRuntimeModuleCenterX(moduleIndex)
@@ -223,9 +194,6 @@ export function createRuntimeCeiling(): void {
       math.Vector3(x as Fixed, CEILING_BASE_Y as Fixed, RUNTIME_CEILING.z as Fixed),
       math.Vector3(moduleFloor.sx as Fixed, RUNTIME_CEILING.sy as Fixed, moduleFloor.sz as Fixed),
       { tag: `runtime_ceiling_create_${name}`, logger: print }
-    )
-    print(
-      `[${CEILING_TAG}] created name=${name} unit=${tostring(unit)} base=(${x},${CEILING_BASE_Y},${RUNTIME_CEILING.z}) scale=(${moduleFloor.sx},${RUNTIME_CEILING.sy},${moduleFloor.sz}) expanded=${isExpandedFloorModule(moduleIndex)}`
     )
   }
 }
@@ -263,9 +231,6 @@ function drawRuntimeGridBatch(xMin: number, xMax: number, zMin: number, zMax: nu
     return
   }
 
-  print(
-    `[${GRID_TAG}] draw done lines=${totalLines} batch_size=${GRID_LINE_BATCH_SIZE} y=${GRID_LINE_Y} duration=${GRID_LINE_DURATION} color=${GRID_LINE_COLOR}`
-  )
 }
 
 export function drawRuntimeTileGrid(): void {
@@ -274,7 +239,6 @@ export function drawRuntimeTileGrid(): void {
   }
   runtimeGridDrawStarted = true
   if (!GRID_LINES_VISIBLE) {
-    print(`[${GRID_TAG}] hidden visible=false component=false`)
     return
   }
 
@@ -295,8 +259,5 @@ export function drawRuntimeTileGrid(): void {
   const totalLines = xLineCount + zLineCount
   const color = (GlobalAPI as any).str_to_color(GRID_LINE_COLOR)
 
-  print(
-    `[${GRID_TAG}] draw begin modules=${RUNTIME_COPY_COUNT + 1} x=${xMin}..${xMax} z=${zMin}..${zMax} cell=${GRID_CELL_SIZE} y=${GRID_LINE_Y} x_lines=${xLineCount} z_lines=${zLineCount} total=${totalLines} component=false`
-  )
   drawRuntimeGridBatch(xMin, xMax, zMin, zMax, 0, totalLines, color)
 }

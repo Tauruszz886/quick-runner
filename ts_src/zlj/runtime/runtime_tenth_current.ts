@@ -108,9 +108,6 @@ function registerCurrentDeathEvent(part: TenthCurrentPart): void {
       logger: print,
     }
   )
-  print(
-    `[${TAG}] death trigger registered name=${part.name} trigger=${tostring(trigger)} id=${tostring(triggerId)} pos=(${part.startX},${part.surfaceY},${part.z}) scale=(${part.sx + DEATH_TRIGGER_OUTSET * 2},${part.sy + DEATH_TRIGGER_OUTSET * 2},${part.sz + DEATH_TRIGGER_OUTSET * 2}) moving=${part.moving}`
-  )
 }
 
 export function registerTenthCurrentPart(
@@ -142,9 +139,6 @@ export function registerTenthCurrentPart(
   if (moving) {
     movingParts.push(part)
   }
-  print(
-    `[${TAG}] registered name=${name} start=(${x},${y},${z}) end_x=${part.endX} hidden_y=${HIDDEN_Y} moving=${moving} death_trigger=pending cycle_seconds=${SURFACE_SECONDS + HIDDEN_RETURN_SECONDS}`
-  )
 }
 
 export function registerTenthCurrentBinding(
@@ -177,9 +171,6 @@ export function registerTenthCurrentBinding(
   if (moving) {
     movingParts.push(part)
   }
-  print(
-    `[${TAG}] registered name=${name} source=runtime_scene_binding start=(${x},${y},${z}) end_x=${part.endX} hidden_y=${HIDDEN_Y} moving=${moving} death_trigger=pending cycle_seconds=${SURFACE_SECONDS + HIDDEN_RETURN_SECONDS}`
-  )
 }
 
 function setPartPosition(part: TenthCurrentPart, x: number, y: number): void {
@@ -264,7 +255,6 @@ function createDeathTriggersBatched(done: () => void): void {
       ;(LuaAPI as any).call_delay_frame(1, createBatch)
       return
     }
-    print(`[${TAG}] death trigger batch complete all_parts=${parts.length} moving_parts=${movingParts.length}`)
     done()
   }
   ;(LuaAPI as any).call_delay_frame(1, createBatch)
@@ -279,9 +269,6 @@ export function startTenthCurrentMechanism(): void {
     print(`[${TAG}] skipped moving_parts=0 all_parts=${parts.length}`)
     return
   }
-  print(
-    `[${TAG}] start moving_parts=${movingParts.length} all_parts=${parts.length} moving_prefix=${MOVING_SOURCE_PREFIX} cycle_seconds=${SURFACE_SECONDS + HIDDEN_RETURN_SECONDS} surface_seconds=${SURFACE_SECONDS} hidden_return_seconds=${HIDDEN_RETURN_SECONDS} move_distance_x=${MOVE_DISTANCE_X} hidden_y=${HIDDEN_Y}`
-  )
   createDeathTriggersBatched(() => {
     setAllPartsAtSurfaceStart()
     runCycle()
@@ -295,21 +282,9 @@ function resetTenthCurrentToInitial(source: string): void {
   cycleGeneration += 1
   setAllPartsAtSurfaceStart()
   started = false
-  print(`[${TAG}] reset_to_initial source=${source} moving_parts=${movingParts.length} all_parts=${parts.length} generation=${cycleGeneration}`)
   startTenthCurrentMechanism()
 }
 
 EventBus.on(GAME_EVENTS.PLAYER_DIED_TO_REBIRTH, (_unit: unknown, source: unknown) => {
   resetTenthCurrentToInitial(tostring(source))
 })
-
-export function printTenthCurrentDebugSummary(source: string): void {
-  const first = parts[0]
-  if (first === undefined) {
-    print(`[${TAG}] debug source=${source} started=${started} parts=0`)
-    return
-  }
-  print(
-    `[${TAG}] debug source=${source} started=${started} moving_parts=${movingParts.length} all_parts=${parts.length} first=${first.name} start=(${first.startX},${first.surfaceY},${first.z}) end_x=${first.endX} hidden_y=${HIDDEN_Y}`
-  )
-}

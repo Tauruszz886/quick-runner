@@ -16,7 +16,6 @@ const BUTTON_B_REQUIRED_COUNT = 3
 const TOUCH_EVENT_TYPES = [0, 1, 2, 3] as const
 const CLICK_LOCK_SECONDS = 0.08
 const TIP_SECONDS = 1.2
-const GLOBAL_CLICK_LOG_LIMIT = 20
 const SETUP_RETRY_LIMIT = 3
 
 declare const EVENT: {
@@ -31,7 +30,6 @@ let buttonALocked = false
 let buttonBLocked = false
 let setupScheduled = false
 let setupRetryCount = 0
-let globalClickLogCount = 0
 
 function buttonNode(nodeId: string): EButton {
   return nodeId as unknown as EButton
@@ -56,7 +54,6 @@ function queryButtonNode(name: string): EButton | undefined {
     print(`[${TAG}] query button failed name=${name}`)
     return undefined
   }
-  print(`[${TAG}] query button ok name=${name} node=${tostring(node)}`)
   return node
 }
 
@@ -82,7 +79,6 @@ function showTips(actor: unknown, data: unknown, content: string): void {
       { tag: `dashboard_unlock_role_tips`, fallback: false, logger: print }
     )
     if (ok === true) {
-      print(`[${TAG}] tips role content=${content}`)
       return
     }
   }
@@ -144,10 +140,6 @@ function handleGlobalEuiClick(
   data: unknown
 ): void {
   const clickedNode = extractEventNode(actor, data)
-  if (globalClickLogCount < GLOBAL_CLICK_LOG_LIMIT) {
-    globalClickLogCount += 1
-    print(`[${TAG}] global_eui_click node=${normalizeNodeText(clickedNode)} actor=${tostring(actor)} data=${tostring(data)}`)
-  }
   if (isButtonANode(clickedNode, buttonANode)) {
     withClickLock("a", () => handleButtonA(actor, data))
     return
@@ -188,7 +180,6 @@ function enableButtonTouchForOnlineRoles(buttonANode: EButton, buttonBNode: EBut
     enableButtonTouchForRole(role, buttonANode, BUTTON_A_NODE_NAME)
     enableButtonTouchForRole(role, buttonBNode, BUTTON_B_NODE_NAME)
   }
-  print(`[${TAG}] touch enabled roles=${roles.length} button_a=${BUTTON_A_NODE_NAME}:${tostring(buttonANode)} button_b=${BUTTON_B_NODE_NAME}:${tostring(buttonBNode)}`)
 }
 
 function withClickLock(button: "a" | "b", handler: () => void): void {
@@ -216,12 +207,10 @@ function withClickLock(button: "a" | "b", handler: () => void): void {
 function resetSequence(reason: string): void {
   buttonACount = 0
   buttonBCount = 0
-  print(`[${TAG}] reset reason=${reason}`)
 }
 
 function handleButtonA(actor: unknown, data: unknown): void {
   if (unlocked) {
-    print(`[${TAG}] click_a ignored unlocked=true`)
     showTips(actor, data, "点击A按钮成功")
     return
   }
@@ -230,12 +219,10 @@ function handleButtonA(actor: unknown, data: unknown): void {
   }
   buttonACount = math.min(buttonACount + 1, BUTTON_A_REQUIRED_COUNT)
   showTips(actor, data, "点击A按钮成功")
-  print(`[${TAG}] click_a a=${buttonACount}/${BUTTON_A_REQUIRED_COUNT} b=${buttonBCount}/${BUTTON_B_REQUIRED_COUNT}`)
 }
 
 function handleButtonB(enableDashboard: () => void, actor: unknown, data: unknown): void {
   if (unlocked) {
-    print(`[${TAG}] click_b ignored unlocked=true`)
     showTips(actor, data, "点击B按钮成功")
     return
   }
@@ -246,13 +233,11 @@ function handleButtonB(enableDashboard: () => void, actor: unknown, data: unknow
   }
   buttonBCount = math.min(buttonBCount + 1, BUTTON_B_REQUIRED_COUNT)
   showTips(actor, data, "点击B按钮成功")
-  print(`[${TAG}] click_b a=${buttonACount}/${BUTTON_A_REQUIRED_COUNT} b=${buttonBCount}/${BUTTON_B_REQUIRED_COUNT}`)
   if (buttonBCount < BUTTON_B_REQUIRED_COUNT) {
     return
   }
   unlocked = true
   enableDashboard()
-  print(`[${TAG}] dashboard unlocked sequence=a3_b2`)
 }
 
 export function registerDashboardUnlockButtons(enableDashboard: () => void): void {
@@ -264,7 +249,6 @@ export function registerDashboardUnlockButtons(enableDashboard: () => void): voi
   }
   setupScheduled = true
   LuaAPI.call_delay_time(math.tofixed(1), () => setupDashboardUnlockButtons(enableDashboard))
-  print(`[${TAG}] setup scheduled delay=1`)
 }
 
 function setupDashboardUnlockButtons(enableDashboard: () => void): void {
@@ -281,7 +265,6 @@ function setupDashboardUnlockButtons(enableDashboard: () => void): void {
       return
     }
     LuaAPI.call_delay_time(math.tofixed(1), () => registerDashboardUnlockButtons(enableDashboard))
-    print(`[${TAG}] setup retry scheduled reason=query_failed retry=${setupRetryCount}/${SETUP_RETRY_LIMIT}`)
     return
   }
   registered = true
@@ -301,9 +284,6 @@ function setupDashboardUnlockButtons(enableDashboard: () => void): void {
       tag: "dashboard_unlock_global_eui_click",
       logger: print,
     }
-  )
-  print(
-    `[${TAG}] registered canvas=画布2 canvas_id=${CANVAS_2_NODE_ID} ui_root=${UI_ROOT_NODE_ID} button_a=${BUTTON_A_NODE_NAME}:${tostring(buttonANode)}|${BUTTON_A_NODE_ID}|${BUTTON_A_FULL_NODE_ID} need_a=${BUTTON_A_REQUIRED_COUNT} button_b=${BUTTON_B_NODE_NAME}:${tostring(buttonBNode)}|${BUTTON_B_NODE_ID}|${BUTTON_B_FULL_NODE_ID} need_b=${BUTTON_B_REQUIRED_COUNT} touch_types=0,1,2,3 global_listener=true`
   )
 }
 
@@ -326,10 +306,4 @@ function registerButtonEvents(scopeId: number, node: EButton | string, tag: stri
     tag: `dashboard_unlock_button_${tag}`,
     logger: print,
   })
-}
-
-export function printDashboardUnlockDebugSummary(source: string): void {
-  print(
-    `[${TAG}] debug source=${source} scheduled=${setupScheduled} registered=${registered} unlocked=${unlocked} a=${buttonACount}/${BUTTON_A_REQUIRED_COUNT} b=${buttonBCount}/${BUTTON_B_REQUIRED_COUNT} button_a=${BUTTON_A_NODE_NAME}|${BUTTON_A_NODE_ID}|${BUTTON_A_FULL_NODE_ID} button_b=${BUTTON_B_NODE_NAME}|${BUTTON_B_NODE_ID}|${BUTTON_B_FULL_NODE_ID}`
-  )
 }

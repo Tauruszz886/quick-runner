@@ -1,11 +1,14 @@
-import { safeCall } from "@common/engine_safe"
+import { safeCall, safeQueryUnitsByPrefabId } from "@common/engine_safe"
 import { toNumber } from "@common/num"
 import { TERRAIN_TAG } from "../config"
 
 export type RuntimeSceneRole =
   | "second_chaser_surface"
   | "third_timed_platform"
+  | "third_vanishing_platform"
+  | "third_vanishing_trigger"
   | "fourth_compressor"
+  | "fourth_compressor_death_trigger"
   | "eighth_moving_part"
   | "ninth_vanishing_platform"
   | "tenth_current"
@@ -25,10 +28,22 @@ export type RuntimeSceneUnit = {
   sz: number
   moveZ?: number
   moving?: boolean
+  moveSeconds?: number
+  touchDeath?: boolean
+  targetRuntimeName?: string
 }
 
 const SCENE_ROOT_NAME = "QR_地图_ROOT"
 const ROLE_KEY = "QRRole"
+const RUNTIME_TRIGGER_PREFAB_ID = 3101010
+const RUNTIME_FLOOR_OBSTACLE_PREFAB_ID = 105205
+const RUNTIME_CURRENT_OBSTACLE_PREFAB_ID = 3301506
+
+const FALLBACK_QUERY_SPECS = [
+  { prefabId: RUNTIME_TRIGGER_PREFAB_ID, label: "custom_trigger" },
+  { prefabId: RUNTIME_FLOOR_OBSTACLE_PREFAB_ID, label: "floor_obstacle" },
+  { prefabId: RUNTIME_CURRENT_OBSTACLE_PREFAB_ID, label: "current_obstacle" },
+] as const
 
 function readKv(unit: unknown, valueType: Enums.ValueType, key: string): unknown {
   return safeCall(
@@ -125,6 +140,34 @@ function getChildren(unit: unknown): unknown[] {
   return children === null ? [] : children
 }
 
+function appendRuntimeSceneUnit(out: RuntimeSceneUnit[], visited: Record<string, boolean>, unit: unknown): void {
+  const identity = getUnitIdentity(unit)
+  if (visited[identity] === true) {
+    return
+  }
+  visited[identity] = true
+
+  const runtimeUnit = readRuntimeSceneUnit(unit)
+  if (runtimeUnit !== null) {
+    out.push(runtimeUnit)
+  }
+}
+
+function scanQueryableRuntimeTriggerUnits(reason: string): RuntimeSceneUnit[] {
+  const out: RuntimeSceneUnit[] = []
+  const visited: Record<string, boolean> = {}
+  let candidates = 0
+  for (let specIndex = 0; specIndex < FALLBACK_QUERY_SPECS.length; specIndex++) {
+    const spec = FALLBACK_QUERY_SPECS[specIndex]!
+    const units = safeQueryUnitsByPrefabId(spec.prefabId)
+    candidates += units.length
+    for (let i = 0; i < units.length; i++) {
+      appendRuntimeSceneUnit(out, visited, units[i]!)
+    }
+  }
+  return out
+}
+
 function getUnitIdentity(unit: unknown): string {
   const id = safeCall(
     () => {
@@ -165,6 +208,9 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
     sz: scale.z,
     moveZ: readNumberKv(unit, "QRMoveZ"),
     moving: readBoolKv(unit, "QRMoving"),
+    moveSeconds: readNumberKv(unit, "QRMoveSeconds"),
+    touchDeath: readBoolKv(unit, "QRTouchDeath"),
+    targetRuntimeName: readStringKv(unit, "QRTargetRuntimeName"),
   }
 }
 
@@ -172,7 +218,7 @@ export function scanQuickRunnerRuntimeScene(): RuntimeSceneUnit[] {
   const root = queryRoot()
   if (root === null || root === undefined) {
     print(`[${TERRAIN_TAG}] scene scan failed root_missing=${SCENE_ROOT_NAME}`)
-    return []
+    return scanQueryableRuntimeTriggerUnits("root_missing")
   }
 
   const out: RuntimeSceneUnit[] = []
@@ -180,16 +226,7 @@ export function scanQuickRunnerRuntimeScene(): RuntimeSceneUnit[] {
   const visited: Record<string, boolean> = {}
   while (pending.length > 0) {
     const unit = pending.pop()!
-    const identity = getUnitIdentity(unit)
-    if (visited[identity] === true) {
-      continue
-    }
-    visited[identity] = true
-
-    const runtimeUnit = readRuntimeSceneUnit(unit)
-    if (runtimeUnit !== null) {
-      out.push(runtimeUnit)
-    }
+    appendRuntimeSceneUnit(out, visited, unit)
 
     const children = getChildren(unit)
     for (let i = 0; i < children.length; i++) {
@@ -197,6 +234,5 @@ export function scanQuickRunnerRuntimeScene(): RuntimeSceneUnit[] {
     }
   }
 
-  print(`[${TERRAIN_TAG}] scene scan complete units=${out.length}`)
   return out
 }

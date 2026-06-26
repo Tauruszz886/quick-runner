@@ -1,8 +1,8 @@
 import { TriggerHub } from "@common/trigger_hub"
-import { TAG } from "../config"
 import { adjustOnlineRolesSpawnToBirthTile } from "../birth/spawn"
 import { hideLegacySpeedUiForOnlineRoles, startSystems } from "./runtime_speed"
 import { bindEditorSceneRuntimeMechanisms } from "./runtime_terrain"
+import { registerLevelSelectUi } from "./runtime_level_select"
 
 const EDITOR_SCENE_MECHANISM_BIND_DELAY_SECONDS = 1.5
 
@@ -15,6 +15,7 @@ function schedulePlayerRuntime(): void {
     () => {
       startSystems()
       hideLegacySpeedUiForOnlineRoles()
+      registerLevelSelectUi()
       adjustOnlineRolesSpawnToBirthTile()
     },
     {
@@ -37,6 +38,7 @@ function schedulePlayerRuntime(): void {
     tag: "quick_runner_birth_spawn_adjust_delay_2",
     logger: print,
   })
+  registerLevelSelectUi()
 }
 
 function scheduleEditorSceneMechanisms(): void {
@@ -49,9 +51,7 @@ function scheduleEditorSceneMechanisms(): void {
 }
 
 export function startQuickRunnerRuntime(): void {
-  print(`[${TAG}] loaded editor_scene_mode=true`)
   LuaAPI.global_register_trigger_event([EVENT.GAME_INIT], () => {
-    print(`[${TAG}] game init editor_scene_mode=true`)
     schedulePlayerRuntime()
     scheduleEditorSceneMechanisms()
   })

@@ -31,6 +31,10 @@ MARKER = "QR_ZLJ_SCENE"
 WALL_PREFAB_ID = 105205
 ZLJ_FLOOR_PREFAB_ID = 1201010
 FALL_DEATH_TRIGGER_PREFAB_ID = 3101010
+FOURTH_COMPRESSOR_DEATH_TRIGGER_PREFAB_ID = 3101010
+FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET = 0.25
+FOURTH_COMPRESSOR_DEATH_TRIGGER_LOCAL_Y = 4.0
+FOURTH_COMPRESSOR_MOVE_SECONDS = 1.5
 ZLJ_FLOOR_MODEL_ID = 90004
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_X = 15.0
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_Z = 10.0
@@ -56,7 +60,7 @@ FIRST_LEVEL_TERRAIN_BASE_Y = 3.5
 FIRST_LEVEL_TERRAIN_HEIGHT = 3.0
 HOLE_DEATH_TRIGGER_CENTER_Y = 4.375
 HOLE_DEATH_TRIGGER_HEIGHT = 2.65
-FOURTH_LEVEL_COMPRESSOR_START_Y = FIRST_LEVEL_TERRAIN_BASE_Y + FIRST_LEVEL_TERRAIN_HEIGHT + 10.0
+FOURTH_LEVEL_COMPRESSOR_START_Y = FIRST_LEVEL_TERRAIN_BASE_Y + FIRST_LEVEL_TERRAIN_HEIGHT + 8.0
 EIGHTH_LEVEL_FIXED_HIGH_BAR_HEIGHT = 9.5
 EIGHTH_LEVEL_MECHANISM_CENTER_RAISE_Y = 5.5
 EIGHTH_LEVEL_MOVING_LONG_PLATE_EXTRA_RAISE_Y = -1.0
@@ -82,7 +86,10 @@ FIFTH_MIDDLE_LAYER_SPECS = [
     {"name": "夹层E", "startX": 144.0, "startZ": 87.5, "sx": 16.0, "sz": 12.5},
 ]
 
-THIRD_LEVEL_RUNTIME_PLATFORM_NAMES = {
+THIRD_LEVEL_BLUE_PLATFORM_COLOR = 0x0066FF
+THIRD_LEVEL_VANISH_TRIGGER_PREFAB_ID = 3101010
+THIRD_LEVEL_VANISH_TRIGGER_EXTRA_HEIGHT = 2.5
+THIRD_LEVEL_BLUE_PLATFORM_NAMES = {
     "dxf_840_24x17_1875",
     "dxf_85C_24x17_1875",
     "dxf_860_24x17_1875",
@@ -117,6 +124,7 @@ class SceneItem:
     runtime_placeholder: bool = False
     runtime_trigger: bool = False
     custom_kv: dict[str, Any] | None = None
+    parent_name_override: str | None = None
 
     @property
     def full_name(self) -> str:
@@ -124,6 +132,8 @@ class SceneItem:
 
     @property
     def parent_name(self) -> str:
+        if self.parent_name_override is not None:
+            return self.parent_name_override
         return root_name(self.module)
 
     @property
@@ -366,6 +376,55 @@ def add_base_middle_layer(items: list[SceneItem], section: str, module: int, cen
     )
 
 
+def third_level_vanishing_platform_kv(module: int, piece_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "third_vanishing_platform",
+        "QRModule": module,
+        "QRComponent": piece_name,
+        "QRRuntimeName": module_name(module, piece_name),
+        "QRVanish": True,
+        "QRVanishMode": "fade",
+    }
+
+
+def third_level_vanishing_trigger_kv(module: int, piece_name: str, trigger_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "third_vanishing_trigger",
+        "QRModule": module,
+        "QRComponent": trigger_name,
+        "QRRuntimeName": module_name(module, trigger_name),
+        "QRTargetComponent": piece_name,
+        "QRTargetRuntimeName": module_name(module, piece_name),
+        "QRTriggerAction": "fade_on_player_touch",
+    }
+
+
+def fourth_level_compressor_kv(module: int, piece_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "fourth_compressor",
+        "QRModule": module,
+        "QRComponent": piece_name,
+        "QRRuntimeName": module_name(module, piece_name),
+        "QRMoving": True,
+        "QRTouchDeath": True,
+        "QRMoveSeconds": FOURTH_COMPRESSOR_MOVE_SECONDS,
+    }
+
+
+def fourth_level_compressor_trigger_kv(module: int, piece_name: str, trigger_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "fourth_compressor_death_trigger",
+        "QRModule": module,
+        "QRComponent": trigger_name,
+        "QRRuntimeName": module_name(module, trigger_name),
+        "QRTargetComponent": piece_name,
+        "QRTargetRuntimeName": module_name(module, piece_name),
+        "QRMoving": True,
+        "QRTouchDeath": True,
+        "QRMoveSeconds": FOURTH_COMPRESSOR_MOVE_SECONDS,
+    }
+
+
 def build_plan(workspace: Path) -> list[SceneItem]:
     items: list[SceneItem] = []
     fall_death_zones_by_module = load_fall_death_zones(workspace)
@@ -410,7 +469,15 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             y = terrain_y(module, piece)
             prefab_id = int(piece.get("prefabId", WALL_PREFAB_ID))
             piece_name = str(piece["name"])
-            custom_kv = runtime_kv_by_component.get((module, piece_name))
+            is_third_vanishing_platform = module == 3 and piece_name in THIRD_LEVEL_BLUE_PLATFORM_NAMES
+            is_fourth_compressor = module == 4 and piece.get("role") == "fourth_compressor"
+            custom_kv = (
+                third_level_vanishing_platform_kv(module, piece_name)
+                if is_third_vanishing_platform
+                else fourth_level_compressor_kv(module, piece_name)
+                if is_fourth_compressor
+                else runtime_kv_by_component.get((module, piece_name))
+            )
             items.append(
                 SceneItem(
                     "level",
@@ -423,10 +490,51 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     float(piece["sx"]),
                     float(piece["sy"]),
                     float(piece["sz"]),
-                    runtime_placeholder=module == 3 and piece_name in THIRD_LEVEL_RUNTIME_PLATFORM_NAMES,
+                    paint_color=THIRD_LEVEL_BLUE_PLATFORM_COLOR
+                    if is_third_vanishing_platform
+                    else None,
                     custom_kv=dict(custom_kv) if custom_kv is not None else None,
                 )
             )
+            if is_third_vanishing_platform:
+                trigger_name = f"{piece_name}_渐隐触发区"
+                trigger_sy = float(piece["sy"]) + THIRD_LEVEL_VANISH_TRIGGER_EXTRA_HEIGHT
+                items.append(
+                    SceneItem(
+                        "level",
+                        module,
+                        module_name(module, trigger_name),
+                        THIRD_LEVEL_VANISH_TRIGGER_PREFAB_ID,
+                        0,
+                        THIRD_LEVEL_VANISH_TRIGGER_EXTRA_HEIGHT / 2,
+                        0,
+                        float(piece["sx"]),
+                        trigger_sy,
+                        float(piece["sz"]),
+                        runtime_trigger=True,
+                        custom_kv=third_level_vanishing_trigger_kv(module, piece_name, trigger_name),
+                        parent_name_override=f"QR_{module_name(module, piece_name)}",
+                    )
+                )
+            if is_fourth_compressor:
+                trigger_name = f"{piece_name}_压板死亡触发区"
+                items.append(
+                    SceneItem(
+                        "level",
+                        module,
+                        module_name(module, trigger_name),
+                        FOURTH_COMPRESSOR_DEATH_TRIGGER_PREFAB_ID,
+                        0,
+                        FOURTH_COMPRESSOR_DEATH_TRIGGER_LOCAL_Y,
+                        0,
+                        float(piece["sx"]) + FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET * 2,
+                        float(piece["sy"]) + FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET * 2,
+                        float(piece["sz"]) + FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET * 2,
+                        runtime_trigger=True,
+                        custom_kv=fourth_level_compressor_trigger_kv(module, piece_name, trigger_name),
+                        parent_name_override=f"QR_{module_name(module, piece_name)}",
+                    )
+                )
         for zone in fall_death_zones_by_module.get(module, []):
             zone_name = f"掉坑死亡_{zone['name']}"
             x = module_min_x + float(zone["startX"]) + float(zone["sx"]) / 2

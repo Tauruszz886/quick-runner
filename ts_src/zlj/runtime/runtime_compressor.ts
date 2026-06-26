@@ -1,29 +1,25 @@
-import { safeCall, safeCreateCustomTriggerSpace } from "@common/engine_safe"
+import { safeCall } from "@common/engine_safe"
 import { EventBus } from "@common/event_bus"
 import { TriggerHub } from "@common/trigger_hub"
 import {
-  FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS,
-  FOURTH_LEVEL_COMPRESSOR_DOWN_STEPS,
-  FOURTH_LEVEL_COMPRESSOR_DOWN_Y,
-  FOURTH_LEVEL_COMPRESSOR_HEIGHT,
+  FOURTH_LEVEL_COMPRESSOR_DROP_MOVE_FRAMES,
+  FOURTH_LEVEL_COMPRESSOR_DROP_STAGE_COUNT,
   FOURTH_LEVEL_COMPRESSOR_HOLD_SECONDS,
-  FOURTH_LEVEL_COMPRESSOR_START_Y,
-  FOURTH_LEVEL_COMPRESSOR_UP_FRAMES,
+  FOURTH_LEVEL_COMPRESSOR_RISE_MOVE_FRAMES,
+  FOURTH_LEVEL_COMPRESSOR_RISE_STAGE_COUNT,
   FOURTH_LEVEL_COMPRESSOR_WAIT_SECONDS,
-  FOURTH_LEVEL_PRESS_PLATE_FLOAT_GAP,
 } from "../config"
 import { eliminateUnitAndRebirthAtBirth } from "../birth/rebirth"
 import { asFixed } from "../layout"
 import { GAME_EVENTS } from "./GameEvents"
 
 const TAG = "ZLJ_RUNTIME_COMPRESSOR"
-const DEATH_TRIGGER_PREFAB_ID = 3101010
-const DEATH_TRIGGER_OUTSET = 0.25
 
 type RuntimeCompressorPiece = {
   name: string
   unit: unknown
   trigger?: unknown
+  triggerName?: string
   x: number
   z: number
   sx: number
@@ -31,6 +27,13 @@ type RuntimeCompressorPiece = {
   sz: number
   upY: number
   downY: number
+  moveSeconds: number
+}
+
+type PendingCompressorDeathTrigger = {
+  trigger: unknown
+  triggerName: string
+  targetRuntimeName: string
 }
 
 declare const EVENT: {
@@ -40,20 +43,36 @@ declare const Enums: { TriggerSpaceEventType: { ENTER: number } }
 
 let runtimeCompressorStarted = false
 let runtimeCompressorPieces: RuntimeCompressorPiece[] = []
+let runtimeCompressorsByName: Record<string, RuntimeCompressorPiece> = {}
+let pendingCompressorDeathTriggers: PendingCompressorDeathTrigger[] = []
 let compressorCycleGeneration = 0
 
 export function resetRuntimeCompressors(): void {
   runtimeCompressorPieces = []
+  runtimeCompressorsByName = {}
+  pendingCompressorDeathTriggers = []
   runtimeCompressorStarted = false
 }
 
 export function registerRuntimeCompressorPiece(piece: RuntimeCompressorPiece): void {
-  createRuntimeCompressorDeathTrigger(piece)
   runtimeCompressorPieces.push(piece)
+  runtimeCompressorsByName[piece.name] = piece
+  attachPendingDeathTriggers(piece)
 }
 
-function vec3(x: number, y: number, z: number): unknown {
-  return math.Vector3(asFixed(x), asFixed(y), asFixed(z))
+export function registerRuntimeCompressorDeathTriggerUnit(trigger: unknown, triggerName: string, targetRuntimeName: string): boolean {
+  if (trigger === null || trigger === undefined) {
+    print(`[${TAG}] death trigger skipped name=${triggerName} target=${targetRuntimeName} trigger=nil`)
+    return false
+  }
+  const piece = runtimeCompressorsByName[targetRuntimeName]
+  if (piece === undefined) {
+    pendingCompressorDeathTriggers.push({ trigger, triggerName, targetRuntimeName })
+    print(`[${TAG}] death trigger pending name=${triggerName} target=${targetRuntimeName}`)
+    return true
+  }
+  bindRuntimeCompressorDeathTrigger(piece, trigger, triggerName)
+  return true
 }
 
 function extractTriggerUnit(data: unknown): unknown {
@@ -72,7 +91,7 @@ function registerRuntimeCompressorDeathEvent(piece: RuntimeCompressorPiece): voi
     { tag: `runtime_compressor_death_trigger_id_${piece.name}`, fallback: null, logger: print }
   )
   if (triggerId === null || triggerId === undefined) {
-    print(`[${TAG}] death trigger register skipped name=${piece.name} trigger_id=nil`)
+    print(`[${TAG}] death trigger register skipped name=${piece.name} trigger_name=${piece.triggerName} trigger_id=nil`)
     return
   }
   TriggerHub.register(
@@ -87,25 +106,28 @@ function registerRuntimeCompressorDeathEvent(piece: RuntimeCompressorPiece): voi
       logger: print,
     }
   )
-  print(`[${TAG}] death trigger registered name=${piece.name} trigger=${tostring(piece.trigger)} id=${tostring(triggerId)}`)
 }
 
-function createRuntimeCompressorDeathTrigger(piece: RuntimeCompressorPiece): void {
-  const trigger = safeCreateCustomTriggerSpace(
-    DEATH_TRIGGER_PREFAB_ID,
-    vec3(piece.x, piece.upY, piece.z),
-    vec3(piece.sx + DEATH_TRIGGER_OUTSET * 2, piece.sy + DEATH_TRIGGER_OUTSET * 2, piece.sz + DEATH_TRIGGER_OUTSET * 2),
-    { tag: `runtime_compressor_death_trigger_create_${piece.name}`, logger: print }
-  )
-  if (trigger === null) {
-    print(`[${TAG}] death trigger create failed name=${piece.name}`)
+function bindRuntimeCompressorDeathTrigger(piece: RuntimeCompressorPiece, trigger: unknown, triggerName: string): void {
+  piece.trigger = trigger
+  piece.triggerName = triggerName
+  registerRuntimeCompressorDeathEvent(piece)
+}
+
+function attachPendingDeathTriggers(piece: RuntimeCompressorPiece): void {
+  if (pendingCompressorDeathTriggers.length === 0) {
     return
   }
-  piece.trigger = trigger
-  registerRuntimeCompressorDeathEvent(piece)
-  print(
-    `[${TAG}] death trigger created name=${piece.name} prefab=${DEATH_TRIGGER_PREFAB_ID} pos=(${piece.x},${piece.upY},${piece.z}) scale=(${piece.sx + DEATH_TRIGGER_OUTSET * 2},${piece.sy + DEATH_TRIGGER_OUTSET * 2},${piece.sz + DEATH_TRIGGER_OUTSET * 2})`
-  )
+  const remaining: PendingCompressorDeathTrigger[] = []
+  for (let i = 0; i < pendingCompressorDeathTriggers.length; i++) {
+    const pending = pendingCompressorDeathTriggers[i]!
+    if (pending.targetRuntimeName === piece.name) {
+      bindRuntimeCompressorDeathTrigger(piece, pending.trigger, pending.triggerName)
+    } else {
+      remaining.push(pending)
+    }
+  }
+  pendingCompressorDeathTriggers = remaining
 }
 
 function setRuntimeCompressorPosition(piece: RuntimeCompressorPiece, y: number): void {
@@ -115,67 +137,59 @@ function setRuntimeCompressorPosition(piece: RuntimeCompressorPiece, y: number):
     },
     { tag: `runtime_compressor_set_position_${piece.name}`, fallback: undefined, logger: print }
   )
-  if (piece.trigger !== undefined && piece.trigger !== null) {
-    safeCall(
-      () => {
-        ;(piece.trigger as any).set_position(math.Vector3(piece.x as Fixed, y as Fixed, piece.z as Fixed))
-      },
-      { tag: `runtime_compressor_set_trigger_position_${piece.name}`, fallback: undefined, logger: print }
-    )
-  }
 }
 
-function animateRuntimeCompressorPiece(piece: RuntimeCompressorPiece, fromY: number, toY: number, frames: number, done?: () => void): void {
-  let frame = 0
+function animateRuntimeCompressorByStageFrames(
+  piece: RuntimeCompressorPiece,
+  direction: "drop" | "rise",
+  fromY: number,
+  toY: number,
+  moveFrames: number,
+  stageCount: number,
+  done?: () => void
+): void {
   const generation = compressorCycleGeneration
+  const distance = toY - fromY
+  let frame = 0
+  setRuntimeCompressorPosition(piece, fromY)
+
   const step = (): void => {
     if (generation !== compressorCycleGeneration) {
       return
     }
     frame += 1
-    const t = frame / frames
-    setRuntimeCompressorPosition(piece, fromY + (toY - fromY) * t)
-    if (frame < frames) {
+    const progress = getStageProgress(frame, moveFrames, stageCount)
+    const y = fromY + distance * progress
+    setRuntimeCompressorPosition(piece, y)
+    if (frame < moveFrames) {
       ;(LuaAPI as any).call_delay_frame(1, step)
       return
     }
+    setRuntimeCompressorPosition(piece, toY)
     if (done !== undefined) {
       done()
     }
   }
-  step()
+
+  ;(LuaAPI as any).call_delay_frame(1, step)
 }
 
-function animateRuntimeCompressorPieceBySeconds(
-  piece: RuntimeCompressorPiece,
-  fromY: number,
-  toY: number,
-  seconds: number,
-  steps: number,
-  done?: () => void
-): void {
-  let stepIndex = 0
-  const generation = compressorCycleGeneration
-  const stepSeconds = seconds / steps
-  const step = (): void => {
-    if (generation !== compressorCycleGeneration) {
-      return
-    }
-    stepIndex += 1
-    const t = stepIndex / steps
-    setRuntimeCompressorPosition(piece, fromY + (toY - fromY) * t)
-    if (stepIndex < steps) {
-      ;(LuaAPI as any).call_delay_time(asFixed(stepSeconds), step)
-      return
-    }
-    if (done !== undefined) {
-      done()
-    }
+function getStageProgress(frame: number, totalFrames: number, stageCount: number): number {
+  if (totalFrames <= 0 || stageCount <= 0) {
+    return 1
   }
-  step()
+  if (frame >= totalFrames) {
+    return 1
+  }
+  const stageIndex = math.min(stageCount, math.max(1, math.ceil((frame * stageCount) / totalFrames)))
+  const stageStartFrame = math.floor(((stageIndex - 1) * totalFrames) / stageCount)
+  const stageEndFrame = math.floor((stageIndex * totalFrames) / stageCount)
+  const stageFrames = math.max(1, stageEndFrame - stageStartFrame)
+  const stageProgress = (frame - stageStartFrame) / stageFrames
+  return (stageIndex - 1 + stageProgress) / stageCount
 }
 
-function animateRuntimeCompressors(direction: "drop" | "rise", frames: number, done?: () => void): void {
+function animateRuntimeCompressorsByStageFrames(direction: "drop" | "rise", done?: () => void): void {
   if (runtimeCompressorPieces.length === 0) {
     if (done !== undefined) {
       done()
@@ -187,31 +201,15 @@ function animateRuntimeCompressors(direction: "drop" | "rise", frames: number, d
     const piece = runtimeCompressorPieces[i]!
     const fromY = direction === "drop" ? piece.upY : piece.downY
     const toY = direction === "drop" ? piece.downY : piece.upY
-    animateRuntimeCompressorPiece(piece, fromY, toY, frames, () => {
-      remaining -= 1
-      if (remaining <= 0 && done !== undefined) {
-        done()
-      }
-    })
-  }
-}
-
-function animateRuntimeCompressorsDrop(done?: () => void): void {
-  if (runtimeCompressorPieces.length === 0) {
-    if (done !== undefined) {
-      done()
-    }
-    return
-  }
-  let remaining = runtimeCompressorPieces.length
-  for (let i = 0; i < runtimeCompressorPieces.length; i++) {
-    const piece = runtimeCompressorPieces[i]!
-    animateRuntimeCompressorPieceBySeconds(
+    const moveFrames = direction === "drop" ? FOURTH_LEVEL_COMPRESSOR_DROP_MOVE_FRAMES : FOURTH_LEVEL_COMPRESSOR_RISE_MOVE_FRAMES
+    const stageCount = direction === "drop" ? FOURTH_LEVEL_COMPRESSOR_DROP_STAGE_COUNT : FOURTH_LEVEL_COMPRESSOR_RISE_STAGE_COUNT
+    animateRuntimeCompressorByStageFrames(
       piece,
-      piece.upY,
-      piece.downY,
-      FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS,
-      FOURTH_LEVEL_COMPRESSOR_DOWN_STEPS,
+      direction,
+      fromY,
+      toY,
+      moveFrames,
+      stageCount,
       () => {
         remaining -= 1
         if (remaining <= 0 && done !== undefined) {
@@ -228,12 +226,12 @@ function scheduleRuntimeCompressorCycle(): void {
     if (generation !== compressorCycleGeneration) {
       return
     }
-    animateRuntimeCompressorsDrop(() => {
+    animateRuntimeCompressorsByStageFrames("drop", () => {
       ;(LuaAPI as any).call_delay_time(asFixed(FOURTH_LEVEL_COMPRESSOR_HOLD_SECONDS), () => {
         if (generation !== compressorCycleGeneration) {
           return
         }
-        animateRuntimeCompressors("rise", FOURTH_LEVEL_COMPRESSOR_UP_FRAMES, scheduleRuntimeCompressorCycle)
+        animateRuntimeCompressorsByStageFrames("rise", scheduleRuntimeCompressorCycle)
       })
     })
   })
@@ -248,9 +246,10 @@ export function startRuntimeCompressors(): void {
     print(`[${TAG}] skipped pieces=0`)
     return
   }
-  print(
-    `[${TAG}] start pieces=${runtimeCompressorPieces.length} plate_up_y=${FOURTH_LEVEL_COMPRESSOR_START_Y} plate_down_y=${FOURTH_LEVEL_COMPRESSOR_DOWN_Y} float_gap=${FOURTH_LEVEL_PRESS_PLATE_FLOAT_GAP} plate_height=${FOURTH_LEVEL_COMPRESSOR_HEIGHT} cycle_wait=${FOURTH_LEVEL_COMPRESSOR_WAIT_SECONDS} drop_seconds=${FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS} hold_seconds=${FOURTH_LEVEL_COMPRESSOR_HOLD_SECONDS}`
-  )
+  for (let i = 0; i < runtimeCompressorPieces.length; i++) {
+    const piece = runtimeCompressorPieces[i]!
+    setRuntimeCompressorPosition(piece, piece.upY)
+  }
   scheduleRuntimeCompressorCycle()
 }
 
@@ -264,7 +263,6 @@ function resetRuntimeCompressorsToInitial(source: string): void {
     setRuntimeCompressorPosition(piece, piece.upY)
   }
   runtimeCompressorStarted = false
-  print(`[${TAG}] reset_to_initial source=${source} pieces=${runtimeCompressorPieces.length} generation=${compressorCycleGeneration}`)
   startRuntimeCompressors()
 }
 

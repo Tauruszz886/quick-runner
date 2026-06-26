@@ -5,7 +5,6 @@ import {
   EIGHTH_LEVEL_FIXED_HIGH_BAR_HEIGHT,
   EIGHTH_LEVEL_MECHANISM_CENTER_RAISE_Y,
   EIGHTH_LEVEL_MECHANISM_MOVE_FRAMES,
-  EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS,
   EIGHTH_LEVEL_MECHANISM_MOVE_Z,
   EIGHTH_LEVEL_MECHANISM_SPLIT_Z,
   EIGHTH_LEVEL_MOVING_LONG_PLATE_EXTRA_RAISE_Y,
@@ -123,9 +122,6 @@ function createEighthDeathTrigger(name: string, x: number, y: number, z: number,
       { safe: true, safeCallback: true, tag: `eighth_death_trigger_${name}`, logger: print }
     )
   }
-  print(
-    `[ZLJ_EIGHTH_MECHANISM] death trigger created name=${name} trigger=${tostring(trigger)} id=${tostring(triggerId)} pos=(${x},${y},${z}) scale=(${sx + DEATH_TRIGGER_OUTSET * 2},${sy + DEATH_TRIGGER_OUTSET * 2},${sz + DEATH_TRIGGER_OUTSET * 2}) enabled_by_global=false`
-  )
   return trigger
 }
 
@@ -147,9 +143,6 @@ export function registerEighthLevelMechanismPart(
   }
   const trigger = createEighthDeathTrigger(name, x, y, z, piece.sx, piece.sy, piece.sz)
   runtimeEighthMechanismParts.push({ name, unit, trigger, x, y, z, targetZ })
-  print(
-    `[ZLJ_EIGHTH_MECHANISM] registered name=${name} start=(${x},${y},${z}) target_z=${targetZ} move_z=${targetZ - z} move_seconds=${EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS}`
-  )
 }
 
 export function registerEighthLevelMechanismBinding(
@@ -169,9 +162,6 @@ export function registerEighthLevelMechanismBinding(
   const targetZ = z + moveZ
   const trigger = createEighthDeathTrigger(name, x, y, z, sx, sy, sz)
   runtimeEighthMechanismParts.push({ name, unit, trigger, x, y, z, targetZ })
-  print(
-    `[ZLJ_EIGHTH_MECHANISM] registered name=${name} source=runtime_scene_binding start=(${x},${y},${z}) target_z=${targetZ} move_z=${moveZ} move_seconds=${EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS}`
-  )
 }
 
 function setEighthLevelMechanismPartPosition(part: RuntimeEighthMechanismPart, z: number): void {
@@ -238,9 +228,6 @@ export function startEighthLevelMechanism(): void {
     print("[ZLJ_EIGHTH_MECHANISM] skipped parts=0")
     return
   }
-  print(
-    `[ZLJ_EIGHTH_MECHANISM] start parts=${runtimeEighthMechanismParts.length} groups=4 visible_crossbars_per_group=6 distance=${EIGHTH_LEVEL_MECHANISM_MOVE_Z} seconds=${EIGHTH_LEVEL_MECHANISM_MOVE_SECONDS} axis=Z`
-  )
   scheduleEighthLevelMechanismCycle(true)
 }
 
@@ -254,9 +241,6 @@ function resetEighthLevelMechanismToInitial(source: string): void {
     setEighthLevelMechanismPartPosition(part, part.z)
   }
   runtimeEighthMechanismStarted = false
-  print(
-    `[ZLJ_EIGHTH_MECHANISM] reset_to_initial source=${source} parts=${runtimeEighthMechanismParts.length} generation=${runtimeEighthMechanismGeneration}`
-  )
   startEighthLevelMechanism()
 }
 

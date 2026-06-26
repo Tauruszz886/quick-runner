@@ -297,6 +297,102 @@
       "sz": 6.25
     },
     {
+      "module": 3,
+      "name": "fall_death_28",
+      "startX": 28,
+      "startZ": 6.25,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_29",
+      "startX": 60,
+      "startZ": 6.25,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_30",
+      "startX": 92,
+      "startZ": 6.25,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_31",
+      "startX": 28,
+      "startZ": 29.6875,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_32",
+      "startX": 60,
+      "startZ": 29.6875,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_33",
+      "startX": 94,
+      "startZ": 29.6875,
+      "sx": 20,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_34",
+      "startX": 28,
+      "startZ": 53.125,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_35",
+      "startX": 60,
+      "startZ": 53.125,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_36",
+      "startX": 92,
+      "startZ": 53.125,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_37",
+      "startX": 28,
+      "startZ": 76.5625,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_38",
+      "startX": 60,
+      "startZ": 76.5625,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
+      "module": 3,
+      "name": "fall_death_39",
+      "startX": 92,
+      "startZ": 76.5625,
+      "sx": 24,
+      "sz": 17.1875
+    },
+    {
       "module": 4,
       "name": "fall_death_01",
       "startX": 0,

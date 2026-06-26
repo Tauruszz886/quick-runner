@@ -30,7 +30,6 @@ function adjustRoleSpawnToBirthTile(role: Role): void {
     { tag: `birth_spawn_set_position_${key}`, fallback: undefined, logger: print }
   )
   spawnAdjustedRoles.set(key, true)
-  print(`[${TAG}] birth spawn adjusted role=${key} pos=(${BIRTH_SPAWN_X},${BIRTH_SPAWN_Y},${BIRTH_SPAWN_Z})`)
 }
 
 export function adjustOnlineRolesSpawnToBirthTile(): void {

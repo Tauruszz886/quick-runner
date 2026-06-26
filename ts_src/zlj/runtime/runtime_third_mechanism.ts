@@ -116,9 +116,6 @@ function registerHiddenDeathTrigger(platform: ThirdLevelTimedPlatform): void {
         if (platform.state !== "hidden") {
           return
         }
-        print(
-          `[${TAG}] hidden_death label=${platform.spec.label} group=${platform.spec.groupName} name=${platform.name} trigger=${tostring(triggerId)}`
-        )
         eliminateUnitAndRebirthAtBirth(
           extractTriggerUnit(data),
           `third_hidden_platform:${platform.name}:${tostring(triggerId)}`
@@ -133,9 +130,6 @@ function registerHiddenDeathTrigger(platform: ThirdLevelTimedPlatform): void {
       }
     )
   }
-  print(
-    `[${TAG}] hidden death trigger registered label=${platform.spec.label} group=${platform.spec.groupName} name=${platform.name} trigger=${tostring(trigger)} id=${tostring(triggerId)} pos=(${platform.x},${HOLE_DEATH_TRIGGER_CENTER_Y},${platform.z}) scale=(${platform.sx},${HOLE_DEATH_TRIGGER_HEIGHT},${platform.sz})`
-  )
 }
 
 function setPosition(platform: ThirdLevelTimedPlatform, y: number): void {
@@ -249,7 +243,6 @@ function resetThirdLevelPlatformsToInitial(source: string): void {
   for (let i = 0; i < thirdLevelPlatforms.length; i++) {
     restorePlatform(thirdLevelPlatforms[i]!)
   }
-  print(`[${TAG}] reset_to_initial source=${source} platforms=${thirdLevelPlatforms.length} generation=${thirdLevelGeneration}`)
   startThirdLevelMechanism()
 }
 
@@ -301,9 +294,6 @@ export function registerThirdLevelTimedPlatformBinding(
   thirdLevelPlatforms.push(platform)
   registerHiddenDeathTrigger(platform)
   restorePlatform(platform)
-  print(
-    `[${TAG}] registered label=${spec.label} group=${spec.groupName} name=${name} pos=(${x},${y},${z}) hidden_y=${platform.hiddenY} offset=${spec.startOffsetSeconds}`
-  )
 }
 
 export function startThirdLevelMechanism(): void {
@@ -322,9 +312,6 @@ export function startThirdLevelMechanism(): void {
     restorePlatform(platform)
     scheduleInitialPlatform(platform, generation)
   }
-  print(
-    `[${TAG}] start platforms=${thirdLevelPlatforms.length} cycle=${THIRD_LEVEL_CYCLE_SECONDS}s visible=${THIRD_LEVEL_VISIBLE_SECONDS}s warning=${THIRD_LEVEL_WARNING_SECONDS}s hidden=${THIRD_LEVEL_HIDDEN_SECONDS}s order=G1:5-9-13 G2:4-8-12 G3:3-7-11 G4:2-6-10`
-  )
 }
 
 EventBus.on(GAME_EVENTS.PLAYER_DIED_TO_REBIRTH, (_unit: unknown, source: unknown) => {

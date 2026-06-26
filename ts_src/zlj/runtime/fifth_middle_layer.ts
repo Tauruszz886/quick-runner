@@ -1,4 +1,4 @@
-import { safeCall, safeCreateCustomTriggerSpace, safeCreateObstacle } from "@common/engine_safe"
+import { safeCall, safeCreateCustomTriggerSpace, safeCreateObstacle, safeQueryUnitsByPrefabId } from "@common/engine_safe"
 import { TriggerHub } from "@common/trigger_hub"
 import { eliminateUnitAndRebirthAtBirth } from "../birth/rebirth"
 
@@ -20,8 +20,8 @@ const CHANNEL_DOWN_Y = CHANNEL_LAYER_TOP_DOWN_Y - LAYER_SY / 2
 const CHANNEL_UP_Y = CHANNEL_LAYER_TOP_UP_Y - LAYER_SY / 2
 const GAP_DOWN_Y = CHANNEL_DOWN_Y
 const GAP_UP_Y = CHANNEL_UP_Y
-const MOVE_SECONDS = 2.5
-const MOVE_FRAMES = 40
+const MOVE_SECONDS = 1
+const MOVE_FRAMES = 30
 const UP_HOLD_SECONDS = 2
 const DOWN_HOLD_SECONDS = 0.4
 const PAINT_AREAS = [1, 2, 3, 4] as const
@@ -129,13 +129,7 @@ function queryEditorUnit(name: string): unknown {
 }
 
 function queryMiddleLayerCandidates(): unknown[] {
-  const units = safeCall(
-    () => {
-      return (LuaAPI as any).query_units_by_type(Enums.UnitType.OBSTACLE, LAYER_PREFAB_ID)
-    },
-    { tag: "middle_layer_query_candidates", fallback: [] as unknown[], logger: print }
-  )
-  return units === undefined || units === null ? [] : (units as unknown[])
+  return safeQueryUnitsByPrefabId(LAYER_PREFAB_ID)
 }
 
 function getUnitPosition(unit: unknown, fallback: Position3, name: string): Position3 {
@@ -173,7 +167,6 @@ function queryEditorUnitByPosition(name: string, fallback: Position3): unknown {
     }
   }
   if (bestUnit !== null && bestDistance <= 0.25) {
-    print(`[${TAG}] editor unit position matched name=${name} candidates=${candidates.length} distance=${bestDistance}`)
     return bestUnit
   }
   print(`[${TAG}] editor unit position missing name=${name} candidates=${candidates.length} best_distance=${bestDistance}`)
@@ -194,9 +187,6 @@ function createRuntimeMiddleLayerUnit(name: string, fallback: Position3, spec: M
     vec3(fallback.x, fallback.y, fallback.z),
     vec3(spec.sx, LAYER_SY, spec.sz),
     { tag: `middle_layer_runtime_fallback_create_${name}`, logger: print }
-  )
-  print(
-    `[${TAG}] runtime fallback created name=${name} unit=${tostring(unit)} pos=(${fallback.x},${fallback.y},${fallback.z}) scale=(${spec.sx},${LAYER_SY},${spec.sz}) reason=editor_105205_not_queryable`
   )
   return unit
 }
@@ -234,7 +224,6 @@ function applyLayerColor(unit: unknown, name: string): void {
       { tag: `middle_layer_color_${name}_${i + 1}`, fallback: undefined, logger: print }
     )
   }
-  print(`[${TAG}] color applied name=${name} color=${LAYER_COLOR}`)
 }
 
 function animate(toUp: boolean, done?: () => void): void {
@@ -276,9 +265,6 @@ function startMove(moduleLabel: string): void {
     print(`[${TAG}] move skipped parts=0`)
     return
   }
-  print(
-    `[${TAG}] move start module=${moduleLabel} parts=${parts.length} gap_y=${GAP_DOWN_Y}->${GAP_UP_Y} channel_y=${CHANNEL_DOWN_Y}->${CHANNEL_UP_Y} seconds=${MOVE_SECONDS} up_hold=${UP_HOLD_SECONDS} down_hold=${DOWN_HOLD_SECONDS} trigger_prefab=${HAZARD_TRIGGER_PREFAB_ID}`
-  )
   cycle(true)
 }
 
@@ -309,7 +295,6 @@ function registerReturnTrigger(trigger: unknown, name: string): void {
       { safe: true, safeCallback: true, tag: `middle_layer_hazard_${name}`, logger: print }
     )
   }
-  print(`[${TAG}] trigger registered name=${name} trigger=${tostring(trigger)} id=${tostring(triggerId)}`)
 }
 
 export function createFifthMiddleLayer(options: CreateOptions): void {
@@ -320,9 +305,6 @@ export function createFifthMiddleLayer(options: CreateOptions): void {
 
   const moduleMinX = options.moduleCenterX - options.floor.sx / 2
   const moduleMinZ = options.floor.z - options.floor.sz / 2
-  print(
-    `[${TAG}] editor bind begin module=${options.moduleLabel} parts=${SPECS.length} trigger_prefab=${HAZARD_TRIGGER_PREFAB_ID} gap_y=${GAP_DOWN_Y}->${GAP_UP_Y} channel_y=${CHANNEL_DOWN_Y}->${CHANNEL_UP_Y} move_seconds=${MOVE_SECONDS}`
-  )
   let bound = 0
   let missing = 0
   let fallbackCreated = 0
@@ -361,16 +343,6 @@ export function createFifthMiddleLayer(options: CreateOptions): void {
     registerReturnTrigger(trigger, name)
     parts.push({ name, unit, trigger, x, z, downY, upY })
     bound += 1
-    print(
-      `[${TAG}] editor bound name=${editorName} unit=${tostring(unit)} trigger=${tostring(trigger)} pos=(${x},${downY},${z}) data_pos=(${fallbackX},${fallbackDownY},${fallbackZ}) up_y=${upY} channel=${spec.channel === true} scale=(${spec.sx},${LAYER_SY},${spec.sz}) trigger_y=${triggerY(downY)} x_range=${moduleMinX + spec.startX}..${moduleMinX + spec.startX + spec.sx} z_range=${moduleMinZ + spec.startZ}..${moduleMinZ + spec.startZ + spec.sz}`
-    )
   }
-  print(`[${TAG}] editor bind complete module=${options.moduleLabel} bound=${bound} fallback=${fallbackCreated} missing=${missing}`)
   startMove(options.moduleLabel)
-  ;(LuaAPI as any).call_delay_time(fixed(6), () => {
-    print(`[${TAG}] delayed summary bound=${bound} fallback=${fallbackCreated} missing=${missing} moving=${moving} parts=${parts.length}`)
-  })
-  ;(LuaAPI as any).call_delay_time(fixed(20), () => {
-    print(`[${TAG}] delayed summary late bound=${bound} fallback=${fallbackCreated} missing=${missing} moving=${moving} parts=${parts.length}`)
-  })
 }
