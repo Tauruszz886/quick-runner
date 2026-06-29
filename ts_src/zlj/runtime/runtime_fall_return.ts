@@ -3,6 +3,7 @@ import { TriggerHub } from "@common/trigger_hub"
 import { eliminateUnitAndRebirthAtBirth } from "../birth/rebirth"
 
 const TAG = "ZLJ_HOLE_DEATH"
+const NINTH_75C_DEATH_TRIGGER_NAME = "第09关_dxf_75C_50x20_死亡触发区"
 const BIG_FLOOR_TOP_Y = 3
 const WALKABLE_TOP_Y = 6.5
 const TRIGGER_BOTTOM_Y = BIG_FLOOR_TOP_Y + 0.05
@@ -40,5 +41,8 @@ export function registerHoleDeathTriggerUnit(trigger: unknown, name: string): bo
     (_eventName: unknown, _actor: unknown, data: unknown) => handleTriggerData(data, `scene:${name}:${tostring(triggerId)}`),
     { safe: true, safeCallback: true, tag: `hole_death_scene_${name}`, logger: print }
   )
+  if (name.indexOf(NINTH_75C_DEATH_TRIGGER_NAME) >= 0) {
+    print(`[${TAG}] ninth 75C death trigger registered name=${name} trigger_id=${triggerId}`)
+  }
   return true
 }

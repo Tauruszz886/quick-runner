@@ -35,6 +35,8 @@ FOURTH_COMPRESSOR_DEATH_TRIGGER_PREFAB_ID = 3101010
 FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET = 0.25
 FOURTH_COMPRESSOR_DEATH_TRIGGER_LOCAL_Y = 4.0
 FOURTH_COMPRESSOR_MOVE_SECONDS = 1.5
+EIGHTH_MECHANISM_DEATH_TRIGGER_PREFAB_ID = 3101010
+EIGHTH_MECHANISM_DEATH_TRIGGER_OUTSET = 0.2
 ZLJ_FLOOR_MODEL_ID = 90004
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_X = 15.0
 ZLJ_FLOOR_WORLD_UNITS_PER_SCALE_Z = 10.0
@@ -102,6 +104,10 @@ THIRD_LEVEL_BLUE_PLATFORM_NAMES = {
     "dxf_84C_24x17_1875",
     "dxf_850_24x17_1875",
     "dxf_854_24x17_1875",
+}
+NINTH_LEVEL_VANISHING_PLATFORM_NAMES = {
+    "dxf_760_50x20",
+    "dxf_75C_50x20",
 }
 
 LEVEL_FRAMES = {index: {"sx": 160.0, "sz": 100.0} for index in range(0, 11)}
@@ -399,6 +405,29 @@ def third_level_vanishing_trigger_kv(module: int, piece_name: str, trigger_name:
     }
 
 
+def ninth_level_vanishing_platform_kv(module: int, piece_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "ninth_vanishing_platform",
+        "QRModule": module,
+        "QRComponent": piece_name,
+        "QRRuntimeName": module_name(module, piece_name),
+        "QRVanish": True,
+        "QRVanishMode": "fade",
+    }
+
+
+def ninth_level_vanishing_trigger_kv(module: int, piece_name: str, trigger_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "ninth_vanishing_trigger",
+        "QRModule": module,
+        "QRComponent": trigger_name,
+        "QRRuntimeName": module_name(module, trigger_name),
+        "QRTargetComponent": piece_name,
+        "QRTargetRuntimeName": module_name(module, piece_name),
+        "QRTriggerAction": "fade_on_player_touch",
+    }
+
+
 def fourth_level_compressor_kv(module: int, piece_name: str) -> dict[str, Any]:
     return {
         "QRRole": "fourth_compressor",
@@ -422,6 +451,56 @@ def fourth_level_compressor_trigger_kv(module: int, piece_name: str, trigger_nam
         "QRMoving": True,
         "QRTouchDeath": True,
         "QRMoveSeconds": FOURTH_COMPRESSOR_MOVE_SECONDS,
+    }
+
+
+def is_eighth_level_moving_mechanism_piece(module: int, piece: dict[str, Any]) -> bool:
+    if module != 8:
+        return False
+    sx = float(piece["sx"])
+    sy = float(piece["sy"])
+    sz = float(piece["sz"])
+    return (sx == 0.5 and sz == 4) or ((sx == 35 or sx == 27.5) and sy == 5 and sz == 4)
+
+
+def eighth_level_moving_mechanism_ground_surface_y(piece: dict[str, Any]) -> float:
+    return float(piece.get("baseY", FIRST_LEVEL_TERRAIN_BASE_Y))
+
+
+def eighth_level_moving_mechanism_clearance_y(piece: dict[str, Any], center_y: float) -> float:
+    ground_surface_y = eighth_level_moving_mechanism_ground_surface_y(piece)
+    part_bottom_y = center_y - float(piece["sy"]) / 2
+    return part_bottom_y - ground_surface_y
+
+
+def eighth_level_moving_mechanism_trigger_local_y(piece: dict[str, Any], center_y: float, trigger_sy: float) -> float:
+    ground_surface_y = eighth_level_moving_mechanism_ground_surface_y(piece)
+    clearance_y = eighth_level_moving_mechanism_clearance_y(piece, center_y)
+    trigger_bottom_y = ground_surface_y + clearance_y
+    trigger_center_y = trigger_bottom_y + trigger_sy / 2
+    return trigger_center_y - center_y
+
+
+def eighth_level_moving_mechanism_trigger_kv(
+    module: int,
+    piece_name: str,
+    trigger_name: str,
+    ground_surface_y: float,
+    clearance_y: float,
+    trigger_bottom_y: float,
+) -> dict[str, Any]:
+    return {
+        "QRRole": "eighth_moving_death_trigger",
+        "QRModule": module,
+        "QRComponent": trigger_name,
+        "QRRuntimeName": module_name(module, trigger_name),
+        "QRTargetComponent": piece_name,
+        "QRTargetRuntimeName": module_name(module, piece_name),
+        "QRMoving": True,
+        "QRTouchDeath": True,
+        "QRGroundSurfaceY": ground_surface_y,
+        "QRGroundClearanceY": clearance_y,
+        "QRTriggerBottomY": trigger_bottom_y,
     }
 
 
@@ -470,10 +549,14 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             prefab_id = int(piece.get("prefabId", WALL_PREFAB_ID))
             piece_name = str(piece["name"])
             is_third_vanishing_platform = module == 3 and piece_name in THIRD_LEVEL_BLUE_PLATFORM_NAMES
+            is_ninth_third_api_vanishing_platform = module == 9 and piece_name in NINTH_LEVEL_VANISHING_PLATFORM_NAMES
             is_fourth_compressor = module == 4 and piece.get("role") == "fourth_compressor"
+            is_eighth_moving_mechanism = is_eighth_level_moving_mechanism_piece(module, piece)
             custom_kv = (
                 third_level_vanishing_platform_kv(module, piece_name)
                 if is_third_vanishing_platform
+                else ninth_level_vanishing_platform_kv(module, piece_name)
+                if is_ninth_third_api_vanishing_platform
                 else fourth_level_compressor_kv(module, piece_name)
                 if is_fourth_compressor
                 else runtime_kv_by_component.get((module, piece_name))
@@ -491,12 +574,12 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     float(piece["sy"]),
                     float(piece["sz"]),
                     paint_color=THIRD_LEVEL_BLUE_PLATFORM_COLOR
-                    if is_third_vanishing_platform
+                    if is_third_vanishing_platform or is_ninth_third_api_vanishing_platform
                     else None,
                     custom_kv=dict(custom_kv) if custom_kv is not None else None,
                 )
             )
-            if is_third_vanishing_platform:
+            if is_third_vanishing_platform or is_ninth_third_api_vanishing_platform:
                 trigger_name = f"{piece_name}_渐隐触发区"
                 trigger_sy = float(piece["sy"]) + THIRD_LEVEL_VANISH_TRIGGER_EXTRA_HEIGHT
                 items.append(
@@ -512,7 +595,9 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                         trigger_sy,
                         float(piece["sz"]),
                         runtime_trigger=True,
-                        custom_kv=third_level_vanishing_trigger_kv(module, piece_name, trigger_name),
+                        custom_kv=third_level_vanishing_trigger_kv(module, piece_name, trigger_name)
+                        if is_third_vanishing_platform
+                        else ninth_level_vanishing_trigger_kv(module, piece_name, trigger_name),
                         parent_name_override=f"QR_{module_name(module, piece_name)}",
                     )
                 )
@@ -532,6 +617,39 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                         float(piece["sz"]) + FOURTH_COMPRESSOR_DEATH_TRIGGER_OUTSET * 2,
                         runtime_trigger=True,
                         custom_kv=fourth_level_compressor_trigger_kv(module, piece_name, trigger_name),
+                        parent_name_override=f"QR_{module_name(module, piece_name)}",
+                    )
+                )
+            if is_eighth_moving_mechanism:
+                trigger_name = f"{piece_name}_移动死亡触发区"
+                trigger_sx = float(piece["sx"]) + EIGHTH_MECHANISM_DEATH_TRIGGER_OUTSET * 2
+                trigger_sy = float(piece["sy"]) + EIGHTH_MECHANISM_DEATH_TRIGGER_OUTSET * 2
+                trigger_sz = float(piece["sz"]) + EIGHTH_MECHANISM_DEATH_TRIGGER_OUTSET * 2
+                ground_surface_y = eighth_level_moving_mechanism_ground_surface_y(piece)
+                clearance_y = eighth_level_moving_mechanism_clearance_y(piece, y)
+                trigger_bottom_y = ground_surface_y + clearance_y
+                trigger_local_y = eighth_level_moving_mechanism_trigger_local_y(piece, y, trigger_sy)
+                items.append(
+                    SceneItem(
+                        "level",
+                        module,
+                        module_name(module, trigger_name),
+                        EIGHTH_MECHANISM_DEATH_TRIGGER_PREFAB_ID,
+                        0,
+                        trigger_local_y,
+                        0,
+                        trigger_sx,
+                        trigger_sy,
+                        trigger_sz,
+                        runtime_trigger=True,
+                        custom_kv=eighth_level_moving_mechanism_trigger_kv(
+                            module,
+                            piece_name,
+                            trigger_name,
+                            ground_surface_y,
+                            clearance_y,
+                            trigger_bottom_y,
+                        ),
                         parent_name_override=f"QR_{module_name(module, piece_name)}",
                     )
                 )

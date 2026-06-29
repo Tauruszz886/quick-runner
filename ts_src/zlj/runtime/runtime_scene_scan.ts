@@ -10,7 +10,10 @@ export type RuntimeSceneRole =
   | "fourth_compressor"
   | "fourth_compressor_death_trigger"
   | "eighth_moving_part"
+  | "eighth_moving_death_trigger"
   | "ninth_vanishing_platform"
+  | "ninth_vanishing_trigger"
+  | "ninth_vanishing_death_trigger"
   | "tenth_current"
   | "fall_death"
 
@@ -83,6 +86,15 @@ function readNumberKv(unit: unknown, key: string): number | undefined {
 function readBoolKv(unit: unknown, key: string): boolean | undefined {
   const value = readKv(unit, Enums.ValueType.Bool, key)
   return typeof value === "boolean" ? value : undefined
+}
+
+function readIntKv(unit: unknown, key: string): number | undefined {
+  const value = readKv(unit, Enums.ValueType.Int, key)
+  if (typeof value === "number") {
+    return value
+  }
+  const strValue = readKv(unit, Enums.ValueType.Str, key)
+  return strValue === null || strValue === undefined ? undefined : toNumber(strValue, { mode: "loose", ctx: key, logger: print })
 }
 
 function getUnitPosition(unit: unknown, name: string): { x: number; y: number; z: number } | null {
@@ -187,14 +199,14 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
   const runtimeName = runtimeNameKv === undefined ? getUnitIdentity(unit) : runtimeNameKv
   const componentKv = readStringKv(unit, "QRComponent")
   const component = componentKv === undefined ? runtimeName : componentKv
-  const module = readNumberKv(unit, "QRModule")
+  const module = readIntKv(unit, "QRModule")
   const position = getUnitPosition(unit, runtimeName)
   const scale = getUnitScale(unit, runtimeName)
   if (module === undefined || position === null || scale === null) {
     print(`[${TERRAIN_TAG}] scene scan skipped name=${runtimeName} role=${role} reason=missing_required_kv_or_transform`)
     return null
   }
-  return {
+  const item: RuntimeSceneUnit = {
     unit,
     role,
     runtimeName,
@@ -206,12 +218,21 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
     sx: scale.x,
     sy: scale.y,
     sz: scale.z,
-    moveZ: readNumberKv(unit, "QRMoveZ"),
-    moving: readBoolKv(unit, "QRMoving"),
-    moveSeconds: readNumberKv(unit, "QRMoveSeconds"),
-    touchDeath: readBoolKv(unit, "QRTouchDeath"),
-    targetRuntimeName: readStringKv(unit, "QRTargetRuntimeName"),
   }
+  if (role === "fourth_compressor") {
+    item.moveSeconds = readNumberKv(unit, "QRMoveSeconds")
+  }
+  if (role === "fourth_compressor_death_trigger" || role === "eighth_moving_death_trigger") {
+    item.touchDeath = readBoolKv(unit, "QRTouchDeath")
+    item.targetRuntimeName = readStringKv(unit, "QRTargetRuntimeName")
+  }
+  if (role === "third_vanishing_trigger" || role === "ninth_vanishing_trigger" || role === "ninth_vanishing_death_trigger") {
+    item.targetRuntimeName = readStringKv(unit, "QRTargetRuntimeName")
+  }
+  if (role === "tenth_current") {
+    item.moving = readBoolKv(unit, "QRMoving")
+  }
+  return item
 }
 
 export function scanQuickRunnerRuntimeScene(): RuntimeSceneUnit[] {

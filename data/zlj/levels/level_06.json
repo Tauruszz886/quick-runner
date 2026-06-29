@@ -2,76 +2,52 @@
   "level": 6,
   "terrain": [
     {
-      "name": "dxf_687_11_2x37_5",
-      "startX": 0,
-      "startZ": 31.25,
-      "sx": 11.2,
+      "name": "dxf_657_11x35",
+      "startX": 149,
+      "startZ": 32.5,
+      "sx": 11,
       "sy": 3,
-      "sz": 37.5
+      "sz": 35
     },
     {
-      "name": "dxf_683_8x17_5",
-      "startX": 11.2,
+      "name": "dxf_65B_7x17_5",
+      "startX": 142,
       "startZ": 41.25,
-      "sx": 8,
+      "sx": 7,
       "sy": 3,
       "sz": 17.5
-    },
-    {
-      "name": "dxf_667_12x9_375",
-      "startX": 12,
-      "startZ": 6.25,
-      "sx": 12,
-      "sy": 3,
-      "sz": 9.375
-    },
-    {
-      "name": "dxf_663_12x10_625",
-      "startX": 44,
-      "startZ": 6.25,
-      "sx": 12,
-      "sy": 3,
-      "sz": 10.625
-    },
-    {
-      "name": "dxf_66F_12x11_25",
-      "startX": 46.438784,
-      "startZ": 84.375,
-      "sx": 12,
-      "sy": 3,
-      "sz": 11.25
-    },
-    {
-      "name": "dxf_66B_20x17_5",
-      "startX": 48,
-      "startZ": 41.25,
-      "sx": 20,
-      "sy": 3,
-      "sz": 17.5
-    },
-    {
-      "name": "dxf_673_12x11_25",
-      "startX": 75.2,
-      "startZ": 84.375,
-      "sx": 12,
-      "sy": 3,
-      "sz": 11.25
     },
     {
       "name": "dxf_65F_12x12_5",
-      "startX": 80,
+      "startX": 70,
       "startZ": 6.25,
       "sx": 12,
       "sy": 3,
       "sz": 12.5
     },
     {
-      "name": "dxf_65B_32x17_5",
-      "startX": 112,
-      "startZ": 41.25,
-      "sx": 32,
+      "name": "dxf_667_12x12_375",
+      "startX": 22,
+      "startZ": 6.25,
+      "sx": 12,
       "sy": 3,
-      "sz": 17.5
+      "sz": 12.375
+    },
+    {
+      "name": "dxf_66B_16x11_5",
+      "startX": 75,
+      "startZ": 44.25,
+      "sx": 16,
+      "sy": 3,
+      "sz": 11.5
+    },
+    {
+      "name": "dxf_673_12x11_25",
+      "startX": 70.2,
+      "startZ": 84.375,
+      "sx": 12,
+      "sy": 3,
+      "sz": 11.25
     },
     {
       "name": "dxf_677_12x11_25",
@@ -82,12 +58,12 @@
       "sz": 11.25
     },
     {
-      "name": "dxf_657_16x75",
-      "startX": 144,
-      "startZ": 12.5,
-      "sx": 16,
+      "name": "dxf_687_11_2x31_5",
+      "startX": 0,
+      "startZ": 34.25,
+      "sx": 11.2,
       "sy": 3,
-      "sz": 75
+      "sz": 31.5
     }
   ]
 }

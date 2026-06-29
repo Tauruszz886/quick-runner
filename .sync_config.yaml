@@ -1,5 +1,4 @@
 repo: quick-runner
-register_ip: inner-dev.clock-p.com
 excel_url:
   - name: "编辑器导出表"
     url: ""

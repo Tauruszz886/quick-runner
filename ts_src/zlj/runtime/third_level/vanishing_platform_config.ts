@@ -1,11 +1,11 @@
 export const THIRD_VANISHING_TAG = "ZLJ_VANISHING_PLATFORM"
 
-export const THIRD_CHAIN_DELAY_SECONDS = 0.6
-export const THIRD_WAIT_BEFORE_FADE_SECONDS = 0.3
-export const THIRD_FADE_SECONDS = 1
-export const THIRD_FADE_FRAMES = 30
-export const THIRD_FADE_STEP_FRAMES = 10
-export const THIRD_DISAPPEAR_SECONDS = 2
+export const THIRD_CHAIN_DELAY_SECONDS = 0.3
+export const THIRD_WAIT_BEFORE_FADE_SECONDS = 0.1
+export const THIRD_FADE_SECONDS = 0.5
+export const THIRD_FADE_FRAMES = 10
+export const THIRD_FADE_STEP_FRAMES = 5
+export const THIRD_DISAPPEAR_SECONDS = 0.8
 
 export const THIRD_PLATFORM_BLUE = 0x0066ff as Color
 export const THIRD_PLATFORM_RED = 0xff0000 as Color

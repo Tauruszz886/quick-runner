@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<style>text{font-family:Arial,"Noto Sans CJK SC",sans-serif}.title{font-size:24px;font-weight:700;fill:#0f172a}.meta{font-size:14px;fill:#475569}.axis{stroke:#94a3b8;stroke-width:1}.frame{fill:#fff;stroke:#0f172a;stroke-width:2}.piece{stroke:#0f172a;stroke-width:1.4}.label{font-size:12px;font-weight:700;fill:#0f172a}.small{font-size:10px;fill:#334155}.missing{fill:#e2e8f0;stroke:#94a3b8;stroke-dasharray:5 4}</style>
+<text class="title" x="40" y="42">第六关 上传 DXF 的 3DSOLID handle 对应结构图</text>
+<text class="meta" x="40" y="68">Zulijian 坐标：外框 160 x 100，矩形字段 startX/startZ/sx/sz；Z 轴向下显示。</text>
+<g transform="translate(80,110)">
+<rect class="frame" x="0" y="0" width="928.0" height="580.0"/>
+<line class="axis" x1="0.00" y1="0" x2="0.00" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="92.80" y1="0" x2="92.80" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="185.60" y1="0" x2="185.60" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="278.40" y1="0" x2="278.40" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="371.20" y1="0" x2="371.20" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="464.00" y1="0" x2="464.00" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="556.80" y1="0" x2="556.80" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="649.60" y1="0" x2="649.60" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="742.40" y1="0" x2="742.40" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="835.20" y1="0" x2="835.20" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="928.00" y1="0" x2="928.00" y2="580.00" opacity="0.16"/>
+<line class="axis" x1="0" y1="0.00" x2="928.00" y2="0.00" opacity="0.16"/>
+<line class="axis" x1="0" y1="69.60" x2="928.00" y2="69.60" opacity="0.16"/>
+<line class="axis" x1="0" y1="139.20" x2="928.00" y2="139.20" opacity="0.16"/>
+<line class="axis" x1="0" y1="208.80" x2="928.00" y2="208.80" opacity="0.16"/>
+<line class="axis" x1="0" y1="278.40" x2="928.00" y2="278.40" opacity="0.16"/>
+<line class="axis" x1="0" y1="348.00" x2="928.00" y2="348.00" opacity="0.16"/>
+<line class="axis" x1="0" y1="417.60" x2="928.00" y2="417.60" opacity="0.16"/>
+<line class="axis" x1="0" y1="487.20" x2="928.00" y2="487.20" opacity="0.16"/>
+<line class="axis" x1="0" y1="556.80" x2="928.00" y2="556.80" opacity="0.16"/>
+<g id="dxf_687_11_2x37_5">
+<rect class="piece" x="0.00" y="181.25" width="64.96" height="217.50" fill="#60a5fa" fill-opacity="0.72"><title>dxf_687_11_2x37_5 start=(0,31.25) size=(11.2,37.5)</title></rect>
+<text class="label" text-anchor="middle" x="32.48" y="284.00">687</text>
+<text class="small" text-anchor="middle" x="32.48" y="298.00">11.2x37.5</text>
+</g>
+<g id="dxf_667_12x9_375">
+<rect class="piece" x="69.60" y="36.25" width="69.60" height="54.38" fill="#34d399" fill-opacity="0.72"><title>dxf_667_12x9_375 start=(12,6.25) size=(12,9.375)</title></rect>
+<text class="label" text-anchor="middle" x="104.40" y="57.44">667</text>
+<text class="small" text-anchor="middle" x="104.40" y="71.44">12x9.375</text>
+</g>
+<g id="dxf_66B_20x17_5">
+<rect class="piece" x="278.40" y="239.25" width="116.00" height="101.50" fill="#fbbf24" fill-opacity="0.72"><title>dxf_66B_20x17_5 start=(48,41.25) size=(20,17.5)</title></rect>
+<text class="label" text-anchor="middle" x="336.40" y="284.00">66B</text>
+<text class="small" text-anchor="middle" x="336.40" y="298.00">20x17.5</text>
+</g>
+<g id="dxf_673_12x11_25">
+<rect class="piece" x="436.16" y="489.38" width="69.60" height="65.25" fill="#f87171" fill-opacity="0.72"><title>dxf_673_12x11_25 start=(75.2,84.375) size=(12,11.25)</title></rect>
+<text class="label" text-anchor="middle" x="470.96" y="516.00">673</text>
+<text class="small" text-anchor="middle" x="470.96" y="530.00">12x11.25</text>
+</g>
+<g id="dxf_65F_12x12_5">
+<rect class="piece" x="464.00" y="36.25" width="69.60" height="72.50" fill="#a78bfa" fill-opacity="0.72"><title>dxf_65F_12x12_5 start=(80,6.25) size=(12,12.5)</title></rect>
+<text class="label" text-anchor="middle" x="498.80" y="66.50">65F</text>
+<text class="small" text-anchor="middle" x="498.80" y="80.50">12x12.5</text>
+</g>
+<g id="dxf_65B_32x17_5">
+<rect class="piece" x="649.60" y="239.25" width="185.60" height="101.50" fill="#22d3ee" fill-opacity="0.72"><title>dxf_65B_32x17_5 start=(112,41.25) size=(32,17.5)</title></rect>
+<text class="label" text-anchor="middle" x="742.40" y="284.00">65B</text>
+<text class="small" text-anchor="middle" x="742.40" y="298.00">32x17.5</text>
+</g>
+<g id="dxf_677_12x11_25">
+<rect class="piece" x="649.60" y="489.38" width="69.60" height="65.25" fill="#fb7185" fill-opacity="0.72"><title>dxf_677_12x11_25 start=(112,84.375) size=(12,11.25)</title></rect>
+<text class="label" text-anchor="middle" x="684.40" y="516.00">677</text>
+<text class="small" text-anchor="middle" x="684.40" y="530.00">12x11.25</text>
+</g>
+<g id="dxf_657_16x75">
+<rect class="piece" x="835.20" y="72.50" width="92.80" height="435.00" fill="#4ade80" fill-opacity="0.72"><title>dxf_657_16x75 start=(144,12.5) size=(16,75)</title></rect>
+<text class="label" text-anchor="middle" x="881.60" y="284.00">657</text>
+<text class="small" text-anchor="middle" x="881.60" y="298.00">16x75</text>
+</g>
+</g>
+<g transform="translate(40,720)">
+<rect x="0" y="-13" width="16" height="12" fill="#60a5fa" fill-opacity=".72" stroke="#0f172a"/><text class="meta" x="24" y="-3">上传 DXF 中存在的 3DSOLID handle</text>
+<rect x="330" y="-13" width="16" height="12" fill="#e2e8f0" stroke="#94a3b8" stroke-dasharray="5 4"/><text class="meta" x="354" y="-3">现有 JSON 中有，但上传 DXF 未出现的 handle</text>
+</g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="709" height="536" viewBox="0 0 709.06 536.07">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<style>text{font-family:Arial,"Noto Sans CJK SC",sans-serif}.thin{stroke:#64748b;stroke-width:1;vector-effect:non-scaling-stroke}.main{stroke:#0f172a;stroke-width:2;vector-effect:non-scaling-stroke}.dim{stroke:#ef4444;stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-dasharray:4 3}.solid{fill:#f59e0b;fill-opacity:.16;stroke:#f59e0b;stroke-width:1;vector-effect:non-scaling-stroke}.label{font-size:11px;fill:#334155}.title{font-size:16px;font-weight:700;fill:#0f172a}.meta{font-size:12px;fill:#475569}</style>
+<text class="title" x="14" y="22">第六关 DXF 结构预览</text>
+<text class="meta" x="14" y="42">ENTITIES: LINE 33 / 3DSOLID 8 / DIMENSION 2，bounds x=-109.159..61.105, y=-204.190..-91.673</text>
+<text class="meta" x="14" y="58">说明：SVG 按模型空间 LINE/DIMENSION 投影生成；3DSOLID 在此 DXF 中未展开 ACIS 面，仅以橙色句柄标注。</text>
+<rect x="14.00" y="72.00" width="681.06" height="450.07" fill="white" stroke="#cbd5e1" stroke-width="1"/>
+<line class="main" x1="14.00" y1="522.07" x2="654.00" y2="522.07"><title>LINE handle=5DD len=160.000</title></line>
+<line class="main" x1="654.00" y1="522.07" x2="654.00" y2="122.07"><title>LINE handle=5DE len=100.000</title></line>
+<line class="main" x1="654.00" y1="122.07" x2="14.00" y2="122.07"><title>LINE handle=5DF len=160.000</title></line>
+<line class="main" x1="14.00" y1="122.07" x2="14.00" y2="522.07"><title>LINE handle=5E0 len=100.000</title></line>
+<line class="main" x1="14.00" y1="122.07" x2="14.00" y2="522.07"><title>LINE handle=5E1 len=100.000</title></line>
+<line class="main" x1="14.00" y1="522.07" x2="654.00" y2="522.07"><title>LINE handle=5E2 len=160.000</title></line>
+<line class="thin" x1="14.00" y1="522.07" x2="78.00" y2="522.07"><title>LINE handle=5E3 len=16.000</title></line>
+<line class="thin" x1="78.00" y1="522.07" x2="110.00" y2="522.07"><title>LINE handle=5E4 len=8.000</title></line>
+<line class="main" x1="654.00" y1="522.07" x2="334.00" y2="522.07"><title>LINE handle=5E5 len=80.000</title></line>
+<line class="thin" x1="334.00" y1="522.07" x2="398.00" y2="522.07"><title>LINE handle=5E6 len=16.000</title></line>
+<line class="main" x1="654.00" y1="522.07" x2="654.00" y2="422.07"><title>LINE handle=601 len=25.000</title></line>
+<line class="main" x1="654.00" y1="122.07" x2="654.00" y2="222.07"><title>LINE handle=602 len=25.000</title></line>
+<line class="main" x1="654.00" y1="122.07" x2="654.00" y2="222.07"><title>LINE handle=603 len=25.000</title></line>
+<line class="main" x1="14.00" y1="522.07" x2="14.00" y2="372.07"><title>LINE handle=604 len=37.500</title></line>
+<line class="main" x1="14.00" y1="122.07" x2="14.00" y2="272.07"><title>LINE handle=605 len=37.500</title></line>
+<line class="main" x1="14.00" y1="522.07" x2="14.00" y2="397.07"><title>LINE handle=606 len=31.250</title></line>
+<line class="main" x1="654.00" y1="422.07" x2="654.00" y2="226.51"><title>LINE handle=607 len=48.889</title></line>
+<line class="main" x1="654.00" y1="122.07" x2="654.00" y2="222.07"><title>LINE handle=608 len=25.000</title></line>
+<line class="main" x1="654.00" y1="222.07" x2="654.00" y2="422.07"><title>LINE handle=609 len=50.000</title></line>
+<line class="thin" x1="78.00" y1="122.07" x2="126.00" y2="122.07"><title>LINE handle=60A len=12.000</title></line>
+<line class="thin" x1="462.00" y1="122.07" x2="430.00" y2="122.07"><title>LINE handle=60E len=8.000</title></line>
+<line class="thin" x1="110.00" y1="497.07" x2="110.00" y2="459.57"><title>LINE handle=60F len=9.375</title></line>
+<line class="thin" x1="590.00" y1="357.07" x2="590.00" y2="287.07"><title>LINE handle=626 len=17.500</title></line>
+<line class="main" x1="654.00" y1="472.07" x2="654.00" y2="172.07"><title>LINE handle=62A len=75.000</title></line>
+<line class="thin" x1="510.00" y1="139.57" x2="462.00" y2="139.57"><title>LINE handle=62D len=12.000</title></line>
+<line class="thin" x1="462.00" y1="139.57" x2="462.00" y2="184.57"><title>LINE handle=62E len=11.250</title></line>
+<line class="thin" x1="462.00" y1="184.57" x2="510.00" y2="184.57"><title>LINE handle=62F len=12.000</title></line>
+<line class="thin" x1="510.00" y1="184.57" x2="510.00" y2="139.57"><title>LINE handle=630 len=11.250</title></line>
+<line class="thin" x1="294.80" y1="139.57" x2="294.80" y2="184.57"><title>LINE handle=632 len=11.250</title></line>
+<line class="thin" x1="294.80" y1="184.57" x2="342.80" y2="184.57"><title>LINE handle=633 len=12.000</title></line>
+<line class="thin" x1="342.80" y1="184.57" x2="342.80" y2="139.57"><title>LINE handle=634 len=11.250</title></line>
+<line class="main" x1="14.00" y1="247.07" x2="14.00" y2="397.07"><title>LINE handle=63E len=37.500</title></line>
+<line class="thin" x1="58.80" y1="287.07" x2="58.80" y2="357.07"><title>LINE handle=642 len=17.500</title></line>
+<circle cx="695.06" cy="122.07" r="2.5" fill="#ef4444"><title>DIMENSION 5E7 x,y</title></circle>
+<circle cx="687.56" cy="322.07" r="2.5" fill="#ef4444"><title>DIMENSION 5E7 x2,y2</title></circle>
+<circle cx="654.00" cy="522.07" r="2.5" fill="#ef4444"><title>DIMENSION 5E7 x3,y3</title></circle>
+<circle cx="654.00" cy="122.07" r="2.5" fill="#ef4444"><title>DIMENSION 5E7 x4,y4</title></circle>
+<line class="dim" x1="695.06" y1="122.07" x2="687.56" y2="322.07"/>
+<line class="dim" x1="687.56" y1="322.07" x2="654.00" y2="522.07"/>
+<line class="dim" x1="654.00" y1="522.07" x2="654.00" y2="122.07"/>
+<text class="label" x="699.06" y="118.07">DIM 5E7</text>
+<circle cx="14.00" cy="79.50" r="2.5" fill="#ef4444"><title>DIMENSION 5F4 x,y</title></circle>
+<circle cx="334.00" cy="72.00" r="2.5" fill="#ef4444"><title>DIMENSION 5F4 x2,y2</title></circle>
+<circle cx="654.00" cy="122.07" r="2.5" fill="#ef4444"><title>DIMENSION 5F4 x3,y3</title></circle>
+<circle cx="14.00" cy="122.07" r="2.5" fill="#ef4444"><title>DIMENSION 5F4 x4,y4</title></circle>
+<line class="dim" x1="14.00" y1="79.50" x2="334.00" y2="72.00"/>
+<line class="dim" x1="334.00" y1="72.00" x2="654.00" y2="122.07"/>
+<line class="dim" x1="654.00" y1="122.07" x2="14.00" y2="122.07"/>
+<text class="label" x="18.00" y="75.50">DIM 5F4</text>
+<text class="meta" x="14" y="526.0662952235748">3DSOLID handles: 657, 65B, 65F, 667, 66B, 673, 677, 687</text>
+</svg>

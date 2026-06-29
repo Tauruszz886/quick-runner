@@ -1,0 +1,50 @@
+{
+  "schema": "quick_runner.eighth_mechanism_ground_clearance_audit.v2",
+  "module": 8,
+  "ground_surface_y": 3.5,
+  "formula": {
+    "part_bottom_y": "part_center_y - part_height_y / 2",
+    "ground_clearance_y": "part_bottom_y - ground_surface_y",
+    "trigger_bottom_y": "ground_surface_y + ground_clearance_y",
+    "trigger_local_y": "trigger_bottom_y + trigger_height_y / 2 - part_center_y"
+  },
+  "trigger_rule": {
+    "prefab_id": 3101010,
+    "role": "eighth_moving_death_trigger",
+    "parent": "对应运动机关组件",
+    "x_z_outset": 0.2,
+    "y_outset": 0.2,
+    "bottom_alignment": "触发区底面贴机关底面，不贴地砖面"
+  },
+  "summary": {
+    "moving_parts": 44,
+    "long_plate_count": 6,
+    "small_crossbar_count": 38
+  },
+  "samples": [
+    {
+      "component": "dxf_80C_35x4",
+      "type": "long_plate",
+      "part_center_y": 8.0,
+      "part_height_y": 5.0,
+      "part_bottom_y": 5.5,
+      "ground_surface_y": 3.5,
+      "ground_clearance_y": 2.0,
+      "trigger_height_y": 5.4,
+      "trigger_local_y": 0.2,
+      "trigger_bottom_y": 5.5
+    },
+    {
+      "component": "dxf_840_0_5x4",
+      "type": "small_crossbar",
+      "part_center_y": 9.75,
+      "part_height_y": 1.0,
+      "part_bottom_y": 9.25,
+      "ground_surface_y": 3.5,
+      "ground_clearance_y": 5.75,
+      "trigger_height_y": 1.4,
+      "trigger_local_y": 0.2,
+      "trigger_bottom_y": 9.25
+    }
+  ]
+}

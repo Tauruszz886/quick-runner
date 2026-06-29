@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<style>text{font-family:Arial,"Noto Sans CJK SC",sans-serif}.title{font-size:24px;font-weight:700;fill:#0f172a}.meta{font-size:14px;fill:#475569}.poly{stroke:#0f172a;stroke-width:1.6;vector-effect:non-scaling-stroke}.line{stroke:#475569;stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:5 3}.label{font-size:12px;font-weight:700;fill:#0f172a}.small{font-size:10px;fill:#334155}.frame{fill:none;stroke:#cbd5e1;stroke-width:1.2}</style>
+<text class="title" x="40" y="38">第六关 DXF 原始结构图</text>
+<text class="meta" x="40" y="62">来源：上传 DXF block `1`；LWPOLYLINE 12 个，LINE 30 条，DIMENSION 2 个；bounds x=9.099..109.099, y=-42.118..37.882</text>
+<rect class="frame" x="58.00" y="86.00" width="770.00" height="616.00"/>
+<line class="line" x1="58.00" y1="86.00" x2="58.00" y2="702.00"><title>LINE 5B1</title></line>
+<line class="line" x1="58.00" y1="702.00" x2="828.00" y2="702.00"><title>LINE 5B2</title></line>
+<line class="line" x1="58.00" y1="702.00" x2="135.00" y2="702.00"><title>LINE 5B3</title></line>
+<line class="line" x1="135.00" y1="702.00" x2="173.50" y2="702.00"><title>LINE 5B4</title></line>
+<line class="line" x1="828.00" y1="702.00" x2="443.00" y2="702.00"><title>LINE 5B5</title></line>
+<line class="line" x1="443.00" y1="702.00" x2="520.00" y2="702.00"><title>LINE 5B6</title></line>
+<line class="line" x1="828.00" y1="702.00" x2="828.00" y2="548.00"><title>LINE 5B9</title></line>
+<line class="line" x1="828.00" y1="86.00" x2="828.00" y2="240.00"><title>LINE 5BA</title></line>
+<line class="line" x1="828.00" y1="86.00" x2="828.00" y2="240.00"><title>LINE 5BB</title></line>
+<line class="line" x1="58.00" y1="702.00" x2="58.00" y2="471.00"><title>LINE 5BC</title></line>
+<line class="line" x1="58.00" y1="86.00" x2="58.00" y2="317.00"><title>LINE 5BD</title></line>
+<line class="line" x1="58.00" y1="702.00" x2="58.00" y2="509.50"><title>LINE 5BE</title></line>
+<line class="line" x1="828.00" y1="548.00" x2="828.00" y2="246.84"><title>LINE 5BF</title></line>
+<line class="line" x1="828.00" y1="86.00" x2="828.00" y2="240.00"><title>LINE 5C0</title></line>
+<line class="line" x1="828.00" y1="240.00" x2="828.00" y2="548.00"><title>LINE 5C1</title></line>
+<line class="line" x1="135.00" y1="86.00" x2="192.75" y2="86.00"><title>LINE 5C2</title></line>
+<line class="line" x1="366.00" y1="447.90" x2="289.00" y2="447.90"><title>LINE 5C3</title></line>
+<line class="line" x1="289.00" y1="447.90" x2="289.00" y2="340.10"><title>LINE 5C4</title></line>
+<line class="line" x1="150.40" y1="340.10" x2="150.40" y2="447.90"><title>LINE 5C5</title></line>
+<line class="line" x1="597.00" y1="86.00" x2="558.50" y2="86.00"><title>LINE 5C6</title></line>
+<line class="line" x1="173.50" y1="663.50" x2="173.50" y2="605.75"><title>LINE 5C7</title></line>
+<line class="line" x1="173.50" y1="605.75" x2="115.75" y2="605.75"><title>LINE 5C8</title></line>
+<line class="line" x1="115.75" y1="605.75" x2="115.75" y2="663.50"><title>LINE 5C9</title></line>
+<line class="line" x1="115.75" y1="663.50" x2="173.68" y2="663.50"><title>LINE 5CA</title></line>
+<line class="line" x1="289.00" y1="663.50" x2="327.50" y2="663.50"><title>LINE 5CB</title></line>
+<line class="line" x1="327.50" y1="663.50" x2="327.50" y2="605.75"><title>LINE 5CC</title></line>
+<line class="line" x1="269.75" y1="605.75" x2="269.75" y2="663.50"><title>LINE 5CD</title></line>
+<line class="line" x1="500.75" y1="663.50" x2="500.75" y2="605.75"><title>LINE 5CE</title></line>
+<line class="line" x1="443.00" y1="605.75" x2="443.00" y2="663.50"><title>LINE 5CF</title></line>
+<line class="line" x1="500.75" y1="663.50" x2="443.00" y2="663.50"><title>LINE 5D0</title></line>
+<path class="poly" d="M 58.00 702.00 L 828.00 702.00 L 828.00 86.00 L 58.00 86.00 Z" fill="#60a5fa" fill-opacity="0.62"><title>LWPOLYLINE 5B0 size=100.000x80.000</title></path>
+<text class="label" text-anchor="middle" x="443.00" y="390.00">5B0</text>
+<text class="small" text-anchor="middle" x="443.00" y="404.00">100x80</text>
+<path class="poly" d="M 443.00 663.50 L 500.75 663.50 L 500.75 586.50 L 443.00 586.50 Z" fill="#34d399" fill-opacity="0.62"><title>LWPOLYLINE 5D1 size=7.500x10.000</title></path>
+<text class="label" text-anchor="middle" x="471.88" y="621.00">5D1</text>
+<text class="small" text-anchor="middle" x="471.88" y="635.00">7.5x10</text>
+<path class="poly" d="M 327.50 663.50 L 269.75 663.50 L 269.75 598.05 L 327.50 598.05 Z" fill="#fbbf24" fill-opacity="0.62"><title>LWPOLYLINE 5D2 size=7.500x8.500</title></path>
+<text class="label" text-anchor="middle" x="298.63" y="626.78">5D2</text>
+<text class="small" text-anchor="middle" x="298.63" y="640.78">7.5x8.5</text>
+<path class="poly" d="M 289.00 447.90 L 385.25 447.90 L 385.25 340.10 L 289.00 340.10 Z" fill="#f87171" fill-opacity="0.62"><title>LWPOLYLINE 5D3 size=12.500x14.000</title></path>
+<text class="label" text-anchor="middle" x="337.13" y="390.00">5D3</text>
+<text class="small" text-anchor="middle" x="337.13" y="404.00">12.5x14</text>
+<path class="poly" d="M 597.00 447.90 L 751.00 447.90 L 751.00 340.10 L 597.00 340.10 Z" fill="#a78bfa" fill-opacity="0.62"><title>LWPOLYLINE 5D4 size=20.000x14.000</title></path>
+<text class="label" text-anchor="middle" x="674.00" y="390.00">5D4</text>
+<text class="small" text-anchor="middle" x="674.00" y="404.00">20x14</text>
+<path class="poly" d="M 751.00 625.00 L 828.00 625.00 L 828.00 163.00 L 751.00 163.00 Z" fill="#22d3ee" fill-opacity="0.62"><title>LWPOLYLINE 5D5 size=10.000x60.000</title></path>
+<text class="label" text-anchor="middle" x="789.50" y="390.00">5D5</text>
+<text class="small" text-anchor="middle" x="789.50" y="404.00">10x60</text>
+<path class="poly" d="M 654.75 112.95 L 597.00 112.95 L 597.00 182.25 L 654.75 182.25 Z" fill="#fb7185" fill-opacity="0.62"><title>LWPOLYLINE 5D6 size=7.500x9.000</title></path>
+<text class="label" text-anchor="middle" x="625.88" y="143.60">5D6</text>
+<text class="small" text-anchor="middle" x="625.88" y="157.60">7.5x9</text>
+<path class="poly" d="M 477.65 112.95 L 419.90 112.95 L 419.90 182.25 L 477.65 182.25 Z" fill="#4ade80" fill-opacity="0.62"><title>LWPOLYLINE 5D7 size=7.500x9.000</title></path>
+<text class="label" text-anchor="middle" x="448.78" y="143.60">5D7</text>
+<text class="small" text-anchor="middle" x="448.78" y="157.60">7.5x9</text>
+<path class="poly" d="M 339.24 112.95 L 281.49 112.95 L 281.49 182.25 L 339.24 182.25 Z" fill="#facc15" fill-opacity="0.62"><title>LWPOLYLINE 5D8 size=7.500x9.000</title></path>
+<text class="label" text-anchor="middle" x="310.36" y="143.60">5D8</text>
+<text class="small" text-anchor="middle" x="310.36" y="157.60">7.5x9</text>
+<path class="poly" d="M 385.25 340.10 L 289.00 340.10 L 289.00 447.90 L 385.25 447.90 Z" fill="#38bdf8" fill-opacity="0.62"><title>LWPOLYLINE 5D9 size=12.500x14.000</title></path>
+<text class="label" text-anchor="middle" x="337.13" y="390.00">5D9</text>
+<text class="small" text-anchor="middle" x="337.13" y="404.00">12.5x14</text>
+<path class="poly" d="M 111.90 278.50 L 58.00 278.50 L 58.00 509.50 L 111.90 509.50 Z" fill="#c084fc" fill-opacity="0.62"><title>LWPOLYLINE 5DA size=7.000x30.000</title></path>
+<text class="label" text-anchor="middle" x="84.95" y="390.00">5DA</text>
+<text class="small" text-anchor="middle" x="84.95" y="404.00">7x30</text>
+<path class="poly" d="M 150.40 340.10 L 111.90 340.10 L 111.90 447.90 L 150.40 447.90 Z" fill="#fb923c" fill-opacity="0.62"><title>LWPOLYLINE 5DB size=5.000x14.000</title></path>
+<text class="label" text-anchor="middle" x="131.15" y="390.00">5DB</text>
+<text class="small" text-anchor="middle" x="131.15" y="404.00">5x14</text>
+</svg>

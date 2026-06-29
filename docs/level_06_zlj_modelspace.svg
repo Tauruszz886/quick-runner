@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1252" height="670" viewBox="0 0 1252.00 670.00">
+<style>
+text{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#172033}.title{font-size:18px;font-weight:700}.meta{font-size:12px}.label{font-size:10px;font-weight:700}.line{stroke:#1f2937;stroke-width:1.5;stroke-linecap:square}.frame{stroke:#0f172a;stroke-width:3;fill:none}.solid{stroke:#111827;stroke-width:1;fill-opacity:.42}.dim{fill:#334155;font-size:13px;font-weight:700}
+</style>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text class="title" x="24" y="30">第六关 DXF modelspace / ZLJ 本地坐标预览</text>
+<text class="meta" x="24" y="52">来源: /tmp/codex-web-uploads/f-Rj2kYR/第六关.dxf sha256=daaf13166b77eb68...；只显示 LINE 外框=160x100 与 3DSOLID/ACIS 实体足迹</text>
+<g transform="translate(52.00,74.00)">
+<rect class="frame" x="0" y="0" width="832.00" height="520.00"/>
+<text class="meta" x="0" y="-12">localX 0..160</text>
+<text class="meta" x="768.00" y="544.00">localZ 0..100</text>
+<line class="frame" x1="0.00" y1="0.00" x2="832.00" y2="0.00"><title>5DD: [0.0, 0.0] -> [160.0, 0.0]</title></line>
+<line class="frame" x1="832.00" y1="0.00" x2="832.00" y2="520.00"><title>5DE: [160.0, 0.0] -> [160.0, 100.0]</title></line>
+<line class="frame" x1="832.00" y1="520.00" x2="0.00" y2="520.00"><title>5DF: [160.0, 100.0] -> [0.0, 100.0]</title></line>
+<line class="frame" x1="0.00" y1="520.00" x2="0.00" y2="0.00"><title>5E0: [0.0, 100.0] -> [0.0, 0.0]</title></line>
+<rect class="solid" x="774.80" y="169.00" width="57.20" height="182.00" fill="#60a5fa"><title>3DSOLID 657: start=(149.0,32.5) size=(11.0,35.0)</title></rect>
+<text class="label" x="803.40" y="263.00" text-anchor="middle">657</text>
+<rect class="solid" x="738.40" y="214.50" width="36.40" height="91.00" fill="#34d399"><title>3DSOLID 65B: start=(142.0,41.25) size=(7.0,17.5)</title></rect>
+<text class="label" x="756.60" y="263.00" text-anchor="middle">65B</text>
+<rect class="solid" x="364.00" y="32.50" width="62.40" height="65.00" fill="#fbbf24"><title>3DSOLID 65F: start=(70.0,6.25) size=(12.0,12.5)</title></rect>
+<text class="label" x="395.20" y="68.00" text-anchor="middle">65F</text>
+<rect class="solid" x="114.40" y="32.50" width="62.40" height="64.35" fill="#f87171"><title>3DSOLID 667: start=(22.0,6.25) size=(12.0,12.375)</title></rect>
+<text class="label" x="145.60" y="67.68" text-anchor="middle">667</text>
+<rect class="solid" x="390.00" y="230.10" width="83.20" height="59.80" fill="#a78bfa"><title>3DSOLID 66B: start=(75.0,44.25) size=(16.0,11.5)</title></rect>
+<text class="label" x="431.60" y="263.00" text-anchor="middle">66B</text>
+<rect class="solid" x="365.04" y="438.75" width="62.40" height="58.50" fill="#22d3ee"><title>3DSOLID 673: start=(70.2,84.375) size=(12.0,11.25)</title></rect>
+<text class="label" x="396.24" y="471.00" text-anchor="middle">673</text>
+<rect class="solid" x="582.40" y="438.75" width="62.40" height="58.50" fill="#fb7185"><title>3DSOLID 677: start=(112.0,84.375) size=(12.0,11.25)</title></rect>
+<text class="label" x="613.60" y="471.00" text-anchor="middle">677</text>
+<rect class="solid" x="0.00" y="178.10" width="58.24" height="163.80" fill="#4ade80"><title>3DSOLID 687: start=(0.0,34.25) size=(11.2,31.5)</title></rect>
+<text class="label" x="29.12" y="263.00" text-anchor="middle">687</text>
+</g>
+<g transform="translate(912.00,78.00)">
+<text class="meta" x="0" y="0">读取规则：</text>
+<text class="meta" x="0" y="22">1. modelspace LINE 只保留 160x100 外框。</text>
+<text class="meta" x="0" y="42">2. 外框 min 点归一化为 ZLJ local (0,0)。</text>
+<text class="meta" x="0" y="62">3. 半透明块为 3DSOLID/ACIS 顶点足迹。</text>
+<rect x="0" y="84" width="12" height="12" fill="#60a5fa" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="94">657: start=(149.0,32.5) size=(11.0,35.0)</text>
+<rect x="0" y="104" width="12" height="12" fill="#34d399" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="114">65B: start=(142.0,41.25) size=(7.0,17.5)</text>
+<rect x="0" y="124" width="12" height="12" fill="#fbbf24" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="134">65F: start=(70.0,6.25) size=(12.0,12.5)</text>
+<rect x="0" y="144" width="12" height="12" fill="#f87171" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="154">667: start=(22.0,6.25) size=(12.0,12.375)</text>
+<rect x="0" y="164" width="12" height="12" fill="#a78bfa" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="174">66B: start=(75.0,44.25) size=(16.0,11.5)</text>
+<rect x="0" y="184" width="12" height="12" fill="#22d3ee" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="194">673: start=(70.2,84.375) size=(12.0,11.25)</text>
+<rect x="0" y="204" width="12" height="12" fill="#fb7185" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="214">677: start=(112.0,84.375) size=(12.0,11.25)</text>
+<rect x="0" y="224" width="12" height="12" fill="#4ade80" fill-opacity=".42" stroke="#111827"/>
+<text class="meta" x="18" y="234">687: start=(0.0,34.25) size=(11.2,31.5)</text>
+</g>
+</svg>

@@ -1,5 +1,8 @@
 import { safeCall } from "@common/engine_safe"
 import {
+  EIGHTH_LEVEL_MECHANISM_MOVE_Z,
+  EIGHTH_LEVEL_MECHANISM_SPLIT_Z,
+  EIGHTH_LEVEL_TERRAIN_MODULE_INDEX,
   FOURTH_LEVEL_COMPRESSOR_DOWN_SECONDS,
   FOURTH_LEVEL_COMPRESSOR_DOWN_Y,
   FOURTH_LEVEL_COMPRESSOR_START_Y,
@@ -14,11 +17,14 @@ import {
 import { registerHoleDeathTriggerUnit } from "./runtime_fall_return"
 import {
   registerEighthLevelMechanismBinding,
+  registerEighthLevelMechanismDeathTriggerUnit,
   resetEighthLevelMechanism,
   startEighthLevelMechanism,
 } from "./runtime_eighth_mechanism"
 import {
   registerNinthVanishingPlatformBinding,
+  registerNinthVanishingDeathTriggerBinding,
+  registerNinthVanishingTriggerBinding,
   registerVanishingPlatformBinding,
   registerVanishingPlatformTriggerBinding,
   resetNinthLevelMechanism,
@@ -39,6 +45,7 @@ import {
 import { scanQuickRunnerRuntimeScene, type RuntimeSceneUnit } from "./runtime_scene_scan"
 
 let editorSceneMechanismsBound = false
+let eighthMoveZFallbackLogCount = 0
 const SECOND_CHASER_SURFACE_FRICTION = 1.2
 const SECOND_CHASER_SURFACE_ROLLING_RESISTANCE = 0.02
 const SECOND_CHASER_SURFACE_BOUNCINESS = 0
@@ -122,12 +129,33 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
     return registerRuntimeCompressorDeathTriggerUnit(item.unit, name, item.targetRuntimeName)
   }
   if (item.role === "eighth_moving_part") {
-    if (item.moveZ === undefined) {
+    let moveZ = item.moveZ
+    if (moveZ === undefined && item.module === EIGHTH_LEVEL_TERRAIN_MODULE_INDEX) {
+      const floor = getRuntimeFloorForModule(item.module)
+      const splitWorldZ = floor.z - floor.sz / 2 + EIGHTH_LEVEL_MECHANISM_SPLIT_Z
+      moveZ = item.z < splitWorldZ ? -EIGHTH_LEVEL_MECHANISM_MOVE_Z : EIGHTH_LEVEL_MECHANISM_MOVE_Z
+      if (eighthMoveZFallbackLogCount < 3) {
+        print(`[${TERRAIN_TAG}] scene unit fallback moveZ name=${name} z=${item.z} splitZ=${splitWorldZ} moveZ=${moveZ}`)
+        eighthMoveZFallbackLogCount += 1
+      }
+    }
+    if (moveZ === undefined) {
       print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRMoveZ`)
       return false
     }
-    registerEighthLevelMechanismBinding(item.unit, name, item.x, item.y, item.z, item.sx, item.sy, item.sz, item.moveZ)
+    registerEighthLevelMechanismBinding(item.unit, name, item.x, item.y, item.z, item.sx, item.sy, item.sz, moveZ)
     return true
+  }
+  if (item.role === "eighth_moving_death_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    if (item.touchDeath === false) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=QRTouchDeath_false`)
+      return false
+    }
+    return registerEighthLevelMechanismDeathTriggerUnit(item.unit, name, item.targetRuntimeName)
   }
 
   if (item.role === "third_timed_platform") {
@@ -150,6 +178,20 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
     registerNinthVanishingPlatformBinding(item.unit, name, item.x, item.z, item.sx, item.sz)
     return true
   }
+  if (item.role === "ninth_vanishing_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    return registerNinthVanishingTriggerBinding(item.unit, name, item.targetRuntimeName)
+  }
+  if (item.role === "ninth_vanishing_death_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    return registerNinthVanishingDeathTriggerBinding(item.unit, name, item.targetRuntimeName)
+  }
   if (item.role === "tenth_current") {
     registerTenthCurrentBinding(item.unit, name, item.x, item.y, item.z, item.sx, item.sy, item.sz, item.moving === true)
     return true
@@ -165,6 +207,7 @@ export function bindEditorSceneRuntimeMechanisms(): void {
   editorSceneMechanismsBound = true
   resetRuntimeCompressors()
   resetEighthLevelMechanism()
+  eighthMoveZFallbackLogCount = 0
   resetNinthLevelMechanism()
   resetThirdLevelMechanism()
   resetTenthCurrentMechanism()
