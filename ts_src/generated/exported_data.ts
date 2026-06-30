@@ -27,7 +27,11 @@ export const UINodes = {
   "画布0": "1519736575|1405255247" as ENode,
   "画布1": "1519736575|1270321452" as ENode,
   "画布2": "1519736575|1357137975" as ENode,
+  "金币": "1519736575|1204165544" as EInputField,
+  "金币输入按钮": "1519736575|2055985868" as EButton,
 } as const
+
+export const UINodeParents = {} as const
 
 export const EggitorExport = {
   AbilityData,
@@ -40,6 +44,7 @@ export const EggitorExport = {
   QuestData,
   StoryData,
   UINodes,
+  UINodeParents,
 } as const
 
 export type { AbilityDataKey, AbilityDataValue } from "./exported_class"
@@ -52,4 +57,5 @@ export type { PrefabKey, PrefabValue } from "./exported_class"
 export type { QuestDataKey, QuestDataValue } from "./exported_class"
 export type { StoryDataKey, StoryDataValue } from "./exported_class"
 export type { UINodesKey, UINodesValue } from "./exported_class"
+export type { UINodeParentsKey, UINodeParentsValue } from "./exported_class"
 export type { EggitorExportType } from "./exported_class"

@@ -17,7 +17,6 @@ import {
   RUNTIME_FLOOR_CREATE_BATCH_SIZE,
   SIDE_WALL_INSET,
   SIDE_WALL_THICKNESS,
-  TENTH_LEVEL_TERRAIN_MODULE_INDEX,
   WALL_BASE_Y,
   WALL_HEIGHT,
   WALL_PREFAB_ID,
@@ -146,11 +145,7 @@ function getRuntimeWallsForModule(moduleIndex: number): RuntimeWall[] {
     addSideSegment(walls, "东墙外露下段", "east", maxX - SIDE_WALL_INSET, math.max(previousMaxZ, wallMinZ), wallMaxZ)
   }
 
-  if (moduleIndex === RUNTIME_COPY_COUNT || moduleIndex === TENTH_LEVEL_TERRAIN_MODULE_INDEX) {
-    addSideSegment(walls, "西墙封口", "west", minX + SIDE_WALL_INSET, wallMinZ, wallMaxZ)
-  } else {
-    addSideWithOpening("西墙", "west", minX + SIDE_WALL_INSET, wallMinZ, wallMaxZ)
-  }
+  addSideWithOpening("西墙", "west", minX + SIDE_WALL_INSET, wallMinZ, wallMaxZ)
 
   return walls
 }

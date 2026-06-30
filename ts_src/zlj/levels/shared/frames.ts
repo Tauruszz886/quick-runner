@@ -9,5 +9,5 @@ export const LEVEL_TERRAIN_FRAMES: Record<number, { sx: number; sz: number }> = 
   7: { sx: 160, sz: 100 },
   8: { sx: 160, sz: 100 },
   9: { sx: 160, sz: 100 },
-  10: { sx: 160, sz: 100 },
+  10: { sx: 410, sz: 100 },
 }

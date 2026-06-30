@@ -30,4 +30,7 @@ export type StoryDataValue = (typeof import("./exported_data").StoryData)[StoryD
 export type UINodesKey = keyof typeof import("./exported_data").UINodes
 export type UINodesValue = (typeof import("./exported_data").UINodes)[UINodesKey]
 
+export type UINodeParentsKey = keyof typeof import("./exported_data").UINodeParents
+export type UINodeParentsValue = (typeof import("./exported_data").UINodeParents)[UINodeParentsKey]
+
 export type EggitorExportType = typeof import("./exported_data").EggitorExport

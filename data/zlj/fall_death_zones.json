@@ -939,49 +939,49 @@
     {
       "module": 10,
       "name": "fall_death_01",
-      "startX": 0,
+      "startX": -250,
       "startZ": 0,
-      "sx": 160,
+      "sx": 410,
       "sz": 30
     },
     {
       "module": 10,
       "name": "fall_death_02",
-      "startX": 15,
+      "startX": -190,
       "startZ": 30,
-      "sx": 130,
+      "sx": 320,
       "sz": 10
     },
     {
       "module": 10,
       "name": "fall_death_03",
-      "startX": 15,
+      "startX": -225,
       "startZ": 40,
-      "sx": 5,
+      "sx": 35,
       "sz": 20
     },
     {
       "module": 10,
       "name": "fall_death_04",
-      "startX": 135,
+      "startX": 130,
       "startZ": 40,
-      "sx": 10,
+      "sx": 15,
       "sz": 20
     },
     {
       "module": 10,
       "name": "fall_death_05",
-      "startX": 15,
+      "startX": -190,
       "startZ": 60,
-      "sx": 130,
+      "sx": 320,
       "sz": 10
     },
     {
       "module": 10,
       "name": "fall_death_06",
-      "startX": 0,
+      "startX": -250,
       "startZ": 70,
-      "sx": 160,
+      "sx": 410,
       "sz": 30
     }
   ]

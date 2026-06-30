@@ -90,6 +90,7 @@ FIFTH_MIDDLE_LAYER_SPECS = [
 
 THIRD_LEVEL_BLUE_PLATFORM_COLOR = 0x0066FF
 THIRD_LEVEL_VANISH_TRIGGER_PREFAB_ID = 3101010
+VICTORY_AREA_PREFAB_ID = 31010102
 THIRD_LEVEL_VANISH_TRIGGER_EXTRA_HEIGHT = 2.5
 THIRD_LEVEL_BLUE_PLATFORM_NAMES = {
     "dxf_840_24x17_1875",
@@ -153,31 +154,10 @@ TENTH_CURRENT_GROUPS = [
         "track": 3,
         "group_y": 8.5,
     },
-    {
-        "id": "tenth_current_97F",
-        "name": "固定电流_97F",
-        "kind": "fixed_current_group",
-        "moving": False,
-        "child_count": 20,
-        "pattern": "dxf_97F_1_3301506_*",
-        "parent": None,
-        "track": 1,
-        "group_y": 6.5,
-    },
-    {
-        "id": "tenth_current_983",
-        "name": "固定电流_983",
-        "kind": "fixed_current_group",
-        "moving": False,
-        "child_count": 20,
-        "pattern": "dxf_983_1_3301506_*",
-        "parent": None,
-        "track": 1,
-        "group_y": 6.5,
-    },
 ]
 
 LEVEL_FRAMES = {index: {"sx": 160.0, "sz": 100.0} for index in range(0, 11)}
+TENTH_LEVEL_RUNWAY_EXTENSION_NEG_X = 250.0
 
 
 @dataclass
@@ -254,6 +234,23 @@ def floor_editor_scale(frame: dict[str, float]) -> tuple[float, float, float]:
     )
 
 
+def structure_bounds_for_module(module: int) -> dict[str, float]:
+    frame = LEVEL_FRAMES[module]
+    center_x = module_center_x(module)
+    min_x = center_x - frame["sx"] / 2
+    max_x = center_x + frame["sx"] / 2
+    if module == 10:
+        min_x -= TENTH_LEVEL_RUNWAY_EXTENSION_NEG_X
+    sx = max_x - min_x
+    return {
+        "min_x": min_x,
+        "max_x": max_x,
+        "center_x": min_x + sx / 2,
+        "sx": sx,
+        "sz": frame["sz"],
+    }
+
+
 def add_side_segment(items: list[dict[str, Any]], name: str, side: str, x: float, start_z: float, end_z: float) -> None:
     sz = end_z - start_z
     if sz <= 0:
@@ -262,11 +259,11 @@ def add_side_segment(items: list[dict[str, Any]], name: str, side: str, x: float
 
 
 def walls_for_module(module: int) -> list[dict[str, Any]]:
-    frame = LEVEL_FRAMES[module]
-    center_x = module_center_x(module)
+    frame = structure_bounds_for_module(module)
+    center_x = frame["center_x"]
     center_z = RUNTIME_FLOOR_Z
-    min_x = center_x - frame["sx"] / 2
-    max_x = center_x + frame["sx"] / 2
+    min_x = frame["min_x"]
+    max_x = frame["max_x"]
     min_z = center_z - frame["sz"] / 2
     max_z = center_z + frame["sz"] / 2
     wall_min_z = min_z + SIDE_WALL_INSET
@@ -291,10 +288,7 @@ def walls_for_module(module: int) -> list[dict[str, Any]]:
         add_side_segment(walls, "东墙外露上段", "east", max_x - SIDE_WALL_INSET, wall_min_z, min(previous_min_z, wall_max_z))
         add_side_segment(walls, "东墙外露下段", "east", max_x - SIDE_WALL_INSET, max(previous_max_z, wall_min_z), wall_max_z)
 
-    if module == 10:
-        add_side_segment(walls, "西墙封口", "west", min_x + SIDE_WALL_INSET, wall_min_z, wall_max_z)
-    else:
-        add_side_with_opening("西墙", "west", min_x + SIDE_WALL_INSET, wall_min_z, wall_max_z)
+    add_side_with_opening("西墙", "west", min_x + SIDE_WALL_INSET, wall_min_z, wall_max_z)
     return walls
 
 
@@ -607,11 +601,13 @@ def tenth_current_piece_group(piece_name: str) -> dict[str, Any] | None:
         return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97B_lane_2")
     if piece_name.startswith("dxf_97B_3_3301506_"):
         return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97B_lane_3")
-    if piece_name.startswith("dxf_97F_1_3301506_"):
-        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97F")
-    if piece_name.startswith("dxf_983_1_3301506_"):
-        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_983")
     return None
+
+
+def is_removed_tenth_fixed_current_piece(module: int, piece_name: str, prefab_id: int) -> bool:
+    if module != 10 or prefab_id != TENTH_CURRENT_PREFAB_ID:
+        return False
+    return piece_name.startswith("dxf_97F_1_3301506_") or piece_name.startswith("dxf_983_1_3301506_")
 
 
 def tenth_current_piece_kv(module: int, piece_name: str, moving: bool, group: dict[str, Any]) -> dict[str, Any]:
@@ -635,6 +631,17 @@ def tenth_current_piece_kv(module: int, piece_name: str, moving: bool, group: di
     if group.get("group_y") is not None:
         kv["QRGroupY"] = float(group["group_y"])
     return kv
+
+
+def tenth_victory_trigger_kv(module: int, component_name: str) -> dict[str, Any]:
+    return {
+        "QRRole": "tenth_victory_trigger",
+        "QRModule": module,
+        "QRComponent": component_name,
+        "QRRuntimeName": module_name(module, component_name),
+        "QRFinishGame": True,
+        "玩家到达结束游戏": True,
+    }
 
 
 def add_tenth_current_group_items(items: list[SceneItem], module: int) -> None:
@@ -666,16 +673,18 @@ def build_plan(workspace: Path) -> list[SceneItem]:
     runtime_kv_by_component = load_runtime_scene_kv(workspace)
     for module in range(0, 11):
         frame = LEVEL_FRAMES[module]
+        structure_frame = structure_bounds_for_module(module)
         center_x = module_center_x(module)
+        structure_center_x = structure_frame["center_x"]
         section = "birth" if module == 0 else "level"
-        floor_sx, floor_sy, floor_sz = floor_editor_scale(frame)
+        floor_sx, floor_sy, floor_sz = floor_editor_scale(structure_frame)
         items.append(
             SceneItem(
                 section,
                 module,
                 module_name(module, "地板"),
                 ZLJ_FLOOR_PREFAB_ID,
-                center_x,
+                structure_center_x,
                 FLOOR_BASE_Y,
                 RUNTIME_FLOOR_Z,
                 floor_sx,
@@ -684,13 +693,13 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                 ZLJ_FLOOR_MODEL_ID,
             )
         )
-        items.append(SceneItem(section, module, module_name(module, "天花板"), WALL_PREFAB_ID, center_x, CEILING_BASE_Y, RUNTIME_FLOOR_Z, frame["sx"], CEILING_SY, frame["sz"]))
+        items.append(SceneItem(section, module, module_name(module, "天花板"), WALL_PREFAB_ID, structure_center_x, CEILING_BASE_Y, RUNTIME_FLOOR_Z, structure_frame["sx"], CEILING_SY, structure_frame["sz"]))
         for wall in walls_for_module(module):
             items.append(SceneItem(section, module, module_name(module, str(wall["name"])), WALL_PREFAB_ID, float(wall["x"]), WALL_BASE_Y, float(wall["z"]), float(wall["sx"]), WALL_HEIGHT, float(wall["sz"])))
 
         module_min_x = center_x - frame["sx"] / 2
         module_min_z = RUNTIME_FLOOR_Z - frame["sz"] / 2
-        add_base_middle_layer(items, section, module, center_x, frame)
+        add_base_middle_layer(items, section, module, structure_center_x, structure_frame)
         if module == 0:
             items.append(SceneItem("birth", module, module_name(module, "出生地砖"), WALL_PREFAB_ID, center_x, BIRTH_TILE_BASE_Y, RUNTIME_FLOOR_Z, frame["sx"], TILE_HEIGHT, frame["sz"]))
             continue
@@ -699,6 +708,23 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             add_fifth_middle_layers(items, module, module_min_x, module_min_z)
         if module == 10:
             add_tenth_current_group_items(items, module)
+            victory_area_name = "胜利区域"
+            items.append(
+                SceneItem(
+                    "level",
+                    module,
+                    module_name(module, victory_area_name),
+                    VICTORY_AREA_PREFAB_ID,
+                    structure_frame["min_x"] + SIDE_WALL_INSET,
+                    FIRST_LEVEL_TERRAIN_BASE_Y + FIRST_LEVEL_TERRAIN_HEIGHT / 2,
+                    RUNTIME_FLOOR_Z,
+                    SIDE_WALL_THICKNESS * 4,
+                    FIRST_LEVEL_TERRAIN_HEIGHT,
+                    WEST_WALL_OPENING_GAP_SZ,
+                    runtime_trigger=True,
+                    custom_kv=tenth_victory_trigger_kv(module, victory_area_name),
+                )
+            )
 
         for piece in load_level_specs(workspace, module):
             x = module_min_x + float(piece["startX"]) + float(piece["sx"]) / 2
@@ -706,6 +732,8 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             y = terrain_y(module, piece)
             prefab_id = int(piece.get("prefabId", WALL_PREFAB_ID))
             piece_name = str(piece["name"])
+            if is_removed_tenth_fixed_current_piece(module, piece_name, prefab_id):
+                continue
             is_third_vanishing_platform = module == 3 and piece_name in THIRD_LEVEL_BLUE_PLATFORM_NAMES
             is_ninth_third_api_vanishing_platform = module == 9 and piece_name in NINTH_LEVEL_VANISHING_PLATFORM_NAMES
             is_fourth_compressor = module == 4 and piece.get("role") == "fourth_compressor"

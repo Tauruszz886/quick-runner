@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <rect width="1400" height="820" fill="#f7f7f4"/>
+  <style>
+    text { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #202020; }
+    .title { font-size: 28px; font-weight: 700; }
+    .subtitle { font-size: 15px; fill: #444; }
+    .label { font-size: 17px; font-weight: 700; }
+    .small { font-size: 14px; }
+    .tiny { font-size: 12px; fill: #444; }
+    .floor { fill: #e6e1d6; stroke: #777; stroke-width: 2; }
+    .wall { fill: #999; stroke: #555; stroke-width: 2; }
+    .wallOpen { fill: #f7f7f4; stroke: #2a7ab9; stroke-width: 3; stroke-dasharray: 8 5; }
+    .platformStart { fill: #b9d7a8; stroke: #4c7d35; stroke-width: 3; }
+    .platformMid { fill: #bfe3f2; stroke: #1376a8; stroke-width: 3; }
+    .platformEnd { fill: #d9c4ef; stroke: #7449a5; stroke-width: 3; }
+    .gap { fill: #fff0f0; stroke: #d62728; stroke-width: 2; stroke-dasharray: 7 5; }
+    .current { stroke: #d62728; stroke-width: 8; marker-end: url(#arrowRed); }
+    .player { stroke: #1d5fd1; stroke-width: 5; marker-end: url(#arrowBlue); stroke-dasharray: 12 8; }
+    .victory { fill: rgba(49, 168, 84, 0.22); stroke: #238441; stroke-width: 4; }
+    .line { stroke: #555; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .callout { fill: #fff; stroke: #ccc; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto">
+      <path d="M2,2 L11,6.5 L2,11 Z" fill="#d62728"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto">
+      <path d="M2,2 L11,6.5 L2,11 Z" fill="#1d5fd1"/>
+    </marker>
+  </defs>
+
+  <text x="44" y="52" class="title">第十关平台缩短 + 西墙胜利区方案理解图</text>
+  <text x="44" y="82" class="subtitle">俯视图：横向是世界 X，越往左越是 -X；纵向是 Z。这里只是方案图，没有施工。</text>
+
+  <!-- Mapping:
+       world X -1030..-585 -> screen X 90..1310, scaleX 2.74157
+       world Z -90..20 -> screen Y 160..640, scaleZ 4.36364
+       screen x = 90 + (worldX + 1030) * 2.74157
+       screen y = 160 + (worldZ + 90) * 4.36364
+  -->
+
+  <!-- full floor -1011..-601, z -86..14 -->
+  <rect x="142.1" y="177.5" width="1124.0" height="436.4" class="floor"/>
+  <text x="154" y="204" class="small">第十关地板范围：X=-1011 到 -601，长度 410</text>
+
+  <!-- walls: north/south and west split with opening -->
+  <rect x="143.5" y="177.5" width="1121.3" height="8.7" class="wall"/>
+  <rect x="143.5" y="605.3" width="1121.3" height="8.7" class="wall"/>
+  <rect x="142.1" y="177.5" width="5.5" height="198.5" class="wall"/>
+  <rect x="142.1" y="416.7" width="5.5" height="197.2" class="wall"/>
+  <rect x="138.5" y="376.0" width="16" height="40.7" class="wallOpen"/>
+  <text x="74" y="396" class="tiny">西墙开口</text>
+  <text x="59" y="414" class="tiny">中间留通道</text>
+
+  <!-- victory zone at west opening -->
+  <rect x="134.5" y="362.9" width="34" height="66.5" class="victory"/>
+  <text x="42" y="452" class="small">31010102 胜利区域</text>
+  <text x="42" y="472" class="tiny">替代原来整堵封口的功能</text>
+
+  <!-- platforms -->
+  <!-- end/left platform 737 extended: x -1011..-986, z -56..-16 -->
+  <rect x="142.1" y="308.4" width="68.5" height="174.5" class="platformEnd"/>
+  <text x="116" y="296" class="small">737 延申后</text>
+  <text x="112" y="502" class="tiny">X=-1011..-986</text>
+  <text x="134" y="520" class="tiny">长度 25</text>
+
+  <!-- middle platform proposed: x -966..-636, z -46..-26 -->
+  <rect x="265.5" y="352.0" width="904.7" height="87.3" class="platformMid"/>
+  <text x="590" y="343" class="small">中间平台缩短到 330</text>
+  <text x="576" y="459" class="tiny">QR_第10关_dxf_75C_115x20：X=-966 到 -636</text>
+
+  <!-- entry/right platform 73C current: x -616..-601, z -56..-16 -->
+  <rect x="1225.0" y="308.4" width="41.1" height="174.5" class="platformStart"/>
+  <text x="1190" y="296" class="small">入口平台 73C</text>
+  <text x="1183" y="502" class="tiny">X=-616..-601</text>
+  <text x="1214" y="520" class="tiny">长度 15</text>
+
+  <!-- gaps -->
+  <rect x="210.6" y="324.0" width="54.8" height="143.0" class="gap"/>
+  <text x="212" y="310" class="small">跳跃缺口 20</text>
+  <rect x="1170.2" y="324.0" width="54.8" height="143.0" class="gap"/>
+  <text x="1168" y="310" class="small">跳跃缺口 20</text>
+
+  <!-- player path right to left -->
+  <line x1="1245.5" y1="557" x2="151.5" y2="557" class="player"/>
+  <text x="548" y="588" class="small">玩家路线：入口平台 -> 跳过右缺口 -> 中间平台 -> 跳过左缺口 -> 737 -> 西墙开口胜利区</text>
+
+  <!-- current path on middle platform -->
+  <line x1="1170.2" y1="395.6" x2="265.5" y2="395.6" class="current"/>
+  <text x="596" y="390" class="small">电流只扫中间平台：移动距离 330</text>
+  <text x="1038" y="382" class="tiny">起点 X=-636</text>
+  <text x="266" y="382" class="tiny">终点 X=-966</text>
+
+  <!-- boundary guide lines -->
+  <line x1="142.1" y1="150" x2="142.1" y2="680" class="line"/>
+  <line x1="210.6" y1="150" x2="210.6" y2="680" class="line"/>
+  <line x1="265.5" y1="150" x2="265.5" y2="680" class="line"/>
+  <line x1="1170.2" y1="150" x2="1170.2" y2="680" class="line"/>
+  <line x1="1225.0" y1="150" x2="1225.0" y2="680" class="line"/>
+  <line x1="1266.1" y1="150" x2="1266.1" y2="680" class="line"/>
+  <text x="126" y="145" class="tiny">-1011</text>
+  <text x="198" y="145" class="tiny">-986</text>
+  <text x="252" y="145" class="tiny">-966</text>
+  <text x="1156" y="145" class="tiny">-636</text>
+  <text x="1213" y="145" class="tiny">-616</text>
+  <text x="1253" y="145" class="tiny">-601</text>
+
+  <rect x="44" y="675" width="1276" height="104" rx="6" class="callout"/>
+  <text x="64" y="706" class="label">我的理解</text>
+  <text x="64" y="733" class="small">1. 737 往 +X 延申 10，作为终点前承接平台：长度从 15 变 25。</text>
+  <text x="64" y="756" class="small">2. 中间平台缩到 330，左右各留 20 的跳跃缺口；电流距离也跟着改成 330。</text>
+  <text x="64" y="779" class="small">3. 西墙不再整堵封死，改成上下两段墙，中间开口；开口处放 31010102 胜利区域。</text>
+</svg>

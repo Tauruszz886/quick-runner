@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <rect width="1280" height="760" fill="#f7f7f4"/>
+  <style>
+    text { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #222; }
+    .title { font-size: 26px; font-weight: 700; }
+    .label { font-size: 17px; font-weight: 700; }
+    .small { font-size: 14px; }
+    .tiny { font-size: 12px; }
+    .axis { stroke: #333; stroke-width: 2; }
+    .tick { stroke: #777; stroke-width: 1.5; }
+    .origLine { stroke: #555; stroke-width: 3; }
+    .currentLine { stroke: #1f77b4; stroke-width: 3; }
+    .targetLine { stroke: #d62728; stroke-width: 4; }
+    .fixedLine { stroke: #111; stroke-width: 4; }
+    .origFill { fill: #deded8; stroke: #555; stroke-width: 2; }
+    .currentFill { fill: #b9d8f1; stroke: #1f77b4; stroke-width: 2; }
+    .targetFill { fill: #ffcbc5; stroke: #d62728; stroke-width: 3; }
+    .offsetFill { fill: #b9d7a8; stroke: #4c7d35; stroke-width: 2; }
+    .offsetTarget { fill: #ffd08a; stroke: #b0701d; stroke-width: 2; }
+    .death { fill: rgba(214,39,40,0.16); stroke: #d62728; stroke-width: 2; stroke-dasharray: 7 5; }
+  </style>
+
+  <text x="40" y="46" class="title">第十关 -X 方向追加 200：施工前比对图</text>
+  <text x="40" y="74" class="small">比例尺：图中横轴为世界 X 坐标，越往左越是 -X。入口侧固定边界始终是 X=-601。</text>
+  <text x="40" y="96" class="small">你现在确认的是：在“已延长 50”的基础上，再向 -X 增加 200，所以最终总延长是 250。</text>
+
+  <!-- Scale: world X -1040..-560 maps to screen X 80..1200. x = 80 + (worldX + 1040) * 2.333333 -->
+  <line x1="80" y1="130" x2="1200" y2="130" class="axis"/>
+  <text x="72" y="112" class="small">-1040</text>
+  <text x="1170" y="112" class="small">-560</text>
+  <text x="40" y="136" class="small">-X</text>
+  <text x="1210" y="136" class="small">+X</text>
+
+  <!-- Important boundary lines -->
+  <line x1="147.7" y1="120" x2="147.7" y2="690" class="targetLine"/>
+  <text x="108" y="115" class="tiny">目标尽头 -1011</text>
+  <line x1="614.3" y1="120" x2="614.3" y2="690" class="currentLine"/>
+  <text x="566" y="115" class="tiny">已延长50尽头 -811</text>
+  <line x1="730.9" y1="120" x2="730.9" y2="690" class="origLine"/>
+  <text x="696" y="115" class="tiny">原始尽头 -761</text>
+  <line x1="1104.3" y1="120" x2="1104.3" y2="690" class="fixedLine"/>
+  <text x="1022" y="115" class="tiny">入口侧固定 -601</text>
+
+  <!-- Ticks -->
+  <line x1="147.7" y1="126" x2="147.7" y2="136" class="tick"/>
+  <line x1="614.3" y1="126" x2="614.3" y2="136" class="tick"/>
+  <line x1="730.9" y1="126" x2="730.9" y2="136" class="tick"/>
+  <line x1="1104.3" y1="126" x2="1104.3" y2="136" class="tick"/>
+
+  <!-- Runway structure -->
+  <text x="40" y="178" class="label">1. 跑道结构：延长类，入口侧不动</text>
+  <rect x="730.9" y="195" width="373.4" height="30" class="origFill"/>
+  <text x="742" y="216" class="small">原始宽 160：-761 到 -601</text>
+  <rect x="614.3" y="240" width="490.0" height="30" class="currentFill"/>
+  <text x="626" y="261" class="small">已延长 50：宽 210，-811 到 -601</text>
+  <rect x="147.7" y="285" width="956.6" height="34" class="targetFill"/>
+  <text x="160" y="308" class="small">目标：宽 410，-1011 到 -601（在当前 210 基础上再加 200）</text>
+
+  <!-- dxf_75C -->
+  <text x="40" y="366" class="label">2. QR_第10关_dxf_75C_115x20：延长类，右边界不动</text>
+  <rect x="777.6" y="385" width="268.4" height="28" class="origFill"/>
+  <text x="786" y="405" class="small">原始：x=-683.5, sx=115，边界 -741 到 -626</text>
+  <rect x="660.9" y="425" width="385.1" height="28" class="currentFill"/>
+  <text x="670" y="445" class="small">已延长 50：x=-708.5, sx=165，边界 -791 到 -626</text>
+  <rect x="194.3" y="465" width="851.7" height="32" class="targetFill"/>
+  <text x="204" y="487" class="small">目标：x=-808.5, sx=365，边界 -991 到 -626</text>
+
+  <!-- Offset pieces -->
+  <text x="40" y="546" class="label">3. 偏移类：尺寸不变，整体往 -X 移动</text>
+  <rect x="731.0" y="565" width="35.0" height="28" class="offsetFill"/>
+  <text x="778" y="585" class="small">dxf_737 原始 x=-753.5</text>
+  <rect x="614.3" y="605" width="35.0" height="28" class="currentFill"/>
+  <text x="662" y="625" class="small">已偏移 50：x=-803.5</text>
+  <rect x="147.7" y="645" width="35.0" height="32" class="offsetTarget"/>
+  <text x="196" y="667" class="small">目标再偏移 200：x=-1003.5（相对原始总偏移 250）</text>
+
+  <!-- fall_death_03 -->
+  <rect x="766.0" y="700" width="11.7" height="22" class="death"/>
+  <rect x="182.7" y="700" width="11.7" height="22" class="death"/>
+  <text x="205" y="716" class="small">fall_death_03 同属偏移类：原始 x=-743.5，目标 x=-993.5，sx=5 不变</text>
+</svg>

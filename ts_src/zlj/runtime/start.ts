@@ -3,6 +3,7 @@ import { adjustOnlineRolesSpawnToBirthTile } from "../birth/spawn"
 import { hideLegacySpeedUiForOnlineRoles, startSystems } from "./runtime_speed"
 import { bindEditorSceneRuntimeMechanisms } from "./runtime_terrain"
 import { registerLevelSelectUi } from "./runtime_level_select"
+import { registerFirstVictoryCoinUi } from "./runtime_first_victory_coin"
 
 const EDITOR_SCENE_MECHANISM_BIND_DELAY_SECONDS = 1.5
 
@@ -16,6 +17,7 @@ function schedulePlayerRuntime(): void {
       startSystems()
       hideLegacySpeedUiForOnlineRoles()
       registerLevelSelectUi()
+      registerFirstVictoryCoinUi()
       adjustOnlineRolesSpawnToBirthTile()
     },
     {
@@ -39,6 +41,7 @@ function schedulePlayerRuntime(): void {
     logger: print,
   })
   registerLevelSelectUi()
+  registerFirstVictoryCoinUi()
 }
 
 function scheduleEditorSceneMechanisms(): void {

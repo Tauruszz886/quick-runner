@@ -41,6 +41,8 @@ import {
   resetTenthCurrentMechanism,
   startTenthCurrentMechanism,
 } from "./runtime_tenth_current"
+import { registerTenthVictoryTriggerUnit, resetTenthVictoryTrigger } from "./runtime_tenth_victory"
+import { registerFirstVictoryCoinTriggerUnit, resetFirstVictoryCoinTrigger } from "./runtime_first_victory_coin"
 import { createFifthMiddleLayer } from "./fifth_middle_layer"
 import {
   asFixed,
@@ -103,6 +105,14 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
   if (item.role === "second_chaser_surface") {
     applySecondChaserSurfacePhysics(item.unit, name)
     return true
+  }
+  if (item.role === "first_victory_coin_trigger") {
+    return registerFirstVictoryCoinTriggerUnit(
+      item.unit,
+      name,
+      item.coinReward === undefined ? 5 : item.coinReward,
+      item.respawnAtBirth !== false
+    )
   }
   if (item.role === "fall_death") {
     return registerHoleDeathTriggerUnit(item.unit, name)
@@ -211,6 +221,13 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
   if (item.role === "tenth_current_group") {
     return true
   }
+  if (item.role === "tenth_victory_trigger") {
+    if (item.finishGame === false) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=QRFinishGame_false`)
+      return false
+    }
+    return registerTenthVictoryTriggerUnit(item.unit, name)
+  }
   print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=unknown_role`)
   return false
 }
@@ -221,11 +238,13 @@ export function bindEditorSceneRuntimeMechanisms(): void {
   }
   editorSceneMechanismsBound = true
   resetRuntimeCompressors()
+  resetFirstVictoryCoinTrigger()
   resetEighthLevelMechanism()
   eighthMoveZFallbackLogCount = 0
   resetNinthLevelMechanism()
   resetThirdLevelMechanism()
   resetTenthCurrentMechanism()
+  resetTenthVictoryTrigger()
 
   const sceneUnits = scanQuickRunnerRuntimeScene()
   for (let i = 0; i < sceneUnits.length; i++) {

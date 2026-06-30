@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#f7f7f4"/>
+  <style>
+    text { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #222; }
+    .title { font-size: 26px; font-weight: 700; }
+    .label { font-size: 17px; font-weight: 700; }
+    .small { font-size: 14px; }
+    .tiny { font-size: 12px; }
+    .axis { stroke: #333; stroke-width: 2; }
+    .floor { fill: #e3e0d8; stroke: #666; stroke-width: 2; }
+    .platform { fill: #c9e5f4; stroke: #1376a8; stroke-width: 3; }
+    .currentPath { stroke: #d62728; stroke-width: 7; marker-end: url(#arrow); }
+    .currentStart { fill: #d62728; }
+    .currentEnd { fill: #8d1b14; }
+    .line { stroke: #555; stroke-width: 2; stroke-dasharray: 6 5; }
+    .targetLine { stroke: #d62728; stroke-width: 3; stroke-dasharray: 8 5; }
+    .oldLine { stroke: #7b7b7b; stroke-width: 3; stroke-dasharray: 8 5; }
+    .note { fill: #fff; stroke: #ccc; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#d62728"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="48" class="title">第十关电流移动距离 365 演示</text>
+  <text x="40" y="78" class="small">横轴为世界 X 坐标，越往左越是 -X。这里只演示距离，不改游戏代码。</text>
+
+  <!-- Scale: world X -1040..-590 maps to screen X 80..1200. x = 80 + (worldX + 1040) * 2.4888889 -->
+  <line x1="80" y1="125" x2="1200" y2="125" class="axis"/>
+  <text x="72" y="108" class="small">-1040</text>
+  <text x="1168" y="108" class="small">-590</text>
+  <text x="42" y="131" class="small">-X</text>
+  <text x="1210" y="131" class="small">+X</text>
+
+  <!-- floor: -1011 to -601 -->
+  <text x="40" y="176" class="label">1. 第十关整条地板：长度 410</text>
+  <rect x="152.2" y="196" width="1020.4" height="44" class="floor"/>
+  <text x="164" y="224" class="small">地板范围：X=-1011 到 X=-601，长度 410</text>
+
+  <line x1="152.2" y1="185" x2="152.2" y2="520" class="line"/>
+  <text x="115" y="180" class="tiny">地板左 -1011</text>
+  <line x1="1172.6" y1="185" x2="1172.6" y2="520" class="line"/>
+  <text x="1128" y="180" class="tiny">地板右 -601</text>
+
+  <!-- platform: -991 to -626 -->
+  <text x="40" y="290" class="label">2. 中间平台 QR_第10关_dxf_75C_115x20：长度 365</text>
+  <rect x="202.0" y="312" width="908.4" height="54" class="platform"/>
+  <text x="214" y="344" class="small">中间平台范围：X=-991 到 X=-626，长度 365，中心 X=-808.5</text>
+
+  <line x1="202.0" y1="300" x2="202.0" y2="520" class="targetLine"/>
+  <text x="166" y="294" class="tiny">平台左 -991</text>
+  <line x1="1110.4" y1="300" x2="1110.4" y2="520" class="targetLine"/>
+  <text x="1070" y="294" class="tiny">平台右 -626</text>
+
+  <!-- current path: start -627.1 to -992.1 -->
+  <text x="40" y="420" class="label">3. 按电流当前起点走 365</text>
+  <line x1="1107.7" y1="462" x2="199.3" y2="462" class="currentPath"/>
+  <circle cx="1107.7" cy="462" r="9" class="currentStart"/>
+  <circle cx="199.3" cy="462" r="9" class="currentEnd"/>
+  <text x="1060" y="448" class="small">起点约 X=-627.1</text>
+  <text x="154" y="448" class="small">终点约 X=-992.1</text>
+  <text x="470" y="492" class="small">移动距离：365，用 4s/120帧时，每帧约 3.04 单位</text>
+
+  <!-- old 410 target -->
+  <line x1="87.3" y1="250" x2="87.3" y2="535" class="oldLine"/>
+  <text x="92" y="540" class="tiny">如果走 410，终点约 X=-1037.1，会超出中间平台左边约 46.1</text>
+
+  <rect x="40" y="555" width="820" height="52" rx="6" class="note"/>
+  <text x="58" y="585" class="small">结论：如果玩法是“电流沿中间平台扫完一程”，距离应使用 365；从当前起点算，终点会贴近平台左边界，只有约 1.1 的中心点误差。</text>
+</svg>

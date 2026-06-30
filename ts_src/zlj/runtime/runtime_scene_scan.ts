@@ -3,6 +3,7 @@ import { toNumber } from "@common/num"
 import { TERRAIN_TAG } from "../config"
 
 export type RuntimeSceneRole =
+  | "first_victory_coin_trigger"
   | "second_chaser_surface"
   | "third_timed_platform"
   | "third_vanishing_platform"
@@ -17,6 +18,7 @@ export type RuntimeSceneRole =
   | "tenth_current"
   | "tenth_current_group"
   | "tenth_current_trigger"
+  | "tenth_victory_trigger"
   | "scene_root"
   | "fall_death"
 
@@ -37,6 +39,9 @@ export type RuntimeSceneUnit = {
   moveSeconds?: number
   touchDeath?: boolean
   targetRuntimeName?: string
+  finishGame?: boolean
+  coinReward?: number
+  respawnAtBirth?: boolean
 }
 
 const SCENE_ROOT_NAME = "QR_地图_ROOT"
@@ -257,6 +262,13 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
   }
   if (role === "tenth_current" || role === "tenth_current_trigger") {
     item.moving = readBoolKv(unit, "QRMoving")
+  }
+  if (role === "tenth_victory_trigger") {
+    item.finishGame = readBoolKv(unit, "QRFinishGame")
+  }
+  if (role === "first_victory_coin_trigger") {
+    item.coinReward = readIntKv(unit, "QRCoins")
+    item.respawnAtBirth = readBoolKv(unit, "QRRespawnAtBirth")
   }
   return item
 }

@@ -9,12 +9,10 @@ import { GAME_EVENTS } from "./GameEvents"
 const TAG = "ZLJ_TENTH_CURRENT"
 const CURRENT_PREFAB_ID = 3301506
 const MOVING_SOURCE_PREFIX = "dxf_97B_"
-const SURFACE_SECONDS = 2
-const HIDDEN_RETURN_SECONDS = 2
-const PHASE_STEPS = 40
+const SURFACE_SECONDS = 2.5
+const PHASE_STEPS = 75
 const STEP_SECONDS = SURFACE_SECONDS / PHASE_STEPS
-const MOVE_DISTANCE_X = 113.4
-const HIDDEN_Y = 2.5
+const MOVE_DISTANCE_X = 320
 
 type TenthCurrentPart = {
   name: string
@@ -230,18 +228,7 @@ function setAllPartsAtSurfaceStart(): void {
   }
 }
 
-function setAllPartsAtHiddenEnd(): void {
-  for (let i = 0; i < movingParts.length; i++) {
-    const part = movingParts[i]!
-    setPartPosition(part, part.endX, HIDDEN_Y)
-  }
-  for (let i = 0; i < movingTriggers.length; i++) {
-    const trigger = movingTriggers[i]!
-    setTriggerPosition(trigger, trigger.endX, HIDDEN_Y)
-  }
-}
-
-function animatePhase(surfaceForward: boolean, done: () => void): void {
+function animateForwardOnSurface(done: () => void): void {
   let step = 0
   const generation = cycleGeneration
   const tick = (): void => {
@@ -252,17 +239,11 @@ function animatePhase(surfaceForward: boolean, done: () => void): void {
     const t = step / PHASE_STEPS
     for (let i = 0; i < movingParts.length; i++) {
       const part = movingParts[i]!
-      const fromX = surfaceForward ? part.startX : part.endX
-      const toX = surfaceForward ? part.endX : part.startX
-      const y = surfaceForward ? part.surfaceY : HIDDEN_Y
-      setPartPosition(part, fromX + (toX - fromX) * t, y)
+      setPartPosition(part, part.startX + (part.endX - part.startX) * t, part.surfaceY)
     }
     for (let i = 0; i < movingTriggers.length; i++) {
       const trigger = movingTriggers[i]!
-      const fromX = surfaceForward ? trigger.startX : trigger.endX
-      const toX = surfaceForward ? trigger.endX : trigger.startX
-      const y = surfaceForward ? trigger.surfaceY : HIDDEN_Y
-      setTriggerPosition(trigger, fromX + (toX - fromX) * t, y)
+      setTriggerPosition(trigger, trigger.startX + (trigger.endX - trigger.startX) * t, trigger.surfaceY)
     }
     if (step < PHASE_STEPS) {
       ;(LuaAPI as any).call_delay_time(asFixed(STEP_SECONDS), tick)
@@ -274,12 +255,9 @@ function animatePhase(surfaceForward: boolean, done: () => void): void {
 }
 
 function runCycle(): void {
-  animatePhase(true, () => {
-    setAllPartsAtHiddenEnd()
-    animatePhase(false, () => {
-      setAllPartsAtSurfaceStart()
-      runCycle()
-    })
+  animateForwardOnSurface(() => {
+    setAllPartsAtSurfaceStart()
+    runCycle()
   })
 }
 
@@ -292,7 +270,9 @@ export function startTenthCurrentMechanism(): void {
     print(`[${TAG}] skipped moving_parts=0 all_parts=${parts.length}`)
     return
   }
-  print(`[${TAG}] start parts=${parts.length} moving_parts=${movingParts.length} editor_triggers=${currentTriggers.length} moving_triggers=${movingTriggers.length}`)
+  print(
+    `[${TAG}] start parts=${parts.length} moving_parts=${movingParts.length} editor_triggers=${currentTriggers.length} moving_triggers=${movingTriggers.length} move_distance_x=${MOVE_DISTANCE_X} surface_seconds=${SURFACE_SECONDS}`
+  )
   setAllPartsAtSurfaceStart()
   runCycle()
 }
