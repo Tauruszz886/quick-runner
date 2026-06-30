@@ -1,5 +1,4 @@
 import { safeCall } from "@common/engine_safe"
-import { TriggerHub } from "@common/trigger_hub"
 import { RuntimeUiScope, type MenuFlyout, type MenuFlyoutItem, type RuntimeUiClickEvent } from "@gameplay-kits/runtime_ui"
 import { UINodes } from "../../generated/exported_data"
 import { BIRTH_SPAWN_Y } from "../config"
@@ -7,9 +6,8 @@ import { asFixed } from "../layout"
 import { getOnlineRoles } from "./runtime_roles"
 
 const TAG = "ZLJ_LEVEL_SELECT"
-const SELECT_BUTTON = UINodes["关卡选择"] as EButton
+const SELECT_BUTTON_NAME = "关卡选择"
 const PANEL_PARENT = UINodes["画布0"] as ENode
-const TOUCH_EVENT_TYPES = [0, 1, 2, 3] as const
 const CLICK_LOCK_SECONDS = 0.12
 const MENU_WIDTH = 260
 const MENU_ITEM_HEIGHT = 40
@@ -22,10 +20,6 @@ type LevelTeleportTarget = {
   x: number
   y: number
   z: number
-}
-
-declare const EVENT: {
-  EUI_NODE_TOUCH_EVENT: string
 }
 
 let registered = false
@@ -91,37 +85,6 @@ function getRoleCharacter(role: Role | undefined, source: string): unknown {
     },
     { tag: `level_select_get_ctrl_${source}`, fallback: null, logger: print }
   )
-}
-
-function enableTouchForRole(role: Role, node: EButton, tag: string): void {
-  safeCall(
-    () => {
-      ;(role as any).set_node_visible(node, true)
-    },
-    { tag: `level_select_role_visible_${tag}`, fallback: undefined, logger: print }
-  )
-  safeCall(
-    () => {
-      ;(role as any).set_button_enabled(node, true)
-    },
-    { tag: `level_select_role_button_enabled_${tag}`, fallback: undefined, logger: print }
-  )
-  safeCall(
-    () => {
-      ;(role as any).set_node_touch_enabled(node, true)
-    },
-    { tag: `level_select_role_touch_enabled_${tag}`, fallback: undefined, logger: print }
-  )
-}
-
-function enableTouchForOnlineRoles(node: EButton, tag: string): void {
-  const roles = getOnlineRoles()
-  for (let i = 0; i < roles.length; i++) {
-    const role = roles[i]
-    if (role !== undefined) {
-      enableTouchForRole(role, node, tag)
-    }
-  }
 }
 
 function withClickLock(handler: () => void): void {
@@ -218,16 +181,12 @@ function ensureMenu(): MenuFlyout | null {
   if (levelMenu !== null) {
     return levelMenu
   }
-  if (uiScope === undefined) {
-    uiScope = new RuntimeUiScope({
-      parentNode: PANEL_PARENT,
-      uiNodes: UINodes,
-      uiNodeParents: {},
-      logger: print,
-    })
+  const scope = ensureUiScope()
+  if (scope === null) {
+    return null
   }
 
-  levelMenu = uiScope.createMenuFlyout(
+  levelMenu = scope.createMenuFlyout(
     "QR关卡选择MenuFlyout",
     {
       x: 450,
@@ -295,42 +254,47 @@ function setMenuVisible(visible: boolean): void {
   }
 }
 
-function handleOpenButtonClick(_eventName: unknown, actor: unknown, data: unknown): void {
-  const clickedNode = extractEventNode(actor, data)
-  if (!sameNode(clickedNode, SELECT_BUTTON)) {
-    return
-  }
+function handleOpenButtonClick(_eventName: unknown, _actor: unknown, _data: unknown): void {
   withClickLock(() => {
     setMenuVisible(!menuVisible)
   })
 }
 
-function registerButtonEvents(scopeId: number, node: EButton, tag: string, handler: (...args: unknown[]) => void): void {
-  for (let i = 0; i < TOUCH_EVENT_TYPES.length; i++) {
-    const touchEventType = TOUCH_EVENT_TYPES[i]! as ENodeTouchEventType
-    TriggerHub.register([EVENT.EUI_NODE_TOUCH_EVENT, node, touchEventType], handler, {
-      scopeId,
-      safe: true,
-      safeCallback: true,
-      tag: `level_select_${tag}_typed_${touchEventType}`,
-      logger: print,
-    })
+function ensureUiScope(): RuntimeUiScope | null {
+  if (uiScope !== undefined) {
+    return uiScope
   }
-  TriggerHub.register([EVENT.EUI_NODE_TOUCH_EVENT, node], handler, {
-    scopeId,
-    safe: true,
-    safeCallback: true,
-    tag: `level_select_${tag}`,
+  uiScope = new RuntimeUiScope({
+    parentNode: PANEL_PARENT,
+    uiNodes: UINodes,
+    uiNodeParents: {},
     logger: print,
   })
+  return uiScope
 }
 
 export function registerLevelSelectUi(): void {
   if (registered) {
     return
   }
+  const scope = ensureUiScope()
+  if (scope === null) {
+    print(`[${TAG}] register skipped reason=scope_missing`)
+    return
+  }
+  const button = scope.getOrginButton(SELECT_BUTTON_NAME)
+  if (button === null) {
+    print(`[${TAG}] register skipped reason=button_missing name=${SELECT_BUTTON_NAME}`)
+    return
+  }
+  button.applyStyle({ enabled: true, touchEnabled: true })
+  button.setVisible(true)
+  const regId = button.onClick((event: RuntimeUiClickEvent) => {
+    handleOpenButtonClick(event.eventName, event.actor, event.data)
+  }, { tag: "level_select_open" })
+  if (regId === null) {
+    print(`[${TAG}] register skipped reason=on_click_failed name=${SELECT_BUTTON_NAME}`)
+    return
+  }
   registered = true
-  const scopeId = TriggerHub.createScope("level-select-ui")
-  enableTouchForOnlineRoles(SELECT_BUTTON, "open")
-  registerButtonEvents(scopeId, SELECT_BUTTON, "open", handleOpenButtonClick)
 }

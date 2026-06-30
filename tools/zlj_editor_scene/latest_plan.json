@@ -9100,6 +9100,205 @@
   {
     "section": "level",
     "module": 10,
+    "name": "第10关_拖尾电流_97B_三道整体",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "拖尾电流_97B_三道整体",
+      "QRRuntimeName": "第10关_拖尾电流_97B_三道整体",
+      "QRGroupId": "tenth_current_97B_all",
+      "QRGroupKind": "moving_trail_current_group",
+      "QRChildrenPattern": "dxf_97B_*_3301506_*",
+      "QRChildCount": 60,
+      "QRMoving": true
+    },
+    "parent_name_override": "QR_第10关_ROOT",
+    "full_name": "QR_第10关_拖尾电流_97B_三道整体",
+    "legacy_full_name": "QR_第10关_拖尾电流_97B_三道整体",
+    "parent_name": "QR_第10关_ROOT"
+  },
+  {
+    "section": "level",
+    "module": 10,
+    "name": "第10关_拖尾电流_97B_第1道_Y6_5",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "拖尾电流_97B_第1道_Y6_5",
+      "QRRuntimeName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRChildrenPattern": "dxf_97B_1_3301506_*",
+      "QRChildCount": 20,
+      "QRMoving": true,
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
+    },
+    "parent_name_override": "QR_第10关_拖尾电流_97B_三道整体",
+    "full_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+    "legacy_full_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+    "parent_name": "QR_第10关_拖尾电流_97B_三道整体"
+  },
+  {
+    "section": "level",
+    "module": 10,
+    "name": "第10关_拖尾电流_97B_第2道_Y7_5",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "拖尾电流_97B_第2道_Y7_5",
+      "QRRuntimeName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRChildrenPattern": "dxf_97B_2_3301506_*",
+      "QRChildCount": 20,
+      "QRMoving": true,
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
+    },
+    "parent_name_override": "QR_第10关_拖尾电流_97B_三道整体",
+    "full_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+    "legacy_full_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+    "parent_name": "QR_第10关_拖尾电流_97B_三道整体"
+  },
+  {
+    "section": "level",
+    "module": 10,
+    "name": "第10关_拖尾电流_97B_第3道_Y8_5",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "拖尾电流_97B_第3道_Y8_5",
+      "QRRuntimeName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRChildrenPattern": "dxf_97B_3_3301506_*",
+      "QRChildCount": 20,
+      "QRMoving": true,
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
+    },
+    "parent_name_override": "QR_第10关_拖尾电流_97B_三道整体",
+    "full_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+    "legacy_full_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+    "parent_name": "QR_第10关_拖尾电流_97B_三道整体"
+  },
+  {
+    "section": "level",
+    "module": 10,
+    "name": "第10关_固定电流_97F",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "固定电流_97F",
+      "QRRuntimeName": "第10关_固定电流_97F",
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRChildrenPattern": "dxf_97F_1_3301506_*",
+      "QRChildCount": 20,
+      "QRMoving": false,
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
+    },
+    "parent_name_override": "QR_第10关_ROOT",
+    "full_name": "QR_第10关_固定电流_97F",
+    "legacy_full_name": "QR_第10关_固定电流_97F",
+    "parent_name": "QR_第10关_ROOT"
+  },
+  {
+    "section": "level",
+    "module": 10,
+    "name": "第10关_固定电流_983",
+    "prefab_id": 105205,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "sx": 1,
+    "sy": 1,
+    "sz": 1,
+    "model_id": null,
+    "paint_color": null,
+    "runtime_placeholder": true,
+    "runtime_trigger": false,
+    "custom_kv": {
+      "QRRole": "tenth_current_group",
+      "QRModule": 10,
+      "QRComponent": "固定电流_983",
+      "QRRuntimeName": "第10关_固定电流_983",
+      "QRGroupId": "tenth_current_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRChildrenPattern": "dxf_983_1_3301506_*",
+      "QRChildCount": 20,
+      "QRMoving": false,
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
+    },
+    "parent_name_override": "QR_第10关_ROOT",
+    "full_name": "QR_第10关_固定电流_983",
+    "legacy_full_name": "QR_第10关_固定电流_983",
+    "parent_name": "QR_第10关_ROOT"
+  },
+  {
+    "section": "level",
+    "module": 10,
     "name": "第10关_dxf_73C_15x40",
     "prefab_id": 105205,
     "x": -608.5,
@@ -9177,12 +9376,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_1",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_1",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_1",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9204,12 +9411,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_2",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_2",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_2",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9231,12 +9446,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_3",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_3",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_3",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9258,12 +9481,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_4",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_4",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_4",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9285,12 +9516,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_5",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_5",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_5",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9312,12 +9551,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_6",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_6",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_6",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9339,12 +9586,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_7",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_7",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_7",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9366,12 +9621,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_8",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_8",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_8",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9393,12 +9656,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_9",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_9",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_9",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9420,12 +9691,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_10",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_10",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_10",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9447,12 +9726,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_11",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_11",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_11",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9474,12 +9761,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_12",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_12",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_12",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9501,12 +9796,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_13",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_13",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_13",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9528,12 +9831,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_14",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_14",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_14",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9555,12 +9866,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_15",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_15",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_15",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9582,12 +9901,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_16",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_16",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_16",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9609,12 +9936,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_17",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_17",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_17",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9636,12 +9971,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_18",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_18",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_18",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9663,12 +10006,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_19",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_19",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_19",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9690,12 +10041,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_1_3301506_20",
       "QRRuntimeName": "第10关_dxf_97B_1_3301506_20",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_1",
+      "QRGroupName": "第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第1道_Y6_5",
     "full_name": "QR_第10关_dxf_97B_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_1_3301506_20",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第1道_Y6_5"
   },
   {
     "section": "level",
@@ -9717,12 +10076,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_1",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_1",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_1",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9744,12 +10111,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_2",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_2",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_2",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9771,12 +10146,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_3",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_3",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_3",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9798,12 +10181,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_4",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_4",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_4",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9825,12 +10216,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_5",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_5",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_5",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9852,12 +10251,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_6",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_6",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_6",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9879,12 +10286,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_7",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_7",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_7",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9906,12 +10321,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_8",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_8",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_8",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9933,12 +10356,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_9",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_9",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_9",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9960,12 +10391,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_10",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_10",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_10",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -9987,12 +10426,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_11",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_11",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_11",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10014,12 +10461,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_12",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_12",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_12",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10041,12 +10496,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_13",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_13",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_13",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10068,12 +10531,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_14",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_14",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_14",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10095,12 +10566,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_15",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_15",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_15",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10122,12 +10601,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_16",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_16",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_16",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10149,12 +10636,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_17",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_17",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_17",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10176,12 +10671,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_18",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_18",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_18",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10203,12 +10706,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_19",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_19",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_19",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10230,12 +10741,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_2_3301506_20",
       "QRRuntimeName": "第10关_dxf_97B_2_3301506_20",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_2",
+      "QRGroupName": "第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 2,
+      "QRGroupY": 7.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第2道_Y7_5",
     "full_name": "QR_第10关_dxf_97B_2_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_2_3301506_20",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第2道_Y7_5"
   },
   {
     "section": "level",
@@ -10257,12 +10776,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_1",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_1",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_1",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10284,12 +10811,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_2",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_2",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_2",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10311,12 +10846,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_3",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_3",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_3",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10338,12 +10881,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_4",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_4",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_4",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10365,12 +10916,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_5",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_5",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_5",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10392,12 +10951,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_6",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_6",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_6",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10419,12 +10986,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_7",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_7",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_7",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10446,12 +11021,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_8",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_8",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_8",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10473,12 +11056,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_9",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_9",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_9",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10500,12 +11091,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_10",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_10",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_10",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10527,12 +11126,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_11",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_11",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_11",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10554,12 +11161,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_12",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_12",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_12",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10581,12 +11196,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_13",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_13",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_13",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10608,12 +11231,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_14",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_14",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_14",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10635,12 +11266,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_15",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_15",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_15",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10662,12 +11301,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_16",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_16",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_16",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10689,12 +11336,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_17",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_17",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_17",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10716,12 +11371,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_18",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_18",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_18",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10743,12 +11406,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_19",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_19",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_19",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10770,12 +11441,20 @@
       "QRModule": 10,
       "QRComponent": "dxf_97B_3_3301506_20",
       "QRRuntimeName": "第10关_dxf_97B_3_3301506_20",
-      "QRMoving": true
+      "QRMoving": true,
+      "QRGroupId": "tenth_current_97B_lane_3",
+      "QRGroupName": "第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupFullName": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
+      "QRGroupKind": "moving_trail_current_lane",
+      "QRParentGroupId": "tenth_current_97B_all",
+      "QRParentGroupName": "第10关_拖尾电流_97B_三道整体",
+      "QRTrackIndex": 3,
+      "QRGroupY": 8.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_拖尾电流_97B_第3道_Y8_5",
     "full_name": "QR_第10关_dxf_97B_3_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97B_3_3301506_20",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_拖尾电流_97B_第3道_Y8_5"
   },
   {
     "section": "level",
@@ -10797,12 +11476,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_1",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_1",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_1",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10824,12 +11509,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_2",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_2",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_2",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10851,12 +11542,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_3",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_3",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_3",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10878,12 +11575,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_4",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_4",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_4",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10905,12 +11608,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_5",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_5",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_5",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10932,12 +11641,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_6",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_6",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_6",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10959,12 +11674,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_7",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_7",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_7",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -10986,12 +11707,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_8",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_8",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_8",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11013,12 +11740,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_9",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_9",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_9",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11040,12 +11773,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_10",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_10",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_10",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11067,12 +11806,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_11",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_11",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_11",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11094,12 +11839,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_12",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_12",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_12",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11121,12 +11872,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_13",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_13",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_13",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11148,12 +11905,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_14",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_14",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_14",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11175,12 +11938,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_15",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_15",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_15",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11202,12 +11971,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_16",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_16",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_16",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11229,12 +12004,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_17",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_17",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_17",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11256,12 +12037,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_18",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_18",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_18",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11283,12 +12070,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_19",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_19",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_19",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11310,12 +12103,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_97F_1_3301506_20",
       "QRRuntimeName": "第10关_dxf_97F_1_3301506_20",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_97F",
+      "QRGroupName": "第10关_固定电流_97F",
+      "QRGroupFullName": "QR_第10关_固定电流_97F",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_97F",
     "full_name": "QR_第10关_dxf_97F_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_97F_1_3301506_20",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_97F"
   },
   {
     "section": "level",
@@ -11337,12 +12136,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_1",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_1",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_1",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_1",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11364,12 +12169,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_2",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_2",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_2",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_2",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11391,12 +12202,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_3",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_3",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_3",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_3",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11418,12 +12235,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_4",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_4",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_4",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_4",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11445,12 +12268,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_5",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_5",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_5",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_5",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11472,12 +12301,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_6",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_6",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_6",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_6",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11499,12 +12334,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_7",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_7",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_7",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_7",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11526,12 +12367,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_8",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_8",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_8",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_8",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11553,12 +12400,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_9",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_9",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_9",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_9",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11580,12 +12433,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_10",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_10",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_10",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_10",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11607,12 +12466,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_11",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_11",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_11",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_11",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11634,12 +12499,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_12",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_12",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_12",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_12",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11661,12 +12532,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_13",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_13",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_13",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_13",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11688,12 +12565,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_14",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_14",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_14",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_14",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11715,12 +12598,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_15",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_15",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_15",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_15",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11742,12 +12631,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_16",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_16",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_16",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_16",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11769,12 +12664,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_17",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_17",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_17",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_17",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11796,12 +12697,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_18",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_18",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_18",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_18",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11823,12 +12730,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_19",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_19",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_19",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_19",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",
@@ -11850,12 +12763,18 @@
       "QRModule": 10,
       "QRComponent": "dxf_983_1_3301506_20",
       "QRRuntimeName": "第10关_dxf_983_1_3301506_20",
-      "QRMoving": false
+      "QRMoving": false,
+      "QRGroupId": "tenth_current_983",
+      "QRGroupName": "第10关_固定电流_983",
+      "QRGroupFullName": "QR_第10关_固定电流_983",
+      "QRGroupKind": "fixed_current_group",
+      "QRTrackIndex": 1,
+      "QRGroupY": 6.5
     },
-    "parent_name_override": null,
+    "parent_name_override": "QR_第10关_固定电流_983",
     "full_name": "QR_第10关_dxf_983_1_3301506_20",
     "legacy_full_name": "QR_第10关_dxf_983_1_3301506_20",
-    "parent_name": "QR_第10关_ROOT"
+    "parent_name": "QR_第10关_固定电流_983"
   },
   {
     "section": "level",

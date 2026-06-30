@@ -1,6 +1,5 @@
 import { createFastRunSystem, type FastRunSystem } from "@gameplay-kits/fast_run_system"
 import { UINodes } from "../../generated/exported_data"
-import { registerDashboardUnlockButtons } from "./runtime_dashboard_unlock"
 import { DASHBOARD_CENTER_X, DASHBOARD_CENTER_Y, DASHBOARD_OPACITY, DEFAULT_SPEED, SPEED_TAG } from "../config"
 import { getOnlineRoles } from "./runtime_roles"
 
@@ -48,7 +47,6 @@ function ensureFastRunComponentsForOnlineRoles(): void {
 export function startSystems(): void {
   if (fastRunSystem !== undefined && fastRunSystem.isEnabled()) {
     ensureFastRunComponentsForOnlineRoles()
-    registerDashboardUnlockButtons(() => enableFastRunDashboard())
     return
   }
 
@@ -75,7 +73,6 @@ export function startSystems(): void {
   })
   fastRunSystem.setEnabled(true)
   ensureFastRunComponentsForOnlineRoles()
-  registerDashboardUnlockButtons(() => enableFastRunDashboard())
 }
 
 export function enableFastRunDashboard(): void {

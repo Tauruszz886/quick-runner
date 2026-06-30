@@ -15,6 +15,9 @@ export type RuntimeSceneRole =
   | "ninth_vanishing_trigger"
   | "ninth_vanishing_death_trigger"
   | "tenth_current"
+  | "tenth_current_group"
+  | "tenth_current_trigger"
+  | "scene_root"
   | "fall_death"
 
 export type RuntimeSceneUnit = {
@@ -52,6 +55,9 @@ function readKv(unit: unknown, valueType: Enums.ValueType, key: string): unknown
   return safeCall(
     () => {
       const target = unit as any
+      if (target.has_kv !== undefined && target.has_kv !== null && target.has_kv(key) !== true) {
+        return null
+      }
       if (target.get_kv_by_type === undefined || target.get_kv_by_type === null) {
         return null
       }
@@ -72,15 +78,7 @@ function readStringKv(unit: unknown, key: string): string | undefined {
 
 function readNumberKv(unit: unknown, key: string): number | undefined {
   const value = readKv(unit, Enums.ValueType.Fixed, key)
-  if (typeof value === "number") {
-    return value
-  }
-  const intValue = readKv(unit, Enums.ValueType.Int, key)
-  if (typeof intValue === "number") {
-    return intValue
-  }
-  const strValue = readKv(unit, Enums.ValueType.Str, key)
-  return strValue === null || strValue === undefined ? undefined : toNumber(strValue, { mode: "loose", ctx: key, logger: print })
+  return value === null || value === undefined ? undefined : toNumber(value, { mode: "loose", ctx: key, logger: print })
 }
 
 function readBoolKv(unit: unknown, key: string): boolean | undefined {
@@ -165,9 +163,8 @@ function appendRuntimeSceneUnit(out: RuntimeSceneUnit[], visited: Record<string,
   }
 }
 
-function scanQueryableRuntimeTriggerUnits(reason: string): RuntimeSceneUnit[] {
-  const out: RuntimeSceneUnit[] = []
-  const visited: Record<string, boolean> = {}
+function appendQueryableRuntimeUnits(out: RuntimeSceneUnit[], visited: Record<string, boolean>): { candidates: number; added: number } {
+  const before = out.length
   let candidates = 0
   for (let specIndex = 0; specIndex < FALLBACK_QUERY_SPECS.length; specIndex++) {
     const spec = FALLBACK_QUERY_SPECS[specIndex]!
@@ -177,7 +174,28 @@ function scanQueryableRuntimeTriggerUnits(reason: string): RuntimeSceneUnit[] {
       appendRuntimeSceneUnit(out, visited, units[i]!)
     }
   }
+  return { candidates, added: out.length - before }
+}
+
+function scanQueryableRuntimeTriggerUnits(reason: string): RuntimeSceneUnit[] {
+  const out: RuntimeSceneUnit[] = []
+  const visited: Record<string, boolean> = {}
+  const result = appendQueryableRuntimeUnits(out, visited)
+  print(`[${TERRAIN_TAG}] scene scan fallback reason=${reason} candidates=${result.candidates} runtime_units=${out.length}`)
   return out
+}
+
+function printRoleSummary(units: RuntimeSceneUnit[], source: string): void {
+  const counts: Record<string, number> = {}
+  for (let i = 0; i < units.length; i++) {
+    const role = units[i]!.role
+    counts[role] = (counts[role] === undefined ? 0 : counts[role]!) + 1
+  }
+  const parts: string[] = []
+  for (const role in counts) {
+    parts.push(`${role}=${counts[role]}`)
+  }
+  print(`[${TERRAIN_TAG}] scene scan roles source=${source} ${parts.join(",")}`)
 }
 
 function getUnitIdentity(unit: unknown): string {
@@ -193,6 +211,9 @@ function getUnitIdentity(unit: unknown): string {
 function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
   const role = readStringKv(unit, ROLE_KEY) as RuntimeSceneRole | undefined
   if (role === undefined) {
+    return null
+  }
+  if (role === "scene_root") {
     return null
   }
   const runtimeNameKv = readStringKv(unit, "QRRuntimeName")
@@ -226,10 +247,15 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
     item.touchDeath = readBoolKv(unit, "QRTouchDeath")
     item.targetRuntimeName = readStringKv(unit, "QRTargetRuntimeName")
   }
-  if (role === "third_vanishing_trigger" || role === "ninth_vanishing_trigger" || role === "ninth_vanishing_death_trigger") {
+  if (
+    role === "third_vanishing_trigger" ||
+    role === "ninth_vanishing_trigger" ||
+    role === "ninth_vanishing_death_trigger" ||
+    role === "tenth_current_trigger"
+  ) {
     item.targetRuntimeName = readStringKv(unit, "QRTargetRuntimeName")
   }
-  if (role === "tenth_current") {
+  if (role === "tenth_current" || role === "tenth_current_trigger") {
     item.moving = readBoolKv(unit, "QRMoving")
   }
   return item
@@ -255,5 +281,13 @@ export function scanQuickRunnerRuntimeScene(): RuntimeSceneUnit[] {
     }
   }
 
+  const supplement = appendQueryableRuntimeUnits(out, visited)
+  print(
+    `[${TERRAIN_TAG}] scene scan root_found=${SCENE_ROOT_NAME} root_units=${out.length - supplement.added} supplement_candidates=${supplement.candidates} supplement_added=${supplement.added} runtime_units=${out.length}`
+  )
+  printRoleSummary(out, "root_plus_prefab")
+  if (out.length === 0) {
+    return scanQueryableRuntimeTriggerUnits("root_empty")
+  }
   return out
 }

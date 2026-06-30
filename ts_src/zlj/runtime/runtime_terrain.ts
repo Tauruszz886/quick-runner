@@ -35,7 +35,12 @@ import {
   resetThirdLevelMechanism,
   startThirdLevelMechanism,
 } from "./runtime_third_mechanism"
-import { registerTenthCurrentBinding, resetTenthCurrentMechanism, startTenthCurrentMechanism } from "./runtime_tenth_current"
+import {
+  registerTenthCurrentBinding,
+  registerTenthCurrentTriggerBinding,
+  resetTenthCurrentMechanism,
+  startTenthCurrentMechanism,
+} from "./runtime_tenth_current"
 import { createFifthMiddleLayer } from "./fifth_middle_layer"
 import {
   asFixed,
@@ -194,6 +199,16 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
   }
   if (item.role === "tenth_current") {
     registerTenthCurrentBinding(item.unit, name, item.x, item.y, item.z, item.sx, item.sy, item.sz, item.moving === true)
+    return true
+  }
+  if (item.role === "tenth_current_trigger") {
+    if (item.targetRuntimeName === undefined) {
+      print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=missing_QRTargetRuntimeName`)
+      return false
+    }
+    return registerTenthCurrentTriggerBinding(item.unit, name, item.targetRuntimeName, item.x, item.y, item.z, item.moving === true)
+  }
+  if (item.role === "tenth_current_group") {
     return true
   }
   print(`[${TERRAIN_TAG}] scene unit skipped name=${name} role=${item.role} reason=unknown_role`)

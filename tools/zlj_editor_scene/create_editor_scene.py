@@ -109,6 +109,73 @@ NINTH_LEVEL_VANISHING_PLATFORM_NAMES = {
     "dxf_760_50x20",
     "dxf_75C_50x20",
 }
+TENTH_CURRENT_PREFAB_ID = 3301506
+TENTH_CURRENT_GROUPS = [
+    {
+        "id": "tenth_current_97B_all",
+        "name": "拖尾电流_97B_三道整体",
+        "kind": "moving_trail_current_group",
+        "moving": True,
+        "child_count": 60,
+        "pattern": "dxf_97B_*_3301506_*",
+        "parent": None,
+    },
+    {
+        "id": "tenth_current_97B_lane_1",
+        "name": "拖尾电流_97B_第1道_Y6_5",
+        "kind": "moving_trail_current_lane",
+        "moving": True,
+        "child_count": 20,
+        "pattern": "dxf_97B_1_3301506_*",
+        "parent": "拖尾电流_97B_三道整体",
+        "track": 1,
+        "group_y": 6.5,
+    },
+    {
+        "id": "tenth_current_97B_lane_2",
+        "name": "拖尾电流_97B_第2道_Y7_5",
+        "kind": "moving_trail_current_lane",
+        "moving": True,
+        "child_count": 20,
+        "pattern": "dxf_97B_2_3301506_*",
+        "parent": "拖尾电流_97B_三道整体",
+        "track": 2,
+        "group_y": 7.5,
+    },
+    {
+        "id": "tenth_current_97B_lane_3",
+        "name": "拖尾电流_97B_第3道_Y8_5",
+        "kind": "moving_trail_current_lane",
+        "moving": True,
+        "child_count": 20,
+        "pattern": "dxf_97B_3_3301506_*",
+        "parent": "拖尾电流_97B_三道整体",
+        "track": 3,
+        "group_y": 8.5,
+    },
+    {
+        "id": "tenth_current_97F",
+        "name": "固定电流_97F",
+        "kind": "fixed_current_group",
+        "moving": False,
+        "child_count": 20,
+        "pattern": "dxf_97F_1_3301506_*",
+        "parent": None,
+        "track": 1,
+        "group_y": 6.5,
+    },
+    {
+        "id": "tenth_current_983",
+        "name": "固定电流_983",
+        "kind": "fixed_current_group",
+        "moving": False,
+        "child_count": 20,
+        "pattern": "dxf_983_1_3301506_*",
+        "parent": None,
+        "track": 1,
+        "group_y": 6.5,
+    },
+]
 
 LEVEL_FRAMES = {index: {"sx": 160.0, "sz": 100.0} for index in range(0, 11)}
 
@@ -504,6 +571,95 @@ def eighth_level_moving_mechanism_trigger_kv(
     }
 
 
+def tenth_current_group_runtime_name(module: int, group_name: str) -> str:
+    return module_name(module, group_name)
+
+
+def tenth_current_group_full_name(module: int, group_name: str) -> str:
+    return f"QR_{tenth_current_group_runtime_name(module, group_name)}"
+
+
+def tenth_current_group_kv(module: int, group: dict[str, Any]) -> dict[str, Any]:
+    kv: dict[str, Any] = {
+        "QRRole": "tenth_current_group",
+        "QRModule": module,
+        "QRComponent": str(group["name"]),
+        "QRRuntimeName": tenth_current_group_runtime_name(module, str(group["name"])),
+        "QRGroupId": str(group["id"]),
+        "QRGroupKind": str(group["kind"]),
+        "QRChildrenPattern": str(group["pattern"]),
+        "QRChildCount": int(group["child_count"]),
+        "QRMoving": bool(group["moving"]),
+    }
+    if group.get("parent") is not None:
+        kv["QRParentGroupId"] = str(next(item["id"] for item in TENTH_CURRENT_GROUPS if item["name"] == group["parent"]))
+    if group.get("track") is not None:
+        kv["QRTrackIndex"] = int(group["track"])
+    if group.get("group_y") is not None:
+        kv["QRGroupY"] = float(group["group_y"])
+    return kv
+
+
+def tenth_current_piece_group(piece_name: str) -> dict[str, Any] | None:
+    if piece_name.startswith("dxf_97B_1_3301506_"):
+        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97B_lane_1")
+    if piece_name.startswith("dxf_97B_2_3301506_"):
+        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97B_lane_2")
+    if piece_name.startswith("dxf_97B_3_3301506_"):
+        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97B_lane_3")
+    if piece_name.startswith("dxf_97F_1_3301506_"):
+        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_97F")
+    if piece_name.startswith("dxf_983_1_3301506_"):
+        return next(group for group in TENTH_CURRENT_GROUPS if group["id"] == "tenth_current_983")
+    return None
+
+
+def tenth_current_piece_kv(module: int, piece_name: str, moving: bool, group: dict[str, Any]) -> dict[str, Any]:
+    kv: dict[str, Any] = {
+        "QRRole": "tenth_current",
+        "QRModule": module,
+        "QRComponent": piece_name,
+        "QRRuntimeName": module_name(module, piece_name),
+        "QRMoving": moving,
+        "QRGroupId": str(group["id"]),
+        "QRGroupName": tenth_current_group_runtime_name(module, str(group["name"])),
+        "QRGroupFullName": tenth_current_group_full_name(module, str(group["name"])),
+        "QRGroupKind": str(group["kind"]),
+    }
+    if group.get("parent") is not None:
+        parent = next(item for item in TENTH_CURRENT_GROUPS if item["name"] == group["parent"])
+        kv["QRParentGroupId"] = str(parent["id"])
+        kv["QRParentGroupName"] = tenth_current_group_runtime_name(module, str(parent["name"]))
+    if group.get("track") is not None:
+        kv["QRTrackIndex"] = int(group["track"])
+    if group.get("group_y") is not None:
+        kv["QRGroupY"] = float(group["group_y"])
+    return kv
+
+
+def add_tenth_current_group_items(items: list[SceneItem], module: int) -> None:
+    for group in TENTH_CURRENT_GROUPS:
+        parent = group.get("parent")
+        parent_name = root_name(module) if parent is None else tenth_current_group_full_name(module, str(parent))
+        items.append(
+            SceneItem(
+                "level",
+                module,
+                tenth_current_group_runtime_name(module, str(group["name"])),
+                WALL_PREFAB_ID,
+                0,
+                0,
+                0,
+                1,
+                1,
+                1,
+                runtime_placeholder=True,
+                custom_kv=tenth_current_group_kv(module, group),
+                parent_name_override=parent_name,
+            )
+        )
+
+
 def build_plan(workspace: Path) -> list[SceneItem]:
     items: list[SceneItem] = []
     fall_death_zones_by_module = load_fall_death_zones(workspace)
@@ -541,6 +697,8 @@ def build_plan(workspace: Path) -> list[SceneItem]:
 
         if module == FIFTH_LEVEL_MODULE_INDEX:
             add_fifth_middle_layers(items, module, module_min_x, module_min_z)
+        if module == 10:
+            add_tenth_current_group_items(items, module)
 
         for piece in load_level_specs(workspace, module):
             x = module_min_x + float(piece["startX"]) + float(piece["sx"]) / 2
@@ -552,6 +710,7 @@ def build_plan(workspace: Path) -> list[SceneItem]:
             is_ninth_third_api_vanishing_platform = module == 9 and piece_name in NINTH_LEVEL_VANISHING_PLATFORM_NAMES
             is_fourth_compressor = module == 4 and piece.get("role") == "fourth_compressor"
             is_eighth_moving_mechanism = is_eighth_level_moving_mechanism_piece(module, piece)
+            tenth_current_group = tenth_current_piece_group(piece_name) if module == 10 and prefab_id == TENTH_CURRENT_PREFAB_ID else None
             custom_kv = (
                 third_level_vanishing_platform_kv(module, piece_name)
                 if is_third_vanishing_platform
@@ -559,6 +718,8 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                 if is_ninth_third_api_vanishing_platform
                 else fourth_level_compressor_kv(module, piece_name)
                 if is_fourth_compressor
+                else tenth_current_piece_kv(module, piece_name, bool(piece_name.startswith("dxf_97B_")), tenth_current_group)
+                if tenth_current_group is not None
                 else runtime_kv_by_component.get((module, piece_name))
             )
             items.append(
@@ -577,6 +738,9 @@ def build_plan(workspace: Path) -> list[SceneItem]:
                     if is_third_vanishing_platform or is_ninth_third_api_vanishing_platform
                     else None,
                     custom_kv=dict(custom_kv) if custom_kv is not None else None,
+                    parent_name_override=tenth_current_group_full_name(module, str(tenth_current_group["name"]))
+                    if tenth_current_group is not None
+                    else None,
                 )
             )
             if is_third_vanishing_platform or is_ninth_third_api_vanishing_platform:
@@ -725,7 +889,7 @@ def lua_item(item: SceneItem) -> str:
 
 def lua_roots() -> str:
     roots = [
-        "{name='QR_地图_ROOT', parentName=nil, x=0, y=0, z=0}",
+        "{name='QR_地图_ROOT', parentName=nil, x=0, y=0, z=0, customKv={{key='QRRole', valueType='Str', value='scene_root'}}}",
         "{name='QR_出生地_ROOT', parentName='QR_地图_ROOT', x=0, y=0, z=0}",
     ]
     for module in range(1, 11):
@@ -861,6 +1025,7 @@ local function ensure_root(item)
   end
   if ok and created_uid ~= nil then
     set_root_attrs(created_uid, item)
+    apply_item_custom_kv(created_uid, item)
     existing[item.name] = created_uid
     if parent_uid ~= nil then
       attached = attached + 1
@@ -891,6 +1056,7 @@ end
 for index = 1, #ROOTS do
   local root = ROOTS[index]
   local uid = ensure_root(root)
+  apply_item_custom_kv(uid, root)
   if uid ~= nil and root.parentName ~= nil then
     local parent_uid = existing[root.parentName]
     if add_child(parent_uid, uid) then
