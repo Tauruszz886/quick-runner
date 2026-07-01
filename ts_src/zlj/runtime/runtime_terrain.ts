@@ -42,7 +42,11 @@ import {
   startTenthCurrentMechanism,
 } from "./runtime_tenth_current"
 import { registerTenthVictoryTriggerUnit, resetTenthVictoryTrigger } from "./runtime_tenth_victory"
-import { registerFirstVictoryCoinTriggerUnit, resetFirstVictoryCoinTrigger } from "./runtime_first_victory_coin"
+import {
+  registerFirstVictoryCoinTriggerUnit,
+  registerVictoryCoinDoubleTriggerUnit,
+  resetFirstVictoryCoinTrigger,
+} from "./runtime_first_victory_coin"
 import { createFifthMiddleLayer } from "./fifth_middle_layer"
 import {
   asFixed,
@@ -111,6 +115,16 @@ function registerRuntimeSceneUnit(item: RuntimeSceneUnit): boolean {
       item.unit,
       name,
       item.coinReward === undefined ? 5 : item.coinReward,
+      item.respawnAtBirth !== false,
+      item.module
+    )
+  }
+  if (item.role === "victory_coin_double_trigger") {
+    return registerVictoryCoinDoubleTriggerUnit(
+      item.unit,
+      name,
+      item.module,
+      item.coinMultiplier === undefined ? 2 : item.coinMultiplier,
       item.respawnAtBirth !== false
     )
   }

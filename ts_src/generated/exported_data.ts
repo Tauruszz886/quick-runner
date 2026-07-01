@@ -13,6 +13,7 @@ export const EquipmentPrefab = {} as const
 export const MontageKeys = {} as const
 
 export const Prefab = {
+  "scene_eui": {},
   "unit": {
     "球体": 1073741929,
   },
@@ -27,8 +28,15 @@ export const UINodes = {
   "画布0": "1519736575|1405255247" as ENode,
   "画布1": "1519736575|1270321452" as ENode,
   "画布2": "1519736575|1357137975" as ENode,
+  "第一阶段": "1519736575|1191724342" as ENode,
+  "等级": "1519736575|1986058724" as ELabel,
+  "经验": "1519736575|1731732055" as ELabel,
+  "经验进度": "1519736575|2071919893" as EProgressbar,
+  "经验飘字文本": "1519736575|1862010095" as ELabel,
+  "速度": "1519736575|1227106137" as ELabel,
   "金币": "1519736575|1204165544" as EInputField,
   "金币输入按钮": "1519736575|2055985868" as EButton,
+  "金币飘字文本": "1519736575|1215067697" as ELabel,
 } as const
 
 export const UINodeParents = {} as const

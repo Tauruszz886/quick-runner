@@ -44,6 +44,11 @@ function ensureFastRunComponentsForOnlineRoles(): void {
   }
 }
 
+export function setQuickRunnerSpeed(speed: number): void {
+  currentSpeedValue = speed as Fixed
+  ensureFastRunComponentsForOnlineRoles()
+}
+
 export function startSystems(): void {
   if (fastRunSystem !== undefined && fastRunSystem.isEnabled()) {
     ensureFastRunComponentsForOnlineRoles()

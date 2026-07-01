@@ -1,0 +1,22 @@
+{
+  "schema": "egg_editor_eui_nodes.v1",
+  "created_at": 1782897983,
+  "created_at_iso": "2026-07-01T09:26:23Z",
+  "node_count": 0,
+  "ids": [],
+  "attr_keys": [
+    "name",
+    "type",
+    "x",
+    "y",
+    "width",
+    "height",
+    "visible",
+    "opacity",
+    "text",
+    "font_size"
+  ],
+  "nodes_by_id": {},
+  "node_tree": [],
+  "errors": []
+}

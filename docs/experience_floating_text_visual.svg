@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#101820"/>
+      <stop offset="1" stop-color="#1f2f3a"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#3b4953"/>
+      <stop offset="1" stop-color="#26343c"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8ee8ff"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <text x="48" y="58" fill="#f4f8fb" font-size="28" font-family="Arial, sans-serif" font-weight="700">经验飘字方案可视化</text>
+  <text x="48" y="90" fill="#b7c7d1" font-size="17" font-family="Arial, sans-serif">触发经验时，在玩家头顶生成面向相机的 3D 文本，短时间上飘并淡出。</text>
+
+  <g transform="translate(70,135)">
+    <rect x="0" y="0" width="720" height="500" rx="10" fill="#17252e" stroke="#3b5562"/>
+    <text x="28" y="38" fill="#ffffff" font-size="22" font-family="Arial, sans-serif" font-weight="700">侧视图：头顶飘字</text>
+
+    <polygon points="70,380 660,380 610,455 30,455" fill="url(#floor)" stroke="#526b78"/>
+    <text x="38" y="476" fill="#94a9b4" font-size="15" font-family="Arial, sans-serif">跑道 / 地砖表面</text>
+
+    <ellipse cx="350" cy="349" rx="55" ry="18" fill="#000000" opacity="0.28"/>
+    <g filter="url(#softShadow)">
+      <ellipse cx="350" cy="275" rx="42" ry="57" fill="#ffd64a" stroke="#fff0a3" stroke-width="5"/>
+      <circle cx="335" cy="262" r="5" fill="#2c2c2c"/>
+      <circle cx="365" cy="262" r="5" fill="#2c2c2c"/>
+      <path d="M337 288 Q350 301 365 288" fill="none" stroke="#2c2c2c" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <text x="313" y="360" fill="#eaf4f8" font-size="16" font-family="Arial, sans-serif">玩家</text>
+
+    <line x1="350" y1="220" x2="350" y2="125" stroke="#8ee8ff" stroke-width="4" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+    <text x="382" y="185" fill="#8ee8ff" font-size="16" font-family="Arial, sans-serif">上飘路径</text>
+
+    <g transform="translate(300,174)">
+      <rect x="0" y="0" width="100" height="38" rx="19" fill="#17252e" stroke="#85f1ff" stroke-width="2"/>
+      <text x="50" y="25" text-anchor="middle" fill="#85f1ff" font-size="22" font-family="Arial, sans-serif" font-weight="700">+2 经验</text>
+    </g>
+    <g transform="translate(308,114)" opacity="0.35">
+      <rect x="0" y="0" width="84" height="32" rx="16" fill="#17252e" stroke="#85f1ff" stroke-width="2"/>
+      <text x="42" y="22" text-anchor="middle" fill="#85f1ff" font-size="18" font-family="Arial, sans-serif" font-weight="700">+2 经验</text>
+    </g>
+    <text x="420" y="128" fill="#b7c7d1" font-size="15" font-family="Arial, sans-serif">0.6s 后淡出 / 销毁</text>
+
+    <g transform="translate(94,112)">
+      <path d="M0 42 L92 0 L184 42 L92 84 Z" fill="#273842" stroke="#6d8490"/>
+      <circle cx="92" cy="42" r="10" fill="#f57f5b"/>
+      <text x="92" y="113" text-anchor="middle" fill="#b7c7d1" font-size="15" font-family="Arial, sans-serif">相机方向</text>
+      <path d="M92 42 L210 42" stroke="#f57f5b" stroke-width="3" marker-end="url(#arrow)"/>
+    </g>
+  </g>
+
+  <g transform="translate(835,135)">
+    <rect x="0" y="0" width="375" height="238" rx="10" fill="#17252e" stroke="#3b5562"/>
+    <text x="24" y="38" fill="#ffffff" font-size="22" font-family="Arial, sans-serif" font-weight="700">俯视图：跟随玩家位置</text>
+    <rect x="40" y="82" width="290" height="86" rx="4" fill="#26343c" stroke="#526b78"/>
+    <path d="M62 125 H310" stroke="#526b78" stroke-dasharray="7 7"/>
+    <circle cx="170" cy="125" r="18" fill="#ffd64a" stroke="#fff0a3" stroke-width="3"/>
+    <text x="170" y="190" text-anchor="middle" fill="#b7c7d1" font-size="15" font-family="Arial, sans-serif">飘字世界坐标 = 玩家坐标 + 头顶高度</text>
+    <text x="170" y="118" text-anchor="middle" fill="#101820" font-size="13" font-family="Arial, sans-serif" font-weight="700">P</text>
+    <path d="M170 125 L250 88" stroke="#8ee8ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="250" y="80" fill="#8ee8ff" font-size="15" font-family="Arial, sans-serif">玩家移动后，新经验在新头顶生成</text>
+  </g>
+
+  <g transform="translate(835,410)">
+    <rect x="0" y="0" width="375" height="225" rx="10" fill="#17252e" stroke="#3b5562"/>
+    <text x="24" y="38" fill="#ffffff" font-size="22" font-family="Arial, sans-serif" font-weight="700">屏幕 UI 保持稳定</text>
+    <text x="35" y="84" fill="#eaf4f8" font-size="20" font-family="Arial, sans-serif">等级：Lv.1</text>
+    <rect x="35" y="106" width="305" height="22" rx="11" fill="#26343c" stroke="#526b78"/>
+    <rect x="35" y="106" width="92" height="22" rx="11" fill="#58d68d"/>
+    <text x="35" y="158" fill="#eaf4f8" font-size="20" font-family="Arial, sans-serif">经验：30 / 100</text>
+    <text x="35" y="194" fill="#eaf4f8" font-size="20" font-family="Arial, sans-serif">速度：5</text>
+  </g>
+</svg>

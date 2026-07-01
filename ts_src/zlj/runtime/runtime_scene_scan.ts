@@ -4,6 +4,7 @@ import { TERRAIN_TAG } from "../config"
 
 export type RuntimeSceneRole =
   | "first_victory_coin_trigger"
+  | "victory_coin_double_trigger"
   | "second_chaser_surface"
   | "third_timed_platform"
   | "third_vanishing_platform"
@@ -41,6 +42,7 @@ export type RuntimeSceneUnit = {
   targetRuntimeName?: string
   finishGame?: boolean
   coinReward?: number
+  coinMultiplier?: number
   respawnAtBirth?: boolean
 }
 
@@ -269,6 +271,11 @@ function readRuntimeSceneUnit(unit: unknown): RuntimeSceneUnit | null {
   if (role === "first_victory_coin_trigger") {
     item.coinReward = readIntKv(unit, "QRCoins")
     item.respawnAtBirth = readBoolKv(unit, "QRRespawnAtBirth")
+  }
+  if (role === "victory_coin_double_trigger") {
+    item.coinMultiplier = 2
+    item.respawnAtBirth = readBoolKv(unit, "QRRespawnAtBirth")
+    item.targetRuntimeName = readStringKv(unit, "QRBaseRewardSourceRuntimeName")
   }
   return item
 }
