@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "moduleResolution": "node",
     "strict": true,
     "noImplicitAny": true,
@@ -19,37 +17,24 @@
     "rootDir": "..",
     "outDir": "./project/ts_out",
     "paths": {
-      "@common/*": [
-        "../platform/ts-src/*"
-      ],
-      "@eggitor_ts_api/*": [
-        "../platform/eggitor_ts_api/src/@types/eggy-official/*"
-      ],
-      "@gameplay-kits/*": [
-        "../platform/gameplay-kits/*/src"
-      ]
+      "@common/*": ["../platform/runtime/common-ts/*"],
+      "@gameplay-kits/*": ["../platform/runtime/gameplay-kits/*/src"],
+      "@eggitor_ts_api/*": ["../platform/tools/eggitor-ts-api/package/src/@types/eggy-official/*"]
     },
-    "typeRoots": [
-      "../platform/eggitor_ts_api/src/@types"
-    ]
+    "typeRoots": ["../platform/tools/eggitor-ts-api/package/src/@types"]
   },
   "tstl": {
     "luaTarget": "5.4",
     "luaLibImport": "require",
     "noImplicitSelf": true,
     "luaPlugins": [
-      {
-        "name": "../platform/tstl-plugin.js"
-      }
+      { "name": "../platform/tools/tstl/tstl-plugin.js" }
     ]
   },
   "include": [
     "./ts_src/**/*.ts",
-    "../platform/ts-src/**/*.ts",
-    "../platform/eggitor_ts_api/src/@types/eggy-official/**/*.d.ts"
+    "../platform/runtime/common-ts/**/*.ts",
+    "../platform/tools/eggitor-ts-api/package/src/@types/eggy-official/**/*.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "project/ts_out"
-  ]
+  "exclude": ["node_modules", "project/ts_out"]
 }

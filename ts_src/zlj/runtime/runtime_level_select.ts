@@ -1,5 +1,5 @@
 import { safeCall } from "@common/engine_safe"
-import { RuntimeUiScope, type MenuFlyout, type MenuFlyoutItem, type RuntimeUiClickEvent } from "@gameplay-kits/runtime_ui"
+import { RuntimeUiScope, type MenuFlyout, type MenuFlyoutItem, type RuntimeUiClickEvent } from "@common/runtime_ui"
 import { UINodes } from "../../generated/exported_data"
 import { BIRTH_SPAWN_Y } from "../config"
 import { asFixed } from "../layout"

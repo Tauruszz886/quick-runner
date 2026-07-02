@@ -7,7 +7,7 @@
 - Workspace root: `本目录`
 - Project root: `project/`
 - Game TS sources: `ts_src/`
-- Platform/common library sources: `../platform/ts-src/`
+- Platform/common library sources: `../platform/runtime/common-ts/`
 - Lua output: `project/ts_out/` (underscore only)
 
 ## 项目级规则文档
@@ -33,6 +33,6 @@
 
 ## 本项目新增同类功能时的规则
 
-- 先查 `../platform/ts-src/` 是否已有能力；已有则直接复用。
+- 先查 `../platform/runtime/common-ts/` 是否已有能力；已有则直接复用。
 - 如确实缺能力，优先补到 `platform`，再在 `quick-runner` 使用。
 - 除业务玩法逻辑外（如地块规则、经济规则），不要在 `quick-runner` 新建重复的通用工具。

@@ -6,7 +6,7 @@
     "node": ">=16.10.0"
   },
   "scripts": {
-    "build": "tstl && cp .luarc.json project/ts_out/",
+    "build": "tstl && node -e \"const fs=require('fs');fs.mkdirSync('project/ts_out',{recursive:true});fs.copyFileSync('.luarc.json','project/ts_out/.luarc.json')\"",
     "watch": "tstl --watch"
   },
   "_disabledScriptsComment": "package.json 不支持 JSON 注释；这里保留暂不启用的脚本，安装 lua-language-server 后可移回 scripts。",
