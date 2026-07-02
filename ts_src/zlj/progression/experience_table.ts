@@ -74,3 +74,17 @@ export function calculateLevelProgress(totalExp: number): LevelProgress {
 export function calculateTemporarySpeed(level: number): number {
   return math.min(TEMP_BASE_SPEED + math.max(level - 1, 0) * TEMP_SPEED_PER_LEVEL, TEMP_MAX_SPEED)
 }
+
+export function getTotalExperienceForLevel(level: number): number {
+  if (level <= 1) {
+    return 0
+  }
+  const rows = ExperienceLevelConfig表
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i]
+    if (row !== undefined && row.level === level - 1) {
+      return row.total_exp
+    }
+  }
+  return 0
+}

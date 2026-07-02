@@ -22,6 +22,11 @@ const rewardDebounce = new Map<string, boolean>()
 const coinStateByRole = new Map<string, number>()
 const baseRewardByModule = new Map<number, number>()
 let coinUiRegistered = false
+let rebirthCoinMultiplierProvider: ((role: Role) => number) | undefined
+
+export function setRebirthCoinMultiplierProvider(provider: (role: Role) => number): void {
+  rebirthCoinMultiplierProvider = provider
+}
 
 export function resetFirstVictoryCoinTrigger(): void {
   rewardDebounce.clear()
@@ -111,8 +116,9 @@ function writeCoinUi(role: Role, coins: number, source: string): void {
   )
 }
 
-function calculateCoinReward(baseReward: number, multiplier: number, _role: Role, _source: string): number {
-  return baseReward * multiplier
+function calculateCoinReward(baseReward: number, multiplier: number, role: Role, _source: string): number {
+  const rebirthMultiplier = rebirthCoinMultiplierProvider !== undefined ? rebirthCoinMultiplierProvider(role) : 1
+  return baseReward * multiplier * rebirthMultiplier
 }
 
 export function registerFirstVictoryCoinUi(): void {

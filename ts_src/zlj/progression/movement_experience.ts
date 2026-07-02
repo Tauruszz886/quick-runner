@@ -4,11 +4,10 @@ import { toNumber as coerceNumber } from "@common/num"
 import { GAME_EVENTS } from "../runtime/GameEvents"
 import { getOnlineRoles, roleKey } from "../runtime/runtime_roles"
 import { setQuickRunnerSpeed } from "../runtime/runtime_speed"
+import { calculateEffectiveMovementTickExperience } from "./experience_bonus_state"
 import {
   MOVEMENT_EXP_MAX_DISTANCE_PER_TICK,
-  MOVEMENT_EXP_MAX_PER_SECOND,
   MOVEMENT_EXP_MIN_DISTANCE,
-  MOVEMENT_EXP_PER_WORLD_UNIT,
   MOVEMENT_EXP_TICK_SECONDS,
   PROGRESSION_TAG,
 } from "./progression_config"
@@ -23,6 +22,7 @@ import { showExperienceScreenFloatingText } from "./screen_experience_float"
 import type { WorldFloatPosition } from "./screen_experience_float"
 
 const REBIRTH_MOVEMENT_EXP_SUPPRESS_TICKS = 8
+const INITIAL_MOVEMENT_EXP_SUPPRESS_TICKS = 8
 
 let started = false
 let generation = 0
@@ -65,12 +65,6 @@ function horizontalDistance(a: HorizontalPosition, b: HorizontalPosition): numbe
   const dx = a.x - b.x
   const dz = a.z - b.z
   return math.sqrt(dx * dx + dz * dz)
-}
-
-function calculateMovementExp(distance: number): number {
-  const raw = math.max(1, math.floor(distance * MOVEMENT_EXP_PER_WORLD_UNIT))
-  const cap = MOVEMENT_EXP_MAX_PER_SECOND * MOVEMENT_EXP_TICK_SECONDS
-  return math.min(raw, cap)
 }
 
 function getUnitRole(unit: unknown, source: string): Role | null {
@@ -119,8 +113,13 @@ function ensureRoleInitialized(role: Role): void {
   initializeProgressionUi(role)
   updateProgressionUi(role, state)
   setQuickRunnerSpeed(state.speed)
+  suppressedMovementTicksByRole.set(key, INITIAL_MOVEMENT_EXP_SUPPRESS_TICKS)
   initializedRoles.set(key, true)
-  print(`[${PROGRESSION_TAG}] role initialized key=${key} level=${state.levelProgress.level} speed=${state.speed}`)
+  print(
+    `[${PROGRESSION_TAG}] role initialized key=${key} level=${state.levelProgress.level} speed=${state.speed} initial_suppress_ticks=${tostring(
+      INITIAL_MOVEMENT_EXP_SUPPRESS_TICKS
+    )}`
+  )
 }
 
 function tickRole(role: Role): void {
@@ -157,7 +156,7 @@ function tickRole(role: Role): void {
     return
   }
 
-  const gainedExp = calculateMovementExp(distance)
+  const gainedExp = calculateEffectiveMovementTickExperience(role, state.levelProgress.level)
   if (gainedExp <= 0) {
     return
   }
@@ -197,7 +196,7 @@ export function startMovementExperienceRuntime(): void {
   registerRebirthMovementSuppression()
   logProgressionUiReady()
   print(
-    `[${PROGRESSION_TAG}] start movement_exp_tick=${MOVEMENT_EXP_TICK_SECONDS}s exp_per_unit=${MOVEMENT_EXP_PER_WORLD_UNIT} max_exp_per_second=${MOVEMENT_EXP_MAX_PER_SECOND}`
+    `[${PROGRESSION_TAG}] start movement_exp_tick=${MOVEMENT_EXP_TICK_SECONDS}s exp_formula=base_tick_level_multiplier`
   )
   tickLoop(generation)
 }

@@ -5,6 +5,8 @@ import { bindEditorSceneRuntimeMechanisms } from "./runtime_terrain"
 import { registerLevelSelectUi } from "./runtime_level_select"
 import { registerFirstVictoryCoinUi } from "./runtime_first_victory_coin"
 import { startMovementExperienceRuntime } from "../progression/movement_experience"
+import { startExperienceBonusUiRuntime } from "../progression/experience_bonus_ui"
+import { startRebirthRuntime } from "../progression/rebirth_runtime"
 
 const EDITOR_SCENE_MECHANISM_BIND_DELAY_SECONDS = 1.5
 
@@ -19,6 +21,8 @@ function schedulePlayerRuntime(): void {
       hideLegacySpeedUiForOnlineRoles()
       registerLevelSelectUi()
       registerFirstVictoryCoinUi()
+      startExperienceBonusUiRuntime()
+      startRebirthRuntime()
       startMovementExperienceRuntime()
       adjustOnlineRolesSpawnToBirthTile()
     },
@@ -44,6 +48,8 @@ function schedulePlayerRuntime(): void {
   })
   registerLevelSelectUi()
   registerFirstVictoryCoinUi()
+  startExperienceBonusUiRuntime()
+  startRebirthRuntime()
   startMovementExperienceRuntime()
 }
 

@@ -1,5 +1,10 @@
 import { roleKey } from "../runtime/runtime_roles"
-import { calculateLevelProgress, calculateTemporarySpeed, type LevelProgress } from "./experience_table"
+import {
+  calculateLevelProgress,
+  calculateTemporarySpeed,
+  getTotalExperienceForLevel,
+  type LevelProgress,
+} from "./experience_table"
 
 export type HorizontalPosition = {
   x: number
@@ -47,6 +52,17 @@ export function addExperience(state: PlayerProgressState, amount: number): boole
   state.levelProgress = calculateLevelProgress(state.totalExp)
   state.speed = calculateTemporarySpeed(state.levelProgress.level)
   return state.levelProgress.level !== previousLevel
+}
+
+export function setTotalExperience(state: PlayerProgressState, totalExp: number): void {
+  state.totalExp = math.max(0, totalExp)
+  state.levelProgress = calculateLevelProgress(state.totalExp)
+  state.speed = calculateTemporarySpeed(state.levelProgress.level)
+}
+
+export function resetProgressToLevel(state: PlayerProgressState, level: number): void {
+  setTotalExperience(state, getTotalExperienceForLevel(level))
+  state.lastPosition = undefined
 }
 
 export function setLastPosition(state: PlayerProgressState, position: HorizontalPosition): void {

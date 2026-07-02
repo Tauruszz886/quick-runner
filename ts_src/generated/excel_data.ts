@@ -1,7 +1,7 @@
 /* AUTO-GENERATED. DO NOT EDIT. */
 /* eslint-disable */
 
-import { ExperienceLevelConfig, SuggestedClearSpeedConfig } from "./excel_class"
+import { ExperienceLevelConfig, SuggestedClearSpeedConfig, SpeedStageConfig, SpeedBonusSourceConfig, ExperienceSourceConfig, RebirthExpMultiplierConfig, RebirthCoinMultiplierConfig } from "./excel_class"
 
 export const ExperienceLevelConfig表: ExperienceLevelConfig[] = [
   { "level": 1, "exp": 100, "exp_display_k": "0.1", "total_exp": 100, "total_display_k": "0.1" } as ExperienceLevelConfig,
@@ -433,4 +433,162 @@ export const SuggestedClearSpeedConfig索引: Readonly<Record<string, SuggestedC
   "8": SuggestedClearSpeedConfig表[7]!,
   "9": SuggestedClearSpeedConfig表[8]!,
   "10": SuggestedClearSpeedConfig表[9]!,
+}
+
+export const SpeedStageConfig表: SpeedStageConfig[] = [
+  { "stage": 1, "targetSpeed": 15, "targetMinute": 5, "dashboardMaxSpeed": "15", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：1" } as SpeedStageConfig,
+  { "stage": 2, "targetSpeed": 25, "targetMinute": 10, "dashboardMaxSpeed": "25", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：1-2" } as SpeedStageConfig,
+  { "stage": 3, "targetSpeed": 35, "targetMinute": 20, "dashboardMaxSpeed": "35", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：2-3" } as SpeedStageConfig,
+  { "stage": 4, "targetSpeed": 50, "targetMinute": 35, "dashboardMaxSpeed": "50", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：3-4" } as SpeedStageConfig,
+  { "stage": 5, "targetSpeed": 70, "targetMinute": 50, "dashboardMaxSpeed": "70", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：4-5" } as SpeedStageConfig,
+  { "stage": 6, "targetSpeed": 75, "targetMinute": 70, "dashboardMaxSpeed": "75", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：5-6" } as SpeedStageConfig,
+  { "stage": 7, "targetSpeed": 85, "targetMinute": 100, "dashboardMaxSpeed": "85", "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0", "note": "原填写：6-7" } as SpeedStageConfig,
+  { "stage": 8, "targetSpeed": 95, "targetMinute": 140, "dashboardMaxSpeed": "95", "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2", "note": "原填写：7-8" } as SpeedStageConfig,
+  { "stage": 9, "targetSpeed": 105, "targetMinute": 190, "dashboardMaxSpeed": "105", "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2", "note": "原填写：8-9" } as SpeedStageConfig,
+  { "stage": 10, "targetSpeed": 130, "targetMinute": 240, "dashboardMaxSpeed": "130", "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2", "note": "原填写：9-10" } as SpeedStageConfig,
+]
+
+export const SpeedStageConfig索引: Readonly<Record<string, SpeedStageConfig>> = {
+  "1": SpeedStageConfig表[0]!,
+  "2": SpeedStageConfig表[1]!,
+  "3": SpeedStageConfig表[2]!,
+  "4": SpeedStageConfig表[3]!,
+  "5": SpeedStageConfig表[4]!,
+  "6": SpeedStageConfig表[5]!,
+  "7": SpeedStageConfig表[6]!,
+  "8": SpeedStageConfig表[7]!,
+  "9": SpeedStageConfig表[8]!,
+  "10": SpeedStageConfig表[9]!,
+}
+
+export const SpeedBonusSourceConfig表: SpeedBonusSourceConfig[] = [
+  { "id": 1, "source": "等级", "unlockCondition": "移动", "addSpeed": 1, "durationSeconds": -1, "temporary": false, "stackRule": "add", "note": "原填写：等级/移动/+1；后续如改为等级曲线，可从本表移除。" } as SpeedBonusSourceConfig,
+  { "id": 2, "source": "VIP", "unlockCondition": "购买", "addSpeed": 10, "durationSeconds": -1, "temporary": false, "stackRule": "unique", "note": "直接速度加成。" } as SpeedBonusSourceConfig,
+  { "id": 3, "source": "BUFF", "unlockCondition": "购买", "addSpeed": 5, "durationSeconds": 300, "temporary": true, "stackRule": "replace", "note": "临时速度BUFF，持续300秒。" } as SpeedBonusSourceConfig,
+]
+
+export const SpeedBonusSourceConfig索引: Readonly<Record<string, SpeedBonusSourceConfig>> = {
+  "1": SpeedBonusSourceConfig表[0]!,
+  "2": SpeedBonusSourceConfig表[1]!,
+  "3": SpeedBonusSourceConfig表[2]!,
+}
+
+export const ExperienceSourceConfig表: ExperienceSourceConfig[] = [
+  { "id": 1, "source": "有效移动周期", "sourceKind": "base_tick", "baseExpPerTick": 1, "levelExponent": -0.0133, "multiplier": 1, "unlockCondition": "开局可用", "affectedByRebirth": true, "stackRule": "unique", "note": "每有效移动tick经验=round(baseExpPerTick * level^levelExponent * 各类已生效倍率 * 重生倍率)。" } as ExperienceSourceConfig,
+  { "id": 2, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 0.5, "unlockCondition": "等级0", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 3, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 1, "unlockCondition": "等级20", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 4, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 1.5, "unlockCondition": "等级40", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 5, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 2, "unlockCondition": "等级60", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 6, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 5, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 7, "source": "跑步机", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 25, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "跑步机倍率" } as ExperienceSourceConfig,
+  { "id": 8, "source": "BUFF", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 2, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "replace", "note": "BUFF倍率" } as ExperienceSourceConfig,
+  { "id": 9, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 1.25, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 10, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 1.5, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 11, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 2, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 12, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 2.5, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 13, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 3, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 14, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 4, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 15, "source": "轨迹", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 5, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "轨迹倍率" } as ExperienceSourceConfig,
+  { "id": 16, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 2, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 17, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 3, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 18, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 5, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 19, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 8, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 20, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 15, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 21, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 25, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 22, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 40, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 23, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 70, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+  { "id": 24, "source": "运动鞋", "sourceKind": "multiplier", "baseExpPerTick": 0, "levelExponent": 0, "multiplier": 150, "unlockCondition": "购买", "affectedByRebirth": false, "stackRule": "max", "note": "运动鞋倍率" } as ExperienceSourceConfig,
+]
+
+export const ExperienceSourceConfig索引: Readonly<Record<string, ExperienceSourceConfig>> = {
+  "1": ExperienceSourceConfig表[0]!,
+  "2": ExperienceSourceConfig表[1]!,
+  "3": ExperienceSourceConfig表[2]!,
+  "4": ExperienceSourceConfig表[3]!,
+  "5": ExperienceSourceConfig表[4]!,
+  "6": ExperienceSourceConfig表[5]!,
+  "7": ExperienceSourceConfig表[6]!,
+  "8": ExperienceSourceConfig表[7]!,
+  "9": ExperienceSourceConfig表[8]!,
+  "10": ExperienceSourceConfig表[9]!,
+  "11": ExperienceSourceConfig表[10]!,
+  "12": ExperienceSourceConfig表[11]!,
+  "13": ExperienceSourceConfig表[12]!,
+  "14": ExperienceSourceConfig表[13]!,
+  "15": ExperienceSourceConfig表[14]!,
+  "16": ExperienceSourceConfig表[15]!,
+  "17": ExperienceSourceConfig表[16]!,
+  "18": ExperienceSourceConfig表[17]!,
+  "19": ExperienceSourceConfig表[18]!,
+  "20": ExperienceSourceConfig表[19]!,
+  "21": ExperienceSourceConfig表[20]!,
+  "22": ExperienceSourceConfig表[21]!,
+  "23": ExperienceSourceConfig表[22]!,
+  "24": ExperienceSourceConfig表[23]!,
+}
+
+export const RebirthExpMultiplierConfig表: RebirthExpMultiplierConfig[] = [
+  { "rebirthCount": 0, "expMultiplier": 1, "unlockLevel": 0, "resetLevel": 0, "note": "未重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 1, "expMultiplier": 2, "unlockLevel": 5, "resetLevel": 1, "note": "第1次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 2, "expMultiplier": 3, "unlockLevel": 15, "resetLevel": 1, "note": "第2次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 3, "expMultiplier": 4, "unlockLevel": 25, "resetLevel": 1, "note": "第3次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 4, "expMultiplier": 5, "unlockLevel": 35, "resetLevel": 1, "note": "第4次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 5, "expMultiplier": 6, "unlockLevel": 45, "resetLevel": 1, "note": "第5次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 6, "expMultiplier": 7, "unlockLevel": 55, "resetLevel": 1, "note": "第6次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 7, "expMultiplier": 8, "unlockLevel": 65, "resetLevel": 1, "note": "第7次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 8, "expMultiplier": 9, "unlockLevel": 75, "resetLevel": 1, "note": "第8次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 9, "expMultiplier": 10, "unlockLevel": 85, "resetLevel": 1, "note": "第9次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 10, "expMultiplier": 11, "unlockLevel": 95, "resetLevel": 1, "note": "第10次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 11, "expMultiplier": 12, "unlockLevel": 105, "resetLevel": 1, "note": "第11次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 12, "expMultiplier": 13, "unlockLevel": 115, "resetLevel": 1, "note": "第12次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 13, "expMultiplier": 14, "unlockLevel": 125, "resetLevel": 1, "note": "第13次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 14, "expMultiplier": 15, "unlockLevel": 135, "resetLevel": 1, "note": "第14次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 15, "expMultiplier": 16, "unlockLevel": 145, "resetLevel": 1, "note": "第15次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 16, "expMultiplier": 17, "unlockLevel": 155, "resetLevel": 1, "note": "第16次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 17, "expMultiplier": 18, "unlockLevel": 165, "resetLevel": 1, "note": "第17次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 18, "expMultiplier": 19, "unlockLevel": 175, "resetLevel": 1, "note": "第18次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 19, "expMultiplier": 20, "unlockLevel": 185, "resetLevel": 1, "note": "第19次重生" } as RebirthExpMultiplierConfig,
+  { "rebirthCount": 20, "expMultiplier": 21, "unlockLevel": 195, "resetLevel": 1, "note": "第20次重生" } as RebirthExpMultiplierConfig,
+]
+
+export const RebirthExpMultiplierConfig索引: Readonly<Record<string, RebirthExpMultiplierConfig>> = {
+  "0": RebirthExpMultiplierConfig表[0]!,
+  "1": RebirthExpMultiplierConfig表[1]!,
+  "2": RebirthExpMultiplierConfig表[2]!,
+  "3": RebirthExpMultiplierConfig表[3]!,
+  "4": RebirthExpMultiplierConfig表[4]!,
+  "5": RebirthExpMultiplierConfig表[5]!,
+  "6": RebirthExpMultiplierConfig表[6]!,
+  "7": RebirthExpMultiplierConfig表[7]!,
+  "8": RebirthExpMultiplierConfig表[8]!,
+  "9": RebirthExpMultiplierConfig表[9]!,
+  "10": RebirthExpMultiplierConfig表[10]!,
+  "11": RebirthExpMultiplierConfig表[11]!,
+  "12": RebirthExpMultiplierConfig表[12]!,
+  "13": RebirthExpMultiplierConfig表[13]!,
+  "14": RebirthExpMultiplierConfig表[14]!,
+  "15": RebirthExpMultiplierConfig表[15]!,
+  "16": RebirthExpMultiplierConfig表[16]!,
+  "17": RebirthExpMultiplierConfig表[17]!,
+  "18": RebirthExpMultiplierConfig表[18]!,
+  "19": RebirthExpMultiplierConfig表[19]!,
+  "20": RebirthExpMultiplierConfig表[20]!,
+}
+
+export const RebirthCoinMultiplierConfig表: RebirthCoinMultiplierConfig[] = [
+  { "rebirthCount": 0, "coinMultiplier": 1, "unlockLevel": 0, "note": "未重生" } as RebirthCoinMultiplierConfig,
+  { "rebirthCount": 1, "coinMultiplier": 2, "unlockLevel": 5, "note": "第1次重生" } as RebirthCoinMultiplierConfig,
+  { "rebirthCount": 2, "coinMultiplier": 3, "unlockLevel": 15, "note": "第2次重生" } as RebirthCoinMultiplierConfig,
+  { "rebirthCount": 3, "coinMultiplier": 4, "unlockLevel": 25, "note": "第3次重生" } as RebirthCoinMultiplierConfig,
+  { "rebirthCount": 4, "coinMultiplier": 5, "unlockLevel": 35, "note": "第4次重生" } as RebirthCoinMultiplierConfig,
+  { "rebirthCount": 5, "coinMultiplier": 6, "unlockLevel": 45, "note": "第5次重生" } as RebirthCoinMultiplierConfig,
+]
+
+export const RebirthCoinMultiplierConfig索引: Readonly<Record<string, RebirthCoinMultiplierConfig>> = {
+  "0": RebirthCoinMultiplierConfig表[0]!,
+  "1": RebirthCoinMultiplierConfig表[1]!,
+  "2": RebirthCoinMultiplierConfig表[2]!,
+  "3": RebirthCoinMultiplierConfig表[3]!,
+  "4": RebirthCoinMultiplierConfig表[4]!,
+  "5": RebirthCoinMultiplierConfig表[5]!,
 }
