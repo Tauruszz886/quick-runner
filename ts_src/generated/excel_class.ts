@@ -8,3 +8,13 @@ export class ExperienceLevelConfig {
   public ["total_exp"]!: number
   public ["total_display_k"]!: string
 }
+
+export class SuggestedClearSpeedConfig {
+  public ["stage"]!: number
+  public ["name"]!: string
+  public ["maxSpeed"]!: number
+  public ["groundAcceleration"]!: string
+  public ["groundDeceleration"]!: string
+  public ["airAcceleration"]!: string
+  public ["airDeceleration"]!: string
+}

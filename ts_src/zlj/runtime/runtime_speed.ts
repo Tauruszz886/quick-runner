@@ -68,7 +68,7 @@ export function startSystems(): void {
       logIntervalTicks: 0 as integer,
     },
     testMode: {
-      enabled: true,
+      enabled: false,
       parentNode: UINodes["画布0"] as unknown as ENode,
       x: DASHBOARD_CENTER_X,
       y: DASHBOARD_CENTER_Y,

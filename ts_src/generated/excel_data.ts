@@ -1,7 +1,7 @@
 /* AUTO-GENERATED. DO NOT EDIT. */
 /* eslint-disable */
 
-import { ExperienceLevelConfig } from "./excel_class"
+import { ExperienceLevelConfig, SuggestedClearSpeedConfig } from "./excel_class"
 
 export const ExperienceLevelConfig表: ExperienceLevelConfig[] = [
   { "level": 1, "exp": 100, "exp_display_k": "0.1", "total_exp": 100, "total_display_k": "0.1" } as ExperienceLevelConfig,
@@ -407,4 +407,30 @@ export const ExperienceLevelConfig索引: Readonly<Record<string, ExperienceLeve
   "198": ExperienceLevelConfig表[197]!,
   "199": ExperienceLevelConfig表[198]!,
   "200": ExperienceLevelConfig表[199]!,
+}
+
+export const SuggestedClearSpeedConfig表: SuggestedClearSpeedConfig[] = [
+  { "stage": 1, "name": "第一关建议通关速度", "maxSpeed": 15, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 2, "name": "第二关建议通关速度", "maxSpeed": 25, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 3, "name": "第三关建议通关速度", "maxSpeed": 35, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 4, "name": "第四关建议通关速度", "maxSpeed": 50, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 5, "name": "第五关建议通关速度", "maxSpeed": 70, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 6, "name": "第六关建议通关速度", "maxSpeed": 75, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 7, "name": "第七关建议通关速度", "maxSpeed": 85, "groundAcceleration": "0", "groundDeceleration": "0", "airAcceleration": "0", "airDeceleration": "0" } as SuggestedClearSpeedConfig,
+  { "stage": 8, "name": "第八关建议通关速度", "maxSpeed": 95, "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2" } as SuggestedClearSpeedConfig,
+  { "stage": 9, "name": "第九关建议通关速度", "maxSpeed": 105, "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2" } as SuggestedClearSpeedConfig,
+  { "stage": 10, "name": "第十关建议通关速度", "maxSpeed": 130, "groundAcceleration": "30", "groundDeceleration": "m*2", "airAcceleration": "20", "airDeceleration": "m*2" } as SuggestedClearSpeedConfig,
+]
+
+export const SuggestedClearSpeedConfig索引: Readonly<Record<string, SuggestedClearSpeedConfig>> = {
+  "1": SuggestedClearSpeedConfig表[0]!,
+  "2": SuggestedClearSpeedConfig表[1]!,
+  "3": SuggestedClearSpeedConfig表[2]!,
+  "4": SuggestedClearSpeedConfig表[3]!,
+  "5": SuggestedClearSpeedConfig表[4]!,
+  "6": SuggestedClearSpeedConfig表[5]!,
+  "7": SuggestedClearSpeedConfig表[6]!,
+  "8": SuggestedClearSpeedConfig表[7]!,
+  "9": SuggestedClearSpeedConfig表[8]!,
+  "10": SuggestedClearSpeedConfig表[9]!,
 }

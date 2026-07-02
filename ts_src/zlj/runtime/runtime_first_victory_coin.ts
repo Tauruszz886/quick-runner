@@ -1,17 +1,14 @@
 import { safeCall } from "@common/engine_safe"
 import { toNumber as coerceNumber } from "@common/num"
 import { TriggerHub } from "@common/trigger_hub"
-import { RuntimeUiScope, type RuntimeUiClickEvent } from "@gameplay-kits/runtime_ui"
 import { UINodes } from "../../generated/exported_data"
 import { eliminateUnitAndRebirthAtBirth } from "../birth/rebirth"
 import { showCoinWorldFloatingText, type WorldFloatPosition } from "../progression/screen_experience_float"
-import { roleKey } from "./runtime_roles"
+import { getOnlineRoles, roleKey } from "./runtime_roles"
 
 const TAG = "ZLJ_FIRST_VICTORY_COIN"
 const DEBOUNCE_SECONDS = 1
-const PANEL_PARENT = UINodes["画布0"] as ENode
-const COIN_INPUT_NAME = "金币"
-const COIN_INPUT_BUTTON_NAME = "金币输入按钮"
+const COIN_LABEL = UINodes["金币"] as unknown as ELabel
 const INITIAL_COIN_FALLBACK = 1
 const COIN_FLOAT_AFTER_REBIRTH_DELAY_SECONDS = 1.2
 
@@ -24,36 +21,11 @@ declare const Enums: { TriggerSpaceEventType: { ENTER: number } }
 const rewardDebounce = new Map<string, boolean>()
 const coinStateByRole = new Map<string, number>()
 const baseRewardByModule = new Map<number, number>()
-let uiScope: RuntimeUiScope | undefined
 let coinUiRegistered = false
 
 export function resetFirstVictoryCoinTrigger(): void {
   rewardDebounce.clear()
   baseRewardByModule.clear()
-}
-
-function ensureUiScope(): RuntimeUiScope {
-  if (uiScope !== undefined) {
-    return uiScope
-  }
-  uiScope = new RuntimeUiScope({
-    parentNode: PANEL_PARENT,
-    uiNodes: UINodes,
-    uiNodeParents: {},
-    logger: print,
-  })
-  return uiScope
-}
-
-function parseCoinText(value: unknown): number | undefined {
-  if (value === null || value === undefined) {
-    return undefined
-  }
-  const parsed = tonumber(tostring(value))
-  if (parsed === null || parsed === undefined) {
-    return undefined
-  }
-  return parsed
 }
 
 function toNumber(value: unknown, ctx: string): number | undefined {
@@ -119,26 +91,8 @@ function scheduleCoinFloatingText(role: Role, amount: number, unit: unknown, res
   )
 }
 
-function readCoinInputText(source: string): string | undefined {
-  return safeCall(
-    () => {
-      const api = GameAPI as any
-      if (api.get_input_text === undefined || api.get_input_text === null) {
-        return undefined
-      }
-      return api.get_input_text(UINodes[COIN_INPUT_NAME] as EInputField)
-    },
-    { tag: `first_victory_coin_read_input_${source}`, fallback: undefined, logger: print }
-  ) as string | undefined
-}
-
-function readCurrentCoins(role: Role, source: string): number {
+function readCurrentCoins(role: Role): number {
   const key = roleKey(role)
-  const fromInput = parseCoinText(readCoinInputText(source))
-  if (fromInput !== undefined) {
-    coinStateByRole.set(key, fromInput)
-    return fromInput
-  }
   const cached = coinStateByRole.get(key)
   if (cached !== undefined) {
     return cached
@@ -151,7 +105,7 @@ function writeCoinUi(role: Role, coins: number, source: string): void {
   coinStateByRole.set(roleKey(role), coins)
   safeCall(
     () => {
-      role.set_input_field_text(UINodes[COIN_INPUT_NAME] as EInputField, tostring(coins))
+      role.set_label_text(COIN_LABEL, `金币：${tostring(coins)}`)
     },
     { tag: `first_victory_coin_write_ui_${source}`, fallback: undefined, logger: print }
   )
@@ -161,45 +115,27 @@ function calculateCoinReward(baseReward: number, multiplier: number, _role: Role
   return baseReward * multiplier
 }
 
-function syncCoinsFromUi(role: Role, source: string): void {
-  const current = readCurrentCoins(role, source)
-  writeCoinUi(role, current, source)
-  print(`[${TAG}] ui sync source=${source} coins=${current}`)
-}
-
 export function registerFirstVictoryCoinUi(): void {
   if (coinUiRegistered) {
-    return
-  }
-  const scope = ensureUiScope()
-  const input = scope.getInput(COIN_INPUT_NAME)
-  if (input === null) {
-    print(`[${TAG}] ui register skipped reason=input_missing name=${COIN_INPUT_NAME}`)
-    return
-  }
-  const button = scope.getOrginButton(COIN_INPUT_BUTTON_NAME)
-  if (button === null) {
-    print(`[${TAG}] ui register skipped reason=button_missing name=${COIN_INPUT_BUTTON_NAME}`)
-    return
-  }
-  button.setText("")
-  button.applyStyle({ enabled: true, touchEnabled: true, opacity: 0 })
-  button.setVisible(true)
-  const regId = button.onClick((event: RuntimeUiClickEvent) => {
-    const eventData = event.data as { role?: Role } | undefined
-    const role = eventData !== undefined && eventData.role !== undefined ? eventData.role : (event.actor as Role | undefined)
-    if (role === undefined || role === null) {
-      print(`[${TAG}] coin input button clicked role=nil`)
-      return
+    const roles = getOnlineRoles()
+    for (let i = 0; i < roles.length; i++) {
+      const role = roles[i]
+      if (role !== undefined) {
+        writeCoinUi(role, readCurrentCoins(role), "coin_label_refresh")
+      }
     }
-    syncCoinsFromUi(role, "coin_input_button")
-  }, { tag: "first_victory_coin_input_button" })
-  if (regId === null) {
-    print(`[${TAG}] ui register skipped reason=button_click_failed name=${COIN_INPUT_BUTTON_NAME}`)
     return
+  }
+
+  const roles = getOnlineRoles()
+  for (let i = 0; i < roles.length; i++) {
+    const role = roles[i]
+    if (role !== undefined) {
+      writeCoinUi(role, readCurrentCoins(role), "coin_label_register")
+    }
   }
   coinUiRegistered = true
-  print(`[${TAG}] ui registered input=${COIN_INPUT_NAME} button=${COIN_INPUT_BUTTON_NAME}`)
+  print(`[${TAG}] ui registered label=金币`)
 }
 
 function extractTriggerUnit(data: unknown): unknown {
@@ -224,7 +160,7 @@ function getUnitRole(unit: unknown, source: string): Role | null {
 }
 
 function giveCoinReward(role: Role, baseReward: number, multiplier: number, unit: unknown, respawnAtBirth: boolean, source: string): void {
-  const currentCoins = readCurrentCoins(role, source)
+  const currentCoins = readCurrentCoins(role)
   const reward = calculateCoinReward(baseReward, multiplier, role, source)
   const nextCoins = currentCoins + reward
   writeCoinUi(role, nextCoins, source)

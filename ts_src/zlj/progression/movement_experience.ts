@@ -1,5 +1,7 @@
+import { EventBus } from "@common/event_bus"
 import { safeCall } from "@common/engine_safe"
 import { toNumber as coerceNumber } from "@common/num"
+import { GAME_EVENTS } from "../runtime/GameEvents"
 import { getOnlineRoles, roleKey } from "../runtime/runtime_roles"
 import { setQuickRunnerSpeed } from "../runtime/runtime_speed"
 import {
@@ -20,9 +22,12 @@ import {
 import { showExperienceScreenFloatingText } from "./screen_experience_float"
 import type { WorldFloatPosition } from "./screen_experience_float"
 
+const REBIRTH_MOVEMENT_EXP_SUPPRESS_TICKS = 8
+
 let started = false
 let generation = 0
 const initializedRoles = new Map<string, boolean>()
+const suppressedMovementTicksByRole = new Map<string, number>()
 
 function toNumber(value: unknown): number | undefined {
   return coerceNumber(value, { mode: "loose", ctx: "progression_position", logger: print })
@@ -68,6 +73,43 @@ function calculateMovementExp(distance: number): number {
   return math.min(raw, cap)
 }
 
+function getUnitRole(unit: unknown, source: string): Role | null {
+  return safeCall(
+    () => {
+      const candidate = unit as any
+      if (candidate.get_role !== undefined && candidate.get_role !== null) {
+        return candidate.get_role()
+      }
+      if (candidate.get_ctrl_role !== undefined && candidate.get_ctrl_role !== null) {
+        return candidate.get_ctrl_role()
+      }
+      return null
+    },
+    { tag: `progression_get_rebirth_role_${source}`, fallback: null, logger: print }
+  ) as Role | null
+}
+
+function suppressMovementExperienceAfterRebirth(unit: unknown, source: unknown): void {
+  const role = getUnitRole(unit, tostring(source))
+  if (role === null || role === undefined) {
+    print(`[${PROGRESSION_TAG}] rebirth movement suppress skipped role=nil source=${tostring(source)}`)
+    return
+  }
+  const key = roleKey(role)
+  suppressedMovementTicksByRole.set(key, REBIRTH_MOVEMENT_EXP_SUPPRESS_TICKS)
+  print(
+    `[${PROGRESSION_TAG}] rebirth movement suppress key=${key} ticks=${tostring(REBIRTH_MOVEMENT_EXP_SUPPRESS_TICKS)} source=${tostring(
+      source
+    )}`
+  )
+}
+
+function registerRebirthMovementSuppression(): void {
+  EventBus.on(GAME_EVENTS.PLAYER_DIED_TO_REBIRTH, (unit: unknown, source: unknown) => {
+    suppressMovementExperienceAfterRebirth(unit, source)
+  })
+}
+
 function ensureRoleInitialized(role: Role): void {
   const key = roleKey(role)
   if (initializedRoles.get(key) === true) {
@@ -91,6 +133,17 @@ function tickRole(role: Role): void {
 
   if (state.lastPosition === undefined) {
     setLastPosition(state, position)
+    return
+  }
+
+  const suppressedTicks = suppressedMovementTicksByRole.get(state.key)
+  if (suppressedTicks !== undefined && suppressedTicks > 0) {
+    setLastPosition(state, position)
+    if (suppressedTicks <= 1) {
+      suppressedMovementTicksByRole.delete(state.key)
+    } else {
+      suppressedMovementTicksByRole.set(state.key, suppressedTicks - 1)
+    }
     return
   }
 
@@ -141,6 +194,7 @@ export function startMovementExperienceRuntime(): void {
   }
   started = true
   generation += 1
+  registerRebirthMovementSuppression()
   logProgressionUiReady()
   print(
     `[${PROGRESSION_TAG}] start movement_exp_tick=${MOVEMENT_EXP_TICK_SECONDS}s exp_per_unit=${MOVEMENT_EXP_PER_WORLD_UNIT} max_exp_per_second=${MOVEMENT_EXP_MAX_PER_SECOND}`
